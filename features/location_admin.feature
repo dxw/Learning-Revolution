@@ -4,7 +4,8 @@ Feature: Location admin
   I should be able to be able to add, edit and delete locations
   
   Scenario: Adding a valid location
-    When I go to the new location admin page
+    When I go to the location admin index page
+    And I follow "New location"
     And I fill in "Name" with "Location name"
     And I fill in "Address 1" with "Address 1 name"
     And I fill in "Address 2" with "Address 2 name"
@@ -18,7 +19,8 @@ Feature: Location admin
     And I am on the location admin index page
     
   Scenario: Submitting an empty form
-    When I go to the new location admin page
+    When I go to the location admin index page
+    And I follow "New location"
     And I press "Create"
     Then I should see "errors prohibited this location from being saved"
     And I should see "Name can't be blank"
