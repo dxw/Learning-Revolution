@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090818154406) do
+ActiveRecord::Schema.define(:version => 20090818163441) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20090818154406) do
     t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "possible_duplicate_id"
   end
 
 end

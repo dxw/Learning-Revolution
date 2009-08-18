@@ -10,7 +10,7 @@ describe Location do
       :address_3 => "Address line 3",
       :city => "City",
       :county => "County",
-      :postcode => "postcode"
+      :postcode => "E11 1PB"
     }
     @location = Location.new(@valid_attributes)
   end
@@ -36,4 +36,45 @@ describe Location do
     end
   end
   
+  describe "checking for duplicates" do
+    
+    it "should not be flagged as a possible duplicate if there's an location with same post code but different name" do
+      @location.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:name] = "This is a different name"
+      new_location = Location.new(similar_attributes)
+      new_location.possible_duplicate?.should == false
+    end
+    
+    it "should not be flagged as a possible duplicate if there's an location with same name but different post code" do
+      @location.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:postcode] = "N4 2LD"
+      new_location = Location.new(similar_attributes)
+      new_location.possible_duplicate?.should == false
+    end
+    
+    it "should be flagged as a possible duplicate if there is an location with same post code and similar name" do
+      @location.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:name] = "The Location name"
+      new_location = Location.new(similar_attributes)
+      new_location.possible_duplicate?.should == true
+      new_location.possible_duplicate.should == @location
+    end
+    
+    it "should ignore case" do
+      @location.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:name] = "LOCATION NAME"
+      new_location = Location.new(similar_attributes)
+      new_location.possible_duplicate?.should == true
+    end
+    
+    it "should be done on save" do
+      @location.should_receive(:possible_duplicate?)
+      @location.save!
+    end
+    
+  end
 end

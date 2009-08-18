@@ -74,5 +74,10 @@ describe Event do
       new_event.possible_duplicate?.should == true
     end
     
+    it "should be done on save" do
+      @event.should_receive(:possible_duplicate?)
+      @event.save!
+    end
+    
   end
 end
