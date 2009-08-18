@@ -1,20 +1,20 @@
 <p><%= error_messages_for :event %></p>
-<p><label for="event_title">Title</label>: <%= event_form.text_field :title                 %></p>
-<p><label for="event_description">Description</label>: <%= event_form.text_field :description           %></p>
-<p><label for="event_theme">Theme</label>: <%= event_form.text_field :theme                 %></p>
-<p><label for="event_type">Type</label>: <%= event_form.text_field :type                  %></p>
-<p><label for="event_stage">Stage</label>: <%= event_form.text_field :stage                 %></p>
-<p><label for="event_start">Start</label>: <%= event_form.datetime_select :start                 %></p>
-<p><label for="event_end">End</label>: <%= event_form.datetime_select :end                   %></p>
-<p><label for="event_cost">Cost</label>: <%= event_form.text_field :cost                  %></p>
-<p><label for="event_min_age">Min Age</label>: <%= event_form.text_field :min_age               %></p>
+<p><label for="event_title">Title</label>: <%= event_form.text_field :title %></p>
+<p><label for="event_description">Description</label>: <%= event_form.text_field :description %></p>
+<p><label for="event_theme">Theme</label>: <%= event_form.text_field :theme %></p>
+<p><label for="event_type">Type</label>: <%= event_form.text_field :type %></p>
+<p><label for="event_stage">Stage</label>: <%= event_form.text_field :stage %></p>
+<p><label for="event_start">Start</label>: <%= event_form.datetime_select :start %></p>
+<p><label for="event_end">End</label>: <%= event_form.datetime_select :end %></p>
+<p><label for="event_cost">Cost</label>: <%= event_form.text_field :cost %></p>
+<p><label for="event_min_age">Min Age</label>: <%= event_form.text_field :min_age %></p>
 <p><label for="event_location_id">Venue</label>: <%= event_form.select :location_id, Venue.all.collect {|p| [ p.name, p.id ] } %></p>
-<p><label for="event_organisation">Organisation</label>: <%= event_form.text_field :organisation          %></p>
-<p><label for="event_contact_name">Contact Name</label>: <%= event_form.text_field :contact_name          %></p>
-<p><label for="event_contact_phone_number">Contact Phone Number </label>: <%= event_form.text_field :contact_phone_number  %></p>
+<p><label for="event_organisation">Organisation</label>: <%= event_form.text_field :organisation %></p>
+<p><label for="event_contact_name">Contact Name</label>: <%= event_form.text_field :contact_name %></p>
+<p><label for="event_contact_phone_number">Contact Phone Number </label>: <%= event_form.text_field :contact_phone_number %></p>
 <p><label for="event_contact_email_address">Contact Email Address</label>: <%= event_form.text_field :contact_email_address %></p>
-<p><label for="event_further_information">Further Information</label>: <%= event_form.text_field :further_information   %></p>
-<p><label for="event_additional_notes">Additional Notes</label>: <%= event_form.text_field :additional_notes      %></p>
-<p><label for="event_published">Published</label>: <%= event_form.check_box :published             %></p>
-<p><label for="event_picture">Picture</label>: <%= event_form.text_field :picture               %></p>
-<p><label for="event_featured">Featured</label>: <%= event_form.check_box :featured              %></p>
+<p><label for="event_further_information">Further Information</label>: <%= event_form.text_field :further_information %></p>
+<p><label for="event_additional_notes">Additional Notes</label>: <%= event_form.text_field :additional_notes %></p>
+<p><label for="event_published">Published</label>: <%= event_form.check_box :published %></p>
+<p><label for="event_picture">Picture</label>: <%= event_form.text_field :picture %></p>
+<p><label for="event_featured">Featured</label>: <%= event_form.check_box :featured %></p>
