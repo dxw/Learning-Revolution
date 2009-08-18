@@ -12,12 +12,6 @@ describe Event do
       :end => Time.now,
       :cost => "value for cost",
       :min_age => 1,
-      :address_1 => "value for address_1",
-      :address_2 => "value for address_2",
-      :address_3 => "value for address_3",
-      :city => "value for city",
-      :county => "value for county",
-      :postcode => "value for postcode",
       :organisation => "value for organisation",
       :contact_name => "value for contact_name",
       :contact_phone_number => "value for contact_phone_number",
@@ -31,6 +25,6 @@ describe Event do
   end
 
   it "should create a new instance given valid attributes" do
-    Event.create!(@valid_attributes)
+    Event.create!(@valid_attributes).should be_valid
   end
 end
