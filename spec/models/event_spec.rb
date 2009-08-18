@@ -29,8 +29,44 @@ describe Event do
     Event.create!(@valid_attributes).should be_valid
   end
   
-  it "should create a new instance given valid attributes" do
+  it "not be valid without a title" do
     @event.title = ""
     @event.should_not be_valid
+  end
+  
+  it "not be valid without a start time" do
+    @event.start = nil
+    @event.should_not be_valid
+  end
+  
+  describe "checking for duplicates" do
+    
+    it "should not be flagged as a possible duplicate if there ane event with same date but different title" do
+      @event.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:title] = "This is a different title"
+      new_event = Event.new(similar_attributes)
+      new_event.possible_duplicate?.should == false
+    end
+    
+    it "should not be flagged as a possible duplicate if there ane event with same title but different date" do
+      @event.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:start] = Date.today+2.days
+      new_event = Event.new(similar_attributes)
+      new_event.possible_duplicate?.should == false
+    end
+    
+    
+    it "should be flagged as a possible duplicate if there is ane event with same date and similar title" do
+      @event.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:title] = "VALUE for title"
+      new_event = Event.new(similar_attributes)
+      new_event.possible_duplicate?.should.should == true
+      new_event.possible_duplicate.should == @event
+    end
+    
+    
   end
 end

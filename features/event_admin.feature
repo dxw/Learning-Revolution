@@ -15,7 +15,7 @@ Feature: Event admin
     And I select "November 23, 2004 12:20" as the "End" date and time
     And I fill in "Cost" with "£1.50"
     And I fill in "Min Age" with "13"
-    And I fill in "Location" with "London"
+    And I fill in "Venue" with "London"
     And I fill in "Organisation" with "BIS"
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
