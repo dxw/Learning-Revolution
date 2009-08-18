@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   
   def possible_duplicate?
     Event.find(:all, :conditions => ["DATE(start) = ?", self.start.to_date]).each do |event|
-      self.possible_duplicate = event if !self.possible_duplicate && Text::Levenshtein.distance(self.title, event.title) <= 5
+      self.possible_duplicate = event if !self.possible_duplicate && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     !! self.possible_duplicate
   end

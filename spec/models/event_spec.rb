@@ -41,7 +41,7 @@ describe Event do
   
   describe "checking for duplicates" do
     
-    it "should not be flagged as a possible duplicate if there ane event with same date but different title" do
+    it "should not be flagged as a possible duplicate if there's an event with same date but different title" do
       @event.save!
       similar_attributes = @valid_attributes
       similar_attributes[:title] = "This is a different title"
@@ -49,7 +49,7 @@ describe Event do
       new_event.possible_duplicate?.should == false
     end
     
-    it "should not be flagged as a possible duplicate if there ane event with same title but different date" do
+    it "should not be flagged as a possible duplicate if there's an event with same title but different date" do
       @event.save!
       similar_attributes = @valid_attributes
       similar_attributes[:start] = Date.today+2.days
@@ -57,16 +57,22 @@ describe Event do
       new_event.possible_duplicate?.should == false
     end
     
-    
-    it "should be flagged as a possible duplicate if there is ane event with same date and similar title" do
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title" do
       @event.save!
       similar_attributes = @valid_attributes
-      similar_attributes[:title] = "VALUE for title"
+      similar_attributes[:title] = "the value for title"
       new_event = Event.new(similar_attributes)
-      new_event.possible_duplicate?.should.should == true
+      new_event.possible_duplicate?.should == true
       new_event.possible_duplicate.should == @event
     end
     
+    it "should ignore case" do
+      @event.save!
+      similar_attributes = @valid_attributes
+      similar_attributes[:title] = "VALUE FOR TITLE"
+      new_event = Event.new(similar_attributes)
+      new_event.possible_duplicate?.should == true
+    end
     
   end
 end
