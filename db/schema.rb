@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090818092625) do
+ActiveRecord::Schema.define(:version => 20090818094101) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20090818092625) do
     t.boolean  "published"
     t.string   "picture"
     t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "address_3"
+    t.string   "city"
+    t.string   "county"
+    t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
