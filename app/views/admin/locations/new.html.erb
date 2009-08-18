@@ -1,10 +1,11 @@
-<% form_for :admin, @location do |location_form| %>
-  <p><label>Name      : <%= location_form.text_field :name      %></label></p>
-  <p><label>Address 1 : <%= location_form.text_field :address_1 %></label></p>
-  <p><label>Address 2 : <%= location_form.text_field :address_2 %></label></p>
-  <p><label>Address 3 : <%= location_form.text_field :address_3 %></label></p>
-  <p><label>City      : <%= location_form.text_field :city      %></label></p>
-  <p><label>County    : <%= location_form.text_field :county    %></label></p>
-  <p><label>Postcode  : <%= location_form.text_field :postcode  %></label></p>
-  <p><%= location_form.submit %></p>
+<% form_for [:admin, @location] do |location_form| %>
+  <p><%= error_messages_for :location %></p>
+  <p><label for="location_name">Name</label>: <%= location_form.text_field :name      %></p>
+  <p><label for="location_address_1">Address 1</label>: <%= location_form.text_field :address_1 %></p>
+  <p><label for="location_address_2">Address 2</label>: <%= location_form.text_field :address_2 %></p>
+  <p><label for="location_address_3">Address 3</label>: <%= location_form.text_field :address_3 %></p>
+  <p><label for="location_city">City</label>: <%= location_form.text_field :city      %></p>
+  <p><label for="location_county">County</label>: <%= location_form.text_field :county    %></p>
+  <p><label for="location_postcode">Postcode</label>: <%= location_form.text_field :postcode  %></p>
+  <p><%= location_form.submit "Create" %></p>
 <% end %>
