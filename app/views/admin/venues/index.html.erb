@@ -1,0 +1,6 @@
+<%= flash[:venue] %>
+<% @venues.each do |venue| %>
+  <li><%= link_to venue.name, edit_admin_venue_path(venue) %></li>
+<% end %>
+
+<%= link_to "New Venue", new_admin_venue_path %>

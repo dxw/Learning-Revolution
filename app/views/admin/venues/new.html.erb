@@ -1,0 +1,4 @@
+<% form_for [:admin, @venue] do |venue_form| %>
+  <%= render :partial => "fields", :locals => {:venue_form => venue_form} %>
+  <p><%= venue_form.submit "Create" %></p>
+<% end %>

@@ -9,10 +9,10 @@ module NavigationHelpers
     case page_name
     when /the homepage/
       '/'
-    when /the new location admin page/
-      new_admin_location_path
-    when /location admin index page/
-      admin_locations_path
+    when /the new venue admin page/
+      new_admin_venue_path
+    when /venue admin index page/
+      admin_venues_path
     when /the new event admin page/
       new_admin_event_path
     when /event admin index page/

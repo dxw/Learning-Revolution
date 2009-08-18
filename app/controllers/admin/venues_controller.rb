@@ -1,18 +1,18 @@
-class Admin::LocationsController < Admin::AdminController
+class Admin::VenuesController < Admin::AdminController
   make_resourceful do
     actions :all
     
     response_for :create do |format|
       format.html do 
         redirect_to :action => :index
-        flash[:location] = "Location created successfully"
+        flash[:venue] = "Venue created successfully"
       end
     end
     
     response_for :update do |format|
       format.html do 
         redirect_to :action => :index
-        flash[:location] = "Location saved successfully"
+        flash[:venue] = "Venue saved successfully"
       end
     end
   end

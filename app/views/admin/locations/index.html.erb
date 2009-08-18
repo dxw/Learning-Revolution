@@ -1,6 +1,0 @@
-<%= flash[:location] %>
-<% @locations.each do |location| %>
-  <li><%= link_to location.name, edit_admin_location_path(location) %></li>
-<% end %>
-
-<%= link_to "New Location", new_admin_location_path %>
