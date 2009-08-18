@@ -22,9 +22,15 @@ describe Event do
       :picture => "value for picture",
       :featured => false
     }
+    @event = Event.new(@valid_attributes)
   end
 
   it "should create a new instance given valid attributes" do
     Event.create!(@valid_attributes).should be_valid
+  end
+  
+  it "should create a new instance given valid attributes" do
+    @event.title = ""
+    @event.should_not be_valid
   end
 end

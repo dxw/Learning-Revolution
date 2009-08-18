@@ -1,0 +1,6 @@
+<%= flash[:event] %>
+<% @events.each do |event| %>
+  <li><%= link_to event.title, edit_admin_event_path(event) %></li>
+<% end %>
+
+<%= link_to "New Event", new_admin_event_path %>

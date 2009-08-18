@@ -13,6 +13,10 @@ module NavigationHelpers
       new_admin_location_path
     when /location admin index page/
       admin_locations_path
+    when /the new event admin page/
+      new_admin_event_path
+    when /event admin index page/
+      admin_events_path      
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end
