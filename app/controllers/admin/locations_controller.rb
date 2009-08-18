@@ -1,4 +1,4 @@
-class Admin::LocationsController < ApplicationController
+class Admin::LocationsController < Admin::AdminController
   make_resourceful do
     actions :all
     
