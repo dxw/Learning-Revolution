@@ -6,17 +6,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>Learning Revolution Admin</title>
-	
+	<link href='/stylesheets/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  <!-- %link{:rel => "stylesheet", :href => "/stylesheets/blueprint/print.css",  :type => "text/css", :media => "print"} -->
+  <!--[if IE]>
+  <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
+  
 </head>
 
 <body>
-  
-  <ul class="admin_nav">
-    <li><%= link_to "Venues", admin_venues_path %></li>
-    <li><%= link_to "Events", admin_events_path %></li>
-  </ul>
+  <div class='container'>
+    <ul class="admin_nav">
+      <li><%= link_to "Venues", admin_venues_path %></li>
+      <li><%= link_to "Events", admin_events_path %></li>
+    </ul>
 
-  <%= yield %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
