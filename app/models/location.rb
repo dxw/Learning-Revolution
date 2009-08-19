@@ -12,12 +12,20 @@ class Location < ActiveRecord::Base
   end
   
   def possible_duplicate?
-    Location.find(:all, :conditions => ["postcode = ?", self.postcode]).each do |location|
-      p self.name
-      p location.name
-      self.possible_duplicate = location if !self.possible_duplicate && Text::Levenshtein.distance(self.name.downcase, location.name.downcase) <= 5
+    self.class.find(:all, :conditions => ["postcode = ?", self.postcode]).each do |location|
+      self.possible_duplicate = location if !self.possible_duplicate && self != location && Text::Levenshtein.distance(self.name.downcase, location.name.downcase) <= 5
     end
     !! self.possible_duplicate
+  end
+  
+  def fix_duplicate(by_removing)
+    if by_removing == :original
+      possible_duplicate.destroy
+      self.possible_duplicate = nil
+      self.save
+    elsif by_removing == :self
+      self.destroy
+    end
   end
   
 end

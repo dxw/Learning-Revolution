@@ -1,0 +1,25 @@
+<%= flash[:duplicates] %>
+
+  <% form_tag do %>
+    <% @duplicate_venues.each do |duplicate_venue| %>
+        <div class="span-11">
+          <h3>New Venue</h3>
+          <%= render :partial => "venue_info_block", :locals => {:venue => duplicate_venue} %>
+          <p>
+            <%= submit_tag "Remove new venue", :name => "venue[#{duplicate_venue.id}]", :confirm => "Are you sure?" %> or
+            <%= link_to "Edit new venue", edit_admin_venue_path(duplicate_venue) %>
+          </p>
+        </div>
+        <div class="span-11">
+          <h3>Original Venue</h3>
+          <%= render :partial => "venue_info_block", :locals => {:venue => duplicate_venue.possible_duplicate} %>
+          <p>
+            <%= submit_tag "Remove original venue", :name => "venue[#{duplicate_venue.id}]", :confirm => "Are you sure?" %>
+           or <%= link_to "Edit original venue", edit_admin_venue_path(duplicate_venue.possible_duplicate) %>
+           </p>
+        </div>
+    <% end %>
+  <% end %>
+<% if @duplicate_venues.blank? %>
+  <h2>We don't think there are any duplicate venues</h2>
+<% end %>

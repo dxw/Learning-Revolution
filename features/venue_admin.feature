@@ -37,3 +37,23 @@ Feature: Venue admin
     And I should see "New Venue name"
     And I am on the venue admin index page
   
+  Scenario: Removing the new venue in a duplicate
+    Given a valid venue called "venue 1"
+    And a valid venue called "venue 2"
+    When I go to the venue duplicates page
+    Then I should see "venue 1"
+    And I should see "venue 2"
+    When I press "Remove new venue"
+    Then I should see "venue 2 was deleted"
+    And I should not see "venue 1"
+
+  Scenario: Removing the original venue in a duplicate
+    Given a valid venue called "venue 1"
+    And a valid venue called "venue 2"
+    When I go to the venue duplicates page
+    Then I should see "venue 1"
+    And I should see "venue 2"
+    When I press "Remove original venue"
+    Then I should see "venue 1 was deleted"
+    And I should not see "venue 2"
+  
