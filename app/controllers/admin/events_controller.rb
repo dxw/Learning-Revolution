@@ -17,4 +17,21 @@ class Admin::EventsController < Admin::AdminController
     end
   end
   
+  def duplicates
+    fix_duplicate if request.method == :post && params[:event]
+    @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
+  end
+  
+  private
+  
+  def fix_duplicate
+    duplicate = Event.find(params[:event].keys.first)
+    if params[:event][duplicate.id.to_s] == "Remove new event"
+      flash[:duplicates] = "#{duplicate.title} was deleted"
+      duplicate.fix_duplicate(:self)
+    elsif params[:event][duplicate.id.to_s] == "Remove original event"
+      flash[:duplicates] = "#{duplicate.possible_duplicate.title} was deleted"
+      duplicate.fix_duplicate(:original)
+    end
+  end
 end

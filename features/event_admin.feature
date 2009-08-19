@@ -47,3 +47,24 @@ Feature: Event admin
     Then I should see "Event saved successfully"
     And I should see "New event title"
     And I am on the event admin index page
+    
+  Scenario: Removing the new event in a duplicate
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the event duplicates page
+    Then I should see "event 1"
+    And I should see "event 2"
+    When I press "Remove new event"
+    Then I should see "event 2 was deleted"
+    And I should not see "event 1"
+
+  Scenario: Removing the original event in a duplicate
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the event duplicates page
+    Then I should see "event 1"
+    And I should see "event 2"
+    When I press "Remove original event"
+    Then I should see "event 1 was deleted"
+    And I should not see "event 2"
+    

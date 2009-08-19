@@ -1,0 +1,12 @@
+<%= flash[:duplicates] %>
+
+<% form_tag do %>
+  <% @duplicate_events.each do |duplicate_event| %>
+    <div>
+      <%= render :partial => "event_info_block", :locals => {:event => duplicate_event} %>
+      <%= submit_tag "Remove new event", :name => "event[#{duplicate_event.id}]" %>
+      <%= render :partial => "event_info_block", :locals => {:event => duplicate_event.possible_duplicate} %>
+      <%= submit_tag "Remove original event", :name => "event[#{duplicate_event.id}]" %>
+    </div>
+  <% end %>
+<% end %>

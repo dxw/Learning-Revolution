@@ -79,5 +79,35 @@ describe Event do
       @event.save!
     end
     
+    it "should not use itself as a duplicate" do
+      @event.save!
+      @event.save!
+      @event.possible_duplicate.should == nil
+    end
+    
+  end
+  
+  describe "fixing duplicates" do
+    before(:each) do
+      @original_event = @event
+      @new_dupicate_event = Event.new(@valid_attributes)
+      @new_dupicate_event.possible_duplicate = @original_event
+    end
+    
+    it "should be able to succesfully delete the original duplicate" do
+      @original_event.should_receive(:destroy)
+      @new_dupicate_event.fix_duplicate(:original)
+    end
+    
+    it "should be remove reference to original duplicate upon fixing" do
+      @new_dupicate_event.fix_duplicate(:original)
+      @new_dupicate_event.possible_duplicate.should == nil
+    end
+    
+    it "should delete itself if it is told it is the duplicate" do
+      @new_dupicate_event.should_receive(:destroy)
+      @new_dupicate_event.fix_duplicate(:self)
+    end
+    
   end
 end

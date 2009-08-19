@@ -17,6 +17,8 @@ module NavigationHelpers
       new_admin_event_path
     when /event admin index page/
       admin_events_path      
+    when /the event duplicates page/
+      duplicates_admin_events_path      
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end
