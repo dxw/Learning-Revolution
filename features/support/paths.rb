@@ -20,7 +20,9 @@ module NavigationHelpers
     when /the event duplicates page/
       duplicates_admin_events_path      
     when /the venue duplicates page/
-      duplicates_admin_venues_path      
+      duplicates_admin_venues_path
+    when /the events moderation page/ 
+      moderations_admin_events_path      
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end

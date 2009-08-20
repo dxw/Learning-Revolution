@@ -1,0 +1,11 @@
+<% if @event %>
+  <%= render :partial => "event_info_block", :locals => {:event => @event} %>
+
+  <% form_tag nil, :method => :put do %>
+    <%= submit_tag "Approve" %>
+    <%= link_to "Skip", "?from=#{@event.id}" %>
+    <%= submit_tag "Delete" %>
+  <% end %>
+<% else %>
+  <h2>No more events to moderate</h2>
+<% end %>

@@ -22,6 +22,14 @@ class Admin::EventsController < Admin::AdminController
     @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
   end
   
+  def moderations
+    if params[:from]
+      @event = Event.find(:first, :conditions => ["(published IS NULL OR published != 1) AND id > ?", params[:from]], :order => "id ASC")
+    else
+      @event = Event.find(:first, :conditions => "published IS NULL OR published != 1", :order => "created_at ASC")
+    end
+  end
+  
   private
   
   def fix_duplicate

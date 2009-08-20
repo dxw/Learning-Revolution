@@ -68,3 +68,31 @@ Feature: Event admin
     Then I should see "event 1 was deleted"
     And I should not see "event 2"
     
+  Scenario: Moderating events with approval
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the events moderation page
+    Then I should see "event 1"
+    When I press "Approve"
+    Then I should see "event 1 has been published"
+    And I should see "event 2"
+  
+  Scenario: Moderating events with deletion
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the events moderation page
+    Then I should see "event 1"
+    When I press "Delete"
+    Then I should see "event 1 has been deleted"
+    And I should see "event 2"
+  
+  Scenario: Moderating events with skipping
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the events moderation page
+    Then I should see "event 1"
+    When I follow "Skip"
+    Then I should not see "event 1 has been deleted"
+    And I should not see "event 1 has been published"
+    And I should see "event 2"
+  
