@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Cucumber</title>
+    <link href="/stylesheets/cucumber.css" type="text/css" rel="stylesheet"/>
+    <link href="/stylesheets/tablesorter.css" type="text/css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="cucumber">
+      <div class="feature">
+        <h2>Feature: Venue admin</h2>
+        <p>
+In order to keep the venue data clean          <br/>
+As an admin          <br/>
+I should be able to be able to add, edit and delete venues          <br/>
+        </p>
+        <div class="scenario">
+          <h3>Scenario: Adding a valid venue</h3>
+          <ol>
+            <li class="passed">When I go to the venue admin index page</li>
+            <li class="passed">And I follow &quot;New venue&quot;</li>
+            <li class="passed">And I fill in &quot;Name&quot; with &quot;Venue name&quot;</li>
+            <li class="passed">And I fill in &quot;Address 1&quot; with &quot;Address 1 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address 2&quot; with &quot;Address 2 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address 3&quot; with &quot;Address 3 name&quot;</li>
+            <li class="passed">And I fill in &quot;City&quot; with &quot;City name&quot;</li>
+            <li class="passed">And I fill in &quot;County&quot; with &quot;County name&quot;</li>
+            <li class="passed">And I fill in &quot;Postcode&quot; with &quot;Postcode name&quot;</li>
+            <li class="passed">And I press &quot;Create&quot;</li>
+            <li class="passed">Then I should see &quot;Venue created successfully&quot;</li>
+            <li class="passed">And I should see &quot;Venue name&quot;</li>
+            <li class="passed">And I am on the venue admin index page</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Submitting an empty form</h3>
+          <ol>
+            <li class="passed">When I go to the venue admin index page</li>
+            <li class="passed">And I follow &quot;New venue&quot;</li>
+            <li class="passed">And I press &quot;Create&quot;</li>
+            <li class="passed">Then I should see &quot;errors prohibited this venue from being saved&quot;</li>
+            <li class="passed">And I should see &quot;Name can't be blank&quot;</li>
+            <li class="passed">And I should see &quot;Postcode can't be blank&quot;</li>
+            <li class="passed">And I am on the venue admin index page</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Editing a valid venue</h3>
+          <ol>
+            <li class="passed">Given a valid venue called &quot;Venue 1&quot;</li>
+            <li class="passed">When I go to the venue admin index page</li>
+            <li class="passed">And I follow &quot;Venue 1&quot;</li>
+            <li class="passed">And I fill in &quot;Name&quot; with &quot;New Venue name&quot;</li>
+            <li class="passed">And I press &quot;Save&quot;</li>
+            <li class="passed">Then I should see &quot;Venue saved successfully&quot;</li>
+            <li class="passed">And I should see &quot;New Venue name&quot;</li>
+            <li class="passed">And I am on the venue admin index page</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Removing the new venue in a duplicate</h3>
+          <ol>
+            <li class="passed">Given a valid venue called &quot;venue 1&quot;</li>
+            <li class="passed">And a valid venue called &quot;venue 2&quot;</li>
+            <li class="passed">When I go to the venue duplicates page</li>
+            <li class="passed">Then I should see &quot;venue 1&quot;</li>
+            <li class="passed">And I should see &quot;venue 2&quot;</li>
+            <li class="passed">When I press &quot;Remove new venue&quot;</li>
+            <li class="passed">Then I should see &quot;venue 2 was deleted&quot;</li>
+            <li class="passed">And I should not see &quot;venue 1&quot;</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Removing the original venue in a duplicate</h3>
+          <ol>
+            <li class="passed">Given a valid venue called &quot;venue 1&quot;</li>
+            <li class="passed">And a valid venue called &quot;venue 2&quot;</li>
+            <li class="passed">When I go to the venue duplicates page</li>
+            <li class="passed">Then I should see &quot;venue 1&quot;</li>
+            <li class="passed">And I should see &quot;venue 2&quot;</li>
+            <li class="passed">When I press &quot;Remove original venue&quot;</li>
+            <li class="passed">Then I should see &quot;venue 1 was deleted&quot;</li>
+            <li class="passed">And I should not see &quot;venue 2&quot;</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

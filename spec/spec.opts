@@ -1,4 +1,5 @@
 --colour
---format specdoc
+--format progress
+--format html:public/specs.html
 --loadby mtime
 --reverse
