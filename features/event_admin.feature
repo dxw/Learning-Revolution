@@ -67,6 +67,14 @@ Feature: Event admin
     When I press "Remove original event"
     Then I should see "event 1 was deleted"
     And I should not see "event 2"
+  
+  Scenario: Editing an event mid moderation
+    Given a valid event called "event 1"
+    And a valid event called "event 2"
+    When I go to the event duplicates page
+    And I follow "Edit original event"
+    And I press "Save"
+    Then I should be on the event duplicates page
     
   Scenario: Moderating events with approval
     Given a valid event called "event 1"

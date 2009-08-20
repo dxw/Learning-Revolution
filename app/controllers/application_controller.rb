@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  def return_or_redirect_to(*args)
+    unless params[:return_to].blank?
+      redirect_to params[:return_to]
+    else
+      redirect_to(*args)
+    end
+  end
 end

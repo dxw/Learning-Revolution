@@ -11,7 +11,7 @@ class Admin::EventsController < Admin::AdminController
     
     response_for :update do |format|
       format.html do 
-        redirect_to :action => :index
+        return_or_redirect_to :action => :index
         flash[:event] = "Event saved successfully"
       end
     end
