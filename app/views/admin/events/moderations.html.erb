@@ -1,7 +1,8 @@
+<%= flash[:event] %>
 <% if @event %>
   <%= render :partial => "event_info_block", :locals => {:event => @event} %>
 
-  <% form_tag nil, :method => :put do %>
+  <% form_tag moderate_admin_event_path(@event), :method => :put do %>
     <%= submit_tag "Approve" %>
     <%= link_to "Skip", "?from=#{@event.id}" %>
     <%= submit_tag "Delete" %>

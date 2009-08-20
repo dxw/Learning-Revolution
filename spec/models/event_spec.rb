@@ -39,6 +39,13 @@ describe Event do
     @event.should_not be_valid
   end
   
+  it "should accept approval" do
+    @event.published.should_not == true
+    @event.should_receive(:save)
+    @event.approve!
+    @event.published.should == true
+  end
+  
   describe "checking for duplicates" do
     
     it "should not be flagged as a possible duplicate if there's an event with same date but different title" do

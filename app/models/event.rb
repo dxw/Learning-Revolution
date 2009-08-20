@@ -26,4 +26,9 @@ class Event < ActiveRecord::Base
       self.destroy
     end
   end
+  
+  def approve!
+    self.published = true
+    self.save
+  end
 end

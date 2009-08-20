@@ -30,6 +30,18 @@ class Admin::EventsController < Admin::AdminController
     end
   end
   
+  def moderate
+    event = Event.find(params[:id])
+    if params[:commit] == "Approve"
+      event.approve!
+      flash[:event] = "#{event.title} has been published"
+    elsif params[:commit] == "Delete"
+      event.destroy
+      flash[:event] = "#{event.title} has been deleted"
+    end
+    redirect_to moderations_admin_events_path, :from => event.id
+  end
+  
   private
   
   def fix_duplicate
