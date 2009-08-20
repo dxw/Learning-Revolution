@@ -19,6 +19,10 @@ describe Venue do
     Venue.create!(@valid_attributes).should be_valid
   end
   
+  it "should have many events" do
+    should have_many(:events)
+  end
+  
   it "should require a name" do
     @venue.name = ""
     @venue.should_not be_valid
@@ -104,6 +108,27 @@ describe Venue do
     it "should delete itself if it is told it is the duplicate" do
       @new_dupicate_venue.should_receive(:destroy)
       @new_dupicate_venue.fix_duplicate(:self)
+    end
+    
+    it "should be able to move all events from another venue" do
+      event = EventSpecHelper.new
+      @new_dupicate_venue.events << event
+      @new_dupicate_venue.save!
+      
+      @original_venue.move_events_from(@new_dupicate_venue)
+      @original_venue.events.should == [event]
+      @new_dupicate_venue.reload
+      @new_dupicate_venue.events.should == []
+    end
+    
+    it "should move all events from the new duplicate event to the original event" do
+      @original_venue.should_receive(:move_events_from).with(@new_dupicate_venue)
+      @new_dupicate_venue.fix_duplicate(:self)
+    end
+    
+    it "should move all events from the original duplicate event to the new event" do
+      @new_dupicate_venue.should_receive(:move_events_from).with(@original_venue)
+      @new_dupicate_venue.fix_duplicate(:original)
     end
     
   end

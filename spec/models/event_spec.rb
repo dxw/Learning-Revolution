@@ -29,6 +29,10 @@ describe Event do
     Event.create!(@valid_attributes).should be_valid
   end
   
+  it "should belong to a venue" do
+    @event.should belong_to(:venue)
+  end
+  
   it "not be valid without a title" do
     @event.title = ""
     @event.should_not be_valid

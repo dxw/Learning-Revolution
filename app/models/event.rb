@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   
+  belongs_to :venue, :foreign_key => "location_id"
+  
   def check_duplicate
     possible_duplicate?
     true
