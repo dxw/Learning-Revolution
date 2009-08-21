@@ -103,3 +103,10 @@ body {
 .site_intro .featured_block img {
   width:100%;
 }
+.site_intro .featured_block h3 {
+  position:absolute;
+  top:252px;
+  height:36px;
+  background-color:#fff;
+  width:100%;
+}
