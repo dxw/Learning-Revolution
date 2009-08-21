@@ -4,4 +4,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :venues, :collection => {:duplicates => [:get, :post], :moderations => [:get, :put]}
     admin.resources :events, :collection => {:duplicates => [:get, :post], :moderations => :get}, :member => {:moderate => :put}
   end
+  
+  map.root :controller => "pages"
 end

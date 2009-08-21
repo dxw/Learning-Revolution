@@ -7,6 +7,10 @@ class Event < ActiveRecord::Base
   
   belongs_to :venue, :foreign_key => "location_id"
   
+  
+  named_scope :published, :conditions => { :published => true }
+  named_scope :featured, :conditions => { :featured => true, :published => true }
+  
   def check_duplicate
     possible_duplicate?
     true

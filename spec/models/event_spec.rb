@@ -50,6 +50,15 @@ describe Event do
     @event.published.should == true
   end
   
+  it "should find featured events" do
+    @event.save!
+    Event.featured.should == []
+    @event.featured = true
+    @event.published = true
+    @event.save!
+    Event.featured.should == [@event]
+  end
+  
   describe "checking for duplicates" do
     
     it "should not be flagged as a possible duplicate if there's an event with same date but different title" do
