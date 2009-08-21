@@ -30,6 +30,7 @@ body {
   font-size:12px;
   font-family: Verdana, sans-serif;
   line-height:18px;
+  text-align:center;
 }
 
 .container,
@@ -37,6 +38,7 @@ body {
 {
   width:940px;
   margin:0 auto;
+  text-align:left;
 }
 
 .nav_banner {
@@ -52,6 +54,7 @@ body {
   width:910px;
   padding-left:20px;
   margin:0 auto;
+  text-align:left;
 }
 
 .nav li {
@@ -64,12 +67,15 @@ body {
 
 .content_block {
   background-color: #FFF;
-  border: 1px solid #000;
   float:left;
-  width:898px;
+  width:950px;
   margin-right:20px;
   margin-bottom:18px;
+}
+
+.content_block_content {
   padding:17px 20px;
+  border: 1px solid #000;
 }
 
 .last {
@@ -77,26 +83,27 @@ body {
 }
 
 .quarter_page {
-  width:178px;
+  width:220px;
 }
 
 .half_page {
-  width:418px;
+  width:460px;
 }
 
 /* Specific styles */
 
 .site_intro .content_block {
+  height:288px;
+}
+
+.site_intro .content_block_content {
   border:none;
-  width:420px;
-  height:252px;
-  padding:18px 20px;
 }
 
 .site_intro .featured_block {
   margin-left:-20px;
   padding:0;
-  width:478px;
+  width:480px;
   height:288px;
   overflow:hidden;
 }
@@ -106,6 +113,7 @@ body {
 .site_intro .featured_block h3 {
   position:absolute;
   top:252px;
+  left:0;
   height:36px;
   background-color:#fff;
   width:100%;
