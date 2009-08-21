@@ -8,18 +8,15 @@
   
   <div class="content_block half_page featured_block last">
     <div class="featured_events">
-      <% Event.featured.each do |event| %>
-        <div class="featured_event">
+      <% Event.featured.each_with_index do |event, count| %>
+        <div class="featured_event" id="featured_event_<%= count+1 %>">
           <%= image_tag event.picture %>
           <h3><%= event.title %></h3>
         </div>
       <% end %>
     </div>
-    <ul class="featured_event_nav">
-      <% 13.times do |count| %>
-        <li><%= count %></li>
-      <% end %>
-    </ul>
+    <div class="featured_event_nav">
+    </div>
   </div>
 </div>
 

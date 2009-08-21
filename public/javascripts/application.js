@@ -1,1 +1,1 @@
-$('.featured_events').cycle()
+$('.featured_events').cycle({pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true, pagerEvent: 'mouseover'})
