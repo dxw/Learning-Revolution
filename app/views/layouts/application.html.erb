@@ -6,6 +6,17 @@
 <head>
 	<title>Learning Revolution</title>
 	<link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8">
+	<!--[if lt IE 7]>
+  <link href="/stylesheets/portal_ie6.css?1250082712" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if lt IE 7]>
+  <style type="text/css">.png { behavior: url("/stylesheets/iepngfix.htc") }</style>
+  <link href="/stylesheets/ie6.css?1250082712" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if gt IE 6]>
+  <link href="/stylesheets/ie7.css?1250082712" media="screen
+  " rel="stylesheet" type="text/css" /><![endif]-->
+
 	    <script language="javascript" src="/javascripts/jquery.min.js" type="text/javascript"></script>
 	    <script language="javascript" src="/javascripts/jquery.cycle.js" type="text/javascript"></script>
 	    <script language="javascript" src="/javascripts/application.js" type="text/javascript"></script>
@@ -13,14 +24,14 @@
 
 <body>
   <div class="header">
-    <h1><img src="/images/learning_revolution_logo.jpg" /></h1>
+    <h1><img src="/images/learning_revolution_logo.png" /></h1>
     <div class="nav_banner">
       <ul class="nav">
-        <li><%= link_to "About" %></li>
-        <li><%= link_to "Events" %></li>
-        <li><%= link_to "Spaces" %></li>
+        <li><%= link_to "Home" %></li>
+        <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "Stories" %></li>
         <li><%= link_to "Resources" %></li>
+        <li><%= link_to "About" %></li>
       </ul>
     </div>
   </div>

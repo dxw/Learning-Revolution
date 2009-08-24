@@ -47,11 +47,12 @@ body {
   padding-bottom:16px;
   background-position: bottom;
   background-repeat: repeat-x;
+  margin-bottom:18px;
 }
 
 .nav {
   list-style: none;
-  width:910px;
+  width:920px;
   padding-left:20px;
   margin:0 auto;
   text-align:left;
@@ -88,6 +89,14 @@ body {
 
 .half_page {
   width:460px;
+}
+
+.span-6 {
+  width:340px;
+}
+
+.span-4 {
+  width:220px;
 }
 
 /* Specific styles */
@@ -145,4 +154,25 @@ body {
 .site_intro .featured_block .featured_event_nav a.activeSlide {
   background-color:#fff; 
   color:#40000B;
+}
+
+.site_intro .featured_block .calendar_date {
+  position:absolute;
+  top:18px;
+  left:20px;
+  text-align:center;
+}
+
+.site_intro .featured_block .calendar_date .day,
+.site_intro .featured_block .calendar_date .month {
+  background-color:#fff;
+  width:40px;
+  padding:9px 0;
+}
+
+.site_intro .featured_block .calendar_date .month {
+  background-color:#40000B;
+  color:#fff;
+  height:18px;
+  padding:0;
 }

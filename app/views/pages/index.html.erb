@@ -11,6 +11,14 @@
       <% Event.featured.each_with_index do |event, count| %>
         <div class="featured_event" id="featured_event_<%= count+1 %>">
           <%= image_tag event.picture %>
+          <div class="calendar_date">
+            <div class="month">
+              <%= Date::MONTHNAMES[event.start.month][0..2] %>
+            </div>
+            <div class="day">
+              <%= event.start.day.ordinalize %>
+            </div>
+          </div>
           <h3><%= event.title %></h3>
         </div>
       <% end %>
@@ -21,17 +29,18 @@
 </div>
 
 <div class="clearfix">
-  <div class="content_block half_page">
+  <div class="content_block span-6">
     <div class="content_block_content">
-      <h2>Featured New and Stories</h2>
+      <h2>See what's on today</h2>
+      Events in London on 
     </div>
   </div>
-  <div class="content_block quarter_page">
+  <div class="content_block span-6">
     <div class="content_block_content">
       <h2>Latest from Ning</h2>
     </div>
   </div>
-  <div class="content_block quarter_page last">
+  <div class="content_block span-4 last">
     <div class="content_block_content">
       <h2>Festival Tweets</h2>
     </div>

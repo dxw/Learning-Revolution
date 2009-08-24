@@ -6,4 +6,5 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.root :controller => "pages"
+  map.resources :events
 end
