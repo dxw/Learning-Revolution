@@ -11,6 +11,12 @@ class Event < ActiveRecord::Base
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }
   
+  def self.find_for_month(date)
+    first_day = date.beginning_of_month
+    last_day = date.end_of_month
+    self.find(:all, :conditions => ["start >= ? AND start < ?", first_day.to_time.utc, last_day.to_time.end_of_day.utc])
+  end
+  
   def check_duplicate
     possible_duplicate?
     true

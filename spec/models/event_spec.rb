@@ -130,4 +130,16 @@ describe Event do
     end
     
   end
+  
+  describe "filtering events" do
+    before(:each) do
+    end
+    
+    it "should find events in a month" do
+      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+      event2 = EventSpecHelper.save(:start => Time.parse("31st October 2009 11:59"))
+      event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"))
+      Event.find_for_month(Date.parse("1st October 2009")).should == [event1, event2]
+    end
+  end
 end

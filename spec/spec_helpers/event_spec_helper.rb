@@ -1,7 +1,7 @@
 module EventSpecHelper
 
   def self.new(options={})
-    n = Event.new(
+    Event.new(
       {      
         :title => "value for title",
         :description => "value for description",
@@ -23,7 +23,12 @@ module EventSpecHelper
         :featured => false
       }.merge(options)
     )
-    n
+  end
+  
+  def self.save(options={})
+    r = self.new(options)
+    r.save!
+    r
   end
 
 end
