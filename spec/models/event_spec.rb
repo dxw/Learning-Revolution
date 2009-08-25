@@ -2,31 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Event do
   before(:each) do
-    @valid_attributes = {
-      :title => "value for title",
-      :description => "value for description",
-      :theme => "value for theme",
-      :event_type => "value for event_type",
-      :stage => 1,
-      :start => Time.now,
-      :end => Time.now,
-      :cost => "value for cost",
-      :min_age => 1,
-      :organisation => "value for organisation",
-      :contact_name => "value for contact_name",
-      :contact_phone_number => "value for contact_phone_number",
-      :contact_email_address => "value for contact_email_address",
-      :further_information => "value for further_information",
-      :additional_notes => "value for additional_notes",
-      :published => false,
-      :picture => "value for picture",
-      :featured => false
-    }
-    @event = Event.new(@valid_attributes)
+    @event = EventSpecHelper.new
   end
 
   it "should create a new instance given valid attributes" do
-    Event.create!(@valid_attributes).should be_valid
+    EventSpecHelper.save.should be_valid
   end
   
   it "should belong to a venue" do
@@ -63,35 +43,24 @@ describe Event do
     
     it "should not be flagged as a possible duplicate if there's an event with same date but different title" do
       @event.save!
-      similar_attributes = @valid_attributes
-      similar_attributes[:title] = "This is a different title"
-      new_event = Event.new(similar_attributes)
-      new_event.possible_duplicate?.should == false
+      EventSpecHelper.new(:title => "This is a different title").possible_duplicate?.should == false
     end
     
     it "should not be flagged as a possible duplicate if there's an event with same title but different date" do
       @event.save!
-      similar_attributes = @valid_attributes
-      similar_attributes[:start] = Date.today+2.days
-      new_event = Event.new(similar_attributes)
-      new_event.possible_duplicate?.should == false
+      EventSpecHelper.new(:start => Date.today+2.days).possible_duplicate?.should == false
     end
     
     it "should be flagged as a possible duplicate if there is an event with same date and similar title" do
       @event.save!
-      similar_attributes = @valid_attributes
-      similar_attributes[:title] = "the value for title"
-      new_event = Event.new(similar_attributes)
+      new_event = EventSpecHelper.new(:title => "value for title2")
       new_event.possible_duplicate?.should == true
       new_event.possible_duplicate.should == @event
     end
     
     it "should ignore case" do
       @event.save!
-      similar_attributes = @valid_attributes
-      similar_attributes[:title] = "VALUE FOR TITLE"
-      new_event = Event.new(similar_attributes)
-      new_event.possible_duplicate?.should == true
+      EventSpecHelper.new(:title => "VALUE FOR TITLE").possible_duplicate?.should == true
     end
     
     it "should be done on save" do
@@ -110,7 +79,7 @@ describe Event do
   describe "fixing duplicates" do
     before(:each) do
       @original_event = @event
-      @new_dupicate_event = Event.new(@valid_attributes)
+      @new_dupicate_event = EventSpecHelper.new
       @new_dupicate_event.possible_duplicate = @original_event
     end
     

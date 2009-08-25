@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090825144921) do
+ActiveRecord::Schema.define(:version => 20090825163052) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(:version => 20090825144921) do
     t.string   "contact_name"
     t.string   "contact_phone_number"
     t.string   "contact_email_address"
-    t.string   "further_information"
-    t.text     "additional_notes"
     t.boolean  "published"
     t.string   "picture"
     t.boolean  "featured"

@@ -20,8 +20,6 @@ Feature: Event admin
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I fill in "Further Information" with "There isn't really any further info"
-    And I fill in "Additional Notes" with "Additional Notes"
     And I check "Published"
     And I fill in "Picture" with "http://www.google.co.uk/intl/en_uk/images/logo.gif"
     And I check "Featured"
