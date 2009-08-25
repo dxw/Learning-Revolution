@@ -11,13 +11,13 @@ class Event < ActiveRecord::Base
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
-  def self.find_for_month(date)
+  def self.find_for_month(date, conditions={})
     queries = []
     31.times do |day|
       day = Time.parse("#{date.month}/#{day+1} #{date.year}")
       start_time = day.beginning_of_day.utc
       end_time = day.end_of_day.utc
-      queries << "(SELECT * FROM `events` WHERE (theme = 'cooking') AND (start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}') LIMIT 3)"
+      queries << "(SELECT * FROM `events` WHERE #{sanitize_sql_array(conditions) + " AND " unless conditions.empty?}(start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}') LIMIT 3)"
     end
     self.find_by_sql(queries.join(" UNION "))
   end

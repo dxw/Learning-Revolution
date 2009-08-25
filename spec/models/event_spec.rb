@@ -139,7 +139,17 @@ describe Event do
       event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
       event2 = EventSpecHelper.save(:start => Time.parse("31st October 2009 11:59"))
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"))
-      Event.find_for_month(Date.parse("1st October 2009")).should == [event1, event2]
+      Event.find_for_month(Time.parse("1st October 2009")).should == [event1, event2]
     end
+    
+    it "should find events in a month with a filter" do
+      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "cooking", :type => "class")
+      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :type => "test")
+      event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :type => "class")
+      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :type => "test")
+      debugger
+      Event.find_for_month(Time.parse("1st October 2009"), ["theme LIKE ?", "cooking"]).should == [event1]
+    end
+    
   end
 end
