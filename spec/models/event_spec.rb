@@ -151,4 +151,11 @@ describe Event do
     end
     
   end
+  
+  it "should find events on same day" do
+    event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
+    event3 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event1.same_day_events.should == [event3]
+  end
 end

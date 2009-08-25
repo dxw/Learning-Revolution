@@ -1,2 +1,4 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="events">
+  <%= render :partial => "events_list", :locals => {:events => @event.same_day_events} %>
+  <%= render :partial => "event_details", :locals => {:event => @event} %>
+</div>

@@ -3,10 +3,10 @@
   <div class="calendar_view">
     <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
       <%= t.head('Mon', 'Tue', 'Wedn', 'Thu', 'Fri', 'Sat', 'Sun') %>
-      <% t.day(:day_method => :start) do |day, tasks| %>
+      <% t.day(:day_method => :start) do |day, events| %>
         <p class="day"><%= day.day %></p>
-        <% tasks.each do |task| %>
-            <p class="event"><%= link_to h(task.title) %></p>
+        <% events.each do |event| %>
+            <p class="event"><%= link_to h(event.title), event_path(day.year, day.month, day.day, event.id) %></p>
         <% end %>
         <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
           <p class="more_link"><%= link_to "#{total} events today" if total > 3 %></p>

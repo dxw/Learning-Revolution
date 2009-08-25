@@ -29,6 +29,10 @@ class Event < ActiveRecord::Base
     )
   end
   
+  def same_day_events
+    Event.find(:all, :conditions => ["DATE(start) = ? AND id != ?", self.start.utc.to_date, self.id])
+  end
+  
   def check_duplicate
     possible_duplicate?
     true

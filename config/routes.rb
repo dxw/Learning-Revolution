@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.events "/events/:year/:month", :controller => 'events', :conditions => { :method => :get }
   map.with_options :path_prefix => "/events/:year/:month", :controller => 'events', :conditions => { :method => :get } do |events|
-    events.days_events "/:day", :action => "index"
+    events.days_events "/:day", :action => "show"
     events.event "/:day/:id", :action => "show"
   end
 end
