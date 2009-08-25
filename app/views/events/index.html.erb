@@ -11,7 +11,7 @@
       <% t.day(:day_method => :start) do |day, events| %>
         <p class="day"><%= day.day %></p>
         <% events.each do |event| %>
-            <p class="event"><%= link_to h(event.title), event_path(day.year, day.month, day.day, event.id) %></p>
+            <p class="event"><%= link_to h(event.title), path_for_event(event) %></p>
         <% end %>
         <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
           <p class="more_link"><%= link_to "#{total} events today" if total > 3 %></p>

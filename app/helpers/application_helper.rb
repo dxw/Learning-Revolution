@@ -5,6 +5,6 @@ module ApplicationHelper
   end
   
   def path_for_event(event)
-    event_path(event.start.year, event.start.month, event.start.day, event.id)
+    event_path(event.start.year, Date::MONTHNAMES[event.start.month], event.start.day, event.id)
   end
 end
