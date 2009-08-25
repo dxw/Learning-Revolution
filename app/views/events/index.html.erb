@@ -1,12 +1,17 @@
-<%= @month %>
+<div class="events">
 
-<% calendar_for(@events, :year => 2009, :month => 10) do |t| %>
-  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
-  <% t.day(:day_method => :start) do |day, tasks| %>
-    <%= day.day %><br />
-    <% tasks.each do |task| %>
-        <%= h(task.title) %><br />
+  <div class="calendar_view">
+    <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
+      <%= t.head('Mon', 'Tue', 'Wedn', 'Thu', 'Fri', 'Sat', 'Sun') %>
+      <% t.day(:day_method => :start) do |day, tasks| %>
+        <p class="day"><%= day.day %></p>
+        <% tasks.each do |task| %>
+            <p class="event"><%= link_to h(task.title) %></p>
+        <% end %>
+        <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
+          <p class="more_link"><%= link_to "#{total} events today" if total > 3 %></p>
+        <% end %>
+      <% end %>
     <% end %>
-    <%= @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %> More
-  <% end %>
-<% end %>
+  </div>
+</div>

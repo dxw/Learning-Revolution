@@ -176,3 +176,44 @@ body {
   height:18px;
   padding:0;
 }
+
+/* Events */
+
+.events {
+  background-color:#fff;
+  padding:40px;
+}
+
+.events .calendar_view th {
+  border-bottom: 1px solid #DDD;
+  text-align:center;
+  color:#777;
+}
+
+.events .calendar_view td {
+  border-bottom: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  vertical-align: top;
+}
+
+.events .calendar_view td .day {
+  width:90%;
+  padding:4px 4%;
+  text-align:right;
+}
+
+.events .calendar_view td.notmonth {
+  background-color: #DDD;
+}
+
+.events .calendar_view .event a {
+  display:block;
+  margin-top:5px;
+  text-decoration:none;
+  color:#781B30;
+}
+
+.events .calendar_view .event a.allday {
+  background-color:#781B30;
+  color:#fff;
+}
