@@ -12,9 +12,21 @@ class Event < ActiveRecord::Base
   named_scope :featured, :conditions => { :featured => true, :published => true }
   
   def self.find_for_month(date)
-    first_day = date.beginning_of_month
-    last_day = date.end_of_month
-    self.find(:all, :conditions => ["start >= ? AND start < ?", first_day.to_time.utc, last_day.to_time.end_of_day.utc])
+    queries = []
+    31.times do |day|
+      day = Time.parse("#{date.month}/#{day+1} #{date.year}")
+      start_time = day.beginning_of_day.utc
+      end_time = day.end_of_day.utc
+      queries << "(SELECT * FROM `events` WHERE (theme = 'cooking') AND (start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}') LIMIT 3)"
+    end
+    self.find_by_sql(queries.join(" UNION "))
+  end
+  
+  def self.counts_for_month(date)
+    count(
+      :group => "date(start)",
+      :conditions => ["start >= ? AND start < ?", date.beginning_of_month.to_time.utc, date.end_of_month.to_time.end_of_day.utc]
+    )
   end
   
   def check_duplicate

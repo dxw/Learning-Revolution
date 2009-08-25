@@ -1,1 +1,12 @@
 <%= @month %>
+
+<% calendar_for(@events, :year => 2009, :month => 10) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <% t.day(:day_method => :start) do |day, tasks| %>
+    <%= day.day %><br />
+    <% tasks.each do |task| %>
+        <%= h(task.title) %><br />
+    <% end %>
+    <%= @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %> More
+  <% end %>
+<% end %>
