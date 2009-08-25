@@ -12,14 +12,20 @@ class Event < ActiveRecord::Base
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
   def self.find_for_month_with_filter(date, options={})
-    sql_query = []
-    conditions = []
-    options.each_pair do |type, value|
-      sql_query << "#{type} LIKE ?"
-      conditions << "%#{value}%"
+    if options.blank?
+      self.find_for_month(date)
+    else
+      sql_query = []
+      conditions = []
+      options.each_pair do |type, value|
+        unless value.blank?
+          sql_query << "#{type} LIKE ?"
+          conditions << "%#{value}%"
+        end
+      end
+      conditions.unshift(sql_query.join(" AND ")) unless conditions.blank?
+      self.find_for_month(date, conditions)
     end
-    conditions.unshift(sql_query.join(" AND "))
-    self.find_for_month(date, conditions)
   end
   def self.find_for_month(date, conditions={})
     queries = []
