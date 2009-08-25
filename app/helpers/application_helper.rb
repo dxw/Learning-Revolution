@@ -5,6 +5,6 @@ module ApplicationHelper
   end
   
   def path_for_event(event)
-    event_path(event.start.year, Date::MONTHNAMES[event.start.month], event.start.day, event.id)
+    controller.path_for_event(event)
   end
 end

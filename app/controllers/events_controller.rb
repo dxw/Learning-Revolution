@@ -7,6 +7,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    fix_path
+  end
+  
+  private
+  
+  def fix_path
+    redirect_to path_for_event(@event) unless request.path == path_for_event(@event)
   end
 
 end
