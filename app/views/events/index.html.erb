@@ -1,5 +1,10 @@
 <div class="events">
-
+  <% form_tag do %>
+    <%= text_field_tag "filter[theme]" %>
+    <%= text_field_tag "filter[type]" %>
+    <%= text_field_tag "filter[postcode]" %>
+    <%= submit_tag "Search" %>
+  <% end %>
   <div class="calendar_view">
     <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
       <%= t.head('Mon', 'Tue', 'Wedn', 'Thu', 'Fri', 'Sat', 'Sun') %>

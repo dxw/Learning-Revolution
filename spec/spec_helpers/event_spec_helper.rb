@@ -6,7 +6,7 @@ module EventSpecHelper
         :title => "value for title",
         :description => "value for description",
         :theme => "value for theme",
-        :type => "value for type",
+        :event_type => "value for type",
         :stage => 1,
         :start => Time.now,
         :end => Time.now,
