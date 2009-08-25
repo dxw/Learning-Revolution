@@ -181,119 +181,300 @@ a {
 <div class="results">
 <div class="example_group">
   <dl>
-  <dt id="example_group_1">Venue fixing duplicates</dt>
-    <script type="text/javascript">moveProgressBar('2.5');</script>
+  <dt id="example_group_1">Admin::EventsHelper</dt>
+    <script type="text/javascript">moveProgressBar('1.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_2">Admin::EventsController</dt>
+    <script type="text/javascript">moveProgressBar('3.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should use Admin::EventsController</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_3">Admin::AdminHelper</dt>
+    <script type="text/javascript">moveProgressBar('5.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_4">Admin::AdminController</dt>
+    <script type="text/javascript">moveProgressBar('7.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should use Admin::AdminController</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_5">Admin::VenuesHelper</dt>
+    <script type="text/javascript">moveProgressBar('9.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_6">Admin::VenuesController</dt>
+    <script type="text/javascript">moveProgressBar('11.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should use Admin::VenuesController</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_7">Venue fixing duplicates</dt>
+    <script type="text/javascript">moveProgressBar('13.2');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to succesfully delete the original duplicate</span></dd>
-    <script type="text/javascript">moveProgressBar('5.1');</script>
+    <script type="text/javascript">moveProgressBar('15.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be remove reference to original duplicate upon fixing</span></dd>
-    <script type="text/javascript">moveProgressBar('7.6');</script>
+    <script type="text/javascript">moveProgressBar('16.9');</script>
     <dd class="spec passed"><span class="passed_spec_name">should delete itself if it is told it is the duplicate</span></dd>
-    <script type="text/javascript">moveProgressBar('10.2');</script>
+    <script type="text/javascript">moveProgressBar('18.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to move all events from another venue</span></dd>
-    <script type="text/javascript">moveProgressBar('12.8');</script>
+    <script type="text/javascript">moveProgressBar('20.7');</script>
     <dd class="spec passed"><span class="passed_spec_name">should move all events from the new duplicate event to the original event</span></dd>
-    <script type="text/javascript">moveProgressBar('15.3');</script>
+    <script type="text/javascript">moveProgressBar('22.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should move all events from the original duplicate event to the new event</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_2">Venue checking for duplicates</dt>
-    <script type="text/javascript">moveProgressBar('17.9');</script>
+  <dt id="example_group_8">Venue checking for duplicates</dt>
+    <script type="text/javascript">moveProgressBar('24.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same post code but different name</span></dd>
-    <script type="text/javascript">moveProgressBar('20.5');</script>
+    <script type="text/javascript">moveProgressBar('26.4');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same name but different post code</span></dd>
-    <script type="text/javascript">moveProgressBar('23.0');</script>
+    <script type="text/javascript">moveProgressBar('28.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be flagged as a possible duplicate if there is an venue with same post code and similar name</span></dd>
-    <script type="text/javascript">moveProgressBar('25.6');</script>
+    <script type="text/javascript">moveProgressBar('30.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should ignore case</span></dd>
-    <script type="text/javascript">moveProgressBar('28.2');</script>
+    <script type="text/javascript">moveProgressBar('32.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be done on save</span></dd>
-    <script type="text/javascript">moveProgressBar('30.7');</script>
+    <script type="text/javascript">moveProgressBar('33.9');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not use itself as a duplicate</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_3">Venue</dt>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
+  <dt id="example_group_9">Venue</dt>
     <script type="text/javascript">moveProgressBar('35.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
+    <script type="text/javascript">moveProgressBar('37.7');</script>
     <dd class="spec passed"><span class="passed_spec_name">should have many events</span></dd>
-    <script type="text/javascript">moveProgressBar('38.4');</script>
+    <script type="text/javascript">moveProgressBar('39.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should require a name</span></dd>
-    <script type="text/javascript">moveProgressBar('41.0');</script>
+    <script type="text/javascript">moveProgressBar('41.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should require a postcode</span></dd>
-    <script type="text/javascript">moveProgressBar('43.5');</script>
+    <script type="text/javascript">moveProgressBar('43.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a name of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('46.1');</script>
+    <script type="text/javascript">moveProgressBar('45.2');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_1 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('48.7');</script>
+    <script type="text/javascript">moveProgressBar('47.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_2 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('51.2');</script>
+    <script type="text/javascript">moveProgressBar('49.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_3 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('53.8');</script>
+    <script type="text/javascript">moveProgressBar('50.9');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a city of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('56.4');</script>
+    <script type="text/javascript">moveProgressBar('52.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a county of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('58.9');</script>
+    <script type="text/javascript">moveProgressBar('54.7');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be valid with a postcode of more than 255 characters</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_4">Event filtering events</dt>
-    <script type="text/javascript">moveProgressBar('61.5');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should find events in a month</span></dd>
+  <dt id="example_group_10">PagesHelper</dt>
+    <script type="text/javascript">moveProgressBar('56.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_5">Event fixing duplicates</dt>
+  <dt id="example_group_11">PagesController</dt>
+    <script type="text/javascript">moveProgressBar('58.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should use PagesController</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_12">/events/show</dt>
+    <script type="text/javascript">moveProgressBar('60.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should tell you where to find the file</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_13">/events/index</dt>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('example_group_13');</script>
+    <script type="text/javascript">moveProgressBar('62.2');</script>
+    <dd class="spec failed">
+      <span class="failed_spec_name">should tell you where to find the file</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]</pre></div>
+        <div class="backtrace"><pre>On line #10 of app/views/events/index.html.erb
+
+    7:     <% tasks.each do |task| %>
+    8:         <%= h(task.title) %><br />
+    9:     <% end %>
+    10:     <%= @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %> More
+    11:   <% end %>
+    12: <% end %>
+
+    app/views/events/index.html.erb:10
+    app/views/events/index.html.erb:5
+    app/views/events/index.html.erb:3
+    /usr/local/lib/ruby/gems/1.8/gems/rspec-rails-1.2.7.1/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/rspec-rails-1.2.7.1/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    /usr/local/lib/ruby/gems/1.8/gems/rspec-rails-1.2.7.1/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/events/index.html.erb_spec.rb:5
+    rspec (1.2.8) lib/spec/example/example_methods.rb:70:in `instance_eval'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:70:in `eval_each_fail_fast'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:70:in `each'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:70:in `eval_each_fail_fast'
+    rspec (1.2.8) lib/spec/example/example_group_hierarchy.rb:17:in `run_before_each'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:103:in `run_before_each'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:124:in `before_each_example'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:39:in `execute'
+    /usr/local/lib/ruby/1.8/timeout.rb:48:in `timeout'
+    rspec (1.2.8) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.2.8) lib/spec/example/example_group_methods.rb:207:in `run_examples'
+    rspec (1.2.8) lib/spec/example/example_group_methods.rb:205:in `each'
+    rspec (1.2.8) lib/spec/example/example_group_methods.rb:205:in `run_examples'
+    rspec (1.2.8) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.2.8) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.2.8) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.2.8) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.2.8) lib/spec/runner/options.rb:127:in `run_examples'
+    rspec (1.2.8) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.2.8) bin/spec:4</pre></div>
+    <pre class="ruby"><code><span class="linenum">8</span><span class="comment"># Couldn't get snippet for     app/views/events/index.html.erb</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_14">EventsHelper</dt>
     <script type="text/javascript">moveProgressBar('64.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_15">EventsController GET 'show'</dt>
+    <script type="text/javascript">makeRed('example_group_15');</script>
+    <script type="text/javascript">moveProgressBar('66.0');</script>
+    <dd class="spec failed">
+      <span class="failed_spec_name">should be successful</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>No route matches {:controller=&gt;&quot;events&quot;, :action=&gt;&quot;show&quot;}</pre></div>
+        <div class="backtrace"><pre>./spec/controllers/events_controller_spec.rb:20:</pre></div>
+    <pre class="ruby"><code><span class="linenum">18</span>  <span class="ident">describe</span> <span class="punct">&quot;</span><span class="string">GET 'show'</span><span class="punct">&quot;</span> <span class="keyword">do</span>
+<span class="linenum">19</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">should be successful</span><span class="punct">&quot;</span> <span class="keyword">do</span>
+<span class="offending"><span class="linenum">20</span>      <span class="ident">get</span> <span class="punct">'</span><span class="string">show</span><span class="punct">'</span></span>
+<span class="linenum">21</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">be_success</span>
+<span class="linenum">22</span>    <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_16">EventsController GET 'index'</dt>
+    <script type="text/javascript">makeRed('example_group_16');</script>
+    <script type="text/javascript">moveProgressBar('67.9');</script>
+    <dd class="spec failed">
+      <span class="failed_spec_name">should be successful</span>
+      <div class="failure" id="failure_3">
+        <div class="message"><pre>No route matches {:controller=&gt;&quot;events&quot;, :action=&gt;&quot;index&quot;}</pre></div>
+        <div class="backtrace"><pre>./spec/controllers/events_controller_spec.rb:13:</pre></div>
+    <pre class="ruby"><code><span class="linenum">11</span>  <span class="ident">describe</span> <span class="punct">&quot;</span><span class="string">GET 'index'</span><span class="punct">&quot;</span> <span class="keyword">do</span>
+<span class="linenum">12</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">should be successful</span><span class="punct">&quot;</span> <span class="keyword">do</span>
+<span class="offending"><span class="linenum">13</span>      <span class="ident">get</span> <span class="punct">'</span><span class="string">index</span><span class="punct">'</span></span>
+<span class="linenum">14</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">be_success</span>
+<span class="linenum">15</span>    <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_17">EventsController</dt>
+    <script type="text/javascript">moveProgressBar('69.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should use EventsController</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_18">Event filtering events</dt>
+    <script type="text/javascript">makeRed('example_group_18');</script>
+    <script type="text/javascript">moveProgressBar('71.6');</script>
+    <dd class="spec failed">
+      <span class="failed_spec_name">should find events in a month</span>
+      <div class="failure" id="failure_4">
+        <div class="message"><pre>expected: [#&lt;Event id: 2, title: &quot;value for title&quot;, description: &quot;value for description&quot;, theme: &quot;value for theme&quot;, type: nil, stage: 1, start: &quot;2009-09-30 23:00:00&quot;, end: &quot;2009-08-25 11:18:28&quot;, cost: &quot;value for cost&quot;, min_age: 1, location_id: nil, organisation: &quot;value for organisation&quot;, contact_name: &quot;value for contact_name&quot;, contact_phone_number: &quot;value for contact_phone_number&quot;, contact_email_address: &quot;value for contact_email_address&quot;, further_information: &quot;value for further_information&quot;, additional_notes: &quot;value for additional_notes&quot;, published: false, picture: &quot;value for picture&quot;, featured: false, created_at: &quot;2009-08-25 11:18:28&quot;, updated_at: &quot;2009-08-25 11:18:28&quot;, possible_duplicate_id: nil&gt;, #&lt;Event id: 3, title: &quot;value for title&quot;, description: &quot;value for description&quot;, theme: &quot;value for theme&quot;, type: nil, stage: 1, start: &quot;2009-10-31 11:59:00&quot;, end: &quot;2009-08-25 11:18:28&quot;, cost: &quot;value for cost&quot;, min_age: 1, location_id: nil, organisation: &quot;value for organisation&quot;, contact_name: &quot;value for contact_name&quot;, contact_phone_number: &quot;value for contact_phone_number&quot;, contact_email_address: &quot;value for contact_email_address&quot;, further_information: &quot;value for further_information&quot;, additional_notes: &quot;value for additional_notes&quot;, published: false, picture: &quot;value for picture&quot;, featured: false, created_at: &quot;2009-08-25 11:18:28&quot;, updated_at: &quot;2009-08-25 11:18:28&quot;, possible_duplicate_id: nil&gt;],
+     got: [] (using ==)</pre></div>
+        <div class="backtrace"><pre>./spec/models/event_spec.rb:142:</pre></div>
+    <pre class="ruby"><code><span class="linenum">140</span>      <span class="ident">event2</span> <span class="punct">=</span> <span class="constant">EventSpecHelper</span><span class="punct">.</span><span class="ident">save</span><span class="punct">(</span><span class="symbol">:start</span> <span class="punct">=&gt;</span> <span class="constant">Time</span><span class="punct">.</span><span class="ident">parse</span><span class="punct">(&quot;</span><span class="string">31st October 2009 11:59</span><span class="punct">&quot;))</span>
+<span class="linenum">141</span>      <span class="ident">event3</span> <span class="punct">=</span> <span class="constant">EventSpecHelper</span><span class="punct">.</span><span class="ident">save</span><span class="punct">(</span><span class="symbol">:start</span> <span class="punct">=&gt;</span> <span class="constant">Time</span><span class="punct">.</span><span class="ident">parse</span><span class="punct">(&quot;</span><span class="string">1st November 2009</span><span class="punct">&quot;))</span>
+<span class="offending"><span class="linenum">142</span>      <span class="constant">Event</span><span class="punct">.</span><span class="ident">find_for_month</span><span class="punct">(</span><span class="constant">Date</span><span class="punct">.</span><span class="ident">parse</span><span class="punct">(&quot;</span><span class="string">1st October 2009</span><span class="punct">&quot;)).</span><span class="ident">should</span> <span class="punct">==</span> <span class="punct">[</span><span class="ident">event1</span><span class="punct">,</span> <span class="ident">event2</span><span class="punct">]</span></span>
+<span class="linenum">143</span>    <span class="keyword">end</span>
+<span class="linenum">144</span>  <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_19">Event fixing duplicates</dt>
+    <script type="text/javascript">moveProgressBar('73.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to succesfully delete the original duplicate</span></dd>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <script type="text/javascript">moveProgressBar('75.4');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be remove reference to original duplicate upon fixing</span></dd>
-    <script type="text/javascript">moveProgressBar('69.2');</script>
+    <script type="text/javascript">moveProgressBar('77.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should delete itself if it is told it is the duplicate</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_6">Event checking for duplicates</dt>
-    <script type="text/javascript">moveProgressBar('71.7');</script>
+  <dt id="example_group_20">Event checking for duplicates</dt>
+    <script type="text/javascript">moveProgressBar('79.2');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an event with same date but different title</span></dd>
-    <script type="text/javascript">moveProgressBar('74.3');</script>
+    <script type="text/javascript">moveProgressBar('81.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an event with same title but different date</span></dd>
-    <script type="text/javascript">moveProgressBar('76.9');</script>
+    <script type="text/javascript">moveProgressBar('83.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be flagged as a possible duplicate if there is an event with same date and similar title</span></dd>
-    <script type="text/javascript">moveProgressBar('79.4');</script>
+    <script type="text/javascript">moveProgressBar('84.9');</script>
     <dd class="spec passed"><span class="passed_spec_name">should ignore case</span></dd>
-    <script type="text/javascript">moveProgressBar('82.0');</script>
+    <script type="text/javascript">moveProgressBar('86.7');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be done on save</span></dd>
-    <script type="text/javascript">moveProgressBar('84.6');</script>
+    <script type="text/javascript">moveProgressBar('88.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not use itself as a duplicate</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_7">Event</dt>
-    <script type="text/javascript">moveProgressBar('87.1');</script>
+  <dt id="example_group_21">Event</dt>
+    <script type="text/javascript">moveProgressBar('90.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
-    <script type="text/javascript">moveProgressBar('89.7');</script>
+    <script type="text/javascript">moveProgressBar('92.4');</script>
     <dd class="spec passed"><span class="passed_spec_name">should belong to a venue</span></dd>
-    <script type="text/javascript">moveProgressBar('92.3');</script>
+    <script type="text/javascript">moveProgressBar('94.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">not be valid without a title</span></dd>
-    <script type="text/javascript">moveProgressBar('94.8');</script>
+    <script type="text/javascript">moveProgressBar('96.2');</script>
     <dd class="spec passed"><span class="passed_spec_name">not be valid without a start time</span></dd>
-    <script type="text/javascript">moveProgressBar('97.4');</script>
+    <script type="text/javascript">moveProgressBar('98.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should accept approval</span></dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should find featured events</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.462014 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "39 examples, 0 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.966915 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "53 examples, 4 failures";</script>
 </div>
 </div>
 </body>

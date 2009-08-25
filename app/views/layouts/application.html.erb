@@ -27,8 +27,8 @@
     <h1><img src="/images/learning_revolution_logo.png" /></h1>
     <div class="nav_banner">
       <ul class="nav">
-        <li><%= link_to "Home" %></li>
-        <li><%= link_to "Events", events_path %></li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Events", events_path(2009, "October") %></li>
         <li><%= link_to "Stories" %></li>
         <li><%= link_to "Resources" %></li>
         <li><%= link_to "About" %></li>

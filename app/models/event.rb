@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   
   
   named_scope :published, :conditions => { :published => true }
-  named_scope :featured, :conditions => { :featured => true, :published => true }
+  named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
   def self.find_for_month(date)
     queries = []
