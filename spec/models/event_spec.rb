@@ -147,7 +147,6 @@ describe Event do
       event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :type => "test")
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :type => "class")
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :type => "test")
-      debugger
       Event.find_for_month(Time.parse("1st October 2009"), ["theme LIKE ?", "cooking"]).should == [event1]
     end
     
