@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
+  Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  
   def self.find_for_month_with_filter(date, options={})
     if options.blank?
       self.find_for_month(date)

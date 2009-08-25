@@ -184,6 +184,10 @@ body {
   padding:40px;
 }
 
+.events .calendar_view table {
+  width:100%;
+}
+
 .events .calendar_view th {
   border-bottom: 1px solid #DDD;
   text-align:center;

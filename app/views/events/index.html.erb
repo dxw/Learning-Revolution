@@ -1,6 +1,6 @@
 <div class="events">
   <% form_tag nil, :method => :get do %>
-    <%= text_field_tag "filter[theme]" %>
+    <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
     <%= text_field_tag "filter[event_type]" %>
     <%= text_field_tag "filter[postcode]" %>
     <%= submit_tag "Search" %>
