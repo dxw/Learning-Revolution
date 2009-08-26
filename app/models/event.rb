@@ -77,4 +77,12 @@ class Event < ActiveRecord::Base
     self.published = true
     self.save
   end
+  
+  def slug
+    "#{title.gsub(/[^a-zA-Z0-9 ]/, '').parameterize.downcase}-#{id}"
+  end
+  
+  def self.find_by_slug(slug)
+    find_by_id(slug.match(/-(\d+)$/).andand[1])
+  end
 end

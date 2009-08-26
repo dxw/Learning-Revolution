@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:id])
+    @event = Event.find_by_slug(params[:id])
     fix_path
   end
   

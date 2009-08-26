@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+  helper :all # include all helpers/all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
   
   def path_for_event(event)
-    event_path(event.start.year, Date::MONTHNAMES[event.start.month], event.start.day, event.id)
+    "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
   end
   
 end
