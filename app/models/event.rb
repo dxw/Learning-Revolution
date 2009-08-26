@@ -1,9 +1,10 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start
+  validates_presence_of :title, :start, :venue
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
+  before_validation :cache_lat_lng
   
   belongs_to :venue, :foreign_key => "location_id"
   
@@ -84,5 +85,11 @@ class Event < ActiveRecord::Base
   
   def self.find_by_slug(slug)
     find_by_id(slug.match(/-(\d+)$/).andand[1])
+  end
+  
+  private 
+  
+  def cache_lat_lng
+    self.lat, self.lng = venue.lat, venue.lng if venue
   end
 end

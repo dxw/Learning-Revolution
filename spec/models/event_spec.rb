@@ -18,6 +18,11 @@ describe Event do
     @event.should_not be_valid
   end
   
+  it "not be valid without a title" do
+    @event.venue = nil
+    @event.should_not be_valid
+  end
+  
   it "not be valid without a start time" do
     @event.start = nil
     @event.should_not be_valid
@@ -148,8 +153,6 @@ describe Event do
       
       Event.find_for_month_with_filter(Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
     end
-    
-        
   end
   
   it "should find events on same day" do
@@ -157,5 +160,13 @@ describe Event do
     event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
     event3 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
     event1.same_day_events.should == [event3]
+  end
+  
+  it "should cache lat lng from it's location on create" do
+    v = VenueSpecHelper.new(:lat => 50.0001, :lng => -50.0001)
+    e = EventSpecHelper.new(:venue => v)
+    e.save
+    e.lat.should == 50.0001
+    e.lng.should == -50.0001
   end
 end

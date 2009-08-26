@@ -18,7 +18,8 @@ module EventSpecHelper
         :contact_email_address => "value for contact_email_address",
         :published => false,
         :picture => "value for picture",
-        :featured => false
+        :featured => false,
+        :venue => VenueSpecHelper.new
       }.merge(options)
     )
   end

@@ -7,7 +7,7 @@ describe Location do
     geoloc.stub!(:lng).and_return(-50.0001)
     geoloc.stub!(:success).and_return(true)
     Geokit::Geocoders::YahooGeocoder.should_receive(:geocode).and_return(geoloc)
-    location = LocationSpecHelper.save
+    location = VenueSpecHelper.save(:geocode_address => true)
     location.lat.should == 50.0001
     location.lng.should == -50.0001
   end
