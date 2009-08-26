@@ -139,7 +139,13 @@ describe Event do
     it "should be able to filter events in a month by postcode"
     
     it "should accept filters from form" do
-      Event.should_receive(:find_for_month).with(Time.parse("1st October 2009"), ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"])
+      Event.should_receive(:find_for_month) {|day, conditions|
+        day.should == Time.parse("1st October 2009")
+        conditions[0].should =~ /(event_type LIKE \?|theme LIKE \?) AND (event_type LIKE \?|theme LIKE \?)/
+        conditions[1].should =~ /%cooking%|%class%/
+        conditions[2].should =~ /%cooking%|%class%/
+      }
+      
       Event.find_for_month_with_filter(Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
     end
     
