@@ -109,11 +109,20 @@ describe Event do
     before(:each) do
     end
     
+    it "should generate the sql for finding events on a day" do
+      Event.sql_for_events_on_day_with_filter(Time.parse("1st October 2009")).should == "SELECT * FROM `events` WHERE ((start >= '2009-09-30 23:00:00' AND start < '2009-10-01 22:59:59')) "
+    end
+    
+    it "should generate the sql for finding events in a month" do
+      Event.sql_for_events_in_month_with_filter(Time.parse("1st October 2009")).include?("SELECT * FROM `events` WHERE ((start >= '2009-09-30 23:00:00' AND start < '2009-10-01 22:59:59'))  UNION SELECT * FROM `events` WHERE ((start >= '2009-10-01 23:00:00' AND start < '2009-10-02 22:59:59'))").should be_true
+    end
+    
+    
     it "should find events in a month" do
       event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
       event2 = EventSpecHelper.save(:start => Time.parse("31st October 2009 11:59"))
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"))
-      Event.find_for_month(Time.parse("1st October 2009")).should == [event1, event2]
+      Event.find_by_month_with_filter(Time.parse("1st October 2009")).should == [event1, event2]
     end
     
     it "should be able to filter events in a month by theme" do
@@ -121,7 +130,7 @@ describe Event do
       event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :event_type => "test")
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
-      Event.find_for_month(Time.parse("1st October 2009"), ["theme LIKE ?", "cooking"]).should == [event1]
+      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ?", "%cooking%"]).should == [event1]
     end
     
     it "should be able to filter events in a month by event_type" do
@@ -129,30 +138,28 @@ describe Event do
       event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :event_type => "test")
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
-      Event.find_for_month(Time.parse("1st October 2009"), ["event_type LIKE ?", "class"]).should == [event1]
+      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["event_type LIKE ?", "%class%"]).should == [event1]
     end
     
-    it "should be able to filter events in a month by them and event_type" do
+    it "should be able to filter events in a month by theme and event_type" do
       event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
       event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :event_type => "test")
       event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
-      Event.find_for_month(Time.parse("1st October 2009"), ["theme LIKE ? AND event_type LIKE ?", "cooking", "class"]).should == [event1]
+      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
     end
     
+    it "should be able to filter events in a month by location" do
+      pending
+      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 0, :lng => 0)
+      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 50, :lng => 50)
+      event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 0, :lng => 0)
+      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 50, :lng => 50)
+      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
+    end
     
     it "should be able to filter events in a month by postcode"
     
-    it "should accept filters from form" do
-      Event.should_receive(:find_for_month) {|day, conditions|
-        day.should == Time.parse("1st October 2009")
-        conditions[0].should =~ /(event_type LIKE \?|theme LIKE \?) AND (event_type LIKE \?|theme LIKE \?)/
-        conditions[1].should =~ /%cooking%|%class%/
-        conditions[2].should =~ /%cooking%|%class%/
-      }
-      
-      Event.find_for_month_with_filter(Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
-    end
   end
   
   it "should find events on same day" do

@@ -12,33 +12,42 @@ class Event < ActiveRecord::Base
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
+  acts_as_mappable :default_units => :miles, 
+                   :default_formula => :sphere, 
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+  
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   
-  def self.find_for_month_with_filter(date, options={})
-    if options.blank?
-      self.find_for_month(date)
-    else
-      sql_query = []
-      conditions = []
-      options.each_pair do |type, value|
-        unless value.blank?
-          sql_query << "#{type} LIKE ?"
-          conditions << "%#{value}%"
-        end
-      end
-      conditions.unshift(sql_query.join(" AND ")) unless conditions.blank?
-      self.find_for_month(date, conditions)
-    end
-  end
-  def self.find_for_month(date, conditions={})
+  def self.sql_for_events_in_month_with_filter(date, conditions={})
     queries = []
     31.times do |day|
-      day = Time.parse("#{date.month}/#{day+1} #{date.year}")
-      start_time = day.beginning_of_day.utc
-      end_time = day.end_of_day.utc
-      queries << "(SELECT * FROM `events` WHERE #{sanitize_sql_array(conditions) + " AND " unless conditions.empty?}(start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}') LIMIT 3)"
+      queries << Event.sql_for_events_on_day_with_filter(Time.parse("#{date.month}/#{day+1} #{date.year}"), conditions.dup)
     end
-    self.find_by_sql(queries.join(" UNION "))
+    queries.join(" UNION ")
+  end
+    
+  def self.sql_for_events_on_day_with_filter(date, args={})
+    start_time = date.beginning_of_day.utc
+    end_time = date.end_of_day.utc
+
+    args = [args]
+    args[0] ||= {}
+    args[0][:conditions] ||= []
+    if args[0][:conditions][0]
+      args[0][:conditions][0] += " AND (start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
+    else
+      args[0][:conditions][0] = "(start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
+    end
+
+    prepare_for_find_or_count(:find, args)
+    
+    construct_finder_sql(args[0])
+  end
+  
+  def self.find_by_month_with_filter(date, input_conditions={})
+    self.find_by_sql(sql_for_events_in_month_with_filter(date, input_conditions))
   end
   
   def self.counts_for_month(date)

@@ -37,3 +37,18 @@ Feature: Event admin
     And I press "Search"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
+
+@current
+  Scenario: Viewing a calendar filtered by type and theme
+    Given a valid event called "Octoberfest"
+    And the event "Octoberfest" starts on "12th October 2009 12:00"
+    And the event "Octoberfest" is located at lat "0" and lng "0"
+    And a valid event called "Spanish Guitar"
+    And the event "Spanish Guitar" starts on "12th October 2009 12:00"
+    And the event "Spanish Guitar" is located at lat "50" and lng "50"
+    When I go to the calendar for October 2009
+    And I fill in "Post Code" with "SW1A 1AA"
+    And I press "Search"
+    Then I should see "Octoberfest" in the calendar on day "12"
+    And I should not see "Spanish Guitar"
+    
