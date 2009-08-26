@@ -7,6 +7,14 @@ class Location < ActiveRecord::Base
   before_save :check_duplicate
   has_many :events, :foreign_key => "location_id"
   
+  acts_as_mappable :default_units => :miles, 
+                   :default_formula => :sphere, 
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+  
+  before_validation :geocode_address
+
   def check_duplicate
     possible_duplicate?
     true
@@ -36,6 +44,14 @@ class Location < ActiveRecord::Base
       event.venue = self
       event.save
     end
+  end
+  
+  private
+  
+  def geocode_address
+    geo=Geokit::Geocoders::YahooGeocoder.geocode ("#{postcode} GB")
+    errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
   end
   
 end
