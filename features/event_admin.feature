@@ -4,6 +4,7 @@ Feature: Event admin
   I should be able to be able to add, edit and delete events
   
   Scenario: Adding a valid event
+    Given a valid venue called "London"
     When I go to the event admin index page
     And I follow "New event"
     And I fill in "Title" with "event title"
@@ -15,7 +16,7 @@ Feature: Event admin
     And I select "November 23, 2004 12:20" as the "End" date and time
     And I fill in "Cost" with "£1.50"
     And I fill in "Min Age" with "13"
-    And I fill in "Venue" with "London"
+    And I select "London" from "Venue"
     And I fill in "Organisation" with "BIS"
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
@@ -32,7 +33,7 @@ Feature: Event admin
     When I go to the event admin index page
     And I follow "New event"
     And I press "Create"
-    Then I should see "error prohibited this event from being saved"
+    Then I should see "errors prohibited this event from being saved"
     And I should see "Title can't be blank"
     And I am on the event admin index page
   

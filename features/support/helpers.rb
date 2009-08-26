@@ -15,3 +15,9 @@ def find_or_create(object, attrs={})
     object.send(:create!, attrs)
   end
 end
+
+geoloc = Geokit::GeoLoc.new
+geoloc.stub!(:lat).and_return(50)
+geoloc.stub!(:lng).and_return(50)
+geoloc.stub!(:success).and_return(true)
+Geokit::Geocoders::YahooGeocoder.stub!(:geocode).and_return(geoloc)
