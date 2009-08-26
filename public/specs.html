@@ -223,164 +223,164 @@ a {
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_7">Venue fixing duplicates</dt>
+  <dt id="example_group_7">PagesHelper</dt>
     <script type="text/javascript">moveProgressBar('12.2');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be able to succesfully delete the original duplicate</span></dd>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_8">EventsHelper</dt>
     <script type="text/javascript">moveProgressBar('14.0');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be remove reference to original duplicate upon fixing</span></dd>
+    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_9">EventsController</dt>
     <script type="text/javascript">moveProgressBar('15.7');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should delete itself if it is told it is the duplicate</span></dd>
-    <script type="text/javascript">moveProgressBar('17.5');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be able to move all events from another venue</span></dd>
-    <script type="text/javascript">moveProgressBar('19.2');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should move all events from the new duplicate event to the original event</span></dd>
-    <script type="text/javascript">moveProgressBar('21.0');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should move all events from the original duplicate event to the new event</span></dd>
-  </dl>
-</div>
-<div class="example_group">
-  <dl>
-  <dt id="example_group_8">Venue checking for duplicates</dt>
-    <script type="text/javascript">moveProgressBar('22.8');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same post code but different name</span></dd>
-    <script type="text/javascript">moveProgressBar('24.5');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same name but different post code</span></dd>
-    <script type="text/javascript">moveProgressBar('26.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be flagged as a possible duplicate if there is an venue with same post code and similar name</span></dd>
-    <script type="text/javascript">moveProgressBar('28.0');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should ignore case</span></dd>
-    <script type="text/javascript">moveProgressBar('29.8');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be done on save</span></dd>
-    <script type="text/javascript">moveProgressBar('31.5');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not use itself as a duplicate</span></dd>
-  </dl>
-</div>
-<div class="example_group">
-  <dl>
-  <dt id="example_group_9">Venue</dt>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
-    <script type="text/javascript">moveProgressBar('35.0');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should have many events</span></dd>
-    <script type="text/javascript">moveProgressBar('36.8');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should require a name</span></dd>
-    <script type="text/javascript">moveProgressBar('38.5');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should require a postcode</span></dd>
-    <script type="text/javascript">moveProgressBar('40.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a name of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('42.1');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_1 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('43.8');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_2 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('45.6');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_3 of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('47.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a city of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('49.1');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a county of more than 255 characters</span></dd>
-    <script type="text/javascript">moveProgressBar('50.8');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a postcode of more than 255 characters</span></dd>
-  </dl>
-</div>
-<div class="example_group">
-  <dl>
-  <dt id="example_group_10">PagesHelper</dt>
-    <script type="text/javascript">moveProgressBar('52.6');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
-  </dl>
-</div>
-<div class="example_group">
-  <dl>
-  <dt id="example_group_11">EventsHelper</dt>
-    <script type="text/javascript">moveProgressBar('54.3');</script>
-    <dd class="spec passed"><span class="passed_spec_name">should be included in the object returned by #helper</span></dd>
-  </dl>
-</div>
-<div class="example_group">
-  <dl>
-  <dt id="example_group_12">EventsController</dt>
-    <script type="text/javascript">moveProgressBar('56.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should generate an a correct event path</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_13">Event filtering events</dt>
-    <script type="text/javascript">moveProgressBar('57.8');</script>
+  <dt id="example_group_10">Event filtering events</dt>
+    <script type="text/javascript">moveProgressBar('17.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should find events in a month</span></dd>
-    <script type="text/javascript">moveProgressBar('59.6');</script>
+    <script type="text/javascript">moveProgressBar('19.2');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to filter events in a month by theme</span></dd>
-    <script type="text/javascript">moveProgressBar('61.4');</script>
+    <script type="text/javascript">moveProgressBar('21.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to filter events in a month by event_type</span></dd>
-    <script type="text/javascript">moveProgressBar('63.1');</script>
+    <script type="text/javascript">moveProgressBar('22.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to filter events in a month by them and event_type</span></dd>
     <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('example_group_13');</script>
-    <script type="text/javascript">moveProgressBar('64.9');</script>
+    <script type="text/javascript">makeYellow('example_group_10');</script>
+    <script type="text/javascript">moveProgressBar('24.5');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should be able to filter events in a month by postcode (PENDING: Not Yet Implemented)</span></dd>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <script type="text/javascript">moveProgressBar('26.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should accept filters from form</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_14">Event fixing duplicates</dt>
-    <script type="text/javascript">moveProgressBar('68.4');</script>
+  <dt id="example_group_11">Event fixing duplicates</dt>
+    <script type="text/javascript">moveProgressBar('28.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be able to succesfully delete the original duplicate</span></dd>
-    <script type="text/javascript">moveProgressBar('70.1');</script>
+    <script type="text/javascript">moveProgressBar('29.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be remove reference to original duplicate upon fixing</span></dd>
-    <script type="text/javascript">moveProgressBar('71.9');</script>
+    <script type="text/javascript">moveProgressBar('31.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should delete itself if it is told it is the duplicate</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_15">Event checking for duplicates</dt>
-    <script type="text/javascript">moveProgressBar('73.6');</script>
+  <dt id="example_group_12">Event checking for duplicates</dt>
+    <script type="text/javascript">moveProgressBar('33.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an event with same date but different title</span></dd>
-    <script type="text/javascript">moveProgressBar('75.4');</script>
+    <script type="text/javascript">moveProgressBar('35.0');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an event with same title but different date</span></dd>
-    <script type="text/javascript">moveProgressBar('77.1');</script>
+    <script type="text/javascript">moveProgressBar('36.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be flagged as a possible duplicate if there is an event with same date and similar title</span></dd>
-    <script type="text/javascript">moveProgressBar('78.9');</script>
+    <script type="text/javascript">moveProgressBar('38.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should ignore case</span></dd>
-    <script type="text/javascript">moveProgressBar('80.7');</script>
+    <script type="text/javascript">moveProgressBar('40.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should be done on save</span></dd>
-    <script type="text/javascript">moveProgressBar('82.4');</script>
+    <script type="text/javascript">moveProgressBar('42.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not use itself as a duplicate</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_16">Event</dt>
-    <script type="text/javascript">moveProgressBar('84.2');</script>
+  <dt id="example_group_13">Event</dt>
+    <script type="text/javascript">moveProgressBar('43.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
-    <script type="text/javascript">moveProgressBar('85.9');</script>
+    <script type="text/javascript">moveProgressBar('45.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should belong to a venue</span></dd>
-    <script type="text/javascript">moveProgressBar('87.7');</script>
+    <script type="text/javascript">moveProgressBar('47.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">not be valid without a title</span></dd>
-    <script type="text/javascript">moveProgressBar('89.4');</script>
+    <script type="text/javascript">moveProgressBar('49.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">not be valid without a title</span></dd>
-    <script type="text/javascript">moveProgressBar('91.2');</script>
+    <script type="text/javascript">moveProgressBar('50.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">not be valid without a start time</span></dd>
-    <script type="text/javascript">moveProgressBar('92.9');</script>
+    <script type="text/javascript">moveProgressBar('52.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should accept approval</span></dd>
-    <script type="text/javascript">moveProgressBar('94.7');</script>
+    <script type="text/javascript">moveProgressBar('54.3');</script>
     <dd class="spec passed"><span class="passed_spec_name">should find featured events</span></dd>
-    <script type="text/javascript">moveProgressBar('96.4');</script>
+    <script type="text/javascript">moveProgressBar('56.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should find events on same day</span></dd>
-    <script type="text/javascript">moveProgressBar('98.2');</script>
+    <script type="text/javascript">moveProgressBar('57.8');</script>
     <dd class="spec passed"><span class="passed_spec_name">should cache lat lng from it's location on create</span></dd>
   </dl>
 </div>
 <div class="example_group">
   <dl>
-  <dt id="example_group_17">Location</dt>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
+  <dt id="example_group_14">Location</dt>
+    <script type="text/javascript">moveProgressBar('59.6');</script>
     <dd class="spec passed"><span class="passed_spec_name">should geolocate from postcode on create</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>10.190854 seconds</strong>";</script>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_15">Venue fixing duplicates</dt>
+    <script type="text/javascript">moveProgressBar('61.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to succesfully delete the original duplicate</span></dd>
+    <script type="text/javascript">moveProgressBar('63.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be remove reference to original duplicate upon fixing</span></dd>
+    <script type="text/javascript">moveProgressBar('64.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should delete itself if it is told it is the duplicate</span></dd>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to move all events from another venue</span></dd>
+    <script type="text/javascript">moveProgressBar('68.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should move all events from the new duplicate event to the original event</span></dd>
+    <script type="text/javascript">moveProgressBar('70.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should move all events from the original duplicate event to the new event</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_16">Venue checking for duplicates</dt>
+    <script type="text/javascript">moveProgressBar('71.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same post code but different name</span></dd>
+    <script type="text/javascript">moveProgressBar('73.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be flagged as a possible duplicate if there's an venue with same name but different post code</span></dd>
+    <script type="text/javascript">moveProgressBar('75.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be flagged as a possible duplicate if there is an venue with same post code and similar name</span></dd>
+    <script type="text/javascript">moveProgressBar('77.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should ignore case</span></dd>
+    <script type="text/javascript">moveProgressBar('78.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be done on save</span></dd>
+    <script type="text/javascript">moveProgressBar('80.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not use itself as a duplicate</span></dd>
+  </dl>
+</div>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_17">Venue</dt>
+    <script type="text/javascript">moveProgressBar('82.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
+    <script type="text/javascript">moveProgressBar('84.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have many events</span></dd>
+    <script type="text/javascript">moveProgressBar('85.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should require a name</span></dd>
+    <script type="text/javascript">moveProgressBar('87.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should require a postcode</span></dd>
+    <script type="text/javascript">moveProgressBar('89.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a name of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('91.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_1 of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('92.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_2 of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('94.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a address_3 of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('96.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a city of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('98.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a county of more than 255 characters</span></dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not be valid with a postcode of more than 255 characters</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>3.343428 seconds</strong>";</script>
 <script type="text/javascript">document.getElementById('totals').innerHTML = "57 examples, 0 failures, 1 pending";</script>
 </div>
 </div>

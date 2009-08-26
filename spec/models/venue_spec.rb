@@ -12,7 +12,7 @@ describe Venue do
       :county => "County",
       :postcode => "E11 1PB"
     }
-    @venue = Venue.new(@valid_attributes)
+    @venue = VenueSpecHelper.new(@valid_attributes)
   end
 
   it "should create a new instance given valid attributes" do
