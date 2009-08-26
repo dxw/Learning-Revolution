@@ -133,4 +133,17 @@ describe Venue do
     
   end
   
+  it "should update events with new lat lng on update" do
+    venue = VenueSpecHelper.save(:lat => 50.1, :lng => 40)
+    event = EventSpecHelper.save(:venue => venue)
+    venue.reload
+    event.lat.should == 50.1
+    venue.lat = 100
+    venue.lng = 200
+    venue.save!
+    event.reload
+    event.lat.should == 100
+    event.lng.should == 200
+  end
+  
 end

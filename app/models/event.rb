@@ -86,9 +86,7 @@ class Event < ActiveRecord::Base
   def self.find_by_slug(slug)
     find_by_id(slug.match(/-(\d+)$/).andand[1])
   end
-  
-  private 
-  
+    
   def cache_lat_lng
     self.lat, self.lng = venue.lat, venue.lng if venue
   end

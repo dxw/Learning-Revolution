@@ -14,6 +14,7 @@ class Location < ActiveRecord::Base
                    :lng_column_name => :lng
   
   before_validation :geocode_address
+  after_update :update_events_lat_lng_cache
 
   def check_duplicate
     possible_duplicate?
@@ -49,9 +50,13 @@ class Location < ActiveRecord::Base
   private
   
   def geocode_address
-    geo=Geokit::Geocoders::YahooGeocoder.geocode ("#{postcode} GB")
+    geo=Geokit::Geocoders::YahooGeocoder.geocode("#{postcode} GB")
     errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
+  end
+  
+  def update_events_lat_lng_cache(lat=self.lat, lng=self.lng)
+    events.each { |event| event.save }
   end
   
 end
