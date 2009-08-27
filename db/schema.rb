@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090826125734) do
+ActiveRecord::Schema.define(:version => 20090827135859) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20090826125734) do
     t.float    "lat"
     t.float    "lng"
   end
+
+  add_index "events", ["lat"], :name => "index_events_on_lat"
+  add_index "events", ["lng"], :name => "index_events_on_lng"
+  add_index "events", ["start"], :name => "index_events_on_start"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
