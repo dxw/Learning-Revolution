@@ -48,11 +48,13 @@ class Event < ActiveRecord::Base
   end
   def self.sql_for_events_in_month_with_filter(date, find_options={})
     queries = []
-    31.times do |day|
-      day = Time.parse("#{date.month}/#{day+1} #{date.year}")
-      options = find_options.dup
-      options[:conditions] = find_options[:conditions].andand.dup
-      queries << sql_for_events_on_day_with_filter(day, options)
+    first_day = date.beginning_of_month
+    query_for_first_day = sql_for_events_on_day_with_filter(date, find_options)
+    31.times do |day_offset|
+      day = first_day + day_offset.days
+      query_for_first_day.gsub!(/\d+-\d+-\d+ \d\d:00:00/, day.beginning_of_day.utc.to_s(:sql))
+      query_for_first_day.gsub!(/\d+-\d+-\d+ \d\d:59:59/, day.end_of_day.utc.to_s(:sql))
+      queries << query_for_first_day.dup
     end
     "("+queries.join(") UNION (")+")"
   end
