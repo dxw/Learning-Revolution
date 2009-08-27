@@ -20,34 +20,55 @@ class Event < ActiveRecord::Base
   
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   
-  def self.sql_for_events_in_month_with_filter(date, conditions={})
+  def self.find_by_month_with_filter_from_params(date, params={})
+    self.find_by_month_with_filter(date, turn_filter_params_into_find_options(params))
+  end
+  def self.turn_filter_params_into_find_options(params)
+    find_options = {}
+    if !params[:theme].blank? && params[:event_type].blank?
+      find_options[:conditions] = ["theme LIKE ?", "%#{params[:theme]}%"]
+    end
+    if params[:theme].blank? && !params[:event_type].blank?
+      find_options[:conditions] = ["event_type LIKE ?", "%#{params[:event_type]}%"]
+    end
+    if !params[:theme].blank? && !params[:event_type].blank?
+      find_options[:conditions] = ["theme LIKE ? OR event_type LIKE ?", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
+    end
+    
+    find_options[:origin] = params[:location] unless params[:location].blank?
+    find_options[:limit] = 3
+    find_options
+  end
+  def self.find_by_month_with_filter(date, find_options={})
+    self.find_by_sql(sql_for_events_in_month_with_filter(date, find_options))
+  end
+  def self.sql_for_events_in_month_with_filter(date, find_options={})
     queries = []
     31.times do |day|
-      queries << Event.sql_for_events_on_day_with_filter(Time.parse("#{date.month}/#{day+1} #{date.year}"), conditions.dup)
+      day = Time.parse("#{date.month}/#{day+1} #{date.year}")
+      options = find_options.dup
+      options[:conditions] = find_options[:conditions].andand.dup
+      queries << sql_for_events_on_day_with_filter(day, options)
     end
-    queries.join(" UNION ")
+    "("+queries.join(") UNION (")+")"
   end
-    
-  def self.sql_for_events_on_day_with_filter(date, args={})
+  def self.sql_for_events_on_day_with_filter(date, args={}, location_sql=nil)
+    args = add_date_scope_for_day(args, date)
+    # This method is from geokit to patch in the location sql
+    prepare_for_find_or_count(:find, [args])
+    # This method is what ActiveRecord.find uses to generate the SQL
+    construct_finder_sql(args)
+  end
+  def self.add_date_scope_for_day(args, date)
     start_time = date.beginning_of_day.utc
     end_time = date.end_of_day.utc
-
-    args = [args]
-    args[0] ||= {}
-    args[0][:conditions] ||= []
-    if args[0][:conditions][0]
-      args[0][:conditions][0] += " AND (start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
+    args[:conditions] ||= []
+    if args[:conditions][0]
+      args[:conditions][0] += " AND (start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
     else
-      args[0][:conditions][0] = "(start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
+      args[:conditions][0] = "(start >= '#{start_time.to_s(:sql)}' AND start < '#{end_time.to_s(:sql)}')"
     end
-
-    prepare_for_find_or_count(:find, args)
-    
-    construct_finder_sql(args[0])
-  end
-  
-  def self.find_by_month_with_filter(date, input_conditions={})
-    self.find_by_sql(sql_for_events_in_month_with_filter(date, input_conditions))
+    args
   end
   
   def self.counts_for_month(date)

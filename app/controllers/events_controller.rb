@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def index
     params[:filter] ||= {}
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
-    @events = Event.find_by_month_with_filter(@first_day_of_month, params[:filter])
+    @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
     @event_counts = Event.counts_for_month(@first_day_of_month)
   end
 

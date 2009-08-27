@@ -114,7 +114,20 @@ describe Event do
     end
     
     it "should generate the sql for finding events in a month" do
-      Event.sql_for_events_in_month_with_filter(Time.parse("1st October 2009")).include?("SELECT * FROM `events` WHERE ((start >= '2009-09-30 23:00:00' AND start < '2009-10-01 22:59:59'))  UNION SELECT * FROM `events` WHERE ((start >= '2009-10-01 23:00:00' AND start < '2009-10-02 22:59:59'))").should be_true
+      Event.sql_for_events_in_month_with_filter(Time.parse("1st October 2009")).should include("(SELECT * FROM `events` WHERE ((start >= '2009-09-30 23:00:00' AND start < '2009-10-01 22:59:59')) ) UNION (SELECT * FROM `events` WHERE ((start >= '2009-10-01 23:00:00' AND start < '2009-10-02 22:59:59')) ) UNION (SELECT * FROM `events` WHERE ((start >= '2009-10-02 23:00:00' AND start < '2009-10-03 22:59:59')) ) ")
+    end
+    
+    it "should generate the sql for finding events in a month with a filter" do
+      Event.sql_for_events_in_month_with_filter(Time.parse("1st October 2009"), :conditions => ["TEST", "TEST"]).should include("SELECT * FROM `events` WHERE (TEST AND (start >= '2009-09-30 23:00:00' AND start < '2009-10-01 22:59:59')) ) UNION (SELECT * FROM `events` WHERE (TEST AND (start >= '2009-10-01 23:00:00' AND start < '2009-10-02 22:59:59')) )")
+    end
+    
+    it "should generate find conditions from form params" do
+      find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name", :event_type => "type_name", :location => "E11 1PB")
+      find_options.should == {:limit => 3, :conditions => ["theme LIKE ? OR event_type LIKE ?", "%theme_name%", "%type_name%"], :origin => "E11 1PB"}
+      find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name")
+      find_options.should == {:limit => 3, :conditions => ["theme LIKE ?", "%theme_name%"]}
+      find_options = Event.turn_filter_params_into_find_options(:event_type => "type_name")
+      find_options.should == {:limit => 3, :conditions => ["event_type LIKE ?", "%type_name%"]}
     end
     
     
