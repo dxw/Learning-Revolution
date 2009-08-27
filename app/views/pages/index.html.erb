@@ -10,7 +10,7 @@
     <div class="featured_events">
       <% Event.featured.each_with_index do |event, count| %>
         <div class="featured_event" id="featured_event_<%= count+1 %>">
-          <%= image_tag event.picture %>
+          <%= image_tag event.picture if event.picture %>
           <div class="calendar_date">
             <div class="month">
               <%= Date::MONTHNAMES[event.start.month][0..2] %>

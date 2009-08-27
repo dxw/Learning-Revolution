@@ -50,7 +50,7 @@ namespace :lr do
         e.contact_email_address
         e.published = true
         e.picture = nil
-        e.featured = true
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
