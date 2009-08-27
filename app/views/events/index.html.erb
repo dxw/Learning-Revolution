@@ -3,7 +3,7 @@
     <label for="filter_theme">Related to</label> <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
     <label for="filter_event_type">Type</label> <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %>
     
-    <label for="filter_postcode">Post Code</label>  <%= text_field_tag "filter[postcode]" %>
+    <label for="filter_location">Location</label>  <%= text_field_tag "filter[location]" %>
     <%= submit_tag "Search" %>
   <% end %>
   <div class="calendar_view">
