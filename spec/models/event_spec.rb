@@ -123,7 +123,7 @@ describe Event do
     
     it "should generate find conditions from form params" do
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name", :event_type => "type_name", :location => "E11 1PB")
-      find_options.should == {:within => 5, :limit => 3, :conditions => ["(theme LIKE ? AND event_type LIKE ?)", "%theme_name%", "%type_name%"], :origin => "E11 1PB"}
+      find_options.should == {:within => 5, :limit => 3, :conditions => ["(theme LIKE ? AND event_type LIKE ?)", "%theme_name%", "%type_name%"], :origin => "E11 1PB GB"}
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name")
       find_options.should == {:limit => 3, :conditions => ["(theme LIKE ?)", "%theme_name%"]}
       find_options = Event.turn_filter_params_into_find_options(:event_type => "type_name")

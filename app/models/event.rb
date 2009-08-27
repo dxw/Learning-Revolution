@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
     end
     
     unless params[:location].blank?
-      find_options[:origin] = params[:location] 
+      find_options[:origin] = params[:location] + " GB"
       find_options[:within] = 5
     end
 
