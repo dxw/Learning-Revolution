@@ -24,14 +24,15 @@ namespace :lr do
       FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/CFL-sample-data.csv", :headers => :first_row) do |row|
         
         v = Venue.new
-        v.name      = nil
+        v.name      = row["EventAddress1"]
         v.address_1 = row["EventAddress1"]
         v.address_2 = row["EventAddress2"]
         v.address_3 = row["EventAddress3"]
         v.city      = row["EventTown"]
         v.county    = nil # Only providing IDs currently
         v.postcode  = row["EventPostCode"]
-
+        v.save!
+        
         e = Event.new
         e.venue = v
         e.title = row["ActivityTitle"]
