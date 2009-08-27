@@ -18,5 +18,42 @@ namespace :lr do
         end
       end
     end
+    
+    task :seed_demo_data => :environment do
+      require 'fastercsv'
+      FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/CFL-sample-data.csv", :headers => :first_row) do |row|
+        
+        v = Venue.new
+        v.name      = nil
+        v.address_1 = row["EventAddress1"]
+        v.address_2 = row["EventAddress2"]
+        v.address_3 = row["EventAddress3"]
+        v.city      = row["EventTown"]
+        v.county    = nil # Only providing IDs currently
+        v.postcode  = row["EventPostCode"]
+
+        e = Event.new
+        e.venue = v
+        e.title = row["ActivityTitle"]
+        e.description = row["EventDetails"]
+        e.theme = nil
+        e.event_type = nil
+        e.stage = nil
+        e.start = Date.parse(row["EventDate"]) if row["EventDate"]
+        e.end = nil
+        e.cost = row["Cost"]
+        e.min_age = nil
+        e.organisation = nil
+        e.contact_name = row["ContactNamePublic"]
+        e.contact_phone_number = row["TelephonePublic"]
+        e.contact_email_address
+        e.published = true
+        e.picture = nil
+        e.featured = true
+        e.save!
+        p "saved #{e.title}, id: #{e.id}"
+      end
+      
+    end
   end
 end

@@ -50,7 +50,9 @@ class Event < ActiveRecord::Base
     queries = []
     first_day = date.beginning_of_month
     query_for_first_day = sql_for_events_on_day_with_filter(date, find_options)
-    31.times do |day_offset|
+    
+    # Uses gsub on a pre calculated sql statement for speed
+    first_day.end_of_month.day.times do |day_offset|
       day = first_day + day_offset.days
       query_for_first_day.gsub!(/\d+-\d+-\d+ \d\d:00:00/, day.beginning_of_day.utc.to_s(:sql))
       query_for_first_day.gsub!(/\d+-\d+-\d+ \d\d:59:59/, day.end_of_day.utc.to_s(:sql))
