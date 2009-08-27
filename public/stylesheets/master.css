@@ -83,6 +83,10 @@ body {
   margin-right:0px;
 }
 
+.trans {
+  background: transparent url('/images/css/white_trans.png');
+}
+
 .quarter_page {
   width:220px;
 }
@@ -109,6 +113,9 @@ body {
   border:none;
 }
 
+.site_intro .featured_event {
+  width:480px;
+}
 .site_intro .featured_block {
   margin-left:-20px;
   padding:0;
@@ -124,7 +131,6 @@ body {
   top:234px;
   left:0;
   height:36px;
-  background-color:#fff;
   width:100%;
   color:#781B30;
   font-size:1.5em;

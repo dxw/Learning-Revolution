@@ -19,7 +19,7 @@
               <%= event.start.day.ordinalize %>
             </div>
           </div>
-          <h3><%= event.title %></h3>
+          <h3 class="trans"><%= event.title %></h3>
         </div>
       <% end %>
     </div>
@@ -29,20 +29,52 @@
 </div>
 
 <div class="clearfix">
-  <div class="content_block span-6">
+  <div class="content_block span-6 trans">
     <div class="content_block_content">
-      <h2>See what's on today</h2>
-      Events in London on 
+      <h2>Featured events</h2>
+      <ul>
+      <% Event.find(:all, :limit => 2).each do |event| %>
+        <li>
+          <div class="calendar_date">
+            <div class="month">
+              <%= Date::MONTHNAMES[event.start.month][0..2] %>
+            </div>
+            <div class="day">
+              <%= event.start.day.ordinalize %>
+            </div>
+          </div>
+          
+          <h4><%= link_to event.title, path_for_event(event) %></h4>
+          <p><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
+          <%= simple_format truncate(event.description, 100) %>
+        </li>
+      <% end %>
+      </ul>
     </div>
   </div>
-  <div class="content_block span-6">
+  <div class="content_block span-6 trans">
     <div class="content_block_content">
-      <h2>Latest from Ning</h2>
+      <h2>Share your space for events</h2>
+      <p>You can help out by adding your space for groups who want to learn.</p>
+      <%= link_to "Add your Event", current_events_path %>
+      <h2>Organise your group</h2>
+      <p>Meet other organisers and get help organising your group.</p>
+      <%= link_to "Join our Network" %>
     </div>
   </div>
-  <div class="content_block span-4 last">
+  <div class="content_block span-4 last trans">
     <div class="content_block_content">
-      <h2>Festival Tweets</h2>
+      <h2>Follow the festival</h2>
+      <p><%= link_to "@festival_of_learning", "http://twitter.com/festival_of_learning" %></p>
+      <p><%= link_to "Become a fan" %></p>
+      <p><%= link_to "Subscribe via RSS" %></p>
+    </div>
+  </div>
+  
+  <div class="photos_and_videos">
+    <div class="photos">
+      <h3>Photos from our events</h3>
+      <p><%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %></p>
     </div>
   </div>
 </div>
