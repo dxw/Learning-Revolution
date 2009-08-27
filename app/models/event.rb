@@ -35,7 +35,11 @@ class Event < ActiveRecord::Base
       find_options[:conditions] = ["(theme LIKE ? AND event_type LIKE ?)", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
     end
     
-    find_options[:origin] = params[:location] unless params[:location].blank?
+    unless params[:location].blank?
+      find_options[:origin] = params[:location] 
+      find_options[:within] = 5
+    end
+
     find_options[:limit] = 3
     find_options
   end

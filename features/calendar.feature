@@ -42,12 +42,12 @@ Feature: Event admin
   Scenario: Viewing a calendar filtered by location
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
-    And the event "Octoberfest" is located at lat "0" and lng "0"
+    And the event "Octoberfest" is located at lat "0.0088174" and lng "51.5754841"
     And a valid event called "Spanish Guitar"
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
     When I go to the calendar for October 2009
-    And I fill in "Location" with "SW1A 1AA"
+    And I fill in "Location" with "E11 1PB GB"
     And I press "Search"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
