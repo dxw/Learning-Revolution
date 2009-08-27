@@ -70,17 +70,17 @@ body {
   background-position:-10px 2px;
 }
 .nav li.events, .nav li.events a{
-  background-position:-235px 0px;
+  background-position:-235px 2px;
 }
 .nav li.stories, .nav li.stories a{
-  background-position:-470px 0px;
+  background-position:-470px 2px;
 }
 .nav li.resources, .nav li.resources a{
-  background-position:-595px 0px;
+  background-position:-595px 2px;
   width:105px;
 }
 .nav li.about, .nav li.about a{
-  background-position:-130px 0px;
+  background-position:-130px 2px;
 }
 .nav li a{
   display:block;
