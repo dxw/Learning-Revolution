@@ -1,11 +1,21 @@
 <div class="events">
-  <% form_tag nil, :method => :get do %>
-    <label for="filter_theme">Related to</label> <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
-    <label for="filter_event_type">Type</label> <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %>
+  
+  <div id="query">
+    <h2>Find an Event in October</h2>
     
-    <label for="filter_location">Location</label>  <%= text_field_tag "filter[location]" %>
-    <%= submit_tag "Search" %>
-  <% end %>
+    
+  </div>
+
+  <div id="selector">
+    <ul>
+      <li>Display results as a:</li>
+      <li class="map">Map</li>
+      <li class="calendar">Calendar</li>
+      <li class="list view">List</li>
+    </ul>
+  </div>
+
+
   <div class="calendar_view">
     <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
       <%= t.head('Mon', 'Tue', 'Wedn', 'Thu', 'Fri', 'Sat', 'Sun') %>
