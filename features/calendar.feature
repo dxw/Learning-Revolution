@@ -19,7 +19,6 @@ Feature: Event admin
     When I go to the calendar for October 2009
     And I select "Food and Cookery" from "Related to"
     And I press "Search"
-    And debugger
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
 

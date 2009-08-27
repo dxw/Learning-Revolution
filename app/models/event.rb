@@ -26,13 +26,13 @@ class Event < ActiveRecord::Base
   def self.turn_filter_params_into_find_options(params)
     find_options = {}
     if !params[:theme].blank? && params[:event_type].blank?
-      find_options[:conditions] = ["theme LIKE ?", "%#{params[:theme]}%"]
+      find_options[:conditions] = ["(theme LIKE ?)", "%#{params[:theme]}%"]
     end
     if params[:theme].blank? && !params[:event_type].blank?
-      find_options[:conditions] = ["event_type LIKE ?", "%#{params[:event_type]}%"]
+      find_options[:conditions] = ["(event_type LIKE ?)", "%#{params[:event_type]}%"]
     end
     if !params[:theme].blank? && !params[:event_type].blank?
-      find_options[:conditions] = ["theme LIKE ? OR event_type LIKE ?", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
+      find_options[:conditions] = ["(theme LIKE ? AND event_type LIKE ?)", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
     end
     
     find_options[:origin] = params[:location] unless params[:location].blank?
