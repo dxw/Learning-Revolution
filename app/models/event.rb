@@ -91,6 +91,10 @@ class Event < ActiveRecord::Base
     Event.find(:all, :conditions => ["DATE(start) = ? AND id != ?", self.start.utc.to_date, self.id])
   end
   
+  def self.first_for_today
+     Event.find(:first, :conditions => ["DATE(start) >= ?", Date.today])
+  end
+  
   def check_duplicate
     possible_duplicate?
     true

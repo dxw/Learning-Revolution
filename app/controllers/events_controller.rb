@@ -10,6 +10,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_slug(params[:id])
     fix_path
+    
+    params[:view] = 'list'
   end
   
   private
@@ -20,6 +22,7 @@ class EventsController < ApplicationController
   
   def ensure_filters
     params[:filter] ||= {}
+    params[:view] ||= 'calendar'
   end
 
 end

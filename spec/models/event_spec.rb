@@ -189,4 +189,6 @@ describe Event do
     e.lat.should == 50.0001
     e.lng.should == -50.0001
   end
+  
+  it "should be able to find the next event even if there are no future events"     
 end

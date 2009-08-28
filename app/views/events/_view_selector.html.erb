@@ -1,0 +1,8 @@
+<div id="selector">
+   <ul>
+      <li>Display results as a:</li>
+      <li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", current_events_path(:view => "map") %></li>
+      <li class="<%= params[:view] == "calendar" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar", current_events_path(:view => "calendar") %></li>
+      <li class="<%= params[:view] == "list" ? "list_view_selected" : "list_view" %>"><%= link_to "List", path_for_event(Event.first_for_today) %></li>
+   </ul>
+</div>

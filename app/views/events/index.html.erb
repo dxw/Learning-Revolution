@@ -1,21 +1,11 @@
 <div class="events">
-	
-<%= render :partial => 'event_search_filter' %>
-
-
-	<div id="selector">
-		<ul>
-			<li>Display results as a:</li>
-			<li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", current_events_path(:view => "map") %></li>
-			<li class="<%= params[:view] != "map" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar" %></li>
-			<li class="list_view"><%= link_to "List" %></li>
-		</ul>
-	</div>
-
-<% if params[:view] == "map" %>
-  <%= render :partial => 'map_view' %>
-<% else %>
-  <%= render :partial => 'calendar_view' %>
-<% end %>
-
+   <%= render :partial => 'event_search_filter' %>
+   
+   <%= render :partial => 'view_selector' %>
+   
+   <% if params[:view] == "map" %>
+     <%= render :partial => 'map_view' %>
+   <% else params[:view] == "list" %>
+     <%= render :partial => 'calendar_view' %>
+   <% end %>
 </div>
