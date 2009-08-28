@@ -1,8 +1,13 @@
 <div class="site_intro clearfix">
   <div class="content_block half_page">
     <div class="content_block_content">
-      <h2>Teach Yourself A Lesson</h2>
-      <p></p>
+      <img src="/images/css/headings/be_a_part_of_the_festival.png" alt="Be a part of the Festival" />
+      
+      <img id="calendar_thumbail" src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
+      
+      <p class="standfirst">This October we’re making it easier than ever to find something new to do</p>
+
+<img src="/images/buttons/view_calendar.png" id="view_event_calendar" alt="View Event Calendar" />
     </div>
   </div>
   
@@ -31,10 +36,10 @@
 <div class="clearfix">
   <div class="content_block span-6 trans">
     <div class="content_block_content">
-      <h2>Featured events</h2>
+      <img src="/images/css/headings/featured_events.png" alt="Featured Events"></img>
       <ul>
       <% Event.find(:all, :limit => 2).each do |event| %>
-        <li>
+        <li class="clearfix">
           <div class="calendar_date">
             <div class="month">
               <%= Date::MONTHNAMES[event.start.month][0..2] %>
@@ -43,10 +48,12 @@
               <%= event.start.day.ordinalize %>
             </div>
           </div>
-          
-          <h4><%= link_to event.title, path_for_event(event) %></h4>
-          <p><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
-          <%= simple_format truncate(event.description, 100) %>
+          <div id="calendar_date_description">
+            <h4><%= link_to event.title, path_for_event(event) %></h4>
+            <p><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
+            <%= simple_format truncate(event.description, 100) %>
+            
+          </div>
         </li>
       <% end %>
       </ul>
@@ -54,17 +61,18 @@
   </div>
   <div class="content_block span-6 trans">
     <div class="content_block_content">
-      <h2>Share your space for events</h2>
+      <img src="/images/css/headings/share_your_space.png" alt="Share your Space for Events"></img>
       <p>You can help out by adding your space for groups who want to learn.</p>
-      <%= link_to "Add your Event", current_events_path %>
-      <h2>Organise your group</h2>
+
+      <%= link_to image_tag('buttons/add_your_event.png', :alt => 'Add your Event', :class => 'button'), current_events_path %>
+      <img src="/images/css/headings/organise_your_group.png" alt="Organise Your Group"></img>
       <p>Meet other organisers and get help organising your group.</p>
-      <%= link_to "Join our Network" %>
+        <%= link_to image_tag('buttons/join_our_network.png', :alt => 'Join our Network', :class => 'button'), current_events_path %>
     </div>
   </div>
   <div class="content_block span-4 last trans">
     <div class="content_block_content">
-      <h2>Follow the festival</h2>
+      <%= image_tag('css/headings/follow_the_festival.png', :alt => 'Follow the Festival') %>
       <p><%= link_to "@festival_of_learning", "http://twitter.com/festival_of_learning" %></p>
       <p><%= link_to "Become a fan" %></p>
       <p><%= link_to "Subscribe via RSS" %></p>

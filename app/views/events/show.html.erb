@@ -1,4 +1,16 @@
 <div class="events">
+
+<%= render :partial => 'event_search_filter' %>
+<div id="selector">
+	<ul>
+		<li>Display results as a:</li>
+		<li class="map"><%= link_to "Map" %></li>
+		<li class="calendar_selected"><%= link_to "Calendar" %></li>
+		<li class="list_view"><%= link_to "List" %></li>
+	</ul>
+</div>
+
+<div class="events">
   <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
   <%= render :partial => "event_details", :locals => {:event => @event} %>
 </div>
