@@ -263,12 +263,20 @@ background-repeat:repeat-y;
   color:#40000B;
 }
 
-
+.secondary_block{
+  min-height:300px;
+}
 .content_block_content li{
   position:relative;
   padding-left:85px;
+  border-bottom:1px solid #75000a;
+  padding-bottom:6px;
+  margin-bottom:6px
 }
-
+.content_block_content li.see_more{
+  border-bottom:none;
+  list-style: none;
+}
 .calendar_date {
   position:absolute;
   top:10px;
@@ -288,7 +296,15 @@ background-repeat:repeat-y;
 .calendar_date .day{
   font-weight:bold;
 }
-
+.calendar_date_description h4{
+  font-weight:bold;
+}
+.calendar_date_description h4 a{
+  text-decoration: none;
+}
+.calendar_date_description .time_place{
+  font-style:italic; 
+}
 img.button{
   margin-top:12px;
 }

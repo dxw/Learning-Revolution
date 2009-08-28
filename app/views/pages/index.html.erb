@@ -35,7 +35,7 @@
 
 <div class="clearfix">
   <div class="content_block span-6 trans">
-    <div class="content_block_content">
+    <div class="content_block_content secondary_block">
       <img src="/images/css/headings/featured_events.png" alt="Featured Events"></img>
       <ul>
       <% Event.find(:all, :limit => 2).each do |event| %>
@@ -48,19 +48,20 @@
               <%= event.start.day.ordinalize %>
             </div>
           </div>
-          <div id="calendar_date_description">
-            <h4><%= link_to event.title, path_for_event(event) %></h4>
-            <p><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
-            <%= simple_format truncate(event.description, 100) %>
+          <div class="calendar_date_description">
+            <h4><%= link_to truncate(event.title, 30), path_for_event(event) %></h4>
+            <p class="time_place"><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
+            <%= simple_format truncate(event.description, 50) %>
             
           </div>
         </li>
       <% end %>
+        <li class="see_more"><span class="trigger"><%= link_to "See more like this" %></span></li>
       </ul>
     </div>
   </div>
   <div class="content_block span-6 trans">
-    <div class="content_block_content">
+    <div class="content_block_content secondary_block">
       <img src="/images/css/headings/share_your_space.png" alt="Share your Space for Events"></img>
       <p>You can help out by adding your space for groups who want to learn.</p>
 
@@ -71,7 +72,7 @@
     </div>
   </div>
   <div class="content_block span-4 last trans">
-    <div class="content_block_content">
+    <div class="content_block_content secondary_block">
       <%= image_tag('css/headings/follow_the_festival.png', :alt => 'Follow the Festival') %>
       <p><%= link_to "@festival_of_learning", "http://twitter.com/festival_of_learning" %></p>
       <p><%= link_to "Become a fan" %></p>
