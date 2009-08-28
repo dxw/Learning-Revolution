@@ -8,7 +8,7 @@
     <p class="filter_description">Now showing all events all near your current location <span class="trigger"><a href="">(update this search)</a><span></p> 
 
   
-      <% form_tag nil, :method => :get do %>      
+      <% form_tag current_events_path, :method => :get do %>      
       <div class="filter filter_theme clearfix">
         <label for="filter_theme">Theme</label> 
         <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
@@ -23,7 +23,7 @@
         <label for="filter_location" class="text">Location</label>  
         <%= text_field_tag "filter[location]", nil, :class => 'text' %>
       </div>
-
+      <%= hidden_field_tag "view", params[:view] %>
         <%= image_submit_tag('/images/buttons/update_search.png', :alt => "Update Search", :class => "update_search") %>
 
       <% end %>

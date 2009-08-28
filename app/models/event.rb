@@ -79,6 +79,7 @@ class Event < ActiveRecord::Base
     args
   end
   
+  
   def self.counts_for_month(date)
     count(
       :group => "date(start)",

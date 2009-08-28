@@ -10,7 +10,6 @@
 	</ul>
 </div>
 
-<div class="events">
   <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
   <%= render :partial => "event_details", :locals => {:event => @event} %>
 </div>
