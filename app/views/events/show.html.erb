@@ -1,4 +1,6 @@
 <div class="events">
+  <%= render :partial => 'event_search_filter' %>
+  
   <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
   <%= render :partial => "event_details", :locals => {:event => @event} %>
 </div>
