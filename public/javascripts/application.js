@@ -1,13 +1,13 @@
 Flickr = $.klass({
   initialize: function(user_id) {
-    var element = jQuery('<ul class="flickr_photos" id="flickr_photos_from_'+user_id+'"></ul>');
+    var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_'+user_id+'"></ul>');
     this.element.replaceWith(element);
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id="+user_id+"&format=json&jsoncallback=?", function(data){ 
-      $.each(data.items.slice(0,6), function(i, item) { 
+      $.each(data.items.slice(0,8), function(i, item) { 
         element.append(
           '<li>'+
             '<a href="'+item.link+'">'+
-              '<img src="'+item.media.m.replace(/_m.jpg$/, "_m.jpg")+'" alt="'+item.title+'" />'+
+              '<img src="'+item.media.m.replace(/_m.jpg$/, "_s.jpg")+'" alt="'+item.title+'" />'+
             '</a>'+
             '<p>'+item.title+'</p>'+
           '</li>'
@@ -18,7 +18,7 @@ Flickr = $.klass({
 });
 YouTube = $.klass({
   initialize: function(user_id) {
-    var element = jQuery('<ul class="youtube_videos" id="youtube_videos_from_'+user_id+'"></ul>');
+    var element = jQuery('<ul class="youtube_videos clearfix" id="youtube_videos_from_'+user_id+'"></ul>');
     this.element.replaceWith(element);
     $.getJSON("http://gdata.youtube.com/feeds/users/"+user_id+"/uploads?alt=json-in-script&callback=?", function(data){ 
       $.each(data.feed.entry.slice(0,4), function(i, item) { 
