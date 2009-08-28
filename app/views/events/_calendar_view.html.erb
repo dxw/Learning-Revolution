@@ -7,7 +7,7 @@
             <p class="event"><%= link_to h(event.title), path_for_event(event) %></p>
         <% end %>
         <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
-          <p class="more_link"><%= link_to "#{total} events today" if total > 3 %></p>
+          <p class="more_link"><%= link_to "#{total} events today", path_for_event(events.first) if total > 3 %></p>
         <% end %>
       <% end %>
     <% end %>
