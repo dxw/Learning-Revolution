@@ -7,4 +7,9 @@ module ApplicationHelper
   def path_for_event(event)
     controller.path_for_event(event)
   end
+  
+  def current_events_path
+    controller.current_events_path
+  end
+  
 end
