@@ -1,0 +1,22 @@
+<div id="query" class="clearfix">
+
+  <div class="form_wrapper">
+    <% form_tag nil, :method => :get do %>
+  
+    <h2 class="find_an_event">Find an Event in October</h2>
+  
+    <p>Now showing events <label for="filter_theme">Related to</label> <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>, of the <label for="filter_event_type">Type</label> <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %>, 
+      near 
+      <label for="filter_location">Location</label>  <%= text_field_tag "filter[location]" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  
+  </div>
+
+  <div id="add_event_promo_box">
+    <h3>Organising an Event in October?</h3>
+    <%= link_to "Add your Event" %>
+  </div>
+
+</div>
+  
