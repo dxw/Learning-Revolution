@@ -1,5 +1,8 @@
+<p><%= link_to "prev day" %></p>
+<h2><%= day.strftime("%A %e %b") %></h2>
+<p><%= link_to "next day" %></p>
 <ul>
-  <% events.each do |event| %>
+  <% @event.same_day_events.each do |event| %>
     <li><%= link_to event.title, path_for_event(event) %></li>
   <% end %>
 <ul>

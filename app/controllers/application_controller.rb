@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
   end
   
+  def url_for_event(event)
+    event_url(event.start.year, event.start.month, event.start.day, event.slug)
+  end
+  
   def current_events_path
     events_path(Date.today.year, Date::MONTHNAMES[Date.today.month])
   end
