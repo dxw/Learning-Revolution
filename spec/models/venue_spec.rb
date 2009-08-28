@@ -145,4 +145,15 @@ describe Venue do
     event.lng.should == 200
   end
   
+  it "should find venues by an event filter of theme and type" do
+    @event1 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "correct_type")
+    @venue1 = @event1.venue
+    @event1 = EventSpecHelper.save(:theme => "incorrect_theme", :event_type => "correct_type")
+    @venue1 = @event1.venue
+    @event1 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "incorrect_type")
+    @venue1 = @event1.venue
+    
+    Venue.find_venues_by_event_filter({:theme => "correct_theme", :event_type => "correct_type"}).should == [@venue1]
+  end
+  
 end
