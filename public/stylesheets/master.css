@@ -23,8 +23,16 @@ blockquote, q { quotes: "" ""; }
 a img { border: none; }
 /* END RESET */
 
-/* Adding in clearfix to help with floats */
 
+/* Setting basic link styles */
+a{
+  color:#75000a;
+}
+a:visited:{
+  color:#30000b;
+}
+
+/* Adding in clearfix to help with floats */
 .clearfix:after {
 	content: ".";
 	display: block;
@@ -33,19 +41,15 @@ a img { border: none; }
 	line-height: 0;
 	height: 0;
 }
- 
 .clearfix {
 	display: inline-block;
 }
- 
 html[xmlns] .clearfix {
 	display: block;
 }
- 
 * html .clearfix {
 	height: 1%;
 }
-
 
 /* Page Layout */
 
@@ -63,6 +67,10 @@ body {
   width:960px;
   margin:0 auto;
   text-align:left;
+}
+.container{
+background-repeat:repeat-y;
+
 }
 .nav_banner {
   background-color:transparent;
@@ -92,25 +100,25 @@ body {
   width:60px;
 }
 .nav li.home, .nav li.home a {
-  background-position:-10px 2px;
+  background-position:-10px 1px;
 }
 .nav li.events, .nav li.events a{
-  background-position:-235px 2px;
+  background-position:-235px 1px;
 }
 .nav li.stories, .nav li.stories a{
-  background-position:-470px 2px;
+  background-position:-470px 1px;
 }
 /* resources are the only menu icons wide enough to need a different size */
 .nav li.resources{
-  background-position:-595px 2px;
+  background-position:-595px 1px;
   width:105px;
 }
 .nav li.resources a{
-  background-position:-595px 2px;
+  background-position:-595px 1px;
   width:145px;
 }
 .nav li.about, .nav li.about a{
-  background-position:-130px 2px;
+  background-position:-130px 1px;
 }
 .nav li a{
   background-image: url('/images/css/nav_menu_icon_bg.png');
@@ -119,19 +127,19 @@ body {
   width:110px;
 }
 .nav li.home a:hover{
-  background-position:-10px -69px;
+  background-position:-10px -70px;
 }
 .nav li.events a:hover{
-  background-position:-235px -69px;
+  background-position:-236px -70px;
 }
 .nav li.stories a:hover{
-  background-position:-470px -69px;  
+  background-position:-470px -70px;  
 }
 .nav li.resources a:hover{
-  background-position:-595px -69px;
+  background-position:-595px -70px;
 }
 .nav li.about a:hover{
-  background-position:-130px -69px;
+  background-position:-130px -70px;
 }
 /* Site wide styles */
 
@@ -256,13 +264,16 @@ body {
 
 #query{
   width:960px;
-  background-color:#e9e9e9;
+  background-color:#fff;
+  border-bottom:1px solid #C2C2C3;
 }
 
 #query .form_wrapper{
   float:left;
   width:660px;
-  border:1px solid yellow;
+  border-right:2px solid #C2C2C3;
+  background-color:#e9e9e9;
+  padding-bottom:12px;
 }
 #query h2.find_an_event{
   display:block;
@@ -275,11 +286,40 @@ body {
   margin-top:10px;
 }
 
+#query form{
+  margin-left:42px;
+  border-top:1px solid #ddd;
+  width:460px;
+}
+p.filter_description{
+  font-size:14px;
+  margin-left:42px;
+  margin-bottom:12px;
+}
+span.trigger{
+  font-style:italic;
+  font-size:10px;
+}
+#query form div.filter{
+  margin-top:12px;
+}
+#query form label{
+  font-size:14px;
+  float:left;
+  width:100px;
+}
+#query form input.text, #query form select{
+  float:left;
+  width:150px;
+}
+input.update_search{
+  margin-top:12px;
+  margin-left:100px;
+}
 #add_event_promo_box{
   width:295px;
   background-color:#fff;
   float:left;
-  border-left:2px solid #c2c2c3;
 }
 #add_event_promo_box h3{
  display:block;

@@ -1,15 +1,32 @@
 <div id="query" class="clearfix">
 
   <div class="form_wrapper">
-    <% form_tag nil, :method => :get do %>
-  
+
+
     <h2 class="find_an_event">Find an Event in October</h2>
   
-    <p>Now showing events <label for="filter_theme">Related to</label> <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>, of the <label for="filter_event_type">Type</label> <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %>, 
-      near 
-      <label for="filter_location">Location</label>  <%= text_field_tag "filter[location]" %>
-      <%= submit_tag "Search" %>
-    <% end %>
+    <p class="filter_description">Now showing all events all near your current location <span class="trigger"><a href="">(update this search)</a><span></p> 
+
+  
+      <% form_tag nil, :method => :get do %>      
+      <div class="filter filter_theme clearfix">
+        <label for="filter_theme">Theme</label> 
+        <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
+      </div>
+
+      <div class="filter filter_event_type clearfix">
+        <label for="filter_event_type">Event Type</label> 
+        <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %> 
+      </div>
+      
+      <div class="filter_location clearfix filter">
+        <label for="filter_location">Location</label>  
+        <%= text_field_tag "filter[location]" %>
+      </div>
+
+        <%= image_submit_tag('/images/buttons/update_search.png', :alt => "Update Search", :class => "update_search") %>
+
+      <% end %>
   
   </div>
 
