@@ -11,8 +11,8 @@ module ApplicationHelper
     controller.url_for_event(event)
   end
   
-  def current_events_path
-    controller.current_events_path
+  def current_events_path(options={})
+    controller.current_events_path(options)
   end
   
 end

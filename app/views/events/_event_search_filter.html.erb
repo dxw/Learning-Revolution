@@ -23,7 +23,7 @@
         <label for="filter_location">Location</label>  
         <%= text_field_tag "filter[location]" %>
       </div>
-
+      <%= hidden_field_tag "view", params[:view] %>
         <%= image_submit_tag('/images/buttons/update_search.png', :alt => "Update Search", :class => "update_search") %>
 
       <% end %>
