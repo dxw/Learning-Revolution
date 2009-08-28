@@ -293,6 +293,30 @@ img.button{
   margin-top:12px;
 }
 
+.photos_and_videos .photos {
+  width:500px;
+  float:left;
+}
+.photos_and_videos .videos {
+  width:350px;
+  float:left;
+}
+ul.flickr_photos,
+ul.youtube_videos {
+  list-style:none;
+}
+ul.flickr_photos li,
+ul.youtube_videos li {
+  width:150px;
+  float:left;
+  text-align:center;
+  height:100px;
+  overflow:hidden ;
+}
+ul.youtube_videos li {
+  height:132px;
+}
+
 /* Events */
 
 #query{
