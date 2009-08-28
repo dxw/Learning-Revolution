@@ -146,6 +146,7 @@ describe Venue do
   end
   
   it "should find venues by an event filter of theme and type" do
+    pending
     @event1 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "correct_type")
     @venue1 = @event1.venue
     @event1 = EventSpecHelper.save(:theme => "incorrect_theme", :event_type => "correct_type")
