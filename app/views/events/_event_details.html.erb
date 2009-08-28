@@ -1,59 +1,93 @@
-<div id="event_detail" class="event">
+<div id="event_details" class="event clearfix">
   <h2><%= event.title %></h2>
   
-  <h3>When</h3>
-  <%= event.start.strftime("%R%p") %>
-  <%= event.end.strftime("until %R%p") if event.end %>
+  <div class="clearfix">
+    
+    <div class="span-2">
+    
+      <div class="detail">
+      
+      <%= image_tag('css/headings/when.png', :alt => 'When') %>
+      <%= event.start.strftime("%R%p") %>
+      <%= event.end.strftime("until %R%p") if event.end %>
+
+      </div>
   
-  <h3>Where</h3>
-  <h4><%= event.venue.name %></h4>
-  <p>
-    <%= event.venue.address_1 %><br />
-    <%= event.venue.address_2 %><br />
-    <%= event.venue.address_3 %><br />
-    <%= event.venue.city %><br />
-    <%= event.venue.county %><br />
-    <%= event.venue.postcode %>
-  </p>
+      <div class="detail">
+      
+      <%= image_tag('css/headings/where.png', :alt => 'Where') %>
+      <h4><%= event.venue.name %></h4>
+      <p>
+        <%= event.venue.address_1 %><br />
+        <%= event.venue.address_2 %><br />
+        <%= event.venue.address_3 %><br />
+        <%= event.venue.city %><br />
+        <%= event.venue.county %><br />
+        <%= event.venue.postcode %>
+      </p>
+      </div>
+
+    </div>
+
+    <div class="span-2">
+      
+      <div class="detail">
+      <%= image_tag('css/headings/type.png', :alt => 'Type') %>
+        <%= event.event_type %>
+      </div>
+      <div class="detail">
+      <%= image_tag('css/headings/theme.png', :alt => 'Theme') %>
+        <%= event.theme %>
+      </div>
+
+      <div class="detail">
+        <% if event.cost %>
+      <%= image_tag('css/headings/cost.png', :alt => 'Cost') %>
+          <p><%= event.cost %></p>
+        <% end %>
+      </div>    
+
+    </div>
+
+    <div class="span-2">
+    
+    <p>
+      <%= link_to "Add to iCal / Outlook" %>
+    </p>
+    <p>
+      <%= link_to "Add to Google calendar" %>
+    </p>
   
-  <% if event.cost %>
-    <h3>Cost</h3>
-    <p><%= event.cost %></p>
-  <% end %>
+    <p>
+      <%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{url_for_event(event)}" %>
+    </p>
+    <p>
+      <%= link_to "Facebook" %>
+    </p>
+    <p>
+      <%= link_to "Delicious" %>
+    </p>
   
-  <h3>Type</h3>
-  <%= event.event_type %>
+    </div>
   
-  <h3>Theme</h3>
-  <%= event.theme %>
+  </div>
   
-  <h3>Event Details</h3>
-  <%= simple_format event.description %>
+  <div class="description half_page">
+
+    <%= image_tag('css/headings/event_details.png', :alt => 'Event Details') %>
+    <%= simple_format event.description %>
+
+    <%= image_tag('css/headings/contact_details.png', :alt => 'Contact Details') %>
+    <p>
+      <%= event.contact_name %>
+      <%= event.organisation %>
+      <%= event.contact_phone_number %>
+      <%= event.contact_email_address %>
+      <%= event.contact_phone_number %>
+    </p>
+
+    
+  </div>
   
-  <h3>Contact Details</h3>
-  <p>
-    <%= event.contact_name %>
-    <%= event.organisation %>
-    <%= event.contact_phone_number %>
-    <%= event.contact_email_address %>
-    <%= event.contact_phone_number %>
-  </p>
-  
-  <p>
-    <%= link_to "Add to iCal / Outlook" %>
-  </p>
-  <p>
-    <%= link_to "Add to Google calendar" %>
-  </p>
-  
-  <p>
-    <%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{url_for_event(event)}" %>
-  </p>
-  <p>
-    <%= link_to "Facebook" %>
-  </p>
-  <p>
-    <%= link_to "Delicious" %>
-  </p>
   
 </div>

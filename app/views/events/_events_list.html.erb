@@ -1,10 +1,14 @@
-<div id="events_list">
-  <p><%= link_to "prev day", :class => 'trigger' %></p>
-  <h2><%= day.strftime("%A %e %b") %></h2>
-  <p><%= link_to "next day", :class => 'trigger' %></p>
-  <ul>
+<div id="events_list" class="span-6">
+  <ul class="clearfix">
+    <li class="header clearfix">
+      <div class="incrementor"><%= link_to "prev day", :class => 'trigger' %></div>
+      <h2><%= day.strftime("%A %e %b") %></h2>
+      <div class="incrementor"><%= link_to "next day", :class => 'trigger' %></div>
+      
+    </li>
+    
     <% @event.same_day_events.each do |event| %>
-      <li><%= link_to event.title, path_for_event(event) %></li>
+      <li class="event_link"><%= link_to event.title, path_for_event(event) %></li>
     <% end %>
-  <ul>  
+  </ul>  
 </div>

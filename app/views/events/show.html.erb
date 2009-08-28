@@ -1,8 +1,12 @@
-<div class="events">
+<div class="events clearfix">
   <%= render :partial => 'event_search_filter' %>
   
   <%= render :partial => 'view_selector' %>
 
-  <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
-  <%= render :partial => "event_details", :locals => {:event => @event} %>
+
+  <div class="listing clearfix">
+    <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
+    <%= render :partial => "event_details", :locals => {:event => @event} %>
+  </div>
+
 </div>
