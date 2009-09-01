@@ -24,8 +24,8 @@ function initialize_google_map_events_map() {
     events_map.disableScrollWheelZoom();
 
     var events_map_latlng_bounds = new GLatLngBounds();
-    events_map_latlng_bounds.extend(new GLatLng(54,-4.064941));
-    events_map.setCenter(events_map_latlng_bounds.getCenter(), 6);
+    events_map_latlng_bounds.extend(new GLatLng(<%= @start_lat %>,<%= @start_lng %>));
+    events_map.setCenter(events_map_latlng_bounds.getCenter(), <%= @start_zoom %>);
     
     marker_manager = new MarkerManager(events_map);
     <% @venues.each do |venue| %>
