@@ -33,12 +33,23 @@ YouTube = $.klass({
   }
 });
 
+RefineEventSearch = $.klass({
+  initialize: function(section_to_close) {
+    this.section_to_close = section_to_close
+  },
+  onclick: function() {
+    this.section_to_close.slideToggle(this.section_to_close)
+  }
+});
+
 
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
+  $('.selecter').attach(Object, $('.sleceter'))
 });
 
 
 $('.featured_events').cycle({pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true})
+

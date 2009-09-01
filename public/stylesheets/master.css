@@ -400,12 +400,47 @@ ul.youtube_videos li img {
 }
 
 #query .form_wrapper{
-  float:left;
-  width:640px;
-  border-right:2px solid #C2C2C3;
-  background-color:#e9e9e9;
+  width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:18px;
+  border-bottom:1px solid #C2C2C3;
+  border-top:1px solid #C2C2C3;
   padding-bottom:12px;
+  clear:both;
+  padding-top:36px;
+  background-image:url('/images/css/silver_bg.png');
+  background-repeat:repeat-x;
+  background-position:0 -80px;
+  position:relative;
 }
+#query .form_wrapper .filter{
+  position:relative;
+}
+#query .form_wrapper .tooltip{
+  background:#fff;
+  border:1px solid #C2C2C3;
+  padding:12px;
+  width:300px;
+  font-style:italic;
+  position:absolute;
+  left:500px;
+  top:-15px;
+  min-height:60px;
+}
+#query .form_wrapper .tooltip_arrow{
+  position:absolute;
+  left:486px;
+  top:-10px;
+  background-image:url(/images/tooltip-left.png);
+  z-index:10;
+
+  height:40px;
+  width:30px;
+  
+}
+
+
 #query h2.find_an_event{
   display:block;
   background-image:url('/images/css/headings/find_an_event_oct_header.png');
@@ -419,14 +454,41 @@ ul.youtube_videos li img {
 
 #query form{
   margin-left:42px;
-  border-top:1px solid #aaa;
   width:460px;
+  background:#fff;
+  border:1px solid #c2c2c3;
+  padding:12px;
 }
-p.filter_description{
-  font-size:14px;
+h3.filter_description{
+  float:left;
+  width:660px;
+  font-size:21px;
   margin-left:42px;
   margin-bottom:12px;
+  line-height:1.5;
 }
+.keyword{
+  font-style:italic;
+  font-weight:bold;
+  color:#8b1713;
+}
+ul.search_subscription_options{
+  float:left;
+  border-left:1px solid #C2C2C3;
+  margin-top:6px;
+  font-size:9px;
+  padding-left:12px;
+}
+ul.search_subscription_options li{
+  padding-left:42px;
+  list-style: none;
+  background-image:url('/images/sm_icons.png');
+  background-repeat:no-repeat;
+  border-bottom:none;
+  margin-top:2px;
+}
+
+
 span.trigger{
   font-style:italic;
   font-size:10px;
@@ -435,7 +497,8 @@ span.trigger{
   margin-top:12px;
 }
 #query form label{
-  font-size:14px;
+  font-size:10px;
+  font-weight:bold;
   float:left;
   width:100px;
 }
@@ -444,41 +507,27 @@ span.trigger{
 }
 #query form input.text{
   float:left;
-  width:150px;
+  width:300px;
   font-size:16px;
   padding:3px;  
 }
 #query form select{
   float:left;
-  width:162px;
+  width:312px;
 }
-input.update_search{
-  margin-top:12px;
-  margin-left:100px;
+input.search_for_events{
+  margin-top:8px;
+  margin-left:62px;
+  margin-bottom:12px;
 }
-#add_event_promo_box{
-  width:295px;
-  background-color:#fff;
-  float:left;
+.add_event_link{
+  float:right;
+  margin-right:40px;
+  margin-top:22px;
 }
-#add_event_promo_box h3{
- display:block;
- background-image:url('/images/css/headings/organising_event_promo_header.png');
- height:65px;
- width:225px;
- text-indent:-9999em;
- margin-left:42px;
- margin-top:10px;
-}
-#add_event_promo_box a{
-  display:block;
-  background-repeat:no-repeat;
-  background-position:10px 0px;
-  background-image:url('/images/css/headings/organising_event_promo_btn.png');
-  height:65px;
-  width:225px;
-  text-indent:-9999em;
-  margin-left:30px;
+.add_event_link a{
+  font-style:italic;
+  text-decoration: none;
   
 }
 form#bis_email_signup{
@@ -672,3 +721,9 @@ li.facebook{
 li.rss{
   background-position:0px -72px;  
 }
+li.email{
+    background-position:0px -98px;  
+}
+li.calendar{
+    background-position:0px -124px;    
+}  
