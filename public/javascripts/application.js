@@ -3,13 +3,12 @@ Flickr = $.klass({
     var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_'+user_id+'"></ul>');
     this.element.replaceWith(element);
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id="+user_id+"&format=json&jsoncallback=?", function(data){ 
-      $.each(data.items.slice(0,8), function(i, item) { 
+      $.each(data.items.slice(0,6), function(i, item) { 
         element.append(
           '<li>'+
             '<a href="'+item.link+'">'+
               '<img src="'+item.media.m.replace(/_m.jpg$/, "_s.jpg")+'" alt="'+item.title+'" />'+
             '</a>'+
-            '<p>'+item.title+'</p>'+
           '</li>'
         );
       });
@@ -27,7 +26,6 @@ YouTube = $.klass({
             '<a href="'+item.link[0].href+'">'+
               '<img src="'+item.media$group.media$thumbnail[0].url+'" alt="'+item.title.$t+'" />'+
             '</a>'+
-            '<p>'+item.title.$t+'</p>'+
           '</li>'
         );
       });

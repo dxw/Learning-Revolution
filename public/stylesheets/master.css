@@ -44,9 +44,6 @@ a:visited{
 	height: 0;
 }
 .clearfix {
-	display: inline-block;
-}
-html[xmlns] .clearfix {
 	display: block;
 }
 * html .clearfix {
@@ -160,7 +157,7 @@ text-align:left;
   position:relative;
   margin-left:auto;
   margin-right:auto;
-  width:945px;
+  width:940px;
 }
 
 .content_block {
@@ -174,6 +171,7 @@ text-align:left;
 .content_block_content {
   padding:17px 12px;
   border: 1px solid #000;
+
 }
 
 .last {
@@ -224,9 +222,17 @@ text-align:left;
   position:relative;
   left:10px;
 }
+
+.site_intro{
+  margin-bottom:18px;
+  border:1px solid #999;
+  background-color:#999;
+}
+
 .site_intro .content_block {
   height:310px;
   border-right:2px solid #666666;
+  margin-bottom:0px;
 }
 
 .site_intro .content_block_content {
@@ -239,7 +245,7 @@ text-align:left;
 .site_intro .featured_block {
   margin-left:-20px;
   padding:0;
-  width:480px;
+  width:470px;
   overflow:hidden;
   position:relative;
   background:#222;
@@ -284,7 +290,7 @@ text-align:left;
 }
 
 .secondary_block{
-  min-height:300px;
+  min-height:310px;
 }
 .content_block_content li{
   position:relative;
@@ -335,34 +341,54 @@ img.button{
   background-image:url('/images/css/silver_bg.png');
   background-repeat:repeat-x;
 }
+
 .photos_and_videos{
   width:945px;
   margin-left:auto;
   margin-right:auto;
+  border-bottom:1px solid #666;
+  padding-bottom:12px;
 }
-
+.photos_and_videos .heading{
+  margin-left:24px;
+}
+.videos .heading{
+  margin-left:64px;
+}
 .photos_and_videos .photos {
-  width:500px;
+  width:450px;
   float:left;
+  border-right: 1px solid #666;
+  margin-bottom:12px;
+  margin-left:20px;
 }
 .photos_and_videos .videos {
-  width:350px;
+  width:460px;
   float:left;
+  margin-bottom:12px;
 }
 ul.flickr_photos,
 ul.youtube_videos {
   list-style:none;
 }
+ul.youtube_videos {
+  margin-left:40px;
+}
 ul.flickr_photos li,
 ul.youtube_videos li {
-  width:150px;
   float:left;
   text-align:center;
   height:100px;
   overflow:hidden ;
 }
+ul.flickr_photos li {
+  width:100px;
+}
 ul.youtube_videos li {
-  height:132px;
+  width:140px;
+}
+ul.youtube_videos li img {
+  height:75px;
 }
 
 /* Events */
