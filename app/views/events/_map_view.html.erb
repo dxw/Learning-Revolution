@@ -28,8 +28,8 @@ function initialize_google_map_events_map() {
     events_map.setCenter(events_map_latlng_bounds.getCenter(), 6);
     
     marker_manager = new MarkerManager(events_map);
-    <% @events.each do |event| %>
-      var marker = new GMarker(new GLatLng(<%= event.lat %>, <%= event.lng %>));
+    <% @venues.each do |venue| %>
+      var marker = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>));
       marker_manager.addMarker(marker, 1);
     <% end %>
     

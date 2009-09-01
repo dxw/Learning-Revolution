@@ -146,15 +146,34 @@ describe Venue do
   end
   
   it "should find venues by an event filter of theme and type" do
-    pending
     @event1 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "correct_type")
     @venue1 = @event1.venue
-    @event1 = EventSpecHelper.save(:theme => "incorrect_theme", :event_type => "correct_type")
-    @venue1 = @event1.venue
-    @event1 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "incorrect_type")
-    @venue1 = @event1.venue
-    
-    Venue.find_venues_by_event_filter({:theme => "correct_theme", :event_type => "correct_type"}).should == [@venue1]
+    @event2 = EventSpecHelper.save(:theme => "incorrect_theme", :event_type => "correct_type")
+    @venue2 = @event1.venue
+    @event3 = EventSpecHelper.save(:theme => "correct_theme", :event_type => "incorrect_type")
+    @venue3 = @event1.venue
+    Venue.find_venues_by_event_conditions({"events.theme" => "correct_theme", "events.event_type" => "correct_type"}).should == [@venue1]
   end
+  
+  it "should find venues by an event filter of theme and type and within a time frame" do
+    @event1 = EventSpecHelper.save(:theme => "correct_theme", :start => "2nd October 2009".to_time)
+    @venue1 = @event1.venue
+    @event2 = EventSpecHelper.save(:theme => "incorrect_theme", :start => "2nd October 2009".to_time)
+    @venue1 = @event1.venue
+    @event2 = EventSpecHelper.save(:theme => "correct_theme", :start => "9th October 2009".to_time)
+    @venue3 = @event1.venue
+    Venue.find_venues_by_event_conditions({"events.theme" => "correct_theme", "events.start" => "1st October 2009".to_time.."5th October 2009".to_time}).should == [@venue1]
+  end
+  
+  it "should generate a active record conditions hash from a form params hash" do
+    conditions = Venue.convert_form_params_into_filter_conditions({:theme => "correct_theme", :event_type => "correct_type", :from => "1st October 2009".to_time, :to => "5th October 2009".to_time})
+    conditions.should == {"events.theme" => "correct_theme", "events.event_type" => "correct_type", "events.start" => "1st October 2009".to_time.."5th October 2009".to_time}
+    Venue.convert_form_params_into_filter_conditions({}).should == {}
+  end
+  
+  it "generating an active record conditions hash from a form params hash should not choke on nil values" do
+    Venue.convert_form_params_into_filter_conditions({}).should == {}
+  end
+  
   
 end
