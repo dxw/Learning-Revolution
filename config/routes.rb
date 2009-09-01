@@ -12,4 +12,5 @@ ActionController::Routing::Routes.draw do |map|
     events.days_events "/:day", :action => "show"
     events.event "/:day/:id", :action => "show"
   end
+  map.venue_events "/venues/:venue_id/events/:year/:month", :controller => 'venues', :action => "events", :conditions => { :method => :get }
 end
