@@ -1,6 +1,9 @@
 <script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAQG5gwtCYnFF_zNfaIQ6dFRS6yI4Oky2btJnizjKkhx0I2b61jBS0hmTmzLwP23OIzX7R3J3sUvuFYA' type='text/javascript'></script>
 
 <script src="http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/src/markermanager.js"></script>
+<div id="time_slider">
+  
+</div>
 <div id="events_map" style="height:600px">
   
 </div>
@@ -29,8 +32,22 @@ function initialize_google_map_events_map() {
     
     marker_manager = new MarkerManager(events_map);
     <% @venues.each do |venue| %>
-      var marker = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>));
-      marker_manager.addMarker(marker, 1);
+      var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>));
+      
+      GEvent.addListener(marker_<%= venue.id %>, "click", function() {
+        marker_<%= venue.id %>.openInfoWindowHtml("<h1>Loading...</h1>");
+        $.getJSON( window.location.href.replace("/events/","/venues/<%= venue.id %>/events/"), function(data) {
+          html = "<ul>"
+          $.each(data, function(i, item) { 
+            html += '<li><a href="'+item.url+'">'+item.title+"</a></li>";
+          });
+          html += "</ul>"
+          marker_<%= venue.id %>.openInfoWindowHtml(html);
+        }) 
+     	});
+      
+      marker_manager.addMarker(marker_<%= venue.id %>, 1);
+      
     <% end %>
     
   }
