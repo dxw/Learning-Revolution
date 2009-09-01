@@ -1,8 +1,8 @@
 <div id="query" class="clearfix">
 
   <h2 class="find_an_event">Find an Event in October</h2>
-
-  <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 
+  
+  <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 
 
   <ul class="search_subscription_options">
     <li class="email">Send me these events as email.</li>
