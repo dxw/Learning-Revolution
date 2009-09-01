@@ -24,12 +24,14 @@ a img { border: none; }
 /* END RESET */
 
 
+
+
 /* Setting basic link styles */
 a{
-  color:#75000a;
+  color:#8b1713;
 }
 a:visited{
-  color:#30000b;
+  color:#8b1713;
 }
 
 /* Adding in clearfix to help with floats */
@@ -54,15 +56,14 @@ html[xmlns] .clearfix {
 /* Page Layout */
 
 body {
-  background-color:#75000a;
+  background-color:#8b1713;
   font-size:12px;
   font-family: Verdana, sans-serif;
   line-height:18px;
   text-align:center;
 }
 
-.container,
-.header h1
+.header, .header h1
 {
   width:945px;
   margin:0 auto;
@@ -70,7 +71,7 @@ body {
 }
 .container{
 background-repeat:repeat-y;
-
+text-align:left;
 }
 .nav_banner {
   background-color:transparent;
@@ -78,7 +79,6 @@ background-repeat:repeat-y;
   padding-bottom:16px;
   background-position:top;
   background-repeat: repeat-x;
-  width:945px;
 }
 .nav {
   list-style: none;
@@ -142,11 +142,11 @@ background-repeat:repeat-y;
 .nav li.about a:hover{
   background-position:-130px -70px;
 }
+
 /* Site wide styles */
 
-.header{
+.header, .nav_banner, .content{
   position:relative;
-  width:945px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -154,6 +154,13 @@ background-repeat:repeat-y;
   position:absolute;
   top:0px;
   right:00px;
+}
+
+.content{
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  width:945px;
 }
 
 .content_block {
@@ -165,7 +172,7 @@ background-repeat:repeat-y;
 }
 
 .content_block_content {
-  padding:17px 20px;
+  padding:17px 12px;
   border: 1px solid #000;
 }
 
@@ -204,10 +211,13 @@ background-repeat:repeat-y;
 /* Specific styles */
 
 .standfirst{
+  margin-top:18px;
+  width:410px;
+  line-height: 1.5;
   font-size:18px;
-  margin-top:36px;
+  margin-top:18px;
 }
-#calendar_thumbail{
+#calendar_thumbnail{
   float:left;
 }
 #view_event_calendar{
@@ -232,6 +242,7 @@ background-repeat:repeat-y;
   width:480px;
   overflow:hidden;
   position:relative;
+  background:#222;
 }
 .site_intro .featured_block img {
   width:100%;
@@ -278,7 +289,7 @@ background-repeat:repeat-y;
 .content_block_content li{
   position:relative;
   padding-left:85px;
-  border-bottom:1px solid #75000a;
+  border-bottom:1px solid #8b1713;
   padding-bottom:6px;
   margin-bottom:6px
 }
@@ -301,6 +312,7 @@ background-repeat:repeat-y;
   text-transform:uppercase;
   color:#fff;
   font-weight:bold;
+  font-size:10px;
 }
 .calendar_date .day{
   font-weight:bold;
@@ -318,16 +330,19 @@ img.button{
   margin-top:12px;
 }
 
-.photos_and_videos{
+.secondary_content{
   padding-top:36px;
   background-image:url('/images/css/silver_bg.png');
   background-repeat:repeat-x;
-  width:940px;
+}
+.photos_and_videos{
+  width:945px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .photos_and_videos .photos {
   width:500px;
-  margin-left:24px;
   float:left;
 }
 .photos_and_videos .videos {
@@ -440,9 +455,27 @@ input.update_search{
   margin-left:30px;
   
 }
+form#bis_email_signup{
+  margin-bottom:12px;
+  margin-left:6px;
+}
 
+#bis_email_signup label{
+  font-size:10px;
+  display:block;
+}
+#bis_email_signup input{
+  width:150px;
+}
+#bis_email_signup .info{
+  margin-top:6px;
+  clear:both;
+}
+#bis_email_signup span.button{
+  position:relative;
+  left:-6px;
+}
 #selector{
-
   background-image:url(/images/css/selector_bg.png);
   padding-top:2px;
   padding-bottom:4px;
@@ -466,17 +499,17 @@ input.update_search{
 
 }
 #selector ul li.map a:hover, #selector ul li.map_selected a{
-  color:#75000a;  
+  color:#8b1713;  
   background-image:url(/images/css/selector_bg_hover_single.png);
   background-position:-85px -10px;
 }
 #selector ul li.calendar a:hover, #selector ul li.calendar_selected a{
-  color:#75000a;  
+  color:#8b1713;  
   background-image:url(/images/css/selector_bg_hover_single.png);
   background-position:-70px -10px;  
 }
 #selector ul li.list_view a:hover, #selector ul li.list_view_selected a{
-  color:#75000a;  
+  color:#8b1713;  
   background-image:url(/images/css/selector_bg_hover_single.png);
   background-position:-90px -10px;
 }
@@ -543,7 +576,7 @@ input.update_search{
 }
 li.event_link{
   width:390px;
-  border-bottom:1px solid #75000a;
+  border-bottom:1px solid #8b1713;
 }
 .listing{
   background-image:url('/images/tiles/list_gradient.jpg');
@@ -592,4 +625,24 @@ li.event_link{
 }
 #event_details .description{
   margin-left:18px;
+}
+
+ul.sm_icons li{
+  padding-left:32px;
+  list-style: none;
+  background-image:url('/images/sm_icons.png');
+  background-repeat:no-repeat;
+  border-bottom:none;
+}
+ul.sm_icons li a{
+  text-decoration: none;
+}
+li.twitter{
+  background-position:0px -8px;
+}
+li.facebook{
+  background-position:0px -40px;
+}
+li.rss{
+  background-position:0px -72px;  
 }
