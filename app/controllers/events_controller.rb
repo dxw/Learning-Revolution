@@ -29,8 +29,6 @@ class EventsController < ApplicationController
   def ensure_filters
     params[:filter] ||= {}
     params[:view] ||= 'calendar'
-    params[:filter][:from_day] ||= 1
-    params[:filter][:to_day] ||= @first_day_of_month.end_of_month.day
   end
   
   include Geokit::Geocoders
@@ -48,6 +46,9 @@ class EventsController < ApplicationController
   end
   
   def set_from_and_to_to_dates
+    params[:filter][:from_day] ||= 1
+    params[:filter][:to_day] ||= @first_day_of_month.end_of_month.day
+    
     params[:filter][:from] = Time.parse("#{params[:filter][:from_day]} #{params[:month]} #{params[:year]}") if params[:filter][:from_day]
     params[:filter][:to] = Time.parse("#{params[:filter][:to_day]} #{params[:month]} #{params[:year]}") if params[:filter][:to_day]
   end
