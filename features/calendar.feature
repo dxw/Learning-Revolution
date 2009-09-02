@@ -18,7 +18,7 @@ Feature: Event admin
     And the event "Spanish Guitar" has the theme "Languages and Travel"
     When I go to the calendar for October 2009
     And I select "Food and Cookery" from "Theme"
-    And I press "Update Search"
+    And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
 
@@ -34,7 +34,7 @@ Feature: Event admin
     When I go to the calendar for October 2009
     And I select "Food and Cookery" from "Theme"
     And I select "Class" from "Event Type"
-    And I press "Update Search"
+    And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
 
@@ -47,7 +47,7 @@ Feature: Event admin
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
     When I go to the calendar for October 2009
     And I fill in "Location" with "E11 1PB GB"
-    And I press "Update Search"
+    And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
     
