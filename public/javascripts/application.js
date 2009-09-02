@@ -47,6 +47,8 @@ DateSlider = $.klass({
     this.element.find('select').hide();
     var from_day = this.element.find("#filter_from_day");
     var to_day = this.element.find("#filter_to_day");
+    var current_from_day = this.element.find(".current_time_span .current_from_day")
+    var current_to_day = this.element.find(".current_time_span .current_to_day")
     this.element.find('.slider').slider({ 
       animate: true, 
       range: true, 
@@ -56,6 +58,10 @@ DateSlider = $.klass({
       change: function(event, ui) {
         from_day.val($(this).slider('values', 0));
         to_day.val($(this).slider('values', 1));
+      },
+      slide: function(event, ui) {
+        current_from_day.html($(this).slider('values', 0));
+        current_to_day.html($(this).slider('values', 1));
       }
     });
   }

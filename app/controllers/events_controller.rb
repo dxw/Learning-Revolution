@@ -29,6 +29,8 @@ class EventsController < ApplicationController
   def ensure_filters
     params[:filter] ||= {}
     params[:view] ||= 'calendar'
+    params[:filter][:from_day] ||= 1
+    params[:filter][:to_day] ||= @first_day_of_month.end_of_month.day
   end
   
   include Geokit::Geocoders
