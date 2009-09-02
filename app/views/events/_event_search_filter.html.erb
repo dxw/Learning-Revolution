@@ -30,6 +30,16 @@
         <%= text_field_tag "filter[location]", nil, :class => 'text' %>
       </div>
       
+      <% if params[:view] == 'map' %>
+        <div class="date_slider">
+          <%= hidden_field :filter, "from_day", :value => params[:filter][:from_day] || 1 %>
+          <%= hidden_field :filter, "to_day",   :value => params[:filter][:to_day] || @first_day_of_month.end_of_month.day %>
+          <div class="slider">
+            
+          </div>
+        </div>
+      <% end %>
+      
       <%= hidden_field_tag "view", params[:view] %>
 
       <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>

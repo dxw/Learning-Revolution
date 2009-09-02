@@ -42,12 +42,31 @@ RefineEventSearch = $.klass({
   }
 });
 
+DateSlider = $.klass({
+  initialize: function() {
+    this.element.find('select').hide();
+    var from_day = this.element.find("#filter_from_day");
+    var to_day = this.element.find("#filter_to_day");
+    this.element.find('.slider').slider({ 
+      animate: true, 
+      range: true, 
+      min: 1, 
+      max: 31, 
+      values: [from_day.val(),to_day.val()],
+      change: function(event, ui) {
+        from_day.val($(this).slider('values', 0));
+        to_day.val($(this).slider('values', 1));
+      }
+    });
+  }
+});
+
 
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
-  $('.selecter').attach(Object, $('.sleceter'))
+  $('.date_slider').attach(DateSlider);
 });
 
 
