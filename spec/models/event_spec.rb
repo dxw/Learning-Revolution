@@ -130,6 +130,14 @@ describe Event do
       find_options.should == {:limit => 3, :conditions => ["(event_type LIKE ?)", "%type_name%"]}
     end
     
+    it "should auto convert params into find options on find by month" do
+      params = {}
+      date = Date.today
+      Event.should_receive(:turn_filter_params_into_find_options).with(params).and_return(ret={})
+      Event.should_receive(:find_by_month_with_filter).with(date, ret)
+      Event.find_by_month_with_filter_from_params(date, params)
+    end
+    
     
     it "should find events in a month" do
       event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
@@ -161,18 +169,14 @@ describe Event do
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
       Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
     end
-    
-    it "should be able to filter events in a month by location" do
-      pending
-      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 0, :lng => 0)
-      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 50, :lng => 50)
-      event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 0, :lng => 0)
-      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 50, :lng => 50)
-      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
-    end
-    
-    it "should be able to filter events in a month by postcode"
-    
+      
+  end
+  
+  it "should collect an array of counts on all days" do
+    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
+    EventSpecHelper.save(:start => Time.parse("2nd October 2009 10:00"))
+    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
+    Event.counts_for_month(Time.parse("1st October 2009")).should == {"2009-10-01"=>2, "2009-10-02"=>1}
   end
   
   it "should find events on same day" do
@@ -188,6 +192,24 @@ describe Event do
     e.save
     e.lat.should == 50.0001
     e.lng.should == -50.0001
+  end
+  
+  it "should be able to find the first event of a day" do
+    Event.should_receive(:find).with(:first, :conditions => ["DATE(start) >= ?", Date.today])
+    Event.first_for_today
+  end
+  
+  it "should generate a slug of the-events-title-id from 'The Event's Title'" do
+    @event.title = "The Event's Title"
+    @event.stub!(:id).and_return(23)
+    @event.slug.should == "the-events-title-23"
+  end
+  
+  it "should be able to find by slug" do
+    @event.title = "The Event's Title"
+    @event.stub!(:id).and_return(23)
+    Event.should_receive(:find_by_id).with("23")
+    Event.find_by_slug("the-events-title-23")
   end
   
   it "should be able to find the next event even if there are no future events"     

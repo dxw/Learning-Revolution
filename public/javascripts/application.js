@@ -3,7 +3,7 @@ Flickr = $.klass({
     var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_'+user_id+'"></ul>');
     this.element.replaceWith(element);
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id="+user_id+"&format=json&jsoncallback=?", function(data){ 
-      $.each(data.items.slice(0,6), function(i, item) { 
+      $.each(data.items.slice(0,8), function(i, item) { 
         element.append(
           '<li>'+
             '<a href="'+item.link+'">'+
@@ -20,7 +20,7 @@ YouTube = $.klass({
     var element = jQuery('<ul class="youtube_videos clearfix" id="youtube_videos_from_'+user_id+'"></ul>');
     this.element.replaceWith(element);
     $.getJSON("http://gdata.youtube.com/feeds/users/"+user_id+"/uploads?alt=json-in-script&callback=?", function(data){ 
-      $.each(data.feed.entry.slice(0,4), function(i, item) { 
+      $.each(data.feed.entry.slice(0,6), function(i, item) { 
         element.append(
           '<li>'+
             '<a href="'+item.link[0].href+'">'+
@@ -42,12 +42,37 @@ RefineEventSearch = $.klass({
   }
 });
 
+DateSlider = $.klass({
+  initialize: function() {
+    this.element.find('select').hide();
+    var from_day = this.element.find("#filter_from_day");
+    var to_day = this.element.find("#filter_to_day");
+    var current_from_day = this.element.find(".current_time_span .current_from_day")
+    var current_to_day = this.element.find(".current_time_span .current_to_day")
+    this.element.find('.slider').slider({ 
+      animate: true, 
+      range: true, 
+      min: 1, 
+      max: 31, 
+      values: [from_day.val(),to_day.val()],
+      change: function(event, ui) {
+        from_day.val($(this).slider('values', 0));
+        to_day.val($(this).slider('values', 1));
+      },
+      slide: function(event, ui) {
+        current_from_day.html($(this).slider('values', 0));
+        current_to_day.html($(this).slider('values', 1));
+      }
+    });
+  }
+});
+
 
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
-  $('.selecter').attach(Object, $('.sleceter'))
+  $('.date_slider').attach(DateSlider);
 });
 
 

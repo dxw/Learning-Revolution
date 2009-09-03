@@ -10,4 +10,9 @@
      <%= render :partial => 'calendar_view' %>
    <% end %>
 </div>
+<div class="new_event">
+  <% form_for @new_event do |event_form| %>
+    <%= event_form.text_field :title %>
+  <% end %>
+</div>
 </div>

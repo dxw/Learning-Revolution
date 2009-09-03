@@ -1,14 +1,14 @@
-  <div class="calendar_view">
-    <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
-      <%= t.head('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun') %>
-      <% t.day(:day_method => :start) do |day, events| %>
-        <p class="day"><%= day.day %></p>
-        <% events.each do |event| %>
-            <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event) %></p>
-        <% end %>
-        <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
-          <p class="more_link"></p>
-        <% end %>
+<div class="calendar_view">
+  <% calendar_for(@events, :year => 2009, :month => 10, :first_day_of_week => 1) do |t| %>
+    <%= t.head('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun') %>
+    <% t.day(:day_method => :start) do |day, events| %>
+      <p class="day"><%= day.day %></p>
+      <% events.each do |event| %>
+          <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event) %></p>
+      <% end %>
+      <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
+        <p class="more_link"></p>
       <% end %>
     <% end %>
- </div>
+  <% end %>
+</div>

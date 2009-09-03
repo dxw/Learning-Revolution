@@ -175,5 +175,19 @@ describe Venue do
     Venue.convert_form_params_into_filter_conditions({}).should == {}
   end
   
+  it "should find venues from a form params in one fell swoop" do
+    filter = {}
+    Venue.should_receive(:convert_form_params_into_filter_conditions).with(filter).and_return(ret={})
+    Venue.should_receive(:find_venues_by_event_conditions).with(ret)
+    Venue.find_venues_by_event_params(filter)
+  end
+  
+  it "should find events of a venue by the form params" do
+    filter = {}
+    Venue.should_receive(:convert_form_params_into_filter_conditions).with(filter).and_return(ret={})
+    @venue.events.should_receive(:find).with(:all, :conditions => ret)
+    @venue.find_events_by_event_params(filter)
+  end
+  
   
 end

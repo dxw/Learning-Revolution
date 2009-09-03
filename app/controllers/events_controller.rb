@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
+  before_filter :new_event
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       set_map_bounds
+      set_from_and_to_to_dates
       @venues = Venue.find_venues_by_event_params(params[:filter])
     else
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
@@ -42,6 +44,18 @@ class EventsController < ApplicationController
       @start_lng = location.lng
       @start_zoom = 12
     end
+  end
+  
+  def set_from_and_to_to_dates
+    params[:filter][:from_day] ||= 1
+    params[:filter][:to_day] ||= @first_day_of_month.end_of_month.day
+    
+    params[:filter][:from] = Time.parse("#{params[:filter][:from_day]} #{params[:month]} #{params[:year]}") if params[:filter][:from_day]
+    params[:filter][:to] = Time.parse("#{params[:filter][:to_day]} #{params[:month]} #{params[:year]}") if params[:filter][:to_day]
+  end
+  
+  def new_event
+    @new_event = Event.new(params[:event])
   end
 
 end
