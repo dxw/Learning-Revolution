@@ -7,7 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => "pages"
   
-  map.events "/events/:year/:month", :controller => 'events', :conditions => { :method => :get }
+  map.events_by_month "/events/:year/:month", :controller => 'events', :conditions => { :method => :get }
+  map.events "/events/", :controller => 'events', :action => "create", :conditions => { :method => :post }
   map.with_options :path_prefix => "/events/:year/:month", :controller => 'events', :conditions => { :method => :get } do |events|
     events.days_events "/:day", :action => "show"
     events.event "/:day/:id", :action => "show"
