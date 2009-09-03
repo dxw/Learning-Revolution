@@ -62,13 +62,13 @@ body {
 
 .header, .header h1
 {
-  width:945px;
+  width:940px;
   margin:0 auto;
   text-align:left;
 }
 .container{
 background-repeat:repeat-y;
-text-align:left;
+text-align:center;
 }
 .nav_banner {
   background-color:transparent;
@@ -76,10 +76,11 @@ text-align:left;
   padding-bottom:16px;
   background-position:top;
   background-repeat: repeat-x;
+  height:60px;
 }
 .nav {
   list-style: none;
-  width:920px;
+  width:940px;
   padding-left:20px;
   margin:0 auto;
   text-align:left;
@@ -88,13 +89,13 @@ text-align:left;
 }
 .nav li{
   display:inline-block;
+  float:left;
   padding:0px 40px 0px 0;
   font-size:18px;
   height:60px;
   background-color:transparent;
   background-image: url('/images/css/nav_menu_icon_bg.png');
   text-indent:-9999em;
-
   width:60px;
 }
 .nav li.home, .nav li.home a {
@@ -110,6 +111,7 @@ text-align:left;
 .nav li.resources{
   background-position:-595px 1px;
   width:105px;
+  float:right;
 }
 .nav li.resources a{
   background-position:-595px 1px;
@@ -154,17 +156,13 @@ text-align:left;
 }
 
 .content{
-  position:relative;
-  margin-left:auto;
-  margin-right:auto;
   width:940px;
+  text-align:left;
 }
 
 .content_block {
-  background-color: #FFF;
   float:left;
-  width:950px;
-  margin-right:20px;
+  width:940px;
   margin-bottom:18px;
 }
 
@@ -192,6 +190,7 @@ text-align:left;
 
 .span-6 {
   width:340px;
+  margin-right:10px;
 }
 
 .span-4 {
@@ -215,6 +214,7 @@ text-align:left;
   font-size:18px;
   margin-top:18px;
 }
+
 #calendar_thumbnail{
   float:left;
 }
@@ -225,14 +225,15 @@ text-align:left;
 
 .site_intro{
   margin-bottom:18px;
-  border:1px solid #999;
-  background-color:#999;
+  float:left;
+  background:#fff;
 }
 
 .site_intro .content_block {
   height:310px;
-  border-right:2px solid #666666;
+  background-color: #FFF;
   margin-bottom:0px;
+  margin-top:12px;
 }
 
 .site_intro .content_block_content {
@@ -245,10 +246,9 @@ text-align:left;
 .site_intro .featured_block {
   margin-left:-20px;
   padding:0;
-  width:470px;
+  width:480px;
   overflow:hidden;
   position:relative;
-  background:#222;
 }
 .site_intro .featured_block img {
   width:100%;
@@ -297,7 +297,8 @@ text-align:left;
   padding-left:85px;
   border-bottom:1px solid #8b1713;
   padding-bottom:6px;
-  margin-bottom:6px
+  margin-bottom:6px;
+  list-style: none;
 }
 .content_block_content li.see_more{
   border-bottom:none;
@@ -340,6 +341,9 @@ img.button{
   padding-top:36px;
   background-image:url('/images/css/silver_bg.png');
   background-repeat:repeat-x;
+  clear:both;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .photos_and_videos{

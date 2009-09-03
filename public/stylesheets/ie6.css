@@ -1,8 +1,32 @@
-.nav {
-  width:940px;
-  margin:0;
+.standfirst{
+  width:200px;
 }
-
-.nav li {
-  display:inline;
+.secondary_content{
+  margin-top:18px;
+}
+.photos_and_videos{
+  width:945px;
+  margin-left:0;
+  margin-right:0;
+}
+.photos_and_videos .heading{
+  margin-left:24px;
+}
+.videos .heading{
+  margin-left:64px;
+}
+.photos_and_videos .photos {
+  width:430px;
+  float:left;
+  border-right: 1px solid #666;
+  margin-bottom:12px;
+  margin-left:20px;
+}
+.photos_and_videos .videos {
+  width:460px;
+  float:left;
+  margin-bottom:12px;
+}
+.nav li a{
+  width:100px;
 }
