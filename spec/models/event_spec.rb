@@ -169,18 +169,7 @@ describe Event do
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
       Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
     end
-    
-    it "should be able to filter events in a month by location" do
-      pending
-      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 0, :lng => 0)
-      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"),  :lat => 50, :lng => 50)
-      event3 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 0, :lng => 0)
-      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :lat => 50, :lng => 50)
-      Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
-    end
-    
-    it "should be able to filter events in a month by postcode"
-    
+      
   end
   
   it "should collect an array of counts on all days" do

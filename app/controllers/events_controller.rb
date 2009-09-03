@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
+  before_filter :new_event
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
@@ -51,6 +52,10 @@ class EventsController < ApplicationController
     
     params[:filter][:from] = Time.parse("#{params[:filter][:from_day]} #{params[:month]} #{params[:year]}") if params[:filter][:from_day]
     params[:filter][:to] = Time.parse("#{params[:filter][:to_day]} #{params[:month]} #{params[:year]}") if params[:filter][:to_day]
+  end
+  
+  def new_event
+    @new_event = Event.new(params[:event])
   end
 
 end
