@@ -112,6 +112,8 @@ text-align:center;
   background-position:-595px 1px;
   width:105px;
   float:right;
+  position:relative;
+
 }
 .nav li.resources a{
   background-position:-595px 1px;
@@ -152,7 +154,7 @@ text-align:center;
 #direct_gov_link{
   position:absolute;
   top:0px;
-  right:00px;
+  right:20px;
 }
 
 .content{
