@@ -1,9 +1,14 @@
+require 'bitly'
+
 class Event < ActiveRecord::Base
   validates_presence_of :title, :start, :venue
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
+  
+  before_create :make_bitly_url
+  
   before_validation :cache_lat_lng
   
   belongs_to :venue, :foreign_key => "location_id"
@@ -98,6 +103,21 @@ class Event < ActiveRecord::Base
   def check_duplicate
     possible_duplicate?
     true
+  end
+  
+  def make_bitly_url
+    
+    event_uri =  AppConfig.event_uri_template
+    event_uri.gsub!(/:year/, start.year.to_s)
+    event_uri.gsub!(/:month/, start.month.to_s)
+    event_uri.gsub!(/:day/, start.day.to_s)
+    event_uri.gsub!(/:slug/, slug)
+    
+    event_uri = AppConfig.bitly_target_host + event_uri
+    
+    bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
+    
+    self.bitly_url = bitly.shorten(event_uri)
   end
   
   def possible_duplicate?

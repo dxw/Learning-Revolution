@@ -28,6 +28,7 @@ Feature: Event admin
     Then I should see "Event created successfully"
     And I should see "event title"
     And I am on the event admin index page
+    And it should be green
     
   Scenario: Submitting an empty form
     When I go to the event admin index page
