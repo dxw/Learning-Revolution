@@ -402,9 +402,10 @@ ul.youtube_videos li img {
   width:940px;
   background-color:#fff;
   border-bottom:1px solid #C2C2C3;
+  position:relative;
 }
 
-#query .form_wrapper{
+.form_wrapper{
   width:900px;
   margin-left:auto;
   margin-right:auto;
@@ -415,14 +416,13 @@ ul.youtube_videos li img {
   clear:both;
   padding-top:36px;
   background-image:url('/images/css/silver_bg.png');
-  background-repeat:repeat-x;
   background-position:0 -80px;
   position:relative;
 }
-#query .form_wrapper .filter{
+.form_wrapper .filter{
   position:relative;
 }
-#query .form_wrapper .tooltip{
+.form_wrapper .tooltip{
   background:#fff;
   border:1px solid #C2C2C3;
   padding:12px;
@@ -433,7 +433,7 @@ ul.youtube_videos li img {
   top:-15px;
   min-height:60px;
 }
-#query .form_wrapper .tooltip_arrow{
+.form_wrapper .tooltip_arrow{
   position:absolute;
   left:486px;
   top:-10px;
@@ -442,7 +442,7 @@ ul.youtube_videos li img {
 
   height:40px;
   width:30px;
-  
+
 }
 
 
@@ -457,7 +457,7 @@ ul.youtube_videos li img {
   margin-top:10px;
 }
 
-#query form{
+.form_wrapper form{
   margin-left:42px;
   width:460px;
   background:#fff;
@@ -499,37 +499,53 @@ span.trigger{
   font-style:italic;
   font-size:10px;
 }
-#query form div.filter{
+.form_wrapper form div.filter, .form_wrapper form div.input{
   margin-top:12px;
+  clear:left;
+  margin-bottom:16px;
+  position:relative;
 }
-#query form label{
+.form_wrapper form label{
   font-size:10px;
   font-weight:bold;
   float:left;
   width:100px;
 }
-#query form label.text{
+.form_wrapper form label.text{
   margin-top:6px;
 }
-#query form input.text{
+.form_wrapper form input.text{
   float:left;
   width:300px;
   font-size:16px;
   padding:3px;  
 }
-#query form select{
-  float:left;
+.form_wrapper form select{
+ 
   width:312px;
 }
+
+form fieldset, form legend{
+  clear:both;
+}
+
+form fieldset legend{
+  font-style:italic;
+  
+}
+
+
+
 input.search_for_events{
   margin-top:8px;
   margin-left:62px;
   margin-bottom:12px;
 }
+
 .add_event_link{
-  float:right;
-  margin-right:40px;
-  margin-top:22px;
+  position:absolute;
+  right:40px;
+  bottom:30px;
 }
 .add_event_link a{
   font-style:italic;
@@ -560,6 +576,7 @@ form#bis_email_signup{
   background-image:url(/images/css/selector_bg.png);
   padding-top:2px;
   padding-bottom:4px;
+  position:relative;
 }
 #selector ul{
   display:inline;
@@ -600,9 +617,14 @@ form#bis_email_signup{
 
 }
 
+.calendar_view{
+  width:860px;
+}
 .events .calendar_view table {
+  margin-left:40px;
+  margin-top:40px;
+  margin-bottom:40px;
   width:100%;
-  padding:40px;
   background-color:#fff;
 }
 .events .calendar_view th {
@@ -617,8 +639,11 @@ form#bis_email_signup{
   vertical-align: top;
   width:14%;
 }
+.events .calendar_view td:last-child{
+  border-right: none;p.
+}
 .events .calendar_view td .day {
-  width:90%;
+
   padding:4px 4%;
   text-align:right;
   font-size:10px;
@@ -632,7 +657,7 @@ form#bis_email_signup{
   margin-top:5px;
   text-decoration:none;
   color:#781B30;
-  max-height:2em;
+  max-height:1.8em;
   overflow:hidden;
 }
 
@@ -729,8 +754,13 @@ li.rss{
   background-position:0px -72px;  
 }
 li.email{
-    background-position:0px -98px;  
+  background-position:0px -98px;  
 }
 li.calendar{
-    background-position:0px -124px;    
-}  
+  background-position:0px -124px;    
+}
+
+/* Submitting Events*/
+input.submit_your_event{
+  margin-left:86px;
+}
