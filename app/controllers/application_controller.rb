@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  #
+  # TODO
+  #
+  # This method needs to be modified to use the event URL structure specified in config/application.yml
+  #
+  
   def path_for_event(event)
     return "/" unless event
     "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"

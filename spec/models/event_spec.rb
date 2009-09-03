@@ -101,6 +101,29 @@ describe Event do
     it "should delete itself if it is told it is the duplicate" do
       @new_dupicate_event.should_receive(:destroy)
       @new_dupicate_event.fix_duplicate(:self)
+    end  
+  end
+  
+  describe "making bitly URLs" do
+    before(:each) do      
+      @client = mock(:client)
+      Bitly.stub!(:new).and_return(@client)
+    end
+    
+    it "should call Bitly to create a short uri for an event" do
+      @client.should_receive(:shorten)   
+      event = Event.create(EventSpecHelper.valid_attributes)
+    end
+    
+    it "should set the event's bitly url" do
+      
+      test_string = 'oogieboogieboo'
+      
+      @client.stub!(:shorten).and_return(test_string)
+      
+      event = Event.create(EventSpecHelper.valid_attributes)
+      
+      event.bitly_url.should == test_string
     end
     
   end
