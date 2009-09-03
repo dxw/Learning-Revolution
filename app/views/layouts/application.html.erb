@@ -10,7 +10,7 @@
   <link href="/stylesheets/portal_ie6.css?1250082712" media="screen" rel="stylesheet" type="text/css" />
   <![endif]-->
   <!--[if lt IE 7]>
-  <style type="text/css">.png { behavior: url("/stylesheets/iepngfix.htc") }</style>
+  <style type="text/css">.png, .tooltip_arrow { behavior: url("/stylesheets/iepngfix.htc") }</style>
   <link href="/stylesheets/ie6.css?1250082712" media="screen" rel="stylesheet" type="text/css" />
   <![endif]-->
   <!--[if gt IE 6]>
@@ -39,7 +39,7 @@
     <div class="nav_banner">
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
-        <li class="events"><%= link_to "Events", events_path(2009, "October") %></li>
+        <li class="events"><%= link_to "Events", current_events_path %></li>
         <li class="stories"><%= link_to "Stories" %></li>
         <li class="about"><%= link_to "About" %></li>
         <li class="resources"><%= link_to "Resources" %></li>

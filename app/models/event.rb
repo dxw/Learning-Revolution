@@ -24,6 +24,7 @@ class Event < ActiveRecord::Base
                    :lng_column_name => :lng
   
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Types = ["Class"]
   
   def self.find_by_month_with_filter_from_params(date, params={})
     self.find_by_month_with_filter(date, turn_filter_params_into_find_options(params))
@@ -97,7 +98,7 @@ class Event < ActiveRecord::Base
   end
   
   def self.first_for_today
-     Event.find(:first, :conditions => ["DATE(start) >= ?", Date.today])
+     Event.find(:first, :conditions => ["DATE(start) >= ?", Date.today], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", Date.today], :order => "start DESC")
   end
   
   def check_duplicate

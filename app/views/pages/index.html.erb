@@ -1,17 +1,17 @@
 <div class="content">
   
-  <div class="site_intro clearfix">
+  <div class="site_intro clearfix row">
     <div class="content_block half_page">
       <div class="content_block_content">
-        <img src="/images/css/headings/be_a_part_of_the_festival.png" alt="Be a part of the Festival" />
+        <img class="png" src="/images/css/headings/be_a_part_of_the_festival.png" alt="Be a part of the Festival" />
       
-        <img id="calendar_thumbnail" src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
+        <img class="png" id="calendar_thumbnail" src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
       
         <p class="standfirst">This October we’re making it easier than ever to find something new to do</p>
       <%= link_to image_tag('buttons/bt_view_event_calendar.png', 
                             :alt => "View Event Calendar", 
                             :id => 'view_event_calendar'), 
-                            events_path(2009, "October") %>
+                            current_events_path %>
       </div>
     </div>
   
@@ -35,9 +35,12 @@
       <div class="featured_event_nav">
       </div>
     </div>
+
+
   </div>
 
-  <div class="clearfix">
+  <div class="content_block clearfix">
+
     <div class="content_block span-6 trans">
       <div class="content_block_content secondary_block">
         <img src="/images/headings/hd_featured_events.png" alt="Featured Events"></img>
@@ -56,7 +59,7 @@
               <h4><%= link_to truncate(event.title, :length => 30), path_for_event(event) %></h4>
               <p class="time_place"><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
               <%= simple_format truncate(event.description, :length => 50) %>
-            
+          
             </div>
           </li>
         <% end %>
@@ -77,7 +80,7 @@
     </div>
     <div class="content_block span-4 last trans">
       <div class="content_block_content secondary_block">
-            
+          
         <%= image_tag('headings/hd_follow_the_festival.png', :alt => 'Follow the Festival') %>
 
         <!-- bis newsletter -->
@@ -102,23 +105,26 @@
         </ul>
       </div>
     </div>
-  
+
+
   </div>
-</div>
-
-<div class="secondary_content">
-  
-<div class="photos_and_videos clearfix">
-
-    <div class="photos">
-      <%= image_tag('headings/hd_photos_from_our_events.png', :alt => "Photos from our events", :class => 'heading') %>
-      <%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %>
-    </div>
-    <div class="videos">
-      <%= image_tag('headings/hd_video_from_our_events.png', :alt => "Video from our events", :class => 'heading') %>
-      <%= link_to "view photos from our YouTube account", "http://youtube.com", :class => "youtube_videos" %>
-    </div>
-  
-</div>
 
 </div>
+
+<div class="secondary_content clearfix">
+
+  <div class="photos_and_videos clearfix">
+
+      <div class="photos">
+        <%= image_tag('headings/hd_photos_from_our_events.png', :alt => "Photos from our events", :class => 'heading') %>
+        <%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %>
+      </div>
+      <div class="videos">
+        <%= image_tag('headings/hd_video_from_our_events.png', :alt => "Video from our events", :class => 'heading') %>
+        <%= link_to "view photos from our YouTube account", "http://youtube.com", :class => "youtube_videos" %>
+      </div>
+
+  </div>
+
+</div>
+
