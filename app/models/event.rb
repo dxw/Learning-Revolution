@@ -4,10 +4,9 @@ class Event < ActiveRecord::Base
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
-  before_validation :cache_lat_lng
+  before_validation_on_create :cache_lat_lng
   
-  belongs_to :venue, :foreign_key => "location_id"
-  
+  belongs_to :venue, :foreign_key => "location_id"  
   
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
