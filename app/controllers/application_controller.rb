@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
   
   def path_for_event(event)
+    return "/" unless event
     "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
   end
   

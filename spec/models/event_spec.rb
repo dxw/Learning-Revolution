@@ -195,10 +195,19 @@ describe Event do
   end
   
   it "should be able to find the first event of a day" do
-    Event.should_receive(:find).with(:first, :conditions => ["DATE(start) >= ?", Date.today])
-    Event.first_for_today
+    Date.stub!(:today).and_return(Time.parse("2nd October 2009").to_date)
+    past_event = EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
+    present_event = EventSpecHelper.save(:start => Time.parse("2nd October 2009 10:00"))
+    future_event = EventSpecHelper.save(:start => Time.parse("3rd October 2009 10:00"))
+    Event.first_for_today.should == present_event
   end
   
+  it "should be able to find the next event even if there are no future events" do
+    Date.stub!(:today).and_return(Time.parse("2nd October 2009").to_date)
+    past_event = EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
+    Event.first_for_today.should == past_event
+  end
+
   it "should generate a slug of the-events-title-id from 'The Event's Title'" do
     @event.title = "The Event's Title"
     @event.stub!(:id).and_return(23)
@@ -212,5 +221,4 @@ describe Event do
     Event.find_by_slug("the-events-title-23")
   end
   
-  it "should be able to find the next event even if there are no future events"     
 end
