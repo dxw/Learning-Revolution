@@ -233,7 +233,6 @@ text-align:center;
   height:310px;
   background-color: #FFF;
   margin-bottom:0px;
-  margin-top:12px;
 }
 
 .site_intro .content_block_content {
@@ -398,7 +397,7 @@ ul.youtube_videos li img {
 /* Events */
 
 #query{
-  width:945px;
+  width:940px;
   background-color:#fff;
   border-bottom:1px solid #C2C2C3;
 }
@@ -596,6 +595,7 @@ form#bis_email_signup{
 
 .events{
   background-color:#fff;
+
 }
 
 .events .calendar_view table {
@@ -642,7 +642,7 @@ form#bis_email_signup{
 /* This refers to the item listed liston the left hand side */
 
 #events_list{
-  width:390px;
+  width:380px;
   float:left;
   padding-top:18px;
 }

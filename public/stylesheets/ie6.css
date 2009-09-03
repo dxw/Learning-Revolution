@@ -28,5 +28,8 @@
   margin-bottom:12px;
 }
 .nav li a{
-  width:100px;
+    width:100px;
+}
+.secondary_block{
+  height:340px;
 }
