@@ -12,7 +12,60 @@
 </div>
 <div class="new_event">
   <% form_for @new_event do |event_form| %>
-    <%= event_form.text_field :title %>
+  <label for="event_title">Title</label>
+  <%= event_form.text_field :title %>
+  
+  <% event_form.fields_for :venue do |venue_form| %>
+    <label for="event_venue_postcode">Postcode</label>
+    <%= venue_form.text_field :postcode %>
+    
+    <label for="event_venue_name">Venue name</label>
+    <%= venue_form.text_field :name %>
+    
+    <label for="event_venue_address_1">Address Line 1</label>
+    <%= venue_form.text_field :address_1 %>
+    
+    <label for="event_venue_address_2">Address Line 2</label>
+    <%= venue_form.text_field :address_2 %>
+
+    <label for="event_venue_address_3">Address Line 3</label>
+    <%= venue_form.text_field :address_3 %>
+
+    <label for="event_venue_city">City</label>
+    <%= venue_form.text_field :city %>
+
+    <label for="event_venue_county">County</label>
+    <%= venue_form.text_field :county %>
+  <% end %>
+  
+  <label for="event_theme">Category</label>
+  <%= event_form.select :theme, options_for_select(Event::Themes) %>
+
+  <label for="event_event_type">Event Type</label>
+  <%= event_form.select :event_type, options_for_select(Event::Types) %>
+  
+  <label for="event_description">Description</label>
+  <%= event_form.text_field :description %>
+  
+  <label for="event_start">From</label>
+  <%= event_form.text_field :start %>
+  
+  <label for="event_end">until</label>
+  <%= event_form.text_field :end %>
+  
+  <label for="event_organisation">Organisation</label>
+  <%= event_form.text_field :organisation %>
+  
+  <label for="event_contact_name">Contact Name</label>
+  <%= event_form.text_field :contact_name %>
+  
+  <label for="event_contact_phone_number">Contact Phone Number</label>
+  <%= event_form.text_field :contact_phone_number %>
+
+  <label for="event_contact_email_address">Contact Email Address</label>
+  <%= event_form.text_field :contact_email_address %>
+  
+  <%= event_form.submit "Submit this event" %>
   <% end %>
 </div>
 </div>
