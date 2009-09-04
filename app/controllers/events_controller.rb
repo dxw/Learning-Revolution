@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
-  before_filter :new_event
+  before_filter :new_event, :except => [:create]
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
@@ -19,6 +19,15 @@ class EventsController < ApplicationController
     fix_path
     
     params[:view] = 'list'
+  end
+  
+  def create
+    @event = Event.new(params[:event])
+    if @event.save
+      flash[:notice] = "Event created succesfully"
+      redirect_to current_events_path
+    else
+    end
   end
   
   private
@@ -56,6 +65,7 @@ class EventsController < ApplicationController
   
   def new_event
     @new_event = Event.new(params[:event])
+    @new_event.venue = Venue.new(params[:event].andand[:venue])
   end
 
 end

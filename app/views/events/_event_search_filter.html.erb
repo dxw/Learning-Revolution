@@ -1,5 +1,5 @@
 <div id="query" class="clearfix">
-
+  <%= flash[:notice] %>
   <h2 class="find_an_event">Find an Event in October</h2>
   
   <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 

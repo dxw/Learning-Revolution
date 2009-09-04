@@ -56,7 +56,7 @@ class Location < ActiveRecord::Base
   end
   
   def update_events_lat_lng_cache(lat=self.lat, lng=self.lng)
-    events.each { |event| event.save }
+    events.each { |event| event.cache_lat_lng; event.save }
   end
   
 end
