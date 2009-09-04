@@ -17,6 +17,8 @@
         <label for="venue_postcode">Postcode</label>
         <%= text_field :venue, :postcode, :class => 'text' %>
       </div>
+      
+      <%= hidden_field :event, :location_id %>
 
       <div class="input clearfix">
         <label for="venue_name">Venue name</label>
