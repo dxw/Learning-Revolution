@@ -48,7 +48,7 @@ FormSlider = $.klass({
   
   initialize: function() {
     this.element_to_toggle = $("#"+this.element.attr("id").replace("toggles_", ""));
-    this.element_to_toggle.hide()
+    this.element_to_toggle.hide();
   },
   
   onclick: function() {
@@ -95,15 +95,15 @@ EventFilterSlider = $.klass({
   onclick: $.delegate({
     '.toggles': function(el) {
       this.toggle();
-      this.toggles.toggleClass("active")
+      this.toggles.toggleClass("active");
         if (el.find('img') && !el.find('img').attr('src').match('_active')) {
           // remove the _active suffix
-         el.find('img').attr('src', el.find('img').attr('src').replace('.png','_active.png'))
+         el.find('img').attr('src', el.find('img').attr('src').replace('.png','_active.png'));
         }
         else 
         {
           // add the suffix
-         el.find('img').attr('src', el.find('img').attr('src').replace('_active',''))
+         el.find('img').attr('src', el.find('img').attr('src').replace('_active',''));
         }
       return false;
     }
@@ -116,7 +116,7 @@ jQuery(function($) {
   $('.youtube_videos').attach(YouTube, 'DowningSt');
   $('.date_slider').attach(DateSlider);
   $('.toggler').attach(FormSlider);
-  $('.event_filtering').attach(EventFilterSlider)
+  $('.event_filtering').attach(EventFilterSlider);
 });
 
 
