@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Cucumber</title>
-    <link href="/stylesheets/cucumber.css" type="text/css" rel="stylesheet"/>
-    <link href="/stylesheets/tablesorter.css" type="text/css" rel="stylesheet"/>
+    <link type="text/css" href="/stylesheets/cucumber.css" rel="stylesheet"/>
+    <link type="text/css" href="/stylesheets/tablesorter.css" rel="stylesheet"/>
   </head>
   <body>
     <div class="cucumber">
@@ -17,6 +17,7 @@ I should be able to be able to add, edit and delete events          <br/>
         <div class="scenario">
           <h3>Scenario: Adding a valid event</h3>
           <ol>
+            <li class="passed">Given a valid venue called &quot;London&quot;</li>
             <li class="passed">When I go to the event admin index page</li>
             <li class="passed">And I follow &quot;New event&quot;</li>
             <li class="passed">And I fill in &quot;Title&quot; with &quot;event title&quot;</li>
@@ -28,7 +29,7 @@ I should be able to be able to add, edit and delete events          <br/>
             <li class="passed">And I select &quot;November 23, 2004 12:20&quot; as the &quot;End&quot; date and time</li>
             <li class="passed">And I fill in &quot;Cost&quot; with &quot;&#163;1.50&quot;</li>
             <li class="passed">And I fill in &quot;Min Age&quot; with &quot;13&quot;</li>
-            <li class="passed">And I fill in &quot;Venue&quot; with &quot;London&quot;</li>
+            <li class="passed">And I select &quot;London&quot; from &quot;Venue&quot;</li>
             <li class="passed">And I fill in &quot;Organisation&quot; with &quot;BIS&quot;</li>
             <li class="passed">And I fill in &quot;Contact Name&quot; with &quot;event organiser&quot;</li>
             <li class="passed">And I fill in &quot;Contact Phone Number&quot; with &quot;020 8547 3847&quot;</li>
@@ -48,7 +49,7 @@ I should be able to be able to add, edit and delete events          <br/>
             <li class="passed">When I go to the event admin index page</li>
             <li class="passed">And I follow &quot;New event&quot;</li>
             <li class="passed">And I press &quot;Create&quot;</li>
-            <li class="passed">Then I should see &quot;error prohibited this event from being saved&quot;</li>
+            <li class="passed">Then I should see &quot;errors prohibited this event from being saved&quot;</li>
             <li class="passed">And I should see &quot;Title can't be blank&quot;</li>
             <li class="passed">And I am on the event admin index page</li>
           </ol>
