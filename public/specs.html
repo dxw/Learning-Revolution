@@ -357,36 +357,10 @@ a {
 <div class="example_group">
   <dl>
   <dt id="example_group_16">Event making bitly URLs</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('example_group_16');</script>
     <script type="text/javascript">moveProgressBar('68.0');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should call Bitly to create a short uri for an event</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>uninitialized constant Event::AppConfig</pre></div>
-        <div class="backtrace"><pre>/Users/abscond/Rails/learning_revolution/app/models/event.rb:108:in `make_bitly_url'
-./spec/models/event_spec.rb:115:</pre></div>
-    <pre class="ruby"><code><span class="linenum">106</span>  <span class="keyword">def </span><span class="method">make_bitly_url</span>
-<span class="linenum">107</span>    
-<span class="offending"><span class="linenum">108</span>    <span class="ident">event_uri</span> <span class="punct">=</span>  <span class="constant">AppConfig</span><span class="punct">.</span><span class="ident">event_uri_template</span></span>
-<span class="linenum">109</span>    <span class="ident">event_uri</span><span class="punct">.</span><span class="ident">gsub!</span><span class="punct">(/</span><span class="regex">:year</span><span class="punct">/,</span> <span class="ident">start</span><span class="punct">.</span><span class="ident">year</span><span class="punct">.</span><span class="ident">to_s</span><span class="punct">)</span>
-<span class="linenum">110</span>    <span class="ident">event_uri</span><span class="punct">.</span><span class="ident">gsub!</span><span class="punct">(/</span><span class="regex">:month</span><span class="punct">/,</span> <span class="ident">start</span><span class="punct">.</span><span class="ident">month</span><span class="punct">.</span><span class="ident">to_s</span><span class="punct">)</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should call Bitly to create a short uri for an event</span></dd>
     <script type="text/javascript">moveProgressBar('69.3');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should set the event's bitly url</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>uninitialized constant Event::AppConfig</pre></div>
-        <div class="backtrace"><pre>/Users/abscond/Rails/learning_revolution/app/models/event.rb:108:in `make_bitly_url'
-./spec/models/event_spec.rb:124:</pre></div>
-    <pre class="ruby"><code><span class="linenum">106</span>  <span class="keyword">def </span><span class="method">make_bitly_url</span>
-<span class="linenum">107</span>    
-<span class="offending"><span class="linenum">108</span>    <span class="ident">event_uri</span> <span class="punct">=</span>  <span class="constant">AppConfig</span><span class="punct">.</span><span class="ident">event_uri_template</span></span>
-<span class="linenum">109</span>    <span class="ident">event_uri</span><span class="punct">.</span><span class="ident">gsub!</span><span class="punct">(/</span><span class="regex">:year</span><span class="punct">/,</span> <span class="ident">start</span><span class="punct">.</span><span class="ident">year</span><span class="punct">.</span><span class="ident">to_s</span><span class="punct">)</span>
-<span class="linenum">110</span>    <span class="ident">event_uri</span><span class="punct">.</span><span class="ident">gsub!</span><span class="punct">(/</span><span class="regex">:month</span><span class="punct">/,</span> <span class="ident">start</span><span class="punct">.</span><span class="ident">month</span><span class="punct">.</span><span class="ident">to_s</span><span class="punct">)</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should set the event's bitly url</span></dd>
   </dl>
 </div>
 <div class="example_group">
@@ -450,8 +424,8 @@ a {
     <dd class="spec passed"><span class="passed_spec_name">should be able to find by slug</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>3.697391 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "75 examples, 2 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>3.592878 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "75 examples, 0 failures";</script>
 </div>
 </div>
 </body>
