@@ -23,10 +23,12 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(params[:event])
-    if @event.save
+    @venue = @event.venue = Venue.new(params[:venue])
+    if @event.valid? && @venue.valid? && @event.save!
       flash[:notice] = "Event created succesfully"
       redirect_to current_events_path
     else
+      rendaer :partial => "index"
     end
   end
   

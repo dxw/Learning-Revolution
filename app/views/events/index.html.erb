@@ -12,9 +12,9 @@
 </div>
 <div class="new_event">
   <div class="form_wrapper clearfix">
-    
+  
   <% form_for @new_event do |event_form| %>
-
+  
   <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
 
   <div class="input clearfix">
@@ -26,38 +26,38 @@
 
     <% event_form.fields_for :venue do |venue_form| %>
     <div class="input clearfix">
-    <label for="event_venue_postcode">Postcode</label>
-    <%= venue_form.text_field :postcode, :class => 'text' %>
+    <label for="venue_postcode">Postcode</label>
+    <%= text_field :venue, :postcode, :class => 'text' %>
     </div>
     
     <div class="input clearfix">
-    <label for="event_venue_name">Venue name</label>
-    <%= venue_form.text_field :name, :class => 'text' %>
+    <label for="venue_name">Venue name</label>
+    <%= text_field :venue, :name, :class => 'text' %>
     </div>
 
     <div class="input clearfix">
-    <label for="event_venue_address_1">Address Line 1</label>
-    <%= venue_form.text_field :address_1, :class => 'text' %>
+    <label for="venue_address_1">Address Line 1</label>
+    <%= text_field :venue, :address_1, :class => 'text' %>
     </div>
 
     <div class="input clearfix">
-    <label for="event_venue_address_2">Address Line 2</label>
-    <%= venue_form.text_field :address_2, :class => 'text' %>
+    <label for="venue_address_2">Address Line 2</label>
+    <%= text_field :venue, :address_2, :class => 'text' %>
     </div>
 
     <div class="input clearfix">
-    <label for="event_venue_address_3">Address Line 3</label>
-    <%= venue_form.text_field :address_3, :class => 'text' %>
+    <label for="venue_address_3">Address Line 3</label>
+    <%= text_field :venue, :address_3, :class => 'text' %>
     </div>
 
     <div class="input clearfix">
-    <label for="event_venue_city">City</label>
-    <%= venue_form.text_field :city, :class => 'text' %>
+    <label for="venue_city">City</label>
+    <%= text_field :venue, :city, :class => 'text' %>
     </div>
 
     <div class="input clearfix">
-    <label for="event_venue_county">County</label>
-    <%= venue_form.text_field :county, :class => 'text' %>
+    <label for="venue_county">County</label>
+    <%= text_field :venue, :county, :class => 'text' %>
     </div>
   <% end %>
 
@@ -117,7 +117,7 @@
 
   </fieldset>
   
-  <%= image_submit_tag('/images/buttons/bt_submit_your_event.png', :alt => "Add your Event", :class => "submit_your_event") %>
+  <%= image_submit_tag('/images/buttons/bt_submit_your_event.png', :alt => "Submit this event", :class => "submit_your_event") %>
   <% end %>
   </div>
 
