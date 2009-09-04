@@ -40,3 +40,14 @@ h3.filter_description{
   width:630px;
   margin-left:20px;
 }
+.form_wrapper .tooltip_arrow{
+  left:482px;
+}
+.span-2{
+  display:inline;
+}
+#events_list{
+  margin-right:0px;
+  background-image:none;
+  background-color:#fff;
+}
