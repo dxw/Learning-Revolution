@@ -168,6 +168,14 @@ text-align:center;
   margin-bottom:18px;
 }
 
+.content_block .last{
+  width:210px;
+  overflow:hidden;
+}
+.content_block .last img{
+  position:relative;
+  left:-10px;
+}
 .content_block_content {
   padding:17px 12px;
   border: 1px solid #000;
@@ -745,6 +753,7 @@ li.event_link{
   width:549px;
   float:left;
   border-left:1px solid #c9c9c9;
+  background-color:#fff;
 }
 
 #event_details .detail_list{
@@ -755,7 +764,9 @@ li.event_link{
 #event_details .detail_list .span-2{
   margin-top:12px;
 }
-
+#event_details .detail_list .last{
+  border-right:none;
+}
 
 #event_details .detail{
   min-height:60px;
@@ -765,7 +776,7 @@ li.event_link{
   font-size:18px;
   font-style:italic;
   font-weight:bold;
-  margin-left:18px;
+  padding-left:18px;
   padding-bottom:18px;
   border-bottom:1px solid #c9c9c9;
   padding-bottom:12px;
