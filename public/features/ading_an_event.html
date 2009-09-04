@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Cucumber</title>
+    <link type="text/css" href="/stylesheets/cucumber.css" rel="stylesheet"/>
+    <link type="text/css" href="/stylesheets/tablesorter.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="cucumber">
+      <div class="feature">
+        <h2>Feature: Adding an event</h2>
+        <p>
+In order to add the event I'm running          <br/>
+As a user          <br/>
+I should be able to be able to add a new event          <br/>
+        </p>
+        <div class="scenario">
+          <h3>Scenario: Adding a valid event from the calendar page with a new venue</h3>
+          <ol>
+            <li class="passed">When I go to the calendar for October 2009</li>
+            <li class="passed">And I fill in &quot;Title&quot; with &quot;event title&quot;</li>
+            <li class="passed">And I fill in &quot;Postcode&quot; with &quot;E11 1PB&quot;</li>
+            <li class="passed">And I fill in &quot;Venue name&quot; with &quot;Venue name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 1&quot; with &quot;Address 1 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 2&quot; with &quot;Address 2 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 3&quot; with &quot;Address 3 name&quot;</li>
+            <li class="passed">And I fill in &quot;City&quot; with &quot;City name&quot;</li>
+            <li class="passed">And I fill in &quot;County&quot; with &quot;County name&quot;</li>
+            <li class="passed">And I select &quot;Class&quot; from &quot;event_event_type&quot;</li>
+            <li class="passed">And I select &quot;Food and Cookery&quot; from &quot;Category&quot;</li>
+            <li class="passed">And I fill in &quot;Description&quot; with &quot;event description&quot;</li>
+            <li class="passed">And I fill in &quot;From&quot; with &quot;October 23, 2004 11:20&quot;</li>
+            <li class="passed">And I fill in &quot;until&quot; with &quot;October 23, 2004 12:20&quot;</li>
+            <li class="passed">And I fill in &quot;Organisation&quot; with &quot;BIS&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Name&quot; with &quot;event organiser&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Phone Number&quot; with &quot;020 8547 3847&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Email Address&quot; with &quot;contact@test.com&quot;</li>
+            <li class="passed">And I press &quot;Submit this event&quot;</li>
+            <li class="passed">Then I should see &quot;Event created succesfully&quot;</li>
+            <li class="passed">And there should be 1 Event in the database</li>
+            <li class="passed">And there should be 1 Venue in the database</li>
+            <li class="passed">And I am on the calendar for October 2009</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Adding a valid event from the calendar page with an invalid new venue</h3>
+          <ol>
+            <li class="passed">When I go to the calendar for October 2009</li>
+            <li class="passed">And I fill in &quot;Title&quot; with &quot;event title&quot;</li>
+            <li class="passed">And I select &quot;Class&quot; from &quot;event_event_type&quot;</li>
+            <li class="passed">And I select &quot;Food and Cookery&quot; from &quot;Category&quot;</li>
+            <li class="passed">And I fill in &quot;Description&quot; with &quot;event description&quot;</li>
+            <li class="passed">And I fill in &quot;From&quot; with &quot;October 23, 2004 11:20&quot;</li>
+            <li class="passed">And I fill in &quot;until&quot; with &quot;October 23, 2004 12:20&quot;</li>
+            <li class="passed">And I fill in &quot;Organisation&quot; with &quot;BIS&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Name&quot; with &quot;event organiser&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Phone Number&quot; with &quot;020 8547 3847&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Email Address&quot; with &quot;contact@test.com&quot;</li>
+            <li class="passed">And I press &quot;Submit this event&quot;</li>
+            <li class="passed">Then I should see &quot;2 errors prohibited this venue from being save&quot;</li>
+            <li class="passed">And I should see &quot;Name can't be blank&quot;</li>
+            <li class="passed">And I should see &quot;Postcode can't be blank&quot;</li>
+            <li class="passed">And there should be 0 Event in the database</li>
+            <li class="passed">And there should be 0 Venue in the database</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Adding a invalid event from the calendar page with a valid new venue</h3>
+          <ol>
+            <li class="passed">When I go to the calendar for October 2009</li>
+            <li class="passed">And I fill in &quot;Postcode&quot; with &quot;E11 1PB&quot;</li>
+            <li class="passed">And I fill in &quot;Venue name&quot; with &quot;Venue name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 1&quot; with &quot;Address 1 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 2&quot; with &quot;Address 2 name&quot;</li>
+            <li class="passed">And I fill in &quot;Address Line 3&quot; with &quot;Address 3 name&quot;</li>
+            <li class="passed">And I fill in &quot;City&quot; with &quot;City name&quot;</li>
+            <li class="passed">And I fill in &quot;County&quot; with &quot;County name&quot;</li>
+            <li class="passed">And I press &quot;Submit this event&quot;</li>
+            <li class="passed">Then I should see &quot;2 errors prohibited this new event from being save&quot;</li>
+            <li class="passed">And I should see &quot;Title can't be blank&quot;</li>
+            <li class="passed">And I should see &quot;Start can't be blank&quot;</li>
+            <li class="passed">And there should be 0 Event in the database</li>
+            <li class="passed">And there should be 0 Venue in the database</li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>Scenario: Adding a valid event from the calendar page to an existing event</h3>
+          <ol>
+            <li class="passed">Given a valid venue called &quot;The venue&quot;</li>
+            <li class="passed">When I go to the calendar for October 2009</li>
+            <li class="passed">And I fill in &quot;Title&quot; with &quot;event title&quot;</li>
+            <li class="passed">And I fill in &quot;Postcode&quot; with &quot;E11 1PB&quot;</li>
+            <li class="passed">And we assume the user successfully picks &quot;The venue&quot; form autosuggest</li>
+            <li class="passed">And I select &quot;Class&quot; from &quot;event_event_type&quot;</li>
+            <li class="passed">And I select &quot;Food and Cookery&quot; from &quot;Category&quot;</li>
+            <li class="passed">And I fill in &quot;Description&quot; with &quot;event description&quot;</li>
+            <li class="passed">And I fill in &quot;From&quot; with &quot;October 23, 2004 11:20&quot;</li>
+            <li class="passed">And I fill in &quot;until&quot; with &quot;October 23, 2004 12:20&quot;</li>
+            <li class="passed">And I fill in &quot;Organisation&quot; with &quot;BIS&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Name&quot; with &quot;event organiser&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Phone Number&quot; with &quot;020 8547 3847&quot;</li>
+            <li class="passed">And I fill in &quot;Contact Email Address&quot; with &quot;contact@test.com&quot;</li>
+            <li class="passed">And I press &quot;Submit this event&quot;</li>
+            <li class="failed">Then I should see &quot;Event created succesfully&quot;</li>
+            <li class="skipped">And there should be 1 Event in the database</li>
+            <li class="skipped">And there should be 1 Venue in the database</li>
+            <li class="skipped">And I am on the calendar for October 2009</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
