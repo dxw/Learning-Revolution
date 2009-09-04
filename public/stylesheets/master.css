@@ -181,6 +181,9 @@ text-align:center;
 .trans {
   background: transparent url('/images/css/white_trans.png');
 }
+.grad {
+  background: transparent url('/images/css/front_page_gradient.png');
+}
 
 .quarter_page {
   width:220px;
@@ -245,6 +248,7 @@ text-align:center;
 .site_intro .content_block {
   height:310px;
   background-color: #FFF;
+  background-image:transparent url('/images/front_page_gradient.png');
   margin-bottom:0px;
 }
 
