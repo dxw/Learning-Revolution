@@ -708,6 +708,9 @@ form#bis_email_signup{
   width:380px;
   float:left;
   padding-top:18px;
+  margin-right:0px;
+  background-image:none;
+  background-color:#fff;
 }
 #events_list ul{
   
@@ -743,21 +746,33 @@ li.event_link{
 #event_details{
   padding-top:18px;
   padding-bottom:36px;
-  width:540px;
+  width:549px;
   float:left;
   border-left:1px solid #c9c9c9;
 }
+
+#event_details .detail_list{
+    border-bottom:1px solid #c9c9c9;
+    background:#eee;
+    padding-bottom:12px;
+}
+#event_details .detail_list .span-2{
+  margin-top:12px;
+}
+
+
 #event_details .detail{
   min-height:60px;
+
 }
 #event_details h2{
   font-size:18px;
   font-style:italic;
   font-weight:bold;
   margin-left:18px;
-  margin-bottom:18px;
+  padding-bottom:18px;
   border-bottom:1px solid #c9c9c9;
-  padding-bottom:6px;
+  padding-bottom:12px;
 }
 #event_details h4{
   font-size:12px;
