@@ -190,6 +190,17 @@ text-align:center;
   width:460px;
 }
 
+.span-12{
+  width:720px;
+  margin-right:10px;
+  float:left;
+}
+.span-11{
+  width:660px;
+  margin-right:10px;
+  float:left;
+  
+}
 .span-6 {
   width:340px;
   margin-right:10px;
@@ -419,6 +430,11 @@ ul.youtube_videos li img {
   background-position:0 -80px;
   position:relative;
 }
+#query .form_wrapper{
+  margin-bottom:66px;
+}
+
+
 .form_wrapper .filter{
   position:relative;
 }
@@ -472,6 +488,10 @@ h3.filter_description{
   margin-bottom:12px;
   line-height:1.5;
 }
+p.filter_edit{
+  margin-left:42px;
+  margin-bottom:12p
+}
 .keyword{
   font-style:italic;
   font-weight:bold;
@@ -484,6 +504,8 @@ ul.search_subscription_options{
   font-size:9px;
   padding-left:12px;
   margin-bottom:12px;
+  margin-top:42px;
+  margin-right:20px;
 }
 ul.search_subscription_options li{
   padding-left:42px;
@@ -498,6 +520,15 @@ ul.search_subscription_options li{
 span.trigger{
   font-style:italic;
   font-size:10px;
+}
+.form_shim{
+  border-top:1px solid #C2C2C3;
+  height:1px;
+  width:900px;
+  margin-top:20px;
+  margin-left:20px;
+  display:block;
+  float:left;
 }
 .form_wrapper form div.filter, .form_wrapper form div.input{
   margin-top:12px;
@@ -538,14 +569,15 @@ form fieldset legend{
 
 input.search_for_events{
   margin-top:8px;
-  margin-left:62px;
+  margin-left:96px;
   margin-bottom:12px;
 }
 
 .add_event_link{
   position:absolute;
   right:40px;
-  bottom:30px;
+  bottom:-36px;
+
 }
 .add_event_link a{
   font-style:italic;

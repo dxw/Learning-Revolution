@@ -42,6 +42,30 @@ RefineEventSearch = $.klass({
   }
 });
 
+FormSlider = $.klass({
+  
+  initialize: function() {
+    this.element_to_toggle = $("#"+this.element.attr("id").replace("toggles_", ""));
+    this.element_to_toggle.hide()
+  },
+  
+  onclick: function() {
+    this.element_to_toggle.slideToggle();
+    return false;
+  }
+  
+});
+
+QueryFormSlider = $.klass(FormSlider, {
+  
+  onclick: function($super) {
+    this.element.toggle();
+    $super();
+  }
+
+});
+
+
 DateSlider = $.klass({
   initialize: function() {
     this.element.find('select').hide();
@@ -68,11 +92,14 @@ DateSlider = $.klass({
 });
 
 
+  
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
   $('.date_slider').attach(DateSlider);
+  $('.toggler').attach(FormSlider);
+  $('.self_toggler').attach(QueryFormSlider);
 });
 
 

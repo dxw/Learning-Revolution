@@ -1,17 +1,29 @@
 <div id="query" class="clearfix">
+
+  <div class="span-11">
+
   <%= flash[:notice] %>
+
   <h2 class="find_an_event">Find an Event in October</h2>
   
   <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 
 
-  <ul class="search_subscription_options">
+   <p class="filter_edit"><a href="#events_filter_form" id="toggles_events_filter_form_wrapper" class="self_toggler"><%= image_tag('buttons/bt_look_for_more_events.png') %></a></p>
+  
+</div>
+
+
+ <ul class="search_subscription_options">
     <li class="email">Send me these events as email.</li>
     <li class="calendar">Add these events to my calendar.</li>
     <li class="rss">Add to my feed reader.</li>
   </ul>
 
-  <div class="form_wrapper">
-    <% form_tag current_events_path, :method => :get do %>
+  <div class="form_shim"></div>
+
+  <div class="form_wrapper" id="events_filter_form_wrapper">
+
+    <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
     
       <div class="filter filter_theme clearfix">
         <label for="filter_theme">Theme</label> 
@@ -46,14 +58,16 @@
       
       <%= hidden_field_tag "view", params[:view] %>
 
-  </div>
+      <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
 
-  <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
-
-    
       <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "" %></div>
-      
+
     <% end %>
+
+    </div>
+
+      
+
 
   
 </div>
