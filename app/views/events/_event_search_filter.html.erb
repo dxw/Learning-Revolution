@@ -12,7 +12,6 @@
   
 </div>
 
-
  <ul class="search_subscription_options">
     <li class="email">Send me these events as email.</li>
     <li class="calendar">Add these events to my calendar.</li>
@@ -58,9 +57,13 @@
       
       <%= hidden_field_tag "view", params[:view] %>
 
-      <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
 
-      <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "" %></div>
+      <div class="submit_options clearfix">
+        <a href="#events_filter_form" class="cancel_search" id="hides_events_filter_form_wrapper">cancel</a>
+        <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
+      </div>
+
+        <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "" %></div>
 
     <% end %>
 

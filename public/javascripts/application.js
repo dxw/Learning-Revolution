@@ -1,3 +1,5 @@
+
+
 Flickr = $.klass({
   initialize: function(user_id) {
     var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_'+user_id+'"></ul>');
@@ -56,11 +58,22 @@ FormSlider = $.klass({
   
 });
 
+SliderCancel = $.klass({
+  initialize: function() {
+    this.element_to_slideUp = $("#"+this.element.attr("id").replace("hides_", ""));
+  },
+
+  onclick: function() {
+  this.element_to_slideUp.slideUp();
+  return false;
+  }
+});
+
 QueryFormSlider = $.klass(FormSlider, {
   
   onclick: function($super) {
-    this.element.toggle();
-    $super();
+  this.element.fadeOut('200', function() {  $super();});
+  return false
   }
 
 });
@@ -100,6 +113,7 @@ jQuery(function($) {
   $('.date_slider').attach(DateSlider);
   $('.toggler').attach(FormSlider);
   $('.self_toggler').attach(QueryFormSlider);
+  $('.cancel_search').attach(SliderCancel);
 });
 
 

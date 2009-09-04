@@ -455,7 +455,6 @@ ul.youtube_videos li img {
   top:-10px;
   background-image:url(/images/tooltip-left.png);
   z-index:10;
-
   height:40px;
   width:30px;
 
@@ -488,6 +487,20 @@ h3.filter_description{
   margin-bottom:12px;
   line-height:1.5;
 }
+
+.cancel_search{
+  float:left;
+  margin-left:106px;
+  margin-top:20px;
+}
+input.search_for_events{
+  margin-top:8px;
+  margin-left:24px;
+  margin-bottom:12px;
+}
+
+
+  
 p.filter_edit{
   margin-left:42px;
   margin-bottom:12p
@@ -564,15 +577,6 @@ form fieldset legend{
   font-style:italic;
   
 }
-
-
-
-input.search_for_events{
-  margin-top:8px;
-  margin-left:96px;
-  margin-bottom:12px;
-}
-
 .add_event_link{
   position:absolute;
   right:40px;
