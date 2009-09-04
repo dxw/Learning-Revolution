@@ -129,19 +129,19 @@ text-align:center;
   width:110px;
 }
 .nav li.home a:hover{
-  background-position:-10px -70px;
+  background-position:-10px -69px;
 }
 .nav li.events a:hover{
-  background-position:-236px -70px;
+  background-position:-236px -69px;
 }
 .nav li.stories a:hover{
-  background-position:-470px -70px;  
+  background-position:-470px -69px;  
 }
 .nav li.resources a:hover{
-  background-position:-595px -70px;
+  background-position:-595px -69px;
 }
 .nav li.about a:hover{
-  background-position:-130px -70px;
+  background-position:-130px -69px;
 }
 
 /* Site wide styles */
@@ -488,7 +488,7 @@ h3.filter_description{
   line-height:1.5;
 }
 
-.cancel_search{
+  .cancel_search{
   float:left;
   margin-left:106px;
   margin-top:20px;

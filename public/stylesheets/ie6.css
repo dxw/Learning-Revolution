@@ -36,3 +36,7 @@
 .secondary_block{
   height:340px;
 }
+h3.filter_description{
+  width:630px;
+  margin-left:20px;
+}
