@@ -416,22 +416,23 @@ ul.youtube_videos li img {
   position:relative;
 }
 
-.form_wrapper{
-  width:900px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:18px;
+.event_filtering {
+  margin:0 20px;
+  margin-bottom:18px;
+}
+.form_wrapper {
   border-bottom:1px solid #C2C2C3;
   border-top:1px solid #C2C2C3;
-  padding-bottom:12px;
-  clear:both;
-  padding-top:36px;
+  padding:18px 0;
   background-image:url('/images/css/silver_bg.png');
   background-position:0 -80px;
-  position:relative;
 }
-#query .form_wrapper{
-  margin-bottom:66px;
+.event_filtering h3 {
+  background-color:#F4F4F4;
+  margin-bottom:0;
+  width:12em;
+  margin-left:40px;
+  padding:4px;
 }
 
 
@@ -488,7 +489,7 @@ h3.filter_description{
   line-height:1.5;
 }
 
-  .cancel_search{
+.cancel_search{
   float:left;
   margin-left:106px;
   margin-top:20px;
@@ -530,19 +531,6 @@ ul.search_subscription_options li{
 }
 
 
-span.trigger{
-  font-style:italic;
-  font-size:10px;
-}
-.form_shim{
-  border-top:1px solid #C2C2C3;
-  height:1px;
-  width:900px;
-  margin-top:20px;
-  margin-left:20px;
-  display:block;
-  float:left;
-}
 .form_wrapper form div.filter, .form_wrapper form div.input{
   margin-top:12px;
   clear:left;

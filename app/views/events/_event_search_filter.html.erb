@@ -1,51 +1,45 @@
 <div id="query" class="clearfix">
+  <div class="current_event_filtering clearfix">
+    <div class="span-11">
+      <%= flash[:notice] %>
+      <h2 class="find_an_event">Find an Event in October</h2>
+      <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 
+    </div>
 
-  <div class="span-11">
-
-  <%= flash[:notice] %>
-
-  <h2 class="find_an_event">Find an Event in October</h2>
+    <ul class="search_subscription_options">
+      <li class="email">Send me these events as email.</li>
+      <li class="calendar">Add these events to my calendar.</li>
+      <li class="rss">Add to my feed reader.</li>
+    </ul>
+  </div>
   
-  <h3 class="filter_description">Now showing all <span class="keyword"><%= params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize %></span> <%= params[:filter][:theme].blank? ? "" : "related to <span class='keyword'>#{params[:filter][:theme] }</span>" %> happening near <%= params[:filter][:location].blank? ? "<span class='keyword'>Scunthorpe</span>" : "<span class='keyword'>#{params[:filter][:location]}</span>" %></h3> 
+  <div class="event_filtering clearfix">
+    <h3>Search for events</h3>
+    <div class="form_wrapper">
+      <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
-   <p class="filter_edit"><a href="#events_filter_form" id="toggles_events_filter_form_wrapper" class="self_toggler"><%= image_tag('buttons/bt_look_for_more_events.png') %></a></p>
-  
-</div>
+        <div class="filter filter_theme clearfix">
+          <label for="filter_theme">Theme</label> 
+          <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
+          <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
+          <div class="tooltip_arrow"></div>
+        </div>
 
- <ul class="search_subscription_options">
-    <li class="email">Send me these events as email.</li>
-    <li class="calendar">Add these events to my calendar.</li>
-    <li class="rss">Add to my feed reader.</li>
-  </ul>
+        <div class="filter filter_event_type clearfix">
+          <label for="filter_event_type">Event Type</label> 
+          <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %> 
+        </div>
 
-  <div class="form_shim"></div>
+        <div class="filter_location clearfix filter">
+          <label for="filter_location" class="text">Location</label>  
+          <%= text_field_tag "filter[location]", nil, :class => 'text' %>
+        </div>
 
-  <div class="form_wrapper" id="events_filter_form_wrapper">
-
-    <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
-    
-      <div class="filter filter_theme clearfix">
-        <label for="filter_theme">Theme</label> 
-        <%= select_tag "filter[theme]", options_for_select([""]+Event::Themes, params[:filter][:theme]) %>
-        <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-
-      <div class="filter filter_event_type clearfix">
-        <label for="filter_event_type">Event Type</label> 
-        <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %> 
-      </div>
-
-      <div class="filter_location clearfix filter">
-        <label for="filter_location" class="text">Location</label>  
-        <%= text_field_tag "filter[location]", nil, :class => 'text' %>
-      </div>
-      
-      <% if params[:view] == 'map' %>
+        <% if params[:view] == 'map' %>
         <div class="date_slider">          <%= hidden_field :filter, "from_day", :value => params[:filter][:from_day] %>
           <%= hidden_field :filter, "to_day",   :value => params[:filter][:to_day] %>
           <div class="slider">
-            
+
           </div>
           <div class="current_time_span">
             <span class="current_from_day"><%= params[:filter][:from_day] %></span> <%= params[:month] %>
@@ -53,24 +47,20 @@
             <span class="current_to_day"><%= params[:filter][:to_day] %></span> <%= params[:month] %>
           </div>
         </div>
+        <% end %>
+
+        <%= hidden_field_tag "view", params[:view] %>
+
+
+        <div class="submit_options clearfix">
+          <a href="#events_filter_form" class="cancel_search" id="hides_events_filter_form_wrapper">cancel</a>
+          <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
+        </div>
+
       <% end %>
-      
-      <%= hidden_field_tag "view", params[:view] %>
-
-
-      <div class="submit_options clearfix">
-        <a href="#events_filter_form" class="cancel_search" id="hides_events_filter_form_wrapper">cancel</a>
-        <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
-      </div>
-
-        <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "" %></div>
-
-    <% end %>
-
     </div>
-
-      
-
-
+  </div>
   
+  <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "" %></div>
+
 </div>
