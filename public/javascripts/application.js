@@ -86,14 +86,16 @@ DateSlider = $.klass({
 EventFilterSlider = $.klass({
   initialize: function() {
     this.hideable = this.element.find(".form_wrapper")
+    this.toggles = this.element.find(".toggles")
     this.hideable.hide();
   },
+  toggle: function() {
+    this.hideable.slideToggle();
+  },
   onclick: $.delegate({
-    'h3': function(el) {
-      this.hideable.slideToggle();
-    },
-    '.cancel_search': function(el) {
-      this.hideable.slideToggle();
+    '.toggles': function(el) {
+      this.toggle();
+      this.toggles.toggleClass("active")
       return false;
     }
   })

@@ -435,6 +435,10 @@ ul.youtube_videos li img {
   padding:4px;
 }
 
+.event_filtering h3.active {
+  background-color:#C2C2C3;
+}
+
 
 .form_wrapper .filter{
   position:relative;

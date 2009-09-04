@@ -16,7 +16,7 @@
   </div>
   
   <div class="event_filtering clearfix">
-    <h3>Search for events</h3>
+    <h3 class="toggles">Search for events</h3>
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
@@ -55,7 +55,7 @@
 
 
         <div class="submit_options clearfix">
-          <a href="#events_filter_form" class="cancel_search" id="hides_events_filter_form_wrapper">cancel</a>
+          <a href="#events_filter_form" class="cancel_search toggles" id="hides_events_filter_form_wrapper">cancel</a>
           <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
         </div>
 
