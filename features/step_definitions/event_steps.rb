@@ -19,3 +19,8 @@ Given /^the event "([^\"]*)" is located at lat "([^\"]*)" and lng "([^\"]*)"$/ d
   event.update_attribute(:lat, lat)
   event.update_attribute(:lng, lng)
 end
+
+When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |title|
+  venue = find_or_create(Venue, :name => title)
+  set_hidden_field("event[location_id]", :with => venue.id) 
+end

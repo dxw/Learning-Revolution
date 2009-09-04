@@ -58,27 +58,6 @@ FormSlider = $.klass({
   
 });
 
-SliderCancel = $.klass({
-  initialize: function() {
-    this.element_to_slideUp = $("#"+this.element.attr("id").replace("hides_", ""));
-  },
-
-  onclick: function() {
-  this.element_to_slideUp.slideUp();
-  return false;
-  }
-});
-
-QueryFormSlider = $.klass(FormSlider, {
-  
-  onclick: function($super) {
-  this.element.fadeOut('200', function() {  $super();});
-  return false
-  }
-
-});
-
-
 DateSlider = $.klass({
   initialize: function() {
     this.element.find('select').hide();
@@ -104,6 +83,24 @@ DateSlider = $.klass({
   }
 });
 
+EventFilterSlider = $.klass({
+  initialize: function() {
+    this.hideable = this.element.find(".form_wrapper")
+    this.toggles = this.element.find(".toggles")
+    this.hideable.hide();
+  },
+  toggle: function() {
+    this.hideable.slideToggle();
+  },
+  onclick: $.delegate({
+    '.toggles': function(el) {
+      this.toggle();
+      this.toggles.toggleClass("active")
+      return false;
+    }
+  })
+})
+
 
   
 
@@ -112,8 +109,7 @@ jQuery(function($) {
   $('.youtube_videos').attach(YouTube, 'DowningSt');
   $('.date_slider').attach(DateSlider);
   $('.toggler').attach(FormSlider);
-  $('.self_toggler').attach(QueryFormSlider);
-  $('.cancel_search').attach(SliderCancel);
+  $('.event_filtering').attach(EventFilterSlider)
 });
 
 
