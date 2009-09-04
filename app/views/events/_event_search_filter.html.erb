@@ -1,4 +1,4 @@
-7<div id="query" class="clearfix">
+<div id="query" class="clearfix">
   <div class="current_event_filtering clearfix">
     <div class="span-11">
       <%= flash[:notice] %>
@@ -16,7 +16,7 @@
   </div>
   
   <div class="event_filtering clearfix">
-    <h3 class="toggles">Search for events</h3>
+    <h3 class="toggles"><%= image_tag('buttons/bt_look_for_more_events.png') %></h3>
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 

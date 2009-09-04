@@ -440,7 +440,6 @@ ul.youtube_videos li img {
   background-position:0 -80px;
 }
 .event_filtering h3 {
-  background-color:#F4F4F4;
   margin-bottom:0;
   width:12em;
   margin-left:20px;
@@ -448,7 +447,7 @@ ul.youtube_videos li img {
 }
 
 .event_filtering h3.active {
-  background-color:#C2C2C3;
+
 }
 
 
