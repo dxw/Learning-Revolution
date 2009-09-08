@@ -33,3 +33,5 @@ namespace :deploy do
   end
   
 end
+
+# rake spec --format html:public/specs.html
