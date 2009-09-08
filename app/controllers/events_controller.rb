@@ -21,6 +21,15 @@ class EventsController < ApplicationController
     params[:view] = 'list'
   end
   
+  def find_venue
+    @new_event = Event.new(params[:event])
+    if @new_event.valid?
+      @venue = Venue.find_by_postcode(params[:venue][:postcode])
+    else
+      render :action => :create
+    end
+  end
+  
   def create
     @new_event = Event.new(params[:event])
     if params[:event][:location_id].blank?
@@ -31,7 +40,7 @@ class EventsController < ApplicationController
     @new_event.valid?
     @venue.valid?
     if @new_event.valid? && @venue.valid? && @new_event.save!
-      flash[:notice] = "Event created succesfully"
+      flash[:notice] = "Event created successfully"
       redirect_to current_events_path
     else
     end
