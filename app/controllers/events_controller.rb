@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
   
   def find_venue
-    postcode_matches = !!(params[:venue][:postcode] =~ Location::POSTCODE_PATTERN)
+    postcode_matches = params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
     geo = Location.geocode(params[:venue][:postcode])
     @new_event = Event.new(params[:event])
     if @new_event.valid? && !params[:venue][:postcode].blank? && postcode_matches && geo.accuracy

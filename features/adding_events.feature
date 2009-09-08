@@ -50,14 +50,12 @@ Feature: Adding an event
     And I press "Submit this event"
     Then I should see "The post code you entered seems to be invalid"
   
-
   Scenario: Adding a valid event but a non-existent well formed post code
     When I go to the calendar for October 2009
     And I fill in "Postcode" with "SW0z 0zz"
     And I press "Submit this event"
     Then I should see "We couldn't find anywhere with this postcode"
   
-    @current
   Scenario: Adding a valid event to an existing venue
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
