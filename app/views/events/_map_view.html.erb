@@ -30,7 +30,9 @@ function initialize_google_map_events_map() {
     
     marker_manager = new MarkerManager(events_map);
     <% @venues.each do |venue| %>
-      var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>));
+	var icon = new GIcon(G_DEFAULT_ICON);
+	icon.image = '/images/map_learner_icon.png';
+      var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>), icon);
       
       GEvent.addListener(marker_<%= venue.id %>, "click", function() {
         marker_<%= venue.id %>.openInfoWindowHtml("<h1>Loading...</h1>");
