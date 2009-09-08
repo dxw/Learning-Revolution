@@ -11,4 +11,5 @@ doc/app
 doc/plugins
 coverage/*
 db/*.sqlite3
+public/specs.html
 *.tmproj
