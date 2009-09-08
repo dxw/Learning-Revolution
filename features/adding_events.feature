@@ -37,12 +37,27 @@ Feature: Adding an event
     Then I should see "2 errors prohibited this new event from being save"
     And I should see "Title can't be blank"
     And I should see "Start can't be blank"
-    And there should be 0 Events in the database
+    And there should be 0 Event in the database
   
   Scenario: Adding a valid event but forgetting post code
+    When I go to the calendar for October 2009
+    And I press "Submit this event"
+    Then I should see "Post Code can't be blank"
   
-  Scenario: Adding a valid event but an invalid post code
-    
+  Scenario: Adding a valid event but an malformed post code
+    When I go to the calendar for October 2009
+    And I fill in "Postcode" with "xxxxxxxxxxx"
+    And I press "Submit this event"
+    Then I should see "The post code you entered seems to be invalid"
+  
+
+  Scenario: Adding a valid event but a non-existent well formed post code
+    When I go to the calendar for October 2009
+    And I fill in "Postcode" with "SW0z 0zz"
+    And I press "Submit this event"
+    Then I should see "We couldn't find anywhere with this postcode"
+  
+    @current
   Scenario: Adding a valid event to an existing venue
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
@@ -66,7 +81,6 @@ Feature: Adding an event
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
 
-  @current
   Scenario: Adding a valid event to a new venue, when there's an existing venue with same post code
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"

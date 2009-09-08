@@ -15,6 +15,8 @@ class Location < ActiveRecord::Base
   
   before_validation :geocode_address
   after_update :update_events_lat_lng_cache
+  
+  POSTCODE_PATTERN = /[A-Z]{1,2}[0-9R][0-9A-Z]? ?[0-9][A-Z]{2}/i
 
   def check_duplicate
     possible_duplicate?
@@ -47,10 +49,14 @@ class Location < ActiveRecord::Base
     end
   end
   
+  def self.geocode(post_code)
+    Geokit::Geocoders::YahooGeocoder.geocode("#{post_code} GB")
+  end
+  
   private
   
   def geocode_address
-    geo=Geokit::Geocoders::YahooGeocoder.geocode("#{postcode} GB")
+    geo = Location.geocode(postcode)
     errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
   end

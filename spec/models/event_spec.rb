@@ -17,12 +17,7 @@ describe Event do
     @event.title = ""
     @event.should_not be_valid
   end
-  
-  it "not be valid without a title" do
-    @event.venue = nil
-    @event.should_not be_valid
-  end
-  
+    
   it "not be valid without a start time" do
     @event.start = nil
     @event.should_not be_valid
