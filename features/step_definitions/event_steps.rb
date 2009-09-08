@@ -1,5 +1,11 @@
 Given /^a valid event called "([^\"]*)"$/ do |name|
-  Event.create!(:title => name, :start => Date.today, :venue => Venue.create!(:name => "venue", :postcode => "E11 1PB"), :contact_name => "Test name", :contact_email_address => "test@test.com")
+  Event.create!(:title => name, :start => Date.today, :contact_name => "Test name", :contact_email_address => "test@test.com")
+end
+
+Given /^the event "([^\"]*)" is held at the venue "([^\"]*)"$/ do |title, venue_title|
+  event = find_or_create(Event, :title => title)
+  event.venue = find_or_create(Venue, :name => venue_title)
+  event.save!
 end
 
 Given /^the event "([^\"]*)" starts on "([^\"]*)"$/ do |title, start|

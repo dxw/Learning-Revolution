@@ -16,15 +16,19 @@
       <div class="detail">
       
       <%= image_tag('css/headings/where.png', :alt => 'Where') %>
-      <h4><%= event.venue.name %></h4>
-      <p>
-        <%= event.venue.address_1 %><br />
-        <%= event.venue.address_2 %><br />
-        <%= event.venue.address_3 %><br />
-        <%= event.venue.city %><br />
-        <%= event.venue.county %><br />
-        <%= event.venue.postcode %>
-      </p>
+      <% if event.venue %>
+        <h4><%= event.venue.name %></h4>
+        <p>
+          <%= event.venue.address_1 %><br />
+          <%= event.venue.address_2 %><br />
+          <%= event.venue.address_3 %><br />
+          <%= event.venue.city %><br />
+          <%= event.venue.county %><br />
+          <%= event.venue.postcode %>
+        </p>
+      <% else %>
+        <p>This event has no location</p>
+      <% end %>
       </div>
 
     </div>
