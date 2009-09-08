@@ -14,6 +14,11 @@
 
     <fieldset class="event_venue_form">
       <div class="input clearfix">
+        <label for="cyberevent">This event has no location</label>
+        <%= check_box_tag :cyberevent, :class => 'text' %>
+      </div>
+      
+      <div class="input clearfix">
         <label for="venue_postcode">Postcode</label>
         <%= text_field :venue, :postcode, :class => 'text' %>
       </div>
