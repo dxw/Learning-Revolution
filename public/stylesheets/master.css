@@ -798,6 +798,14 @@ ul.sm_icons li{
   background-repeat:no-repeat;
   border-bottom:none;
 }
+#event_details ul {
+  margin-top:24px;
+}
+#event_details ul.sm_icons li{
+  background-image:url('/images/sm_icons_grey.png');
+  margin-top:12px;
+  margin-bottom:12px;
+}
 ul.sm_icons li a{
   text-decoration: none;
 }
