@@ -17,6 +17,16 @@ describe Event do
     @event.title = ""
     @event.should_not be_valid
   end
+  
+  it "not be valid without a title" do
+    @event.contact_name = ""
+    @event.should_not be_valid
+  end
+  
+  it "not be valid without a title" do
+    @event.contact_email_address = ""
+    @event.should_not be_valid
+  end
     
   it "not be valid without a start time" do
     @event.start = nil

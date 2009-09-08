@@ -1,5 +1,5 @@
 Given /^a valid event called "([^\"]*)"$/ do |name|
-  Event.create!(:title => name, :start => Date.today, :venue => Venue.create!(:name => "venue", :postcode => "E11 1PB"))
+  Event.create!(:title => name, :start => Date.today, :venue => Venue.create!(:name => "venue", :postcode => "E11 1PB"), :contact_name => "Test name", :contact_email_address => "test@test.com")
 end
 
 Given /^the event "([^\"]*)" starts on "([^\"]*)"$/ do |title, start|

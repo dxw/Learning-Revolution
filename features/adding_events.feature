@@ -34,9 +34,11 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I fill in "Postcode" with "E11 1PB"
     And I press "Submit this event"
-    Then I should see "2 errors prohibited this new event from being save"
+    Then I should see "4 errors prohibited this new event from being save"
     And I should see "Title can't be blank"
     And I should see "Start can't be blank"
+    And I should see "Contact name can't be blank"
+    And I should see "Contact email address can't be blank"
     And there should be 0 Event in the database
   
   Scenario: Adding a valid event but forgetting post code
