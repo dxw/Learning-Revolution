@@ -22,5 +22,5 @@ end
 
 When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |title|
   venue = find_or_create(Venue, :name => title)
-  set_hidden_field("event[location_id]", :with => venue.id) 
+  set_hidden_field("event[location_id]", :to => venue.id) 
 end

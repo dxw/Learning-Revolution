@@ -23,7 +23,11 @@ class EventsController < ApplicationController
   
   def create
     @new_event = Event.new(params[:event])
-    @venue = @new_event.venue = Venue.new(params[:venue])
+    if params[:event][:location_id].blank?
+      @venue = @new_event.venue = Venue.new(params[:venue])
+    else
+      @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+    end
     @new_event.valid?
     @venue.valid?
     if @new_event.valid? && @venue.valid? && @new_event.save!
