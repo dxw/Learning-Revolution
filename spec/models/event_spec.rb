@@ -126,22 +126,22 @@ describe Event do
     before(:each) do      
       @client = mock(:client)
       Bitly.stub!(:new).and_return(@client)
+      @mock_response = mock(:bitly)
+      @mock_response.stub!(:short_url).and_return(@test_string = "oogieboogieboo")
     end
     
     it "should call Bitly to create a short uri for an event" do
-      @client.should_receive(:shorten)   
+      @client.should_receive(:shorten).and_return(@mock_response)
       event = Event.create(EventSpecHelper.valid_attributes)
     end
     
     it "should set the event's bitly url" do
       
-      test_string = 'oogieboogieboo'
-      
-      @client.stub!(:shorten).and_return(test_string)
+      @client.stub!(:shorten).and_return(@mock_response)
       
       event = Event.create(EventSpecHelper.valid_attributes)
       
-      event.bitly_url.should == test_string
+      event.bitly_url.should == @test_string
     end
     
   end
