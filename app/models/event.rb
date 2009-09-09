@@ -120,7 +120,7 @@ class Event < ActiveRecord::Base
     
     bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
     
-    self.bitly_url = bitly.shorten(event_uri)
+    self.bitly_url = bitly.shorten(event_uri).short_url
   end
   
   def possible_duplicate?

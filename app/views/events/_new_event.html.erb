@@ -5,22 +5,28 @@
 
     <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_title">Title</label>
-      <%= event_form.text_field :title, :class => 'text' %>
-      <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
-      <div class="tooltip_arrow"></div>
+      <%= event_form.text_field :title, :class => 'text input' %>
+      <div class="input_tip">
+        <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
     <fieldset class="event_venue_form">
-      <div class="input clearfix">
+      <div class="input input_with_tip clearfix">
         <label for="cyberevent">This event has no location</label>
-        <%= check_box_tag :cyberevent, :class => 'text' %>
+        <%= check_box_tag :cyberevent, :class => 'text input' %>
       </div>
       
-      <div class="input clearfix">
+      <div class="input clearfix input_with_tip">
         <label for="venue_postcode">Postcode</label>
-        <%= text_field :venue, :postcode, :class => 'text' %>
+        <%= text_field :venue, :postcode, :class => 'text input' %>
+        <div class="input_tip">
+          <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
+          <div class="tooltip_arrow"></div>
+        </div>
       </div>
     </fieldset>
 

@@ -112,6 +112,20 @@ VenueFinder = $.klass({
 	}
 })
 
+InfoTip = $.klass({
+	initialize: function() {
+	  this.container = this.element.parent(".input_with_tip")
+	  this.input_tip = this.container.find(".input_tip")
+		this.input_tip.hide();
+	},
+	onfocus: function() {
+	  this.input_tip.show();
+	},
+	onblur: function() {
+	  this.input_tip.hide();
+	}
+})
+
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
@@ -120,6 +134,7 @@ jQuery(function($) {
   $('.toggler').attach(FormSlider);
   $('.event_filtering').attach(EventFilterSlider);
   $('.event_venue_form').attach(VenueFinder);
+  $(".input_with_tip input").attach(InfoTip)
 });
 
 
