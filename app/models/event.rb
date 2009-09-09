@@ -95,7 +95,11 @@ class Event < ActiveRecord::Base
   end
   
   def self.first_for_today
-     Event.find(:first, :conditions => ["DATE(start) >= ?", Date.today], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", Date.today], :order => "start DESC")
+    self.first_for_day(Date.today)
+  end
+  
+  def self.first_for_day(day)
+    Event.find(:first, :conditions => ["DATE(start) >= ?", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", day], :order => "start DESC")
   end
   
   def check_duplicate
