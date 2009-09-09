@@ -58,8 +58,8 @@
     <ul class="sm_icons">
       
       <li class="calendar"><%= link_to "Add to Calendar" %></li>
-      <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{url_for_event(event)}" %></li>
-      <li class="facebook"><%= link_to "Facebook" %></li>
+      <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{event.bitly_url}" %></li>
+      <li class="facebook"><%= link_to "Facebook", "http://www.facebook.com/share.php?u=#{url_for_event(event)}" %></li>
 
     </ul>
   
