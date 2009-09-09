@@ -110,6 +110,29 @@ Feature: Adding an event
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
 
+  @current
+  Scenario: Adding a valid event when there are multiple similar venues
+    Given a valid venue called "Church hall"
+    And the venue "Church hall" has the post code "TR18 5EG"
+    And a valid venue called "School hall"
+    And the venue "School hall" has the post code "TR18 5EG"
+    When I go to the calendar for October 2009
+    And I fill in "Title" with "event title"
+    And I select "Class" from "event_event_type"
+    And I select "Food and Cookery" from "Category"
+    And I fill in "Description" with "event description"
+    And I fill in "From" with "October 23, 2004 11:20"
+    And I fill in "until" with "October 23, 2004 12:20"
+    And I fill in "Organisation" with "BIS"
+    And I fill in "Contact Name" with "event organiser"
+    And I fill in "Contact Phone Number" with "020 8547 3847"
+    And I fill in "Contact Email Address" with "contact@test.com"
+    And I fill in "Postcode" with "TR18 5EG"
+    And I press "Submit this event"
+    Then I should see "We already have the details of a venue near there"
+    And I should see "Church hall"
+    And I should see "School hall"
+
   Scenario: Adding a valid event to a new venue, when there's an existing venue with same post code
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
