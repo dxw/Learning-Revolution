@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start, :contact_email_address, :contact_name
+  validates_presence_of :title, :start, :contact_name
+  validate :must_have_contact_details
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
@@ -154,5 +155,9 @@ class Event < ActiveRecord::Base
     
   def cache_lat_lng
     self.lat, self.lng = venue.lat, venue.lng if venue
+  end
+  private
+  def must_have_contact_details
+    errors.add(:contact_email_address, "can't be blank") if self.contact_email_address.blank? && self.contact_phone_number.blank?
   end
 end

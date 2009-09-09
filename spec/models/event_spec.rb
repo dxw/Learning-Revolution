@@ -18,14 +18,27 @@ describe Event do
     @event.should_not be_valid
   end
   
-  it "not be valid without a title" do
+  it "should not be valid without a contact name" do
     @event.contact_name = ""
     @event.should_not be_valid
   end
   
-  it "not be valid without a title" do
+  it "should not be valid without a contact email address and contact phone number" do
     @event.contact_email_address = ""
+    @event.contact_phone_number = ""
     @event.should_not be_valid
+  end
+  
+  it "should be valid without a contact email address but with a contact phone number" do
+    @event.contact_email_address = ""
+    @event.contact_phone_number = "079384759234"
+    @event.should be_valid
+  end
+  
+  it "should be without a contact phone number but with a contact email address" do
+    @event.contact_email_address = "james@abscond.org"
+    @event.contact_phone_number = ""
+    @event.should be_valid
   end
     
   it "not be valid without a start time" do
