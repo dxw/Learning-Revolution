@@ -109,18 +109,17 @@ class Event < ActiveRecord::Base
   end
   
   def make_bitly_url
-    
-    event_uri =  AppConfig.event_uri_template
-    event_uri.gsub!(/:year/, start.year.to_s)
-    event_uri.gsub!(/:month/, start.month.to_s)
-    event_uri.gsub!(/:day/, start.day.to_s)
-    event_uri.gsub!(/:stub/, slug)
+    event_uri =  AppConfig.event_uri_template.dup
+    event_uri.gsub!(/:year/, self.start.year.to_s)
+    event_uri.gsub!(/:month/, self.start.month.to_s)
+    event_uri.gsub!(/:day/, self.start.day.to_s)
+    event_uri.gsub!(/:stub/, self.slug)
     
     event_uri = AppConfig.bitly_target_host + event_uri
     
     bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
     
-    self.bitly_url = bitly.shorten(event_uri).short_url
+    self.update_attribute(:bitly_url, bitly.shorten(event_uri).short_url)
   end
   
   def possible_duplicate?
