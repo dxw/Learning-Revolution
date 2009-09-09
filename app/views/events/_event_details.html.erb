@@ -1,5 +1,5 @@
-<div id="event_details" class="event clearfix">
-  <h2><%= event.title %></h2>
+<div id="event_details" class="event clearfix vevent">
+  <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
   
   <div class="clearfix detail_list">
     
@@ -8,8 +8,10 @@
       <div class="detail">
       
       <%= image_tag('css/headings/when.png', :alt => 'When') %>
-      <%= event.start.strftime("%R%p") %>
-      <%= event.end.strftime("until %R%p") if event.end %>
+      <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>
+      <% if event.end %>
+        <abbr class="dtend" title="<%= event.start.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
+      <% end %>
 
       </div>
   
@@ -18,7 +20,7 @@
       <%= image_tag('css/headings/where.png', :alt => 'Where') %>
       <% if event.venue %>
         <h4><%= event.venue.name %></h4>
-        <p>
+        <p class="location">
           <%= event.venue.address_1 %><br />
           <%= event.venue.address_2 %><br />
           <%= event.venue.address_3 %><br />
