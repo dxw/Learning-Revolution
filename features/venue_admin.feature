@@ -3,6 +3,9 @@ Feature: Venue admin
   As an admin
   I should be able to be able to add, edit and delete venues
   
+  Background:
+    Given I am logged in
+  
   Scenario: Adding a valid venue
     When I go to the venue admin index page
     And I follow "New venue"

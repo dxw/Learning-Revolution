@@ -3,6 +3,9 @@ Feature: Event admin
   As an admin
   I should be able to be able to add, edit and delete events
   
+  Background:
+    Given I am logged in
+  
   Scenario: Adding a valid event
     Given a valid venue called "London"
     When I go to the event admin index page
