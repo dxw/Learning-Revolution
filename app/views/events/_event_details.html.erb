@@ -75,12 +75,11 @@
     <%= simple_format event.description %>
 
     <%= image_tag('css/headings/contact_details.png', :alt => 'Contact Details') %>
-    <p>
-      <%= event.contact_name %>
-      <%= event.organisation %>
-      <%= event.contact_phone_number %>
-      <%= event.contact_email_address %>
-      <%= event.contact_phone_number %>
+    <p class="vcard">
+      <span class="fn n"><%= event.contact_name %></span>
+      <span class="org"><%= event.organisation %></span>
+      <span class="tel"><%= event.contact_phone_number %></span>
+      <a class="email" href="mailto:email"><%= event.contact_email_address %></a>
     </p>
 
     
