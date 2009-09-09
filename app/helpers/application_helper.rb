@@ -15,5 +15,22 @@ module ApplicationHelper
   def current_events_path(options={})
     controller.current_events_path(options)
   end
+
+  def current_filter_description
+    s = 'Now showing all <span class="keyword">'
+    s += params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize
+    s += '</span>'
+    unless params[:filter][:theme].blank?
+      s += " related to <span class='keyword'>"
+      s += params[:filter][:theme]
+      s += "</span>"
+    end
+    unless params[:filter][:location].blank?
+      s += ' happening near <span class="keyword">'
+      s += params[:filter][:location]
+      s += '</span>'
+    end
+    s
+  end
   
 end
