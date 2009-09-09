@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
   
-  before_create :make_bitly_url
+  after_create :make_bitly_url
   
   
   belongs_to :venue, :foreign_key => "location_id"  
@@ -114,7 +114,7 @@ class Event < ActiveRecord::Base
     event_uri.gsub!(/:year/, start.year.to_s)
     event_uri.gsub!(/:month/, start.month.to_s)
     event_uri.gsub!(/:day/, start.day.to_s)
-    event_uri.gsub!(/:slug/, slug)
+    event_uri.gsub!(/:stub/, slug)
     
     event_uri = AppConfig.bitly_target_host + event_uri
     

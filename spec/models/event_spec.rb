@@ -131,8 +131,9 @@ describe Event do
     end
     
     it "should call Bitly to create a short uri for an event" do
-      @client.should_receive(:shorten).and_return(@mock_response)
-      event = Event.create(EventSpecHelper.valid_attributes)
+      event = Event.new(EventSpecHelper.valid_attributes)
+      @client.should_receive(:shorten).with(/http:\/\/localhost\/events\/2009\/9\/9\/value-for-title-\d+/).and_return(@mock_response)
+      event.save
     end
     
     it "should set the event's bitly url" do
