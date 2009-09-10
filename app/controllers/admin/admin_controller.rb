@@ -1,6 +1,7 @@
 class Admin::AdminController < ApplicationController
   layout 'admin'
   before_filter :authenticate
+  cache_sweeper :event_sweeper
 
   protected
 
