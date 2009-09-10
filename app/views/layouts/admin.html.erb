@@ -21,23 +21,19 @@
 
   <div class="header">
     
-    <h1><img src="/images/admin_fol_logo.png
-      " alt="Learning Revolution Logo" /></h1>
+    <h1><img src="/images/admin_fol_logo.png" alt="Learning Revolution Logo" /></h1>
     
   </div>
   
   <div class="nav_banner">
     <ul class="nav">
-      <li class="home"><%= link_to "" %></li>
+      <li class="home"><%= link_to "Home", admin_root_path %></li>
       <li class="venues"><%= link_to "Venues", admin_venues_path %></li>
       <li class="events"><%= link_to "Events", admin_events_path %></li>
-      <li class="pages"><%= link_to "Pages", "" %></li>
+      <li class="pages"><%= link_to "Pages", admin_pages_path %></li>
     </ul>
   </div>
-
-
-
-
+  
   <div class='container'>
     <div class="content">
       <%= yield %>
