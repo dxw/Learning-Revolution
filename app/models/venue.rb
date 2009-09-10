@@ -20,5 +20,9 @@ class Venue < Location
     events.find(:all, :conditions => Venue.convert_form_params_into_filter_conditions(filter))
   end
   
+  def self.geocode(postcode)
+    
+  end
+  
   
 end

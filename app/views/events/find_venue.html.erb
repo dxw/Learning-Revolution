@@ -1,0 +1,50 @@
+<% unless @venues.blank? %>
+  We already have the details of a venue near there
+  <% @venues.each do |venue| %>
+    <% form_for @new_event, :url => events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+      <%= venue.name %>
+      <%= submit_tag "It's at this venue" %>
+    <% end %>
+  <% end %>
+<% else %>
+  That's a new venue
+<% end %>
+
+<% form_for @new_event, :url => events_path(:event => params[:event]) do %>
+  <div class="input clearfix">
+    <label for="venue_name">Venue name</label>
+    <%= text_field :venue, :name, :class => 'text' %>
+  </div>
+
+  <div class="input clearfix">
+    <label for="venue_address_1">Address Line 1</label>
+    <%= text_field :venue, :address_1, :class => 'text' %>
+  </div>
+
+  <div class="input clearfix">
+    <label for="venue_address_2">Address Line 2</label>
+    <%= text_field :venue, :address_2, :class => 'text' %>
+  </div>
+
+  <div class="input clearfix">
+    <label for="venue_address_3">Address Line 3</label>
+    <%= text_field :venue, :address_3, :class => 'text' %>
+  </div>
+
+  <div class="input clearfix">
+    <label for="venue_city">City</label>
+    <%= text_field :venue, :city, :class => 'text' %>
+  </div>
+
+  <div class="input clearfix">
+    <label for="venue_county">County</label>
+    <%= text_field :venue, :county, :class => 'text' %>
+  </div>
+  
+  <div class="input clearfix">
+    <label for="venue_county">Post Code</label>
+    <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %>
+  </div>
+  
+  <%= submit_tag "Save this venue and add my event" %>
+<% end %>

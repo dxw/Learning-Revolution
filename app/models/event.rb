@@ -1,12 +1,13 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start, :venue
+  validates_presence_of :title, :start, :contact_name
+  validate :must_have_contact_details
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
   
-  before_create :make_bitly_url
+  after_create :make_bitly_url
   
   
   belongs_to :venue, :foreign_key => "location_id"  
@@ -95,7 +96,11 @@ class Event < ActiveRecord::Base
   end
   
   def self.first_for_today
-     Event.find(:first, :conditions => ["DATE(start) >= ?", Date.today], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", Date.today], :order => "start DESC")
+    self.first_for_day(Date.today)
+  end
+  
+  def self.first_for_day(day)
+    Event.find(:first, :conditions => ["DATE(start) >= ?", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", day], :order => "start DESC")
   end
   
   def check_duplicate
@@ -104,18 +109,17 @@ class Event < ActiveRecord::Base
   end
   
   def make_bitly_url
-    
-    event_uri =  AppConfig.event_uri_template
-    event_uri.gsub!(/:year/, start.year.to_s)
-    event_uri.gsub!(/:month/, start.month.to_s)
-    event_uri.gsub!(/:day/, start.day.to_s)
-    event_uri.gsub!(/:slug/, slug)
+    event_uri =  AppConfig.event_uri_template.dup
+    event_uri.gsub!(/:year/, self.start.year.to_s)
+    event_uri.gsub!(/:month/, self.start.month.to_s)
+    event_uri.gsub!(/:day/, self.start.day.to_s)
+    event_uri.gsub!(/:stub/, self.slug)
     
     event_uri = AppConfig.bitly_target_host + event_uri
     
     bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
     
-    self.bitly_url = bitly.shorten(event_uri)
+    self.update_attribute(:bitly_url, bitly.shorten(event_uri).short_url)
   end
   
   def possible_duplicate?
@@ -150,5 +154,9 @@ class Event < ActiveRecord::Base
     
   def cache_lat_lng
     self.lat, self.lng = venue.lat, venue.lng if venue
+  end
+  private
+  def must_have_contact_details
+    errors.add(:contact_email_address, "can't be blank") if self.contact_email_address.blank? && self.contact_phone_number.blank?
   end
 end

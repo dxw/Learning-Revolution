@@ -1,5 +1,3 @@
-
-
 Flickr = $.klass({
   initialize: function(user_id) {
     var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_'+user_id+'"></ul>');
@@ -45,7 +43,6 @@ RefineEventSearch = $.klass({
 });
 
 FormSlider = $.klass({
-  
   initialize: function() {
     this.element_to_toggle = $("#"+this.element.attr("id").replace("toggles_", ""));
     this.element_to_toggle.hide();
@@ -55,7 +52,6 @@ FormSlider = $.klass({
     this.element_to_toggle.slideToggle();
     return false;
   }
-  
 });
 
 DateSlider = $.klass({
@@ -110,6 +106,26 @@ EventFilterSlider = $.klass({
   })
 })
 
+VenueFinder = $.klass({
+	initialize: function() {
+		this.element.find(".new_venue_fields").hide();
+	}
+})
+
+InfoTip = $.klass({
+	initialize: function() {
+	  this.container = this.element.parent(".input_with_tip")
+	  this.input_tip = this.container.find(".input_tip")
+		this.input_tip.hide();
+	},
+	onfocus: function() {
+	  this.input_tip.show();
+	},
+	onblur: function() {
+	  this.input_tip.hide();
+	}
+})
+
 
 jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
@@ -117,6 +133,8 @@ jQuery(function($) {
   $('.date_slider').attach(DateSlider);
   $('.toggler').attach(FormSlider);
   $('.event_filtering').attach(EventFilterSlider);
+  $('.event_venue_form').attach(VenueFinder);
+  $(".input_with_tip input").attach(InfoTip)
 });
 
 

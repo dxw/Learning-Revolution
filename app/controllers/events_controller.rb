@@ -21,13 +21,39 @@ class EventsController < ApplicationController
     params[:view] = 'list'
   end
   
+  def find_venue
+    @new_event = Event.new(params[:event])
+    if params[:cyberevent]
+      if @new_event.save
+        flash[:notice] = "Event created successfully"
+        redirect_to current_events_path and return
+      else
+        render :action => :create and return
+      end
+    end
+    postcode_matches = params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
+    geo = Location.geocode(params[:venue][:postcode])
+    if @new_event.valid? && !params[:venue][:postcode].blank? && postcode_matches && geo.accuracy
+      @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
+    else
+      params[:postcode] = "We couldn't find anywhere with this postcode" unless geo.accuracy
+      params[:postcode] = "The post code you entered seems to be invalid" unless postcode_matches
+      params[:postcode] = "Post Code can't be blank" if params[:venue][:postcode].blank?
+      render :action => :create
+    end
+  end
+  
   def create
     @new_event = Event.new(params[:event])
-    @venue = @new_event.venue = Venue.new(params[:venue])
+    if params[:event][:location_id].blank?
+      @venue = @new_event.venue = Venue.new(params[:venue])
+    else
+      @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+    end
     @new_event.valid?
     @venue.valid?
     if @new_event.valid? && @venue.valid? && @new_event.save!
-      flash[:notice] = "Event created succesfully"
+      flash[:notice] = "Event created successfully"
       redirect_to current_events_path
     else
     end

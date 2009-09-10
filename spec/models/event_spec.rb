@@ -18,11 +18,29 @@ describe Event do
     @event.should_not be_valid
   end
   
-  it "not be valid without a title" do
-    @event.venue = nil
+  it "should not be valid without a contact name" do
+    @event.contact_name = ""
     @event.should_not be_valid
   end
   
+  it "should not be valid without a contact email address and contact phone number" do
+    @event.contact_email_address = ""
+    @event.contact_phone_number = ""
+    @event.should_not be_valid
+  end
+  
+  it "should be valid without a contact email address but with a contact phone number" do
+    @event.contact_email_address = ""
+    @event.contact_phone_number = "079384759234"
+    @event.should be_valid
+  end
+  
+  it "should be without a contact phone number but with a contact email address" do
+    @event.contact_email_address = "james@abscond.org"
+    @event.contact_phone_number = ""
+    @event.should be_valid
+  end
+    
   it "not be valid without a start time" do
     @event.start = nil
     @event.should_not be_valid
@@ -108,22 +126,23 @@ describe Event do
     before(:each) do      
       @client = mock(:client)
       Bitly.stub!(:new).and_return(@client)
+      @mock_response = mock(:bitly)
+      @mock_response.stub!(:short_url).and_return(@test_string = "oogieboogieboo")
     end
     
     it "should call Bitly to create a short uri for an event" do
-      @client.should_receive(:shorten)   
-      event = Event.create(EventSpecHelper.valid_attributes)
+      event = Event.new(EventSpecHelper.valid_attributes)
+      @client.should_receive(:shorten).with(/http:\/\/localhost\/events\/\d+\/\d+\/\d+\/value-for-title-\d+/).and_return(@mock_response)
+      event.save
     end
     
     it "should set the event's bitly url" do
       
-      test_string = 'oogieboogieboo'
-      
-      @client.stub!(:shorten).and_return(test_string)
+      @client.stub!(:shorten).and_return(@mock_response)
       
       event = Event.create(EventSpecHelper.valid_attributes)
       
-      event.bitly_url.should == test_string
+      event.bitly_url.should == @test_string
     end
     
   end

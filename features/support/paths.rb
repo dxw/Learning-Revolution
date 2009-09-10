@@ -25,6 +25,9 @@ module NavigationHelpers
       moderations_admin_events_path
     when /the calendar for October 2009/
       events_by_month_path(2009, "October")
+    when /the event page for "(.+)"/
+      event = find_or_create(Event, :title => $1)
+      event_path(event.start.year, event.start.month, event.start.day, event.slug)
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end
