@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="/stylesheets/jquery/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" charset="utf-8" />
 	<link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen" charset="utf-8" />
   <!-- %link{:rel => "stylesheet", :href => "/stylesheets/blueprint/print.css",  :type => "text/css", :media => "print"} -->
   <!--[if IE]>
   <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
@@ -16,16 +17,13 @@
   
 </head>
 
-<body>
+<body class="admin">
 
   <div class="header">
     
-    <h1><img src="/images/fol_logo.png" alt="Learning Revolution Logo" /></h1>
+    <h1><img src="/images/admin_fol_logo.png
+      " alt="Learning Revolution Logo" /></h1>
     
-    <div id="direct_gov_link">
-      <a class="logo-directgov" href="http://www.direct.gov.uk" rel="external" target="_blank" title="Link to Directgov homepage"><img alt="Directgov logo" src="/images/dius/st-logo-directgov.png"  /></a>
-    </div>
-  
   </div>
   
   <div class="nav_banner">
@@ -41,8 +39,9 @@
 
 
   <div class='container'>
-
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
 
 </body>

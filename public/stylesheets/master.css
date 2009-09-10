@@ -78,6 +78,7 @@ text-align:center;
   background-repeat: repeat-x;
   height:60px;
 }
+
 .nav {
   list-style: none;
   width:940px;
@@ -154,7 +155,6 @@ text-align:center;
 .nav li.pages a:hover{
   background-position:-750px -69px;
 }
-
 /* Site wide styles */
 
 .header, .nav_banner, .content{

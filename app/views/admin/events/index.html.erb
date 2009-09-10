@@ -1,3 +1,5 @@
+<div class="content">
+  
 <%= flash[:event] %>
 <% @events.each do |event| %>
   <li><%= link_to event.title, edit_admin_event_path(event) %></li>
@@ -5,3 +7,4 @@
 
 <%= link_to "New Event", new_admin_event_path %>
 <%= link_to "Find duplicates", duplicates_admin_events_path %>
+</div>
