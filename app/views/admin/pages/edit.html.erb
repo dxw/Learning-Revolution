@@ -1,0 +1,4 @@
+<% form_for [:admin, @page] do |page_form| %>
+  <%= render :partial => "fields", :locals => {:page_form => page_form} %>
+  <p><%= page_form.submit "Save" %></p>
+<% end %>
