@@ -1,7 +1,56 @@
+<div class="form_wrapper clearfix">
 <%= flash[:venue] %>
-<% @venues.each do |venue| %>
-  <li><%= link_to venue.name, edit_admin_venue_path(venue) %></li>
-<% end %>
 
-<%= link_to "New Venue", new_admin_venue_path %>
-<%= link_to "Find duplicates", duplicates_admin_venues_path %>
+<% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
+
+  <div class="filter_location clearfix filter">
+    <label for="filter_location" class="text">Title</label>  
+    <%= text_field_tag "filter[title]", nil, :class => 'text' %>
+  </div>
+
+  <div class="filter_location clearfix filter">
+    <label for="filter_location" class="text">Location</label>  
+    <%= text_field_tag "filter[location]", nil, :class => 'text' %>
+  </div>
+
+  <div class="submit_options clearfix">
+    <%= submit_tag('Search for Venues ', :alt => "Search For Venues") %>
+  </div>
+
+    <%= hidden_field_tag "view", params[:view] %>
+
+
+
+  <% end %>
+
+
+  <div class="secondary_options">
+    <ul>
+      <li><%= link_to "New Venue", new_admin_venue_path %></li>
+      <li><%= link_to "Find duplicates", duplicates_admin_venues_path %></li>
+    </ul>
+  </div>
+
+
+
+</div>
+
+ <% unless @venues.blank? %>
+  <div id="results">
+    
+    <h3>Results From your Search</h3>
+    
+    
+    <ul class="results clearfix">
+      <% @venues.each do |venue| %>
+        <li>
+        <p><%= link_to venue.name, edit_admin_venue_path(venue) %></p>
+        <p></p>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
+
+  </div>
+
+

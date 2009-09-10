@@ -1,10 +1,82 @@
-<div class="content">
-  
-<%= flash[:event] %>
-<% @events.each do |event| %>
-  <li><%= link_to event.title, edit_admin_event_path(event) %></li>
-<% end %>
+  <div class="form_wrapper clearfix">
+    
+    <%= flash[:event] %>
+    
+    <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
-<%= link_to "New Event", new_admin_event_path %>
-<%= link_to "Find duplicates", duplicates_admin_events_path %>
+      <div class="filter_location clearfix filter">
+        <label for="filter_location" class="text">Title</label>  
+        <%= text_field_tag "filter[title]", nil, :class => 'text' %>
+      </div>
+
+      <div class="filter filter_theme clearfix">
+        <label for="filter_theme">Theme</label>
+        <%# need to add theme in here %>
+        <%= select_tag "filter[theme]", options_for_select("") %>
+        </div>
+
+      <div class="filter filter_event_type clearfix">
+        <label for="filter_event_type">Event Type</label> 
+        <%= select_tag "filter[event_type]", options_for_select(["", "Class"]) %> 
+      </div>
+
+      <div class="filter_location clearfix filter">
+        <label for="filter_location" class="text">Location</label>  
+        <%= text_field_tag "filter[location]", nil, :class => 'text' %>
+      </div>
+
+      <fieldset class="datetime_range">
+        <legend>Search for events between these dates:</legend>
+        
+      <div class="input clearfix datetime">
+      <label for="event_start">Start Date</label><%= datetime_select :start,'' %>
+      </div>
+
+      <div class="input clearfix datetime">
+      <label for="event_end">End Date</label><%= datetime_select :end, ''%>
+      </div>
+
+      </fieldset>
+
+
+      <%= hidden_field_tag "view", params[:view] %>
+
+
+      <div class="submit_options clearfix">
+        <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
+      </div>
+
+    <% end %>
+  
+    <div class="secondary_options">
+      <ul>
+        <li><%= link_to "New Event", new_admin_event_path %></li>
+        <li><%= link_to "Find duplicates", duplicates_admin_events_path %></li>
+      </ul>
+    </div>
+
+    <% unless @events.blank? %>
+    <div id="results">
+      
+      <h3>Results From your Search</h3>
+      
+      
+      <ul class="results clearfix">
+        <% @events.each do |event| %>
+          <li>
+          <p><%= link_to event.title, edit_admin_event_path(event) %></p>
+          <p><%= event.start.strftime("%A %e %b") %></p>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+
+    </div>
+  
+  </div>
+
 </div>
+
+
+
+

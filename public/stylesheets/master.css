@@ -266,8 +266,8 @@ text-align:center;
 
 .site_intro .content_block {
   height:310px;
-  background-color: #FFF;
-  background-image:transparent url('/images/front_page_gradient.png');
+  background-color: transparent;
+  background-image:url('/images/front_page_gradient.png');
   margin-bottom:0px;
 }
 
@@ -530,7 +530,7 @@ input.search_for_events{
   
 p.filter_edit{
   margin-left:42px;
-  margin-bottom:12p
+  margin-bottom:12px;
 }
 .keyword{
   font-style:italic;
@@ -689,9 +689,7 @@ form#bis_email_signup{
   vertical-align: top;
   width:14%;
 }
-.events .calendar_view td:last-child{
-  border-right: none;p.
-}
+
 .events .calendar_view td .day {
 
   padding:4px 4%;
