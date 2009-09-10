@@ -113,7 +113,6 @@ text-align:center;
   width:105px;
   float:right;
   position:relative;
-
 }
 .nav li.resources a{
   background-position:-595px 1px;
@@ -121,6 +120,12 @@ text-align:center;
 }
 .nav li.about, .nav li.about a{
   background-position:-130px 1px;
+}
+.nav li.venues, .nav li.venues a{
+  background-position:-880px 1px;
+}
+.nav li.pages, .nav li.pages a{
+  background-position:-750px 1px;
 }
 .nav li a{
   background-image: url('/images/css/nav_menu_icon_bg.png');
@@ -142,6 +147,12 @@ text-align:center;
 }
 .nav li.about a:hover{
   background-position:-130px -69px;
+}
+.nav li.venues a:hover{
+  background-position:-880px -69px;
+}
+.nav li.pages a:hover{
+  background-position:-750px -69px;
 }
 
 /* Site wide styles */
