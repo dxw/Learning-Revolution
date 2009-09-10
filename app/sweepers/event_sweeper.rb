@@ -16,9 +16,7 @@ class EventSweeper < ActionController::Caching::Sweeper
 
   private
   def expire_cache_for(record)
-
     expire_page(:controller => '/pages', :action => 'index')
-
-    # expire_page(:controller => ‘blog’, :action => ‘show’, :id => record.id)
+    Rails.cache.clear
   end
 end
