@@ -1,0 +1,21 @@
+defaults : &defaults
+  adapter: mysql
+  encoding: utf8
+  username: root
+  password:
+  host: 127.0.0.1
+
+development:
+  <<: *defaults
+  database: learning_revolution_development
+
+test: &TEST
+  <<: *defaults
+  database: learning_revolution_test
+
+production:
+  <<: *defaults
+  database: learning_revolution_development
+
+cucumber:
+  <<: *TEST
