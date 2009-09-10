@@ -1,8 +1,23 @@
+
 <p><%= error_messages_for :venue %></p>
-<p><label for="venue_name">Name</label>: <%= venue_form.text_field :name      %></p>
-<p><label for="venue_address_1">Address 1</label>: <%= venue_form.text_field :address_1 %></p>
-<p><label for="venue_address_2">Address 2</label>: <%= venue_form.text_field :address_2 %></p>
-<p><label for="venue_address_3">Address 3</label>: <%= venue_form.text_field :address_3 %></p>
-<p><label for="venue_city">City</label>: <%= venue_form.text_field :city      %></p>
-<p><label for="venue_county">County</label>: <%= venue_form.text_field :county    %></p>
-<p><label for="venue_postcode">Postcode</label>: <%= venue_form.text_field :postcode  %></p>
+<div class="input clearfix">
+<label for="venue_name">Name</label><%= venue_form.text_field :name, :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_address_1">Address 1</label><%= venue_form.text_field :address_1,  :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_address_2">Address 2</label><%= venue_form.text_field :address_2,  :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_address_3">Address 3</label><%= venue_form.text_field :address_3,  :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_city">City</label><%= venue_form.text_field :city, :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_county">County</label><%= venue_form.text_field :county, :class =>'text input' %>
+</div>
+<div class="input clearfix">
+<label for="venue_postcode">Postcode</label><%= venue_form.text_field :postcode,   :class =>'text input' %>
+</div>
