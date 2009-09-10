@@ -6,7 +6,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>Learning Revolution Admin</title>
-	<link href='/stylesheets/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+
+	<link rel="stylesheet" href="/stylesheets/jquery/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheets/admin.css" type="text/css" media="screen" charset="utf-8" />
   <!-- %link{:rel => "stylesheet", :href => "/stylesheets/blueprint/print.css",  :type => "text/css", :media => "print"} -->
   <!--[if IE]>
   <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
@@ -14,14 +17,31 @@
   
 </head>
 
-<body>
-  <div class='container'>
-    <ul class="admin_nav">
-      <li><%= link_to "Venues", admin_venues_path %></li>
-      <li><%= link_to "Events", admin_events_path %></li>
-    </ul>
+<body class="admin">
 
-    <%= yield %>
+  <div class="header">
+    
+    <h1><img src="/images/admin_fol_logo.png
+      " alt="Learning Revolution Logo" /></h1>
+    
+  </div>
+  
+  <div class="nav_banner">
+    <ul class="nav">
+      <li class="home"><%= link_to "" %></li>
+      <li class="venues"><%= link_to "Venues", admin_venues_path %></li>
+      <li class="events"><%= link_to "Events", admin_events_path %></li>
+      <li class="pages"><%= link_to "Pages", "" %></li>
+    </ul>
+  </div>
+
+
+
+
+  <div class='container'>
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
 
 </body>
