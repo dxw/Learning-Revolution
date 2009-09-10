@@ -35,3 +35,10 @@ body.admin {
 .form_wrapper form textarea{
   float:left;
 }
+
+/* Styling items lists: */
+
+.admin ul.listing{
+  list-style-type: none;
+  padding:12px;
+}
