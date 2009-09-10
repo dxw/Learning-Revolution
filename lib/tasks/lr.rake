@@ -10,11 +10,16 @@ namespace :lr do
     end
     
     task :mass_seed => :environment do
-      venue = Venue.create!(:name => "The Lido", :address_1 => "1 Berrick Street", :city => "London", :postcode => "N1 1AA")
-      
+      require 'lib/tasks/data/postcodes.rb'
+      venues = []
+      300.times do |id|
+        venues << Venue.create!(:name => "School Hall #{id}", :address_1 => "#{id} Berrick Street", :city => "London", :postcode => POSTCODES[rand(POSTCODES.size)])
+        p "Created venue #{id}"
+      end
       150.times do |id|
         31.times do |day|
-          Event.create!(:venue => venue, :title => "Open Yoga sessions #{id}", :theme => "cooking", :type => "classes", :featured => true, :published => true, :picture => "http://farm3.static.flickr.com/2343/1969404337_2eecb3bbb2.jpg", :start => "#{day+1} october 2009".to_time)
+          Event.create!(:venue => venues[rand(venues.size)], :title => "Open Yoga sessions #{id}", :theme => Event::Themes[rand(Event::Themes.size)], :type => Event::Types[rand(Event::Types.size)], :published => true, :start => "#{day+1} october 2009".to_time, :contact_name => "James Darling", :contact_phone_number => "07811407085")
+          p "Created event #{id}"
         end
       end
     end
@@ -54,6 +59,8 @@ namespace :lr do
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
+      
+      
       
     end
   end
