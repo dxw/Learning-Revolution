@@ -477,13 +477,32 @@ background-position:0 -80px;
 }
 
 .event_filtering h3.active {
-
 }
-
 
 .form_wrapper .filter{
   position:relative;
 }
+
+/* Time picker*/
+
+.form_wrapper form .timepicker .time{
+  float:left;
+}
+
+.form_wrapper form .timepicker select{
+  width:auto;
+}
+.form_wrapper form .timepicker .time label{
+  width:auto;
+  margin-right:20px;
+}
+.form_wrapper form .timepicker .until, .form_wrapper form .timepicker .from{
+  float:left;
+}
+.form_wrapper form .timepicker .until label{
+  margin-left:20px;
+}
+
 .form_wrapper .tooltip{
   background:#fff;
   border:1px solid #C2C2C3;
