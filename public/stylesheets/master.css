@@ -849,3 +849,17 @@ li.calendar{
 input.submit_your_event{
   margin-left:86px;
 }
+
+
+
+.footer{
+  min-height:30px;
+  width:100;
+  background-color: #8b1713;
+  text-align:center; 
+  margin-top:0px;
+  padding-top:28px;
+}
+.footer p, .footer  a{
+    color:#eee;
+}

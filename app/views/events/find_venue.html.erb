@@ -1,7 +1,7 @@
 <% unless @venues.blank? %>
   We already have the details of a venue near there
   <% @venues.each do |venue| %>
-    <% form_for @new_event, :url => events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+    <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
       <%= venue.name %>
       <%= submit_tag "It's at this venue" %>
     <% end %>
@@ -10,7 +10,7 @@
   That's a new venue
 <% end %>
 
-<% form_for @new_event, :url => events_path(:event => params[:event]) do %>
+<% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
   <div class="input clearfix">
     <label for="venue_name">Venue name</label>
     <%= text_field :venue, :name, :class => 'text' %>
