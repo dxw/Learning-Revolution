@@ -9,7 +9,7 @@
       <label for="event_title">Title</label>
       <%= event_form.text_field :title, :class => 'text input' %>
       <div class="input_tip">
-        <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
+        <div class="tooltip">What's your event called?</div>
         <div class="tooltip_arrow"></div>
       </div>
     </div>
@@ -24,35 +24,56 @@
         <label for="venue_postcode">Postcode</label>
         <%= text_field :venue, :postcode, :class => 'text input' %>
         <div class="input_tip">
-          <div class="tooltip">Helpful copy explaining how best to fill each form appears here, as focus moves to each form.</div>
+          <div class="tooltip">Enter the postcode of your venue's event. If your event is online, check the "no location" box.</div>
           <div class="tooltip_arrow"></div>
         </div>
       </div>
     </fieldset>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
       <%= event_form.select :theme, options_for_select(Event::Themes) %>
+      
+      <div class="input_tip">
+        <div class="tooltip">What's this event about? If none of these options fit, use "other".</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_event_type">Event Type</label>
       <%= event_form.select :event_type, options_for_select(Event::Types) %>
+      <div class="input_tip">
+        <div class="tooltip">What kind of event is this? If none of these options fit, use "other".</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_description">Description</label>
       <%= event_form.text_area :description, :cols => 38, :rows => 10, :class => 'text' %>
+      <div class="input_tip">
+        <div class="tooltip">What's this event all about? Let people know what they'll be doing, if there's anything they'll need and why they should go along.</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_start">From</label>
       <%= event_form.text_field :start, :class => 'text' %>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
-    <div class="input clearfix">
+    <div class="input clearfix input_with_tip">
       <label for="event_end">until</label>
       <%= event_form.text_field :end, :class => 'text' %>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
+        <div class="tooltip_arrow"></div>
+      </div>
     </div>
 
     <fieldset id="more_info" >
@@ -60,24 +81,40 @@
 
       <div id="further_info">
 
-        <div class="input clearfix">
+        <div class="input clearfix input_with_tip">
           <label for="event_organisation">Organisation</label>
           <%= event_form.text_field :organisation, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">If this event is being run by an organisation, enter the organisation's name here.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
         </div>
 
-        <div class="input clearfix">
+        <div class="input clearfix input_with_tip">
           <label for="event_contact_name">Contact Name</label>
           <%= event_form.text_field :contact_name, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the name of someone we can contact about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
         </div>
 
-        <div class="input clearfix">
+        <div class="input clearfix input_with_tip">
           <label for="event_contact_phone_number">Contact Phone Number</label>
           <%= event_form.text_field :contact_phone_number, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the phone number of the person we can talk to about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
         </div>
 
-        <div class="input clearfix">
+        <div class="input clearfix input_with_tip">
           <label for="event_contact_email_address">Contact Email Address</label>
           <%= event_form.text_field :contact_email_address, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the email address of the person we can talk to about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
         </div>
 
       </div>

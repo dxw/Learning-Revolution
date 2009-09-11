@@ -116,7 +116,7 @@ InfoTip = $.klass({
 	initialize: function() {
 	  this.container = this.element.parent(".input_with_tip")
 	  this.input_tip = this.container.find(".input_tip")
-		this.input_tip.hide();
+     this.input_tip.hide();
 	},
 	onfocus: function() {
 	  this.input_tip.show();
@@ -135,6 +135,8 @@ jQuery(function($) {
   $('.event_filtering').attach(EventFilterSlider);
   $('.event_venue_form').attach(VenueFinder);
   $(".input_with_tip input").attach(InfoTip)
+  $(".input_with_tip select").attach(InfoTip)
+  $(".input_with_tip textarea").attach(InfoTip)
 });
 
 
