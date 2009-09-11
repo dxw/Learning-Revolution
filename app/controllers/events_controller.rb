@@ -21,11 +21,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_slug(params[:id])
+    unless params[:format] == 'ics'
+      redirect_to path_for_event(@event) and return unless request.path == path_for_event(@event)
+    end
     respond_to do |format|
       format.html
       format.ics { render :text => @event.to_ical }
     end
-    fix_path unless params[:format] == 'ics'
     
     params[:view] = 'list'
   end
@@ -69,10 +71,6 @@ class EventsController < ApplicationController
   end
   
   private
-  
-  def fix_path
-    redirect_to path_for_event(@event) unless request.path == path_for_event(@event)
-  end
   
   def ensure_filters
     params[:filter] ||= {}
