@@ -3,14 +3,15 @@
   <div class="site_intro clearfix row">
     <div class="content_block half_page">
       <div class="content_block_content">
-        <img src="/images/css/headings/hd_be_a_part_of_the_festival.png" alt="Be a part of the Festival" />
+        <img src="/images/css/headings/hd_be_a_part_of_the_festival.png" alt="Be a part of the Festival" class = 'png'/>
       
-        <img id="calendar_thumbnail" src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
+        <img id="calendar_thumbnail" class="png"  src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
       
         <p class="standfirst">This October we’re making it easier than ever to find something new to do</p>
-      <%= link_to image_tag('buttons/bt_view_event_calendar .png', 
+      <%= link_to image_tag('buttons/bt_view_event_calendar.png', 
                             :alt => "View Event Calendar", 
-                            :id => 'view_event_calendar'), 
+                            :id => 'view_event_calendar',
+                            :class => 'png'), 
                             current_events_path %>
       </div>
     </div>
@@ -43,7 +44,7 @@
 
     <div class="content_block span-6 grad">
       <div class="content_block_content secondary_block">
-        <img src="/images/headings/hd_featured_events.png" alt="Featured Events"></img>
+        <img src="/images/headings/hd_featured_events.png" alt="Featured Events" class="png"></img>
         <ul>
         <% Event.find(:all, :limit => 2).each do |event| %>
           <li class="clearfix">
@@ -69,19 +70,19 @@
     </div>
     <div class="content_block span-6 grad">
       <div class="content_block_content secondary_block">
-        <img src="/images/headings/hd_share_space_for_events.png" alt="Share your Space for Events"></img>
+        <img src="/images/headings/hd_share_space_for_events.png" alt="Share your Space for Events" class="png"></img>
         <p>You can help out by adding your space for groups who want to learn.</p>
 
-        <%= link_to image_tag('buttons/bt_add_your_event.png', :alt => 'Add your Event', :class => 'button'), current_events_path %>
-        <img src="/images/headings/hd_organise_your_group.png" alt="Organise Your Group"></img>
+        <%= link_to image_tag('buttons/bt_add_your_event.png', :alt => 'Add your Event', :class => 'button png'), current_events_path %>
+        <img src="/images/headings/hd_organise_your_group.png" alt="Organise Your Group" class="png"></img>
         <p>Meet other organisers and get help organising your group.</p>
-          <%= link_to image_tag('buttons/bt_join_our_network.png', :alt => 'Join our Network', :class => 'button'), current_events_path %>
+          <%= link_to image_tag('buttons/bt_join_our_network.png', :alt => 'Join our Network', :class => 'button png'), current_events_path %>
       </div>
     </div>
     <div class="content_block span-4 last grad">
       <div class="content_block_content secondary_block">
           
-        <%= image_tag('headings/hd_follow_the_festival.png', :alt => 'Follow the Festival') %>
+        <%= image_tag('headings/hd_follow_the_festival.png', :alt => 'Follow the Festival', :class => 'png') %>
 
         <!-- bis newsletter -->
         <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
@@ -94,7 +95,7 @@
             <span><input type="text" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
           </div>
           <div>
-            <span class="button"><input type="image" src="/images/buttons/bt_sign_up.png" value="Subscribe" /></span>
+            <span class="button"><input type="image" src="/images/buttons/bt_sign_up.png" class="png" value="Subscribe" /></span>
           </div>
         </form>
 

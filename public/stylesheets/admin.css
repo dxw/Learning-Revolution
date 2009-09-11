@@ -161,5 +161,10 @@ margin-bottom:12px;
     float:right;
     margin-right:42px;
 }
-  
-  
+
+.footer{
+  background-color:#6d6f71;  
+}
+.footer a{
+  color:#eeeeee;
+}

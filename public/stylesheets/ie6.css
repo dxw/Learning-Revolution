@@ -1,3 +1,11 @@
+/* this always needed */
+
+legend{
+position:relative;
+left:-7px;
+}
+
+
 .standfirst{
   
   width:200px;
@@ -52,3 +60,4 @@ h3.filter_description{
   background-image:none;
   background-color:#fff;
 }
+
