@@ -430,6 +430,23 @@ ul.youtube_videos li img {
   height:75px;
 }
 
+/* Content Pages */
+
+.page_content {
+border-bottom:1px solid #C2C2C3;
+border-top:1px solid #C2C2C3;
+padding:18px 0;
+background-image:url('/images/css/silver_bg.png');
+background-position:0 -80px;
+}
+
+.page_content ul{
+  
+}
+
+
+
+
 /* Events */
 
 #query{
