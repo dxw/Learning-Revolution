@@ -134,9 +134,10 @@ jQuery(function($) {
   $('.toggler').attach(FormSlider);
   $('.event_filtering').attach(EventFilterSlider);
   $('.event_venue_form').attach(VenueFinder);
-  $(".input_with_tip input").attach(InfoTip)
-  $(".input_with_tip select").attach(InfoTip)
-  $(".input_with_tip textarea").attach(InfoTip)
+  $(".input_with_tip input").attach(InfoTip);
+  $(".input_with_tip select").attach(InfoTip);
+  $(".input_with_tip textarea").attach(InfoTip);
+  $("input.datepicker").datepicker({ dateFormat: 'd MM yy', minDate: new Date(2009,9,01), maxDate: new Date(2009,9,31) });
 });
 
 
