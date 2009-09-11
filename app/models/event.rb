@@ -164,14 +164,14 @@ class Event < ActiveRecord::Base
   end
   def to_ical_event
     event = Icalendar::Event.new
-    event.start = start
-    event.end = self.end
+    event.dtstart = start.to_datetime
+    event.dtend = self.end.to_datetime
     event.summary = title
     event.description = description
     event.description << "\n\nMore info: #{bitly_url}"
-    event.created = created_at
-    event.last_modified = updated_at
-    event.geo = "#{lat};#{lng}"
+    event.created = created_at.to_datetime
+    event.last_modified = updated_at.to_datetime
+    event.geo = "#{lat};#{lng}" if lat and lng
     event.location = Location.find(location_id).to_s
     event.organizer = organisation
     event.url = bitly_url
