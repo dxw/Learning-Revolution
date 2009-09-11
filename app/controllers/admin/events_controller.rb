@@ -17,6 +17,10 @@ class Admin::EventsController < Admin::AdminController
     end
   end
   
+  def index
+    @events = Event.find(:all, :conditions => ["title LIKE ?", "%#{params[:title]}%"])
+  end
+  
   def duplicates
     fix_duplicate if request.method == :post && params[:event]
     @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
