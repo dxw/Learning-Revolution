@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create]
+  Mime::Type.register "text/calendar", :ics
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
@@ -11,19 +12,18 @@ class EventsController < ApplicationController
     else
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
       @event_counts = Event.counts_for_month(@first_day_of_month)
-      if params[:format] == 'ics'
-        render :text => a_to_ical(@events)
-        return
+      respond_to do |format|
+        format.html
+        format.ics { render :text => a_to_ical(@events) }
       end
     end
   end
 
   def show
     @event = Event.find_by_slug(params[:id])
-    Mime::Type.register "text/calendar", :ics
     respond_to do |format|
       format.html
-      format.ics { render :text => @event.to_ical; return }
+      format.ics { render :text => @event.to_ical }
     end
     fix_path unless params[:format] == 'ics'
     
