@@ -83,7 +83,9 @@ Feature: Event admin
     
   Scenario: Moderating events with approval
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I press "Approve"
@@ -92,7 +94,9 @@ Feature: Event admin
   
   Scenario: Moderating events with deletion
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I press "Delete"
@@ -101,7 +105,9 @@ Feature: Event admin
   
   Scenario: Moderating events with skipping
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I follow "Skip"
