@@ -24,9 +24,8 @@ class EventsController < ApplicationController
   def find_venue
     @new_event = Event.new(params[:event])
     if params[:cyberevent]
-      if @new_event.save
-        flash[:notice] = "Event created successfully"
-        redirect_to current_events_path and return
+      if @new_event.valid?
+        render :action => :preview and return
       else
         render :action => :create and return
       end
@@ -45,17 +44,23 @@ class EventsController < ApplicationController
   
   def create
     @new_event = Event.new(params[:event])
-    if params[:event][:location_id].blank?
-      @venue = @new_event.venue = Venue.new(params[:venue])
+    if params[:cyberevent]
+      if @new_event.save
+        flash[:notice] = "Event created successfully"
+        redirect_to current_events_path
+      end
     else
-      @venue = @new_event.venue = Venue.find(params[:event][:location_id])
-    end
-    @new_event.valid?
-    @venue.valid?
-    if @new_event.valid? && @venue.valid? && @new_event.save!
-      flash[:notice] = "Event created successfully"
-      redirect_to current_events_path
-    else
+      if params[:event][:location_id].blank?
+        @venue = @new_event.venue = Venue.new(params[:venue])
+      else
+        @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+      end
+      @new_event.valid?
+      @venue.valid?
+      if @new_event.valid? && @venue.valid? && @new_event.save!
+        flash[:notice] = "Event created successfully"
+        redirect_to current_events_path
+      end
     end
   end
   
