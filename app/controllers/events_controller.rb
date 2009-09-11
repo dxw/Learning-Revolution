@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    params[:view] = "list"
     @event = Event.find_by_slug(params[:id])
     redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
     respond_to do |format|
