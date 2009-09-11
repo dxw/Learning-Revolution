@@ -1,17 +1,31 @@
-<%= flash[:page] %>
-<div class="page_content clearfix">
-  
-  <h2>Edit Pages</h2>
-  
-<% unless @pages.blank? %>
-  <ul id="events_list" class='listing'>
-  <% @pages.each do |page| %>
-    <li><%= link_to page.title, edit_admin_page_path(page) %></li>
-  <% end %>
-  </ul>
-</div>  
+<div class="pages_admin">
+    
+  <div class="content_header clearfix">
+    <%= image_tag('headings/admin/hd_pages_admin.png', :class => 'header') %>
+  </div>
 
-<% else %>
-  <h2>There are currently no pages here to edit</h2>
-<% end %>
+  <%= flash[:page] %>
+
+
+  <div class="page_content clearfix">
+
+      <% unless @pages.blank? %>
+
+        <div class="page_list">
+          <ul>
+            <% @pages.each do |page| %>
+              <li><%= link_to page.title, edit_admin_page_path(page) %></li>
+            <% end %>
+          </ul>
+        </div>
+
+        </div>  
+
+        <% else %>
+          <h3>There are currently no pages here to edit</h3>
+        <% end %>    
+    </div>
+
+  </div>
+
 </div>

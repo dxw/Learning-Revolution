@@ -17,7 +17,7 @@
   
 </head>
 
-<body class="admin">
+<body class=" admin <%= "c_#{params[:controller].gsub('/','_')} " "m_#{params[:action].gsub('/','_')}"%>">
 
   <div class="header">
     

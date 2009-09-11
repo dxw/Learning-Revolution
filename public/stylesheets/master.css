@@ -471,7 +471,7 @@ background-position:0 -80px;
   margin-bottom:0;
   width:12em;
   margin-left:20px;
-  padding:4px;
+  padding:12px 0px 4px 0px;
 }
 
 .event_filtering h3.active {
@@ -507,13 +507,13 @@ background-position:0 -80px;
 
 #query h2.find_an_event{
   display:block;
-  background-image:url('/images/css/headings/find_an_event_oct_header.png');
+  background-image:url('/images/headings/hd_find_an_event_in_october.png');
   height:65px;
   width:320px;
   background-repeat:no-repeat;
   text-indent:-9999em;
-  margin-left:30px;
-  margin-top:10px;
+  margin-left:18px;
+  margin-top:18px;
 }
 
 .form_wrapper form{

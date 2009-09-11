@@ -2,21 +2,21 @@
   <div class="current_event_filtering clearfix">
     <div class="span-11">
       <%= flash[:notice] %>
-      <h2 class="find_an_event">Find an Event in October</h2>
+      <h2 class="find_an_event png">Find an Event in October</h2>
       <h3 class="filter_description"><%= current_filter_description%></h3> 
+      <div class="add_event_link"></div>
     </div>
 
     <ul class="search_subscription_options">
       <li class="email">Send me these events as email.</li>
       <li class="calendar">Add these events to my calendar.</li>
       <li class="rss">Add to my feed reader.</li>
-      <li>Organising an event in October?<br /><%= link_to "Add it to the calendar here", "" %></li>
     </ul>
-    <div class="add_event_link"></div>
+    
   </div>
   
   <div class="event_filtering clearfix">
-    <h3 class="toggles"><%= image_tag('buttons/bt_look_for_more_events.png') %></h3>
+    <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.png', :class => "png") %></h3>
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
