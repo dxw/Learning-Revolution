@@ -168,6 +168,7 @@ class Event < ActiveRecord::Base
     event.end = self.end
     event.summary = title
     event.description = description
+    event.description << "\n\nMore info: #{bitly_url}"
     event.created = created_at
     event.last_modified = updated_at
     event.geo = "#{lat};#{lng}"
