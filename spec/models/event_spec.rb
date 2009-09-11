@@ -175,11 +175,11 @@ describe Event do
     
     it "should generate find conditions from form params" do
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name", :event_type => "type_name", :location => "E11 1PB")
-      find_options.should == {:within => 5, :limit => 4, :conditions => ["(theme LIKE ? AND event_type LIKE ?)", "%theme_name%", "%type_name%"], :origin => "E11 1PB GB"}
+      find_options.should == {:within => 5, :limit => 4, :conditions => ["(theme LIKE ? AND event_type LIKE ?) AND (published = 1)", "%theme_name%", "%type_name%"], :origin => "E11 1PB GB"}
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name")
-      find_options.should == {:limit => 4, :conditions => ["(theme LIKE ?)", "%theme_name%"]}
+      find_options.should == {:limit => 4, :conditions => ["(theme LIKE ?) AND (published = 1)", "%theme_name%"]}
       find_options = Event.turn_filter_params_into_find_options(:event_type => "type_name")
-      find_options.should == {:limit => 4, :conditions => ["(event_type LIKE ?)", "%type_name%"]}
+      find_options.should == {:limit => 4, :conditions => ["(event_type LIKE ?) AND (published = 1)", "%type_name%"]}
     end
     
     it "should auto convert params into find options on find by month" do

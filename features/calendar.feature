@@ -3,11 +3,16 @@ Feature: Event admin
   As a user
   I should be view and filter events relevant to me
   
+  @current
   Scenario: Viewing an unfiltered calendar
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
+    And a valid event called "Secret Event"
+    And the event "Secret Event" starts on "12th October 2009 12:00"
+    And the event "Secret Event" is not published yet
     When I go to the calendar for October 2009
     Then I should see "Octoberfest" in the calendar on day "12"
+    And I should not see "Secret Event"
 
   Scenario: Viewing a calendar filtered by theme
     Given a valid event called "Octoberfest"

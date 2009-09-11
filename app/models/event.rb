@@ -51,6 +51,13 @@ class Event < ActiveRecord::Base
       find_options[:within] = 5
     end
 
+    find_options[:conditions] ||= []
+    if find_options[:conditions][0]
+      find_options[:conditions][0] += " AND (published = 1)"
+    else
+      find_options[:conditions][0] = "(published = 1)"
+    end
+
     find_options[:limit] = 4
     find_options
   end
