@@ -16,6 +16,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_slug(params[:id])
+    if params[:format] == 'ics'
+      render :text => @event.to_ical
+      return
+    end
     fix_path
     
     params[:view] = 'list'

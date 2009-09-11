@@ -162,6 +162,24 @@ class Event < ActiveRecord::Base
   def cache_lat_lng
     self.lat, self.lng = venue.lat, venue.lng if venue
   end
+  def to_ical
+    event = Icalendar::Event.new
+    cal = Icalendar::Calendar.new
+    event = cal.event
+    event.start = start
+    event.end = self.end
+    event.summary = title
+    event.description = description
+    event.created = created_at
+    event.last_modified = updated_at
+    event.geo = "#{lat};#{lng}"
+    event.location = Location.find(location_id).to_s
+    event.organizer = organisation
+    event.url = bitly_url
+    duration = start - self.end if self.end
+
+    cal.to_ical
+  end
   private
   def must_have_contact_details
     errors.add(:contact_email_address, "can't be blank") if self.contact_email_address.blank? && self.contact_phone_number.blank?
