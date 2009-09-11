@@ -17,6 +17,16 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I press "Submit this event"
+    Then I should see "Your event has not been saved yet"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "2004-10-23 11:20:00 +0100"
+    And I should see "2004-10-23 12:20:00 +0100"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    When I press "Save this event"
     Then I should see "Event created successfully"
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
@@ -54,6 +64,16 @@ Feature: Adding an event
     And I fill in "City" with "City name"
     And I fill in "County" with "County name"
     And I press "Save this venue and add my event"
+    Then I should see "Your event has not been saved yet"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "2004-10-23 11:20:00 +0100"
+    And I should see "2004-10-23 12:20:00 +0100"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    When I press "Save this event"
     Then I should see "Event created successfully"
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
@@ -105,12 +125,21 @@ Feature: Adding an event
     And I press "Submit this event"
     Then I should see "We already have the details of a venue near there"
     When I press "It's at this venue"
+    Then I should see "Your event has not been saved yet"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "2004-10-23 11:20:00 +0100"
+    And I should see "2004-10-23 12:20:00 +0100"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    When I press "Save this event"
     Then I should see "Event created successfully"
     And there should be 1 Event in the database
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
 
-  @current
   Scenario: Adding a valid event when there are multiple similar venues
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
@@ -157,6 +186,16 @@ Feature: Adding an event
     And I fill in "City" with "City name"
     And I fill in "County" with "County name"
     And I press "Save this venue and add my event"
+    Then I should see "Your event has not been saved yet"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "2004-10-23 11:20:00 +0100"
+    And I should see "2004-10-23 12:20:00 +0100"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    When I press "Save this event"
     Then I should see "Event created successfully"
     And there should be 1 Event in the database
     And there should be 2 Venue in the database
