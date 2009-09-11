@@ -162,10 +162,8 @@ class Event < ActiveRecord::Base
   def cache_lat_lng
     self.lat, self.lng = venue.lat, venue.lng if venue
   end
-  def to_ical
+  def to_ical_event
     event = Icalendar::Event.new
-    cal = Icalendar::Calendar.new
-    event = cal.event
     event.start = start
     event.end = self.end
     event.summary = title
@@ -176,8 +174,13 @@ class Event < ActiveRecord::Base
     event.location = Location.find(location_id).to_s
     event.organizer = organisation
     event.url = bitly_url
-    duration = start - self.end if self.end
+    event.duration = start - self.end if self.end
 
+    event
+  end
+  def to_ical
+    cal = Icalendar::Calendar.new
+    cal.add_event to_ical_event
     cal.to_ical
   end
   private

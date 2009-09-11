@@ -11,6 +11,10 @@ class EventsController < ApplicationController
     else
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
       @event_counts = Event.counts_for_month(@first_day_of_month)
+      if params[:format] == 'ics'
+        render :text => a_to_ical(@events)
+        return
+      end
     end
   end
 
@@ -99,6 +103,15 @@ class EventsController < ApplicationController
   def new_event
     @new_event = Event.new(params[:event])
     @new_event.venue = Venue.new(params[:event].andand[:venue])
+  end
+
+  def a_to_ical(arr)
+    cal = Icalendar::Calendar.new
+    arr.each do |ev|
+      cal.add_event ev.to_ical_event
+      p ev.to_ical_event
+    end
+    cal.to_ical
   end
 
 end
