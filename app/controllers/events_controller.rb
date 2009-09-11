@@ -13,7 +13,7 @@ class EventsController < ApplicationController
       @event_counts = Event.counts_for_month(@first_day_of_month)
       respond_to do |format|
         format.html
-        format.ics { render :text => a_to_ical(@events) }
+        format.ics { render :text => events_to_ical(@events) }
         format.xml { render :text => @events.to_xml }
         format.json { render :text => @events.to_json }
       end
@@ -111,12 +111,12 @@ class EventsController < ApplicationController
     @new_event.venue = Venue.new(params[:event].andand[:venue])
   end
 
-  def a_to_ical(arr)
-    cal = Icalendar::Calendar.new
-    arr.each do |ev|
-      cal.add_event ev.to_ical_event
+  def events_to_ical(events)
+    calendar = Icalendar::Calendar.new
+    events.each do |event|
+      calendar.add_event event.to_ical_event
     end
-    cal.to_ical
+    calendar.to_ical
   end
 
 end
