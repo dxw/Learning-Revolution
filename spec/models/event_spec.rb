@@ -17,6 +17,16 @@ describe Event do
     @event.title = ""
     @event.should_not be_valid
   end
+  
+  it "should not be valid without a theme" do
+    @event.theme = ""
+    @event.should_not be_valid
+  end
+  
+  it "should not be valid without a event type" do
+    @event.event_type = ""
+    @event.should_not be_valid
+  end
     
   it "should not be valid without a contact name" do
     @event.contact_name = ""

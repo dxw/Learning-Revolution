@@ -36,10 +36,11 @@ Feature: Event admin
     When I go to the event admin index page
     And I follow "New event"
     And I press "Create"
-    Then I should see "3 errors prohibited this event from being saved"
+    Then I should see "5 errors prohibited this event from being saved"
     And I should see "Title can't be blank"
     And I should see "Contact name can't be blank"
-    And I should see "Contact email address can't be blank"
+    And I should see "Theme can't be blank"
+    And I should see "Event type can't be blank"
     And I am on the event admin index page
   
   Scenario: Editing a valid event
