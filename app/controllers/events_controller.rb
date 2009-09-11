@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_slug(params[:id])
-    redirect_to path_for_event(@event) and return if request.format == 'html' && request.path == path_for_event(@event)
+    redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
     respond_to do |format|
       format.html
       format.ics { render :text => @event.to_ical }

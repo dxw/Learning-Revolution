@@ -51,7 +51,7 @@ class Event < ActiveRecord::Base
       find_options[:within] = 5
     end
 
-    find_options[:limit] = 3
+    find_options[:limit] = 4
     find_options
   end
   def self.find_by_month_with_filter(date, find_options={})
