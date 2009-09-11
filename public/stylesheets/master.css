@@ -459,6 +459,8 @@ background-position:0 -80px;
 .event_filtering {
   margin:0 20px;
   margin-bottom:18px;
+  position:relative;
+  
 }
 .form_wrapper {
   border-bottom:1px solid #C2C2C3;
@@ -611,7 +613,7 @@ form fieldset legend{
 .add_event_link{
   position:absolute;
   right:40px;
-  bottom:-36px;
+  top:30px;
 
 }
 .add_event_link a{
