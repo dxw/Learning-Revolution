@@ -59,7 +59,7 @@
     
     <ul class="sm_icons">
       
-      <li class="calendar"><%= link_to "Add to Calendar" %></li>
+      <li class="calendar"><%= link_to "Add to Calendar", :id => @event.slug, :format => 'ics' %></li>
       <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{event.bitly_url}" %></li>
       <li class="facebook"><%= link_to "Add to Facebook" %></li>
 
