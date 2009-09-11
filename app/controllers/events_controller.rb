@@ -15,18 +15,20 @@ class EventsController < ApplicationController
       respond_to do |format|
         format.html
         format.ics { render :text => a_to_ical(@events) }
+        format.xml { render :text => @events.to_xml }
+        format.json { render :text => @events.to_json }
       end
     end
   end
 
   def show
     @event = Event.find_by_slug(params[:id])
-    unless params[:format] == 'ics'
-      redirect_to path_for_event(@event) and return unless request.path == path_for_event(@event)
-    end
+    redirect_to path_for_event(@event) and return if request.format == 'html' && request.path == path_for_event(@event)
     respond_to do |format|
       format.html
       format.ics { render :text => @event.to_ical }
+      format.xml { render :text => @event.to_xml }
+      format.json { render :text => @event.to_json }
     end
     
     params[:view] = 'list'
