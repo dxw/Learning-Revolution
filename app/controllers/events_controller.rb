@@ -10,7 +10,6 @@ class EventsController < ApplicationController
       @venues = Venue.find_venues_by_event_params(params[:filter])
     else
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
-      @event_counts = Event.counts_for_month(@first_day_of_month)
       respond_to do |format|
         format.html
         format.ics { render :text => events_to_ical(@events) }

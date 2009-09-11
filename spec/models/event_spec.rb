@@ -223,14 +223,7 @@ describe Event do
     end
       
   end
-  
-  it "should collect an array of counts on all days" do
-    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
-    EventSpecHelper.save(:start => Time.parse("2nd October 2009 10:00"))
-    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
-    Event.counts_for_month(Time.parse("1st October 2009")).should == {"2009-10-01"=>2, "2009-10-02"=>1}
-  end
-  
+    
   it "should find events on same day" do
     event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
     event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
