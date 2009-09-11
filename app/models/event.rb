@@ -25,7 +25,14 @@ class Event < ActiveRecord::Base
   Types = ["Class"]
   
   def self.find_by_month_with_filter_from_params(date, params={})
-    self.find_by_month_with_filter(date, turn_filter_params_into_find_options(params))
+    # Have this check in here as the caching doesn't work in dev mode. Better solution desired.
+    if RAILS_ENV == "development"
+      self.find_by_month_with_filter(date, turn_filter_params_into_find_options(params))
+    else
+      Rails.cache.fetch("#{date}#{params}") do
+        self.find_by_month_with_filter(date, turn_filter_params_into_find_options(params))
+      end
+    end
   end
   def self.turn_filter_params_into_find_options(params)
     find_options = {}
