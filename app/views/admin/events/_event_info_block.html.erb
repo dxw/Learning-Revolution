@@ -1,17 +1,53 @@
-<p><strong>Title:</strong> <%= event.title %>                                 </p>
-<p><strong>Description:</strong> <%= event.description %>                     </p>
-<p><strong>Theme:</strong> <%= event.theme %>                                 </p>
-<p><strong>Type:</strong> <%= event.event_type %>                             </p>
-<p><strong>Stage:</strong> <%= event.stage %>                                 </p>
-<p><strong>Start:</strong> <%= event.start %>                                 </p>
-<p><strong>End:</strong> <%= event.end %>                                     </p>
-<p><strong>Cost:</strong> <%= event.cost %>                                   </p>
-<p><strong>Min Age:</strong> <%= event.min_age %>                             </p>
-<p><strong>Venue:</strong> <%= event.location_id %>                           </p>
-<p><strong>Organisation:</strong> <%= event.organisation %>                   </p>
-<p><strong>Contact Name:</strong> <%= event.contact_name %>                   </p>
-<p><strong>Contact Phone Number :</strong> <%= event.contact_phone_number %>  </p>
-<p><strong>Contact Email Address:</strong> <%= event.contact_email_address %> </p>
-<p><strong>Published:</strong> <%= event.published %>                         </p>
-<p><strong>Picture:</strong> <%= event.picture %>                             </p>
-<p><strong>Featured:</strong> <%= event.featured %>                           </p>
+<ul>
+  <li class="item clearfix odd">
+    <div class="label">Title</div> <div class="value"><%= event.title %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Description</div> <div class="value"><%= event.description %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Theme</div> <div class="value"><%= event.theme %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Type</div> <div class="value"><%= event.event_type %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Stage</div> <div class="value"><%= event.stage %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Start</div> <div class="value"><%= event.start %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">End</div> <div class="value"><%= event.end %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Cost</div> <div class="value"><%= event.cost %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Min Age</div> <div class="value"><%= event.min_age %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Venue</div> <div class="value"><%= event.location_id %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Organisation</div> <div class="value"><%= event.organisation %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Contact Name</div> <div class="value"><%= event.contact_name %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Contact Phone Number </div> <div class="value"><%= event.contact_phone_number %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Contact Email Address</div> <div class="value"><%= event.contact_email_address %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Published</div> <div class="value"><%= event.published %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Picture</div> <div class="value"><%= event.picture %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Featured</div> <div class="value"><%= event.featured %></div>
+  </li>
+</ul>

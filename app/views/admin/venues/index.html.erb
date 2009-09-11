@@ -1,5 +1,12 @@
 <div class="form_wrapper clearfix">
-<%= flash[:venue] %>
+
+  <div class="content_header clearfix">
+    <%= image_tag('headings/admin/hd_venues_admin.png', :class => 'header') %>
+
+  </div>
+
+  <%= flash[:venue] %>
+
 
 <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
