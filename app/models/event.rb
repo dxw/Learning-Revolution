@@ -127,6 +127,8 @@ class Event < ActiveRecord::Base
     bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
     
     self.update_attribute(:bitly_url, bitly.shorten(event_uri).short_url)
+  rescue BitlyError
+    self.update_attribute(:bitly_url, event_uri)
   end
   
   def possible_duplicate?
