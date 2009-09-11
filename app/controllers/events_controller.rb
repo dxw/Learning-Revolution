@@ -20,11 +20,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_slug(params[:id])
-    if params[:format] == 'ics'
-      render :text => @event.to_ical
-      return
+    Mime::Type.register "text/calendar", :ics
+    respond_to do |format|
+      format.html
+      format.ics { render :text => @event.to_ical; return }
     end
-    fix_path
+    fix_path unless params[:format] == 'ics'
     
     params[:view] = 'list'
   end
