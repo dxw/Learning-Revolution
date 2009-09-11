@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem "geokit"
   config.gem "andand"
   config.gem "bitly"
+  config.gem "icalendar"
   
   # config.gem 'fiveruns_tuneup'
   

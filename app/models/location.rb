@@ -52,6 +52,10 @@ class Location < ActiveRecord::Base
   def self.geocode(post_code)
     Geokit::Geocoders::YahooGeocoder.geocode("#{post_code} GB")
   end
+
+  def to_s
+    [address_1, address_2, address_3, city, county, postcode].select{|i|i!=nil}.join("\n")
+  end
   
   private
   
