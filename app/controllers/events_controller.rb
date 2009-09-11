@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create]
-  Mime::Type.register "text/calendar", :ics
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
@@ -116,7 +115,6 @@ class EventsController < ApplicationController
     cal = Icalendar::Calendar.new
     arr.each do |ev|
       cal.add_event ev.to_ical_event
-      p ev.to_ical_event
     end
     cal.to_ical
   end
