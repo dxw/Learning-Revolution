@@ -60,7 +60,7 @@
     </div>
 
     <div class="input clearfix input_with_tip">
-      <label for="event_start">From</label>
+      <label for="event_start">Date</label>
       <%= event_form.text_field :start, :class => 'text datepicker' %>
       <div class="input_tip">
         <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
@@ -68,12 +68,18 @@
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_end">until</label>
-      <%= event_form.text_field :end, :class => 'text datepicker' %>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
-        <div class="tooltip_arrow"></div>
+    <div class="input clearfix timepicker input_with_tip">
+      <label for="event_start">from</label>
+      <div class="time clearfix">
+        <div class="from">
+          <%= event_form.select :start, :class => 'text' %>
+          <%= event_form.select :start, :class => 'text' %>
+        </div>
+        <div class="until">
+          <label for="event_end">until</label>
+          <%= event_form.select :end, :class => 'text' %>
+          <%= event_form.select :start, :class => 'text' %>
+        </div>
       </div>
     </div>
 

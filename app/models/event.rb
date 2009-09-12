@@ -172,8 +172,8 @@ class Event < ActiveRecord::Base
     event.description << "\n\nMore info: #{bitly_url}"
     event.created = created_at.to_datetime
     event.last_modified = updated_at.to_datetime
-    event.geo = "#{lat};#{lng}" if lat and lng
     event.location = self.venue.to_s
+    event.geo = Icalendar::Geo.new(lat,lng) if lat and lng
     event.organizer = organisation
     event.url = bitly_url
     event.duration = start - self.end if self.end
