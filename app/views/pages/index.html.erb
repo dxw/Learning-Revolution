@@ -1,22 +1,18 @@
-<div class="content">
-  
-  <div class="site_intro clearfix row">
-    <div class="content_block half_page">
-      <div class="content_block_content">
-        <img src="/images/css/headings/hd_be_a_part_of_the_festival.png" alt="Be a part of the Festival" class = 'png'/>
+  <div class="row clearfix">
+      <div class="featured_block">
+        <img src="/images/headings/hd_be_a_part_of_the_festival.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/>
       
-        <img id="calendar_thumbnail" class="png"  src="/images/css/calendar_front_page_thumbnail.png" alt="(calendar thumbnail)" />
-      
+        <img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" />
+
+
         <p class="standfirst">This October we’re making it easier than ever to find something new to do</p>
-      <%= link_to image_tag('buttons/bt_view_event_calendar.png', 
+      <%= link_to image_tag('buttons/bt_view_event_calendar.gif', 
                             :alt => "View Event Calendar", 
-                            :id => 'view_event_calendar',
                             :class => 'png'), 
-                            current_events_path %>
+                            current_events_path, :id => 'view_event_calendar' %>
       </div>
-    </div>
-  
-    <div class="content_block half_page featured_block last">
+
+
       <div class="featured_events">
         <% Event.featured.each_with_index do |event, count| %>
           <div class="featured_event" id="featured_event_<%= count+1 %>">
@@ -35,16 +31,16 @@
       </div>
       <div class="featured_event_nav">
       </div>
-    </div>
+
 
 
   </div>
 
-  <div class="content_block clearfix">
+  <div class="row clearfix">
 
-    <div class="content_block span-6 grad">
+    <div class="content_block">
       <div class="content_block_content secondary_block">
-        <img src="/images/headings/hd_featured_events.png" alt="Featured Events" class="png"></img>
+        <img src="/images/headings/hd_featured_events.gif" alt="Featured Events" class="png"></img>
         <ul>
         <% Event.find(:all, :limit => 2).each do |event| %>
           <li class="clearfix">
@@ -68,21 +64,21 @@
         </ul>
       </div>
     </div>
-    <div class="content_block span-6 grad">
+    <div class="content_block">
       <div class="content_block_content secondary_block">
-        <img src="/images/headings/hd_share_space_for_events.png" alt="Share your Space for Events" class="png"></img>
+        <img src="/images/headings/hd_share_your_space_for_events.gif" alt="Share your Space for Events" class="png"></img>
         <p>You can help out by adding your space for groups who want to learn.</p>
 
-        <%= link_to image_tag('buttons/bt_add_your_event.png', :alt => 'Add your Event', :class => 'button png'), current_events_path %>
-        <img src="/images/headings/hd_organise_your_group.png" alt="Organise Your Group" class="png"></img>
+        <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button png'), current_events_path %>
+        <img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="png"></img>
         <p>Meet other organisers and get help organising your group.</p>
-          <%= link_to image_tag('buttons/bt_join_our_network.png', :alt => 'Join our Network', :class => 'button png'), current_events_path %>
+          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button png'), current_events_path %>
       </div>
     </div>
-    <div class="content_block span-4 last grad">
+    <div class="content_block last">
       <div class="content_block_content secondary_block">
           
-        <%= image_tag('headings/hd_follow_the_festival.png', :alt => 'Follow the Festival', :class => 'png') %>
+        <%= image_tag('headings/hd_follow_the_festival.gif', :alt => 'Follow the Festival', :class => 'png') %>
 
         <!-- bis newsletter -->
         <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
@@ -95,7 +91,7 @@
             <span><input type="text" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
           </div>
           <div>
-            <span class="button"><input type="image" src="/images/buttons/bt_sign_up.png" class="png" value="Subscribe" /></span>
+            <span class="button"><input type="image" src="/images/buttons/bt_sign_up.gif" class="png" value="Subscribe" /></span>
           </div>
         </form>
 
@@ -110,22 +106,22 @@
 
   </div>
 
-</div>
 
-<div class="secondary_content clearfix">
 
-  <div class="photos_and_videos clearfix">
+  <div class="secondary_content clearfix">
 
-      <div class="photos">
-        <%= image_tag('headings/hd_photos_from_our_events.png', :alt => "Photos from our events", :class => 'heading') %>
-        <%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %>
-      </div>
-      <div class="videos">
-        <%= image_tag('headings/hd_video_from_our_events.png', :alt => "Video from our events", :class => 'heading') %>
-        <%= link_to "view photos from our YouTube account", "http://youtube.com", :class => "youtube_videos" %>
-      </div>
+    <div class="photos_and_videos clearfix">
+
+        <div class="photos">
+          <%= image_tag('headings/hd_photos_from_our_events.png', :alt => "Photos from our events", :class => 'heading') %>
+          <%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %>
+        </div>
+        <div class="videos">
+          <%= image_tag('headings/hd_video_from_our_events.png', :alt => "Video from our events", :class => 'heading') %>
+          <%= link_to "view photos from our YouTube account", "http://youtube.com", :class => "youtube_videos" %>
+        </div>
+
+    </div>
 
   </div>
-
-</div>
 

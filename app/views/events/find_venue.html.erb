@@ -1,26 +1,25 @@
-<div class="content">
-<div class="events">
+<div id="query">
 
-  <div id="query">
-    
-  <% unless @venues.blank? %>
-    <h2>We already have the details of a venue near there</h2>
-    <% @venues.each do |venue| %>
-      <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
-        <%= venue.name %>
-        <%= submit_tag "It's at this venue" %>
-      <% end %>
+
+
+<% unless @venues.blank? %>
+  <h2>We already have the details of a venue near there</h2>
+  <% @venues.each do |venue| %>
+    <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+      <%= venue.name %>
+      <%= submit_tag "It's at this venue" %>
     <% end %>
-  <% else %>
-
   <% end %>
+<% else %>
 
-  </div>
+  We don't currently have any venues listed in this postcode. Please add your venue it to the listings.
 
+<% end %>
+
+</div>
 
 <div class="form_wrapper clearfix">
 
-  <h2>That's a new venue</h2>  
 <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
   <div class="input clearfix">
     <label for="venue_name">Venue name</label>
@@ -60,6 +59,4 @@
   <%= submit_tag "Save this venue and add my event" %>
 <% end %>
 
-</div>
-</div>
 </div>

@@ -14,7 +14,7 @@
 
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
 
-    <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
+    <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') if params[:action] == 'index' %>
 
     <div class="input clearfix input_with_tip">
       <label for="event_title">Title</label>
@@ -145,5 +145,4 @@
     <% end %>
   </div>
 
-</div>
 </div>

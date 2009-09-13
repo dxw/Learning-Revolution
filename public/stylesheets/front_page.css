@@ -1,0 +1,224 @@
+/* Front Page */
+
+body#pages_index .content{
+  background:none;
+  width:auto;
+}
+body#pages_index .footer{
+  color:#8B1713;
+  background-image:none;
+  width:auto;
+}
+body#pages_index .footer p a, body#pages_index .footer p{
+  color:#fff;
+}
+
+
+img.be_a_part_of_the_festival{
+  margin: 10px 0px 0px 20px;
+}
+.standfirst{
+  margin-top:18px;
+  width:410px;
+  line-height: 1.5;
+  font-size:18px;
+  margin-top:18px;
+}
+#calendar_thumbnail{
+  float:left;
+  margin-left:20px;
+}
+#view_event_calendar{
+  clear:both;
+  display:block;
+  margin-left:20px;
+}
+
+.row{
+  margin: 0px auto 18px auto;
+  width:960px;
+  border:1px solid green;
+}
+.row .content_block{
+  width:330px;
+  border:1px solid #c3c3c3;
+  margin-right:20px;
+  background-image:url(/images/css/silver_bg.png);
+  margin-bottom:0px;
+}
+.row .last{
+  width:230px;
+}
+
+.row .featured_block {
+  background-image:url(/images/bg/front_page_grad.jpg);
+  padding:0;
+  width:480px;
+  overflow:hidden;
+  position:relative;
+}
+.row .featured_block h3 {
+  position:absolute;
+  top:234px;
+  left:0;
+  height:36px;
+  width:100%;
+  color:#781B30;
+  font-size:1.5em;
+  padding-top:9px;
+  padding-left:20px;
+}
+
+.row .featured_block .featured_event_nav {
+  position:absolute;
+  top:0;
+  right:0;
+  height:234px;
+  width:20px;
+  z-index:100;
+  background-color:#40000B;
+  text-align:center;
+  color:#fff;
+}
+
+.row .featured_block .featured_event_nav a {
+  height:18px;
+  display:block;
+  color:#fff;
+  text-decoration:none;
+}
+
+.row .featured_block .featured_event_nav a.activeSlide {
+  background-color:#fff; 
+  color:#40000B;
+}
+
+.secondary_block{
+  min-height:310px;
+}
+.content_block_content li{
+  position:relative;
+  padding-left:85px;
+  border-bottom:1px solid #8b1713;
+  padding-bottom:6px;
+  margin-bottom:6px;
+  list-style: none;
+}
+.content_block_content li.see_more{
+  border-bottom:none;
+  list-style: none;
+}
+.calendar_date {
+  position:absolute;
+  top:10px;
+  left:20px;
+  text-align:center;
+  width:42px;
+  height:50px;
+  background-image:url('/images/css/ical_blank_btn.gif');
+  background-position:-15px -8px;
+  background-repeat:no-repeat;
+  float:left;
+}
+.calendar_date .month{
+  text-transform:uppercase;
+  color:#fff;
+  font-weight:bold;
+  font-size:10px;
+}
+.calendar_date .day{
+  font-weight:bold;
+}
+.calendar_date_description h4{
+  font-weight:bold;
+}
+.calendar_date_description h4 a{
+  text-decoration: none;
+}
+.calendar_date_description .time_place{
+  font-style:italic; 
+}
+img.button{
+  margin-top:12px;
+}
+
+/* BIS email sign up */
+
+form#bis_email_signup{
+  margin-bottom:12px;
+  margin-left:6px;
+}
+#bis_email_signup label{
+  font-size:10px;
+  display:block;
+}
+#bis_email_signup input{
+  width:150px;
+}
+#bis_email_signup .info{
+  margin-top:6px;
+  clear:both;
+}
+#bis_email_signup span.button{
+  position:relative;
+  left:-6px;
+}
+
+
+.secondary_content{
+  padding-top:36px;
+  background-image:url('/images/css/silver_bg.png');
+  background-repeat:repeat-x;
+  clear:both;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.photos_and_videos{
+  width:960px;
+  margin-left:auto;
+  margin-right:auto;
+  border-bottom:1px solid #666;
+  padding-bottom:12px;
+}
+.photos_and_videos .heading{
+  margin-left:0px;
+}
+.videos .heading{
+  margin-left:48px;
+}
+.photos_and_videos .photos {
+  width:450px;
+  float:left;
+  border-right: 1px solid #666;
+  margin-bottom:12px;
+  margin-left:20px;
+}
+.photos_and_videos .videos {
+  width:460px;
+  float:left;
+  margin-bottom:12px;
+}
+ul.flickr_photos,
+ul.youtube_videos {
+  list-style:none;
+}
+ul.youtube_videos {
+  margin-left:40px;
+}
+ul.flickr_photos li,
+ul.youtube_videos li {
+  float:left;
+  text-align:center;
+  height:100px;
+  overflow:hidden ;
+}
+ul.flickr_photos li {
+  width:100px;
+}
+ul.youtube_videos li {
+  width:140px;
+}
+ul.youtube_videos li img {
+  height:75px;
+}
