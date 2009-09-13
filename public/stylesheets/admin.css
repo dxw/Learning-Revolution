@@ -51,10 +51,6 @@ float:left;
 }
 /* Extra Styling for event select field */
 
-.form_wrapper form .datetime select{
-  width:auto;
-  float:none;
-}
 .form_wrapper form select{
   float:left;
 }

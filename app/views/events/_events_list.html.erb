@@ -6,9 +6,9 @@
       <div class="incrementor"><%= link_to "next day", path_for_event(Event.first_for_day(day+1.day)), :class => 'trigger' %></div>
       
     </li>
-    
+
     <% @event.same_day_events.each do |event| %>
-      <li class="event_link"><%= link_to event.title, path_for_event(event) %></li>
+      <li class="event_link <%= "active"if event.slug == params[:id] %>"><%= link_to event.title, path_for_event(event) %></li>
     <% end %>
   </ul>  
 </div>

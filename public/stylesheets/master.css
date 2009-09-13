@@ -530,7 +530,7 @@ background-position:0 -80px;
   display:block;
   background-image:url('/images/headings/hd_find_an_event_in_october.png');
   height:65px;
-  width:320px;
+  width:400px;
   background-repeat:no-repeat;
   text-indent:-9999em;
   margin-left:18px;
@@ -620,7 +620,10 @@ ul.search_subscription_options li{
  
   width:312px;
 }
-
+.form_wrapper form .datetime select{
+  width:auto;
+  float:none;
+}
 form fieldset, form legend{
   clear:both;
 }
@@ -777,19 +780,36 @@ form#bis_email_signup{
   padding-top:18px;
   margin-right:0px;
   background-image:none;
-  background-color:#fff;
+
 }
 #events_list ul{
   
 }
 #events_list li.header{
-  width:390px;
   border-bottom:1px solid #c9c9c9;
   padding-bottom:12px;
 }
 li.event_link{
-  width:390px;
+
   border-bottom:1px solid #8b1713;
+  list-style: none;
+  background-color: transparent;
+}
+
+li.event_link a{
+  display:block;
+  text-decoration: none;
+  font-style:italic;
+  font-size:18px;
+  width:80%;
+  color:#8b1713;
+  padding:12px 10% 12px 10%;
+  background-color: transparent;
+  line-height:1.2;
+}
+li.event_link a:hover{
+  background-color:#8b1713;
+  color:#fff;
 }
 .listing{
   background-image:url('/images/tiles/list_gradient.jpg');
