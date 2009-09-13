@@ -1,19 +1,14 @@
-<div class="content">
-<div class="events">
-   <%= render :partial => 'event_search_filter' %>
+
+  <div class="events">
+     <%= render :partial => 'event_search_filter' %>
    
-   <%= render :partial => 'view_selector' %>
+     <%= render :partial => 'view_selector' %>
    
-   <% if params[:view] == "map" %>
-     <%= render :partial => 'map_view' %>
-   <% else params[:view] == "list" %>
-     <%= render :partial => 'calendar_view' %>
-   <% end %>
-</div>
+     <% if params[:view] == "map" %>
+       <%= render :partial => 'map_view' %>
+     <% else params[:view] == "list" %>
+       <%= render :partial => 'calendar_view' %>
+     <% end %>
+  </div>
 
-<%= render :partial => "new_event" %>
-
-
-</body>
-
-</html>
+  <%= render :partial => "new_event" %>

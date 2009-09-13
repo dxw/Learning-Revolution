@@ -98,7 +98,7 @@ class Event < ActiveRecord::Base
   end
     
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = ? AND id != ?", self.start.utc.to_date, self.id])
+    Event.find(:all, :conditions => ["DATE(start) = ?", self.start.utc.to_date])
   end
   
   def self.first_for_today

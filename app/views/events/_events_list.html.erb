@@ -3,7 +3,7 @@
     <li class="header clearfix">
       <div class="incrementor"><%= link_to "prev day", path_for_event(Event.first_for_day(day-1.day)), :class => 'trigger' %></div>
       <h2><%= day.strftime("%A %e %b") %></h2>
-      <div class="incrementor"><%= link_to "next day", path_for_event(Event.first_for_day(day+1.day)), :class => 'trigger' %></div>
+      <div class="incrementor next"><%= link_to "next day", path_for_event(Event.first_for_day(day+1.day)), :class => 'trigger' %></div>
       
     </li>
 
