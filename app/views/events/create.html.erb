@@ -1,14 +1,16 @@
 
+
 <div class="events">
 
   <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
 
-  <h3>You're about to add a venue</h3>
-
+<% debugger %>  
 
     <div id="errors" class="ui-widget">
       <div class="ui-state-error ui-corner-all">
+        <%= params[:postcode] %>
         <%= error_messages_for :venue %>
+        <%= error_messages_for :event %>
         <%= error_messages_for :new_event %>        
       </div>
     </div>

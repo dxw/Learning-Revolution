@@ -1,8 +1,16 @@
-<div id="query" class="clearfix">
+<div id="content_header" class="clearfix">
+
+  <% if flash[:notice] %>
+    <div class="ui-widget">
+      <div class="ui-state-highlight ui-corner-all">
+        <%= flash[:notice] %>          
+      </div>
+    </div>
+  <% end %>
+
   <div class="current_event_filtering clearfix">
     <div class="span-11">
-      <%= flash[:notice] %>
-      <h2 class="find_an_event png">Find an Event in October</h2>
+      <h2 class="find_an_event">Find an Event in October</h2>
       <h3 class="filter_description"><%= current_filter_description%></h3> 
 
     </div>
@@ -17,7 +25,7 @@
   
   <div class="event_filtering clearfix">
     <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "#new_event" %></div>
-    <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.png', :class => "png") %></h3>
+    <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
@@ -56,7 +64,7 @@
 
         <div class="submit_options clearfix">
           <a href="#events_filter_form" class="cancel_search toggles" id="hides_events_filter_form_wrapper">cancel</a>
-          <%= image_submit_tag('/images/buttons/bt_search_for_events.png', :alt => "Search For Events", :class => "search_for_events") %>
+          <%= image_submit_tag('/images/buttons/bt_search_for_events.gif', :alt => "Search For Events", :class => "search_for_events") %>
         </div>
 
       <% end %>

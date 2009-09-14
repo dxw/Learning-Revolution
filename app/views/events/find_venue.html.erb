@@ -2,6 +2,7 @@
 
 <div class="events">
 
+  <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
 
   <% unless @venues.blank? %>
     <h2>We already have the details of a venue near there</h2>
@@ -13,7 +14,7 @@
     <% end %>
   <% else %>
 
-    We don't currently have any venues listed in this postcode. Please add your venue it to the listings.
+    <h3>We don't currently have any venues listed in this postcode. Please add your venue to the listings.</h3>
 
   <% end %>
 
