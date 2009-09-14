@@ -228,7 +228,7 @@ describe Event do
     event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
     event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
     event3 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
-    event1.same_day_events.should == [event3]
+    event1.same_day_events.to_set.should == Set.new([event1, event3])
   end
   
   it "should cache lat lng from it's location on create" do
