@@ -88,15 +88,23 @@
   color:#fff;
 }
 
-/* This refers to the item listed liston the left hand side */
+
+/* Map styles */
+
+.events{
+  padding-bottom:18px;
+}
 
 #events_map{
   border:1px solid #c3c3c3;
   width:875px;
   margin-left:42px;
-  margin-top:18px;
-  margin-bottom:18px;
+  margin-top:36px;
 }
+
+
+
+/* This refers to the item listed liston the left hand side */
 
 #events_list{
   width:380px;

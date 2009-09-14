@@ -13,6 +13,28 @@ body#pages_index .footer p a, body#pages_index .footer p{
   color:#fff;
 }
 
+.row{
+  margin: 0px auto 18px auto;
+  width:960px;
+}
+.row .content_block{
+  width:330px;
+  border:1px solid #666666;
+  margin-right:20px;
+  background-image:url(/images/css/silver_bg.png);
+  margin-bottom:0px;
+}
+.row .last{
+  width:230px;
+}
+
+.row .featured_block {
+  background-image:url(/images/bg/front_page_grad.jpg);
+  padding:0;
+  width:480px;
+  overflow:hidden;
+  position:relative;
+}
 
 img.be_a_part_of_the_festival{
   margin: 10px 0px 0px 20px;
@@ -34,41 +56,6 @@ img.be_a_part_of_the_festival{
   margin-left:20px;
 }
 
-.row{
-  margin: 0px auto 18px auto;
-  width:960px;
-  border:1px solid green;
-}
-.row .content_block{
-  width:330px;
-  border:1px solid #c3c3c3;
-  margin-right:20px;
-  background-image:url(/images/css/silver_bg.png);
-  margin-bottom:0px;
-}
-.row .last{
-  width:230px;
-}
-
-.row .featured_block {
-  background-image:url(/images/bg/front_page_grad.jpg);
-  padding:0;
-  width:480px;
-  overflow:hidden;
-  position:relative;
-}
-.row .featured_block h3 {
-  position:absolute;
-  top:234px;
-  left:0;
-  height:36px;
-  width:100%;
-  color:#781B30;
-  font-size:1.5em;
-  padding-top:9px;
-  padding-left:20px;
-}
-
 .row .featured_block .featured_event_nav {
   position:absolute;
   top:0;
@@ -80,7 +67,6 @@ img.be_a_part_of_the_festival{
   text-align:center;
   color:#fff;
 }
-
 .row .featured_block .featured_event_nav a {
   height:18px;
   display:block;
@@ -93,6 +79,15 @@ img.be_a_part_of_the_festival{
   color:#40000B;
 }
 
+.share_space_and_groups p{
+  margin-left:15px;
+}
+.share_space_and_groups img{
+  margin-left:5px;
+}
+.share_space_and_groups img.organise_group{
+  margin-left:15px;
+}
 .secondary_block{
   min-height:310px;
 }

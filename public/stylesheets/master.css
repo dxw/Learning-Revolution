@@ -68,6 +68,30 @@ div.header, .header h1
 text-align:center;
 }
 
+
+/* Error and flash styles */
+
+
+#errors{
+  margin: 10px auto;
+  width:500px;
+  font-size:1em; /*override jquery-ui font-size */
+}
+
+div.errorExplanation{
+  margin: 10px auto;
+  padding: 6px 12px;
+}
+div.errorExplanation h2{
+font-weight:bold;
+}
+div.errorExplanation ul{
+  margin-top:6px;
+}
+div.errorExplanation ul li{
+  list-style: none;
+}
+
 /* Site wide styles */
 
 .header, .nav_banner, .content{
@@ -82,7 +106,7 @@ text-align:center;
 }
 
 .content{
-  width:990px;
+  width:970px;
   text-align:left;
   background-image:url(/images/bg/bg_top.png);
   background-position: -35px 0;
@@ -197,8 +221,6 @@ text-align:center;
 }
 .content_block_content {
   padding:17px 12px;
-  border: 1px solid #000;
-
 }
 
 .last {
@@ -272,7 +294,7 @@ background-position:0 -80px;
 .events, .new_event{
   background-image: url(/images/bg/bg_mid.png);
   background-position: -35px 0px;
-  width:990px;
+  width:970px;
   margin-top:12px;
 }
 div.new_event{
@@ -536,7 +558,7 @@ input.submit_your_event{
   margin-top:0px;
   padding-top:28px;
   padding-bottom:24px;
-  width:990px;
+  width:970px;
 }
 .footer p, .footer  a{
     color:#8b1713;
