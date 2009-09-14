@@ -10,9 +10,14 @@
       <div class="detail">
       
       <%= image_tag('css/headings/when.png', :alt => 'When') %>
-      <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>
+      <div class="time">
+        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>        
+      </div>
+
       <% if event.end %>
+      <div class="time">
         <abbr class="dtend" title="<%= event.start.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
+      </div>
       <% end %>
 
       </div>

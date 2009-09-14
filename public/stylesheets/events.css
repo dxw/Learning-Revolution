@@ -68,7 +68,7 @@
 
   padding:4px 4%;
   text-align:right;
-  font-size:10px;
+  font-size:0.83em;
   font-style:italic;
 }
 .events .calendar_view td.notmonth {
@@ -132,7 +132,7 @@ li.event_link a{
   display:block;
   text-decoration: none;
   font-style:italic;
-  font-size:18px;
+  font-size:1.5em;
   width:80%;
   color:#8b1713;
   padding:12px 10% 12px 10%;
@@ -154,7 +154,7 @@ li.event_link.active a, li.event_link.active a:hover{
   background-position: 17px 0px;
 }
 #events_list h2{
-  font-size:18px;
+  font-size:1.5em;
   float:left;
   width:210px;
   text-align:center;
@@ -169,7 +169,7 @@ ul li.header .next{
 }
 .incrementor a{
   font-style:italic;
-  font-size:10px;
+  font-size:0.83em;
 }
 #event_details{
   padding-bottom:36px;
@@ -190,14 +190,15 @@ ul li.header .next{
 #event_details .detail_list .last{
   border-right:none;
 }
-
 #event_details .detail{
   min-height:60px;
   padding-right:10px;
-
+}
+.detail abbr.dtstart, abbr.dtend{
+  float:left;
 }
 #event_details h2{
-  font-size:18px;
+  font-size:1.5em;
   font-style:italic;
   font-weight:bold;
   padding-left:18px;
@@ -206,7 +207,7 @@ ul li.header .next{
   padding-bottom:12px;
 }
 #event_details h4{
-  font-size:12px;
+  font-size:1em;  
   font-weight:bold;
 }
 #event_details img{

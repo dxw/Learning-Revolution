@@ -43,7 +43,7 @@ img.be_a_part_of_the_festival{
   margin-top:18px;
   width:410px;
   line-height: 1.5;
-  font-size:18px;
+  font-size:1.5em;
   margin-top:18px;
 }
 #calendar_thumbnail{
@@ -103,6 +103,12 @@ img.be_a_part_of_the_festival{
   border-bottom:none;
   list-style: none;
 }
+
+/* Calendar styles */
+
+.content_block_content ul{
+  position:relative;
+}
 .calendar_date {
   position:absolute;
   top:10px;
@@ -119,7 +125,7 @@ img.be_a_part_of_the_festival{
   text-transform:uppercase;
   color:#fff;
   font-weight:bold;
-  font-size:10px;
+  font-size:0.83em;;
 }
 .calendar_date .day{
   font-weight:bold;
@@ -144,7 +150,7 @@ form#bis_email_signup{
   margin-left:6px;
 }
 #bis_email_signup label{
-  font-size:10px;
+  font-size:0.83em;;
   display:block;
 }
 #bis_email_signup input{
@@ -167,6 +173,7 @@ form#bis_email_signup{
   clear:both;
   margin-left:auto;
   margin-right:auto;
+  text-align:center;
 }
 
 .photos_and_videos{
@@ -178,9 +185,11 @@ form#bis_email_signup{
 }
 .photos_and_videos .heading{
   margin-left:0px;
+  text-align:left;
 }
 .videos .heading{
   margin-left:48px;
+  text-align:left;
 }
 .photos_and_videos .photos {
   width:450px;
