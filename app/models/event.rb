@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   Types = ["Class"]
   Hours = (0..23).map{|h|'%02d'%h}
-  Minutes = %w[00 15 30 45]
+  Minutes = (0...60).step(5).map{|m|'%02d'%m}
   
   def self.find_by_month_with_filter_from_params(date, params={})
     # Have this check in here as the caching doesn't work in dev mode. Better solution desired.
