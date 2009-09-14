@@ -543,7 +543,9 @@ li.email{
 li.calendar{
   background-position:0px -124px;    
 }
-
+li.google_calendar{
+background-position:0 -152px;
+}
 /* Submitting Events*/
 input.submit_your_event{
   margin-left:86px;

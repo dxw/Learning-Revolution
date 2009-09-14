@@ -1,21 +1,23 @@
-  <div class="row clearfix">
+  <div class="row clearfix" id="intro">
       <div class="featured_block">
+        
         <img src="/images/headings/hd_be_a_part_of_the_festival.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/>
       
         <img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" />
 
 
-        <p class="standfirst">This October we’re making it easier than ever to find something new to do</p>
+        <p class="standfirst">This October we're making it easier than ever to find something new to do</p>
       <%= link_to image_tag('buttons/bt_view_event_calendar.gif', 
-                            :alt => "View Event Calendar", 
-                            :class => 'png'), 
+                            :alt => "View Event Calendar"), 
                             current_events_path, :id => 'view_event_calendar' %>
+
       </div>
 
-
       <div class="featured_events">
+        <ul>
+          
         <% Event.featured.each_with_index do |event, count| %>
-          <div class="featured_event" id="featured_event_<%= count+1 %>">
+          <li class="featured_event" id="featured_event_<%= count+1 %>">
             <%= image_tag event.picture if event.picture %>
             <div class="calendar_date">
               <div class="month">
@@ -26,15 +28,19 @@
               </div>
             </div>
             <h3 class="trans"><%= event.title %></h3>
-          </div>
+          </li>
         <% end %>
-      </div>
-      <div class="featured_event_nav">
-      </div>
+        </ul>
 
+        <div class="featured_event_nav">
+        </div>
+
+      </div>
 
 
   </div>
+
+
 
   <div class="row clearfix">
 
