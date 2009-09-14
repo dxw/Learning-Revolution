@@ -25,6 +25,32 @@
     </div>
 
     <div class="input clearfix input_with_tip">
+      <label for="event_starthour">Start hour</label>
+      <select id="event_starthour" name="event[starthour]">
+        <% Event::Hours.each do |hour| %>
+	<option<%= (params[:event] and (params[:event][:starthour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
+	<% end %>
+      </select>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the hour of your event</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div>
+
+    <div class="input clearfix input_with_tip">
+      <label for="event_startminute">Start minute</label>
+      <select id="event_startminute" name="event[startminute]">
+        <% Event::Minutes.each do |minute| %>
+        <option<%= (params[:event] and (params[:event][:startminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
+	<% end %>
+      </select>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the minute of your event</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div> 
+
+    <div class="input clearfix input_with_tip">
       <label for="event_end">until</label>
       <%= event_form.text_field :end, :class => 'text datepicker' %>
       <div class="input_tip">
@@ -33,12 +59,38 @@
       </div>
     </div>
 
+    <div class="input clearfix input_with_tip">
+      <label for="event_endhour">End hour</label>
+      <select id="event_endhour" name="event[endhour]">
+        <% Event::Hours.each do |hour| %>
+	<option<%= (params[:event] and (params[:event][:endhour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
+	<% end %>
+      </select>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the hour of your event</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div>
+
+    <div class="input clearfix input_with_tip">
+      <label for="event_endminute">End minute</label>
+      <select id="event_endminute" name="event[endminute]">
+        <% Event::Minutes.each do |minute| %>
+        <option<%= (params[:event] and (params[:event][:endminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
+	<% end %>
+      </select>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the minute of your event</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div> 
+
 
     <fieldset class="event_venue_form">
       
       <div class="input checkbox input_with_tip clearfix">
         <label for="cyberevent">This event has no location</label>
-        <%= check_box_tag :cyberevent, :class => 'text input' %>
+        <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
       </div>
       
       <div class="input clearfix input_with_tip">
