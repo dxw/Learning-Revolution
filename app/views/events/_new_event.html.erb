@@ -90,7 +90,7 @@
       
       <div class="input checkbox input_with_tip clearfix">
         <label for="cyberevent">This event has no location</label>
-        <%= check_box_tag :cyberevent, :class => 'text input' %>
+        <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
       </div>
       
       <div class="input clearfix input_with_tip">
