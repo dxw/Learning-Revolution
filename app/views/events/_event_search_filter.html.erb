@@ -11,7 +11,7 @@
       <!-- <li class="email png">Send me these events as email.</li> -->
       <li class="calendar"><% pa=params.dup; pa.delete(:view) %><%= link_to "Add these events to my calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
       <li class="google-calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-      <li class="rss">Add to my feed reader.</li>
+      <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
     </ul>
     
   </div>

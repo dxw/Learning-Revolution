@@ -1,0 +1,27 @@
+xml.instruct!
+
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
+
+  pa = params.dup
+  pa.delete(:view)
+
+  xml.title   "Feed Name"
+  xml.link    "rel" => "self", "href" => url_for(pa.merge({:only_path => false})).sub(/\?$/,'')
+  xml.link    "type" => "text/html", "rel" => "alternate", "href" => url_for(pa.merge({:only_path => false, :format => 'html'})).gsub(/\?$/,'')
+  xml.link    "type" => "text/calendar", "rel" => "alternate", "href" => url_for(pa.merge({:only_path => false, :format => 'ics'})).gsub(/\?$/,'')
+  xml.id      url_for(pa.merge({:only_path => false, :format => 'html'})).sub(/\?$/,'')
+  xml.updated @events.first.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ" if @events.any?
+  xml.author  { xml.name "Anonymous" }
+
+  @events.each do |event|
+    xml.entry do
+      xml.title   event.title
+      xml.link    "type" => "text/html", "rel" => "alternate", "href" => url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug).sub(/\./,'')
+      xml.link    "type" => "text/calendar", "rel" => "alternate", "href" => url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug, :format => 'ics')
+      xml.id      url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug).sub(/\./,'')
+      xml.updated event.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ"
+      xml.summary event.description + " More info: " + event.bitly_url
+    end
+  end
+
+end
