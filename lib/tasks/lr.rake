@@ -42,17 +42,17 @@ namespace :lr do
         e.venue = v
         e.title = row["ActivityTitle"]
         e.description = row["EventDetails"]
-        e.theme = nil
-        e.event_type = nil
+        e.theme = 'TheCoolTheme'
+        e.event_type = 'CoolType'
         e.stage = nil
         e.start = Date.parse(row["EventDate"]) if row["EventDate"]
         e.end = nil
         e.cost = row["Cost"]
         e.min_age = nil
         e.organisation = nil
-        e.contact_name = row["ContactNamePublic"]
+        e.contact_name = row["ContactNamePublic"] ? row["ContactNamePublic"] : 'NoName'
         e.contact_phone_number = row["TelephonePublic"]
-        e.contact_email_address
+        e.contact_email_address = 'anonymous@example.com' unless e.contact_phone_number
         e.published = true
         e.picture = nil
         e.featured = false
