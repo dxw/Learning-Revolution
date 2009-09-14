@@ -10,7 +10,7 @@
     
       <div class="detail">
       
-      <%= image_tag('css/headings/when.png', :alt => 'When') %>
+      <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
       <div class="time">
         <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>        
       </div>
@@ -25,7 +25,7 @@
   
       <div class="detail">
       
-      <%= image_tag('css/headings/where.png', :alt => 'Where') %>
+      <%= image_tag('headings/hd_where.gif', :alt => 'Where') %>
       <% if event.venue %>
         <h4><%= event.venue.name %></h4>
         <p class="location">
@@ -46,16 +46,16 @@
     <div class="span-2">
       
       <div class="detail">
-        <%= image_tag('css/headings/type.png', :alt => 'Type') %>
+        <%= image_tag('headings/hd_type.gif', :alt => 'Type') %>
         <p><%= event.event_type.blank? ? "Other" : event.event_type %></p>
       </div>
       <div class="detail">
-        <%= image_tag('css/headings/theme.png', :alt => 'Theme') %>
+        <%= image_tag('headings/hd_theme.gif', :alt => 'Theme') %>
         <p><%= event.theme.blank? ? "Other" : event.theme %></p>
       </div>
 
       <div class="detail">
-        <%= image_tag('css/headings/cost.png', :alt => 'Cost') %>
+        <%= image_tag('headings/hd_cost.gif', :alt => 'Cost') %>
         <p><%= event.cost.blank? ? "Free" : event.cost %></p>
 
       </div>    
@@ -82,10 +82,10 @@
   
   <div class="description half_page">
 
-    <%= image_tag('css/headings/event_details.png', :alt => 'Event Details') %>
+    <%= image_tag('headings/hd_event_details.gif', :alt => 'Event Details') %>
     <%= simple_format event.description %>
 
-    <%= image_tag('css/headings/contact_details.png', :alt => 'Contact Details') %>
+    <%= image_tag('headings/hd_contact_details.gif', :alt => 'Contact Details') %>
     <p class="vcard">
       <span class="fn n"><%= event.contact_name %></span>
       <span class="org"><%= event.organisation %></span>

@@ -217,6 +217,13 @@ ul li.header .next{
 .detail_list ul.sm_icons li{
   margin: 12px;
 }
+#event_details h4, #event_details img, #event_details p, #event_details div.time{
+  float:left;
+  clear:left;
+}
+#event_details h4, #event_details p, #event_details abbr{
+  margin-left:4px;
+}
 #event_details h4{
   font-size:1em;  
   font-weight:bold;
