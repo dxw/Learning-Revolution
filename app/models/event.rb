@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
+
+  attr_accessor :starthour, :startminute, :endhour, :endminute
+  before_validation :set_time
   
   after_create :make_bitly_url
   
@@ -23,6 +26,8 @@ class Event < ActiveRecord::Base
   
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   Types = ["Class"]
+  Hours = (0..23).map{|h|'%02d'%h}
+  Minutes = %w[00 15 30 45]
   
   def self.find_by_month_with_filter_from_params(date, params={})
     # Have this check in here as the caching doesn't work in dev mode. Better solution desired.
@@ -184,6 +189,18 @@ class Event < ActiveRecord::Base
     cal = Icalendar::Calendar.new
     cal.add_event to_ical_event
     cal.to_ical
+  end
+  def set_time
+    if starthour and startminute
+      h = starthour.to_i
+      m = startminute.to_i
+      self.start = self.start + h.hour + m.minute
+    end
+    if endhour and endminute
+      h = endhour.to_i
+      m = endminute.to_i
+      self.end = self.end + h.hour + m.minute if self.end
+    end
   end
   private
   def must_have_contact_details
