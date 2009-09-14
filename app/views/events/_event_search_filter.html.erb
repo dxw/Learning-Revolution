@@ -1,7 +1,7 @@
 <div id="content_header" class="clearfix">
 
   <% if flash[:notice] %>
-    <div class="ui-widget">
+    <div class="flash ui-widget">
       <div class="ui-state-highlight ui-corner-all">
         <%= flash[:notice] %>          
       </div>
@@ -18,7 +18,7 @@
     <ul class="search_subscription_options">
       <!-- <li class="email png">Send me these events as email.</li> -->
       <li class="calendar"><% pa=params.dup; pa.delete(:view) %><%= link_to "Add these events to my calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
-      <li class="google-calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
+      <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
       <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
     </ul>
     

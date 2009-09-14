@@ -141,5 +141,5 @@ jQuery(function($) {
 });
 
 
-$('.featured_events').cycle({pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true})
+$('.featured_events ul').cycle({pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true})
 
