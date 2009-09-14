@@ -82,13 +82,18 @@
   max-height:1.8em;
   overflow:hidden;
 }
-
 .events .calendar_view .event a.allday {
   background-color:#781B30;
   color:#fff;
 }
-
-
+.events .calendar_view .more_link a{
+  font-style:italic;
+  font-size:0.83em;
+  text-decoration: none;
+}
+.events .calendar_view a:hover{
+  text-decoration: underline;
+}
 /* Map styles */
 
 .events{
@@ -127,7 +132,6 @@ li.event_link{
   list-style: none;
   background-color: transparent;
 }
-
 li.event_link a{
   display:block;
   text-decoration: none;
@@ -202,9 +206,16 @@ ul li.header .next{
   font-style:italic;
   font-weight:bold;
   padding-left:18px;
-  padding-bottom:18px;
-  border-bottom:1px solid #c9c9c9;
   padding-bottom:12px;
+  padding-top:18px;
+  border-bottom:1px solid #c9c9c9;
+
+}
+.detail_list ul.sm_icons{
+  margin-top:12px;
+}
+.detail_list ul.sm_icons li{
+  margin: 12px;
 }
 #event_details h4{
   font-size:1em;  
@@ -216,3 +227,11 @@ ul li.header .next{
 #event_details .description{
   margin-left:18px;
 }
+
+/* Preview Styles */
+
+.event_preview #event_details{
+  margin-left:auto;
+  margin-right:auto;  
+}
+

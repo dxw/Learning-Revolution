@@ -1,6 +1,7 @@
 <div id="event_details" class="event clearfix vevent">
-  <% debugger %>
-  <% if event.new_record? %>
+
+  <% unless event.new_record? %>
+  <%# why is this title hyperlinked like this? Can't work out what purpose it serves. %>
   <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
   <% end %>
   <div class="clearfix detail_list">
@@ -32,7 +33,7 @@
           <%= event.venue.address_2 %><br />
           <%= event.venue.address_3 %><br />
           <%= event.venue.city %><br />
-          <%= event.venue.county %><br />
+          <%= "#{event.venue.county} <br/>" unless event.venue.county.blank? %>
           <%= event.venue.postcode %>
         </p>
       <% else %>
@@ -45,19 +46,18 @@
     <div class="span-2">
       
       <div class="detail">
-      <%= image_tag('css/headings/type.png', :alt => 'Type') %>
-        <%= event.event_type %>
+        <%= image_tag('css/headings/type.png', :alt => 'Type') %>
+        <p><%= event.event_type.blank? ? "Other" : event.event_type %></p>
       </div>
       <div class="detail">
-      <%= image_tag('css/headings/theme.png', :alt => 'Theme') %>
-        <%= event.theme %>
+        <%= image_tag('css/headings/theme.png', :alt => 'Theme') %>
+        <p><%= event.theme.blank? ? "Other" : event.theme %></p>
       </div>
 
       <div class="detail">
-        <% if event.cost %>
-      <%= image_tag('css/headings/cost.png', :alt => 'Cost') %>
-          <p><%= event.cost %></p>
-        <% end %>
+        <%= image_tag('css/headings/cost.png', :alt => 'Cost') %>
+        <p><%= event.cost.blank? ? "Free" : event.cost %></p>
+
       </div>    
 
     </div>

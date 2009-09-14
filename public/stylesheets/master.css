@@ -70,12 +70,16 @@ text-align:center;
 
 
 /* Error and flash styles */
-
-
-#errors{
+body .ui-widget, #errors{
+  text-align:center;
   margin: 10px auto;
-  width:500px;
+  width:700px;
+  padding:10px;
   font-size:1em; /*override jquery-ui font-size */
+}
+
+body .ui-state-highlight, body .ui-state-error{
+  padding:10px;
 }
 
 div.errorExplanation{
@@ -302,7 +306,7 @@ div.new_event{
   margin-top:0px;
 }
 
-#query{
+#content_header{
   width:940px;
   background-color:#fff;
   position:relative;
@@ -379,7 +383,7 @@ div.new_event{
 }
 
 
-#query h2.find_an_event{
+#content_header h2.find_an_event{
   display:block;
   background-image:url('/images/headings/hd_find_an_event_in_october.png');
   height:65px;
