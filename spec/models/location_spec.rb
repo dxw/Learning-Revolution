@@ -11,4 +11,9 @@ describe Location do
     location.lat.should == 50.0001
     location.lng.should == -50.0001
   end
+
+  it "should return a nice to_s" do
+    v = Location.new(:address_1 => 'hi', :address_2 => nil, :address_3 => 3)
+    v.to_s.should be_a(String)
+  end
 end
