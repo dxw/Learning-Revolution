@@ -265,5 +265,9 @@ describe Event do
     Event.should_receive(:find_by_id).with("23")
     Event.find_by_slug("the-events-title-23")
   end
+
+  it "should be happy outputting ical" do
+    @event.to_ical.should be_a(String)
+  end
   
 end
