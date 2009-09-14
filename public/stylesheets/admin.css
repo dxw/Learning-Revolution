@@ -6,6 +6,16 @@ body.admin {
   background-color:#6d6f71;
 }
 
+.content{
+width:970px;
+text-align:left;
+background-image:url(/images/bg/bg_admin_top.jpg);
+background-position: -35px 0;
+background-repeat: no-repeat;
+background-color: #fff;
+padding-top:18px;
+}
+
 /*Override styles for header*/
 .admin .nav_banner {
   background-image: url('/images/css/admin_nav_menu_bg.jpg');
@@ -16,12 +26,6 @@ body.admin {
 }
 .admin .nav li a{
   background-image: url('/images/css/admin_nav_menu_icon_bg.jpg');
-}
-.content{
-  background:#fff;
-  padding-bottom:18px;
-  margin-bottom:12px;
-  background-image:url(/images/css/silver_bg.png);
 }
 img.header{
   margin-left:32px;
@@ -158,9 +162,21 @@ margin-bottom:12px;
     margin-right:42px;
 }
 
+
 .footer{
+  min-height:30px;
+  width:100;
   background-color:#6d6f71;  
+  background-image: url(/images/bg/bg_admin_bottom.jpg);
+  background-position: -35px -5px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:0px;
+  padding-top:28px;
+  padding-bottom:24px;
+  width:970px;
 }
 .footer a{
-  color:#eeeeee;
+  color:#8b1713;
 }
