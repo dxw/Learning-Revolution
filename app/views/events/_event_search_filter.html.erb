@@ -10,6 +10,7 @@
     <ul class="search_subscription_options">
       <!-- <li class="email png">Send me these events as email.</li> -->
       <li class="calendar"><%= link_to "Add these events to my calendar.", params.merge(:format => 'ics') %></li>
+      <li class="google-calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(params.merge(:format => 'ics'))) %></li>
       <li class="rss">Add to my feed reader.</li>
     </ul>
     
