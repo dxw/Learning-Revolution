@@ -12,6 +12,7 @@ class EventsController < ApplicationController
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
       respond_to do |format|
         format.html
+        format.atom { render :template => 'events/index.atom.rxml' }
         format.ics { render :text => events_to_ical(@events) }
         format.xml { render :text => @events.to_xml }
         format.json { render :text => @events.to_json }
