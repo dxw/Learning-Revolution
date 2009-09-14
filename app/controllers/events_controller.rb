@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create]
-  Mime::Type.register "text/calendar", :ics
   
   def index
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
@@ -11,22 +10,24 @@ class EventsController < ApplicationController
       @venues = Venue.find_venues_by_event_params(params[:filter])
     else
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
-      @event_counts = Event.counts_for_month(@first_day_of_month)
       respond_to do |format|
         format.html
-        format.ics { render :text => a_to_ical(@events) }
+        format.ics { render :text => events_to_ical(@events) }
+        format.xml { render :text => @events.to_xml }
+        format.json { render :text => @events.to_json }
       end
     end
   end
 
   def show
+    params[:view] = "list"
     @event = Event.find_by_slug(params[:id])
-    unless params[:format] == 'ics'
-      redirect_to path_for_event(@event) and return unless request.path == path_for_event(@event)
-    end
+    redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
     respond_to do |format|
       format.html
       format.ics { render :text => @event.to_ical }
+      format.xml { render :text => @event.to_xml }
+      format.json { render :text => @event.to_json }
     end
     
     params[:view] = 'list'
@@ -109,13 +110,12 @@ class EventsController < ApplicationController
     @new_event.venue = Venue.new(params[:event].andand[:venue])
   end
 
-  def a_to_ical(arr)
-    cal = Icalendar::Calendar.new
-    arr.each do |ev|
-      cal.add_event ev.to_ical_event
-      p ev.to_ical_event
+  def events_to_ical(events)
+    calendar = Icalendar::Calendar.new
+    events.each do |event|
+      calendar.add_event event.to_ical_event
     end
-    cal.to_ical
+    calendar.to_ical
   end
 
 end

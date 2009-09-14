@@ -17,15 +17,13 @@ left:-7px;
   margin-top:18px;
 }
 .photos_and_videos{
-  width:945px;
-  margin-left:0;
-  margin-right:0;
+  width:990px;
 }
 .photos_and_videos .heading{
-  margin-left:24px;
+  margin-left:6px;
 }
 .videos .heading{
-  margin-left:64px;
+  margin-left:48px;
 }
 .photos_and_videos .photos {
   width:430px;
@@ -33,12 +31,18 @@ left:-7px;
   border-right: 1px solid #666;
   margin-bottom:12px;
   margin-left:20px;
+  text-align:left;
 }
 .photos_and_videos .videos {
   width:460px;
   float:left;
+  text-align:left;
   margin-bottom:12px;
 }
+ul.youtube_videos {
+  margin-left:20px;
+}
+
 .nav li a{
     width:100px;
 }
@@ -61,3 +65,6 @@ h3.filter_description{
   background-color:#fff;
 }
 
+.footer{
+  padding-bottom:36px;
+}

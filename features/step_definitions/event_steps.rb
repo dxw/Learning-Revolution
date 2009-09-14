@@ -1,5 +1,5 @@
 Given /^a valid event called "([^\"]*)"$/ do |name|
-  Event.create!(:title => name, :start => Date.today, :contact_name => "Test name", :contact_email_address => "test@test.com")
+  Event.create!(:title => name, :start => Date.today, :contact_name => "Test name", :contact_email_address => "test@test.com", :theme => "Event theme", :event_type => "event type", :published => true)
 end
 
 Given /^the event "([^\"]*)" is held at the venue "([^\"]*)"$/ do |title, venue_title|
@@ -24,6 +24,10 @@ Given /^the event "([^\"]*)" is located at lat "([^\"]*)" and lng "([^\"]*)"$/ d
   event = find_or_create(Event, :title => title)
   event.update_attribute(:lat, lat)
   event.update_attribute(:lng, lng)
+end
+
+Given /^the event "([^\"]*)" is not published yet$/ do |title|
+  find_or_create(Event, :title => title).update_attribute(:published, false)
 end
 
 When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |title|

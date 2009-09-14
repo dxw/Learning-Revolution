@@ -1,9 +1,10 @@
 <div class="new_event">
+
   <div class="form_wrapper clearfix">
 
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
 
-    <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
+    <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') if params[:action] == 'index' %>
 
     <div class="input clearfix input_with_tip">
       <label for="event_title">Title</label>
@@ -13,6 +14,25 @@
         <div class="tooltip_arrow"></div>
       </div>
     </div>
+
+    <div class="input clearfix input_with_tip">
+      <label for="event_start">From</label>
+      <%= event_form.text_field :start, :class => 'text datepicker' %>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div>
+
+    <div class="input clearfix input_with_tip">
+      <label for="event_end">until</label>
+      <%= event_form.text_field :end, :class => 'text datepicker' %>
+      <div class="input_tip">
+        <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
+        <div class="tooltip_arrow"></div>
+      </div>
+    </div>
+
 
     <fieldset class="event_venue_form">
       
@@ -30,6 +50,8 @@
         </div>
       </div>
     </fieldset>
+
+
 
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
@@ -59,29 +81,7 @@
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_start">Date</label>
-      <%= event_form.text_field :start, :class => 'text datepicker' %>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-    </div>
 
-    <div class="input clearfix timepicker input_with_tip">
-      <label for="event_start">from</label>
-      <div class="time clearfix">
-        <div class="from">
-          <%= event_form.select :start, :class => 'text' %>
-          <%= event_form.select :start, :class => 'text' %>
-        </div>
-        <div class="until">
-          <label for="event_end">until</label>
-          <%= event_form.select :end, :class => 'text' %>
-          <%= event_form.select :start, :class => 'text' %>
-        </div>
-      </div>
-    </div>
 
     <fieldset id="more_info" >
       <legend><strong>Contact Info</strong></legend>
@@ -128,9 +128,11 @@
 
     </fieldset>
 
-    <%= image_submit_tag('/images/buttons/bt_submit_your_event.png', :alt => "Submit this event", :class => "submit_your_event") %>
+
+
+
+    <%= image_submit_tag('/images/buttons/bt_preview_your_event.png', :alt => "Submit this event", :class => "submit_your_event png") %>
     <% end %>
   </div>
 
-</div>
 </div>

@@ -1,14 +1,24 @@
-<% unless @venues.blank? %>
-  We already have the details of a venue near there
-  <% @venues.each do |venue| %>
-    <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
-      <%= venue.name %>
-      <%= submit_tag "It's at this venue" %>
+
+
+<div class="events">
+
+
+  <% unless @venues.blank? %>
+    <h2>We already have the details of a venue near there</h2>
+    <% @venues.each do |venue| %>
+      <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+        <%= venue.name %>
+        <%= submit_tag "It's at this venue" %>
+      <% end %>
     <% end %>
+  <% else %>
+
+    We don't currently have any venues listed in this postcode. Please add your venue it to the listings.
+
   <% end %>
-<% else %>
-  That's a new venue
-<% end %>
+
+
+<div class="form_wrapper clearfix">
 
 <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
   <div class="input clearfix">
@@ -48,3 +58,7 @@
   
   <%= submit_tag "Save this venue and add my event" %>
 <% end %>
+
+</div>
+</div>
+

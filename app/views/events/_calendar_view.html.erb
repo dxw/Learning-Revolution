@@ -3,11 +3,11 @@
       <%= t.head('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun') %>
       <% t.day(:day_method => :start) do |day, events| %>
         <p class="day"><%= day.day %></p>
-        <% events.each do |event| %>
+        <% events[0..2].each do |event| %>
             <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event) %></p>
         <% end %>
-        <% if total = @event_counts[Date.parse("#{day} #{@month} #{@year}").to_s] %>
-          <p class="more_link"></p>
+        <% if events[3] %>
+          <p class="more_link"><%= link_to "There are more events", path_for_event(events[3]) %></p>
         <% end %>
       <% end %>
     <% end %>

@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start, :contact_name
+  validates_presence_of :title, :start, :contact_name, :theme, :event_type
   validate :must_have_contact_details
   
   belongs_to :possible_duplicate, :class_name => "Event"
@@ -51,7 +51,14 @@ class Event < ActiveRecord::Base
       find_options[:within] = 5
     end
 
-    find_options[:limit] = 3
+    find_options[:conditions] ||= []
+    if find_options[:conditions][0]
+      find_options[:conditions][0] += " AND (published = 1)"
+    else
+      find_options[:conditions][0] = "(published = 1)"
+    end
+
+    find_options[:limit] = 4
     find_options
   end
   def self.find_by_month_with_filter(date, find_options={})
@@ -89,17 +96,9 @@ class Event < ActiveRecord::Base
     end
     args
   end
-  
-  
-  def self.counts_for_month(date)
-    count(
-      :group => "date(start)",
-      :conditions => ["start >= ? AND start < ?", date.beginning_of_month.to_time.utc, date.end_of_month.to_time.end_of_day.utc]
-    )
-  end
-  
+    
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = ? AND id != ?", self.start.utc.to_date, self.id])
+    Event.find(:all, :conditions => ["DATE(start) = ?", self.start.utc.to_date])
   end
   
   def self.first_for_today
@@ -127,6 +126,8 @@ class Event < ActiveRecord::Base
     bitly = Bitly.new(AppConfig.bitly_account, AppConfig.bitly_api_key)
     
     self.update_attribute(:bitly_url, bitly.shorten(event_uri).short_url)
+  rescue BitlyError
+    self.update_attribute(:bitly_url, event_uri)
   end
   
   def possible_duplicate?
@@ -171,8 +172,8 @@ class Event < ActiveRecord::Base
     event.description << "\n\nMore info: #{bitly_url}"
     event.created = created_at.to_datetime
     event.last_modified = updated_at.to_datetime
+    event.location = self.venue.to_s
     event.geo = Icalendar::Geo.new(lat,lng) if lat and lng
-    event.location = Location.find(location_id).to_s
     event.organizer = organisation
     event.url = bitly_url
     event.duration = start - self.end if self.end

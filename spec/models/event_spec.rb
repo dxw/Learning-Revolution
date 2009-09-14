@@ -13,11 +13,21 @@ describe Event do
     @event.should belong_to(:venue)
   end
   
-  it "not be valid without a title" do
+  it "should not be valid without a title" do
     @event.title = ""
     @event.should_not be_valid
   end
   
+  it "should not be valid without a theme" do
+    @event.theme = ""
+    @event.should_not be_valid
+  end
+  
+  it "should not be valid without a event type" do
+    @event.event_type = ""
+    @event.should_not be_valid
+  end
+    
   it "should not be valid without a contact name" do
     @event.contact_name = ""
     @event.should_not be_valid
@@ -165,11 +175,11 @@ describe Event do
     
     it "should generate find conditions from form params" do
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name", :event_type => "type_name", :location => "E11 1PB")
-      find_options.should == {:within => 5, :limit => 3, :conditions => ["(theme LIKE ? AND event_type LIKE ?)", "%theme_name%", "%type_name%"], :origin => "E11 1PB GB"}
+      find_options.should == {:within => 5, :limit => 4, :conditions => ["(theme LIKE ? AND event_type LIKE ?) AND (published = 1)", "%theme_name%", "%type_name%"], :origin => "E11 1PB GB"}
       find_options = Event.turn_filter_params_into_find_options(:theme => "theme_name")
-      find_options.should == {:limit => 3, :conditions => ["(theme LIKE ?)", "%theme_name%"]}
+      find_options.should == {:limit => 4, :conditions => ["(theme LIKE ?) AND (published = 1)", "%theme_name%"]}
       find_options = Event.turn_filter_params_into_find_options(:event_type => "type_name")
-      find_options.should == {:limit => 3, :conditions => ["(event_type LIKE ?)", "%type_name%"]}
+      find_options.should == {:limit => 4, :conditions => ["(event_type LIKE ?) AND (published = 1)", "%type_name%"]}
     end
     
     it "should auto convert params into find options on find by month" do
@@ -213,14 +223,7 @@ describe Event do
     end
       
   end
-  
-  it "should collect an array of counts on all days" do
-    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
-    EventSpecHelper.save(:start => Time.parse("2nd October 2009 10:00"))
-    EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
-    Event.counts_for_month(Time.parse("1st October 2009")).should == {"2009-10-01"=>2, "2009-10-02"=>1}
-  end
-  
+    
   it "should find events on same day" do
     event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
     event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))

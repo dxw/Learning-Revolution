@@ -1,0 +1,218 @@
+/**/
+
+#selector{
+  background-image:url(/images/css/selector_bg.png);
+  width:960px;
+  padding-top:2px;
+  padding-bottom:4px;
+  position:relative;
+}
+#selector ul{
+  display:inline;
+  margin-left:45px;
+}
+#selector ul li{
+  display:inline;
+  list-style: none;
+  color:#fff;
+  font-weight:bold;
+  font-family:Verdana,sans-serif;
+  font-style: italic;
+}
+#selector ul li a{
+  color:#fff;
+  text-decoration: none;
+  padding:3px 12px 18px 12px;  
+
+}
+#selector ul li.map a:hover, #selector ul li.map_selected a{
+  color:#8b1713;  
+  background-image:url(/images/css/selector_bg_hover.gif);
+  background-position:-67px -10px;
+}
+#selector ul li.calendar a:hover, #selector ul li.calendar_selected a{
+  color:#8b1713;  
+  background-image:url(/images/css/selector_bg_hover.gif);
+  background-position:-135px -10px;  
+}
+#selector ul li.list_view a:hover, #selector ul li.list_view_selected a{
+  color:#8b1713;  
+  background-image:url(/images/css/selector_bg_hover.gif);
+  background-position:-70px -10px;
+}
+
+.calendar_view{
+  width:860px;
+}
+.events .calendar_view table {
+  margin-left:40px;
+  margin-top:40px;
+  margin-bottom:40px;
+  width:100%;
+  background-color:#fff;
+}
+.events .calendar_view th {
+  border-bottom: 1px solid #DDD;
+  text-align:center;
+  color:#777;
+  padding-bottom:8px;
+}
+.events .calendar_view td {
+  border-bottom: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  vertical-align: top;
+  width:14%;
+}
+
+.events .calendar_view td .day {
+
+  padding:4px 4%;
+  text-align:right;
+  font-size:0.83em;
+  font-style:italic;
+}
+.events .calendar_view td.notmonth {
+  background-color: #DDD;
+}
+.events .calendar_view .event a {
+  display:block;
+  margin-top:5px;
+  text-decoration:none;
+  color:#781B30;
+  max-height:1.8em;
+  overflow:hidden;
+}
+
+.events .calendar_view .event a.allday {
+  background-color:#781B30;
+  color:#fff;
+}
+
+
+/* Map styles */
+
+.events{
+  padding-bottom:18px;
+}
+
+#events_map{
+  border:1px solid #c3c3c3;
+  width:875px;
+  margin-left:42px;
+  margin-top:36px;
+}
+
+
+
+/* This refers to the item listed liston the left hand side */
+
+#events_list{
+  width:380px;
+  float:left;
+  padding-top:18px;
+  margin-right:0px;
+  background-image:none;
+
+}
+#events_list ul{
+  
+}
+#events_list li.header{
+  border-bottom:1px solid #c9c9c9;
+  padding-bottom:12px;
+}
+li.event_link{
+
+  border-bottom:1px solid #8b1713;
+  list-style: none;
+  background-color: transparent;
+}
+
+li.event_link a{
+  display:block;
+  text-decoration: none;
+  font-style:italic;
+  font-size:1.5em;
+  width:80%;
+  color:#8b1713;
+  padding:12px 10% 12px 10%;
+  background-color: transparent;
+  line-height:1.2;
+}
+li.event_link a:hover{
+  background-color:#8b1713;
+  color:#fff;
+}
+li.event_link.active a, li.event_link.active a:hover{
+  background-color:#fff;
+  color:#8b1713;
+}
+
+.listing{
+  background-image:url('/images/tiles/list_gradient.jpg');
+  background-repeat: repeat-y;
+  background-position: 17px 0px;
+}
+#events_list h2{
+  font-size:1.5em;
+  float:left;
+  width:210px;
+  text-align:center;
+} 
+.incrementor{
+  float:left;
+  width:85px;
+  text-align:center;
+}
+ul li.header .next{
+  float:right;
+}
+.incrementor a{
+  font-style:italic;
+  font-size:0.83em;
+}
+#event_details{
+  padding-bottom:36px;
+  width:578px;
+  float:left;
+  border-left:1px solid #c9c9c9;
+  background-color:#fff;
+}
+
+#event_details .detail_list{
+    border-bottom:1px solid #c9c9c9;
+    background:#eee;
+    padding-bottom:12px;
+}
+#event_details .detail_list .span-2{
+  margin-top:12px;
+}
+#event_details .detail_list .last{
+  border-right:none;
+}
+#event_details .detail{
+  min-height:60px;
+  padding-right:10px;
+}
+.detail abbr.dtstart, abbr.dtend{
+  float:left;
+}
+#event_details h2{
+  font-size:1.5em;
+  font-style:italic;
+  font-weight:bold;
+  padding-left:18px;
+  padding-bottom:18px;
+  border-bottom:1px solid #c9c9c9;
+  padding-bottom:12px;
+}
+#event_details h4{
+  font-size:1em;  
+  font-weight:bold;
+}
+#event_details img{
+  margin-top:12px;
+}
+#event_details .description{
+  margin-left:18px;
+}

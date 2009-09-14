@@ -1,6 +1,8 @@
 <div id="event_details" class="event clearfix vevent">
+  <% debugger %>
+  <% if event.new_record? %>
   <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
-  
+  <% end %>
   <div class="clearfix detail_list">
     
     <div class="span-2">
@@ -8,9 +10,14 @@
       <div class="detail">
       
       <%= image_tag('css/headings/when.png', :alt => 'When') %>
-      <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>
+      <div class="time">
+        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>        
+      </div>
+
       <% if event.end %>
+      <div class="time">
         <abbr class="dtend" title="<%= event.start.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
+      </div>
       <% end %>
 
       </div>
@@ -55,8 +62,10 @@
 
     </div>
 
+    <% unless event.new_record? %>
+
     <div class="span-2 last">
-    
+
     <ul class="sm_icons">
       
       <li class="calendar"><%= link_to "Add to Calendar", :id => @event.slug, :format => 'ics' %></li>
@@ -66,6 +75,8 @@
     </ul>
   
     </div>
+
+    <% end %>
   
   </div>
   

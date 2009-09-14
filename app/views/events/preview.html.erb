@@ -1,16 +1,22 @@
+<div class="content">
+<div class="events">
+
+
 <p>Your event has not been saved yet</p>
 
 <p>You are about to submit this event, are all the details correct?</p>
 
-<%= @new_event.title %>
-<%= @new_event.description %>
-<%= @new_event.start %>
-<%= @new_event.end %>
-<%= @new_event.organisation %>
-<%= @new_event.contact_name %>
-<%= @new_event.contact_phone_number %>
-<%= @new_event.contact_email_address %>
+<%= render :partial => 'event_details', :locals => {:event => @event} %>
+
+
+
+    <p><em>Submissions to the Learning Revolution calendar are moderated, so your event won’t appear on the site until it’s been approved by our team. We always try to do this as quickly as possible.</em></p>
+
 
 <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]) do %>
   <%= submit_tag "Save this event" %>
 <% end %>
+
+
+</div>
+</div>

@@ -6,8 +6,12 @@ Feature: Event admin
   Scenario: Viewing an unfiltered calendar
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
+    And a valid event called "Secret Event"
+    And the event "Secret Event" starts on "12th October 2009 12:00"
+    And the event "Secret Event" is not published yet
     When I go to the calendar for October 2009
     Then I should see "Octoberfest" in the calendar on day "12"
+    And I should not see "Secret Event"
 
   Scenario: Viewing a calendar filtered by theme
     Given a valid event called "Octoberfest"
@@ -16,11 +20,16 @@ Feature: Event admin
     And a valid event called "Spanish Guitar"
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" has the theme "Languages and Travel"
+    And a valid event called "Secret Event"
+    And the event "Secret Event" starts on "12th October 2009 12:00"
+    And the event "Secret Event" has the theme "Food and Cookery"
+    And the event "Secret Event" is not published yet
     When I go to the calendar for October 2009
     And I select "Food and Cookery" from "Theme"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
+    And I should not see "Secret Event"
 
   Scenario: Viewing a calendar filtered by type and theme
     Given a valid event called "Octoberfest"
@@ -31,12 +40,18 @@ Feature: Event admin
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" has the theme "Food and Cookery"
     And the event "Spanish Guitar" has the type "Lesson"
+    And a valid event called "Secret Event"
+    And the event "Secret Event" starts on "12th October 2009 12:00"
+    And the event "Secret Event" has the theme "Food and Cookery"
+    And the event "Secret Event" is not published yet
+    And the event "Secret Event" has the type "Class"
     When I go to the calendar for October 2009
     And I select "Food and Cookery" from "Theme"
     And I select "Class" from "Event Type"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
+    And I should not see "Secret Event"
 
   Scenario: Viewing a calendar filtered by location
     Given a valid event called "Octoberfest"
@@ -45,9 +60,13 @@ Feature: Event admin
     And a valid event called "Spanish Guitar"
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
+    And a valid event called "Secret Event"
+    And the event "Secret Event" starts on "12th October 2009 12:00"
+    And the event "Secret Event" is located at lat "51.584911" and lng "0.02591"
     When I go to the calendar for October 2009
     And I fill in "Location" with "E11 1PB GB"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
+    And I should not see "Secret Event"
     

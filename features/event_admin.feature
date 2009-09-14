@@ -36,10 +36,11 @@ Feature: Event admin
     When I go to the event admin index page
     And I follow "New event"
     And I press "Create"
-    Then I should see "3 errors prohibited this event from being saved"
+    Then I should see "5 errors prohibited this event from being saved"
     And I should see "Title can't be blank"
     And I should see "Contact name can't be blank"
-    And I should see "Contact email address can't be blank"
+    And I should see "Theme can't be blank"
+    And I should see "Event type can't be blank"
     And I am on the event admin index page
   
   Scenario: Editing a valid event
@@ -82,7 +83,9 @@ Feature: Event admin
     
   Scenario: Moderating events with approval
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I press "Approve"
@@ -91,7 +94,9 @@ Feature: Event admin
   
   Scenario: Moderating events with deletion
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I press "Delete"
@@ -100,7 +105,9 @@ Feature: Event admin
   
   Scenario: Moderating events with skipping
     Given a valid event called "event 1"
+    And the event "event 1" is not published yet
     And a valid event called "event 2"
+    And the event "event 2" is not published yet
     When I go to the events moderation page
     Then I should see "event 1"
     When I follow "Skip"
