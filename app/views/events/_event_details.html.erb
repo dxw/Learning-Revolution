@@ -13,12 +13,12 @@
       <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
 
       <div class="time">
-        <abbr class="dtstart" title="<%#= event.start.iso8601 %>"><%= Time.now.strftime("%R%p") %><%#= event.start.strftime("%R%p") %></abbr>        
+        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%#= Time.now.strftime("%R%p") %><%= event.start.strftime("%R%p") %></abbr>        
       </div>
 
       <% if event.end %>
       <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= Time.now.strftime("until %R%p") %><%#= event.end.strftime("until %R%p") %></abbr>
+        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%#= Time.now.strftime("until %R%p") %><%= event.end.strftime("until %R%p") %></abbr>
       </div>
       <% end %>
 
@@ -27,7 +27,7 @@
       <div class="detail">
       
       <%= image_tag('headings/hd_where.gif', :alt => 'Where') %>
-      <% if event.venue %>
+      <% if event.venue.present? %>
         <h4><%= event.venue.name %></h4>
         <p class="location">
           <%= event.venue.address_1 %><br />
@@ -63,15 +63,9 @@
 
     </div>
 
-    <%# unless event.new_record? %>
-
     <div class="span-2 last">
 
-
-
-      <% if @event %>
     <ul class="sm_icons">
-      <%# I'm having to comment these out for now,  %>
       <%
       	pa = params.dup
       	pa.delete(:view)
@@ -82,10 +76,8 @@
       <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
       <li class="facebook"><%= link_to "Add to Facebook" %></li>
     </ul>
-      <% end %>
-    </div>
 
-    <%# end %>
+    </div>
   
   </div>
   
