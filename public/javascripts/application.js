@@ -43,7 +43,8 @@ RefineEventSearch = $.klass({
 });
 
 FormSlider = $.klass({
-  initialize: function() {
+  initialize: function(element) {
+    $(element).show()
     this.element_to_toggle = $("#"+this.element.attr("id").replace("toggles_", ""));
     this.element_to_toggle.hide();
   },
@@ -131,7 +132,7 @@ jQuery(function($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
   $('.date_slider').attach(DateSlider);
-  $('.toggler').attach(FormSlider);
+  $('.toggler').attach(FormSlider, 'h3.toggler');
   $('.event_filtering').attach(EventFilterSlider);
   $('.event_venue_form').attach(VenueFinder);
   $(".input_with_tip input").attach(InfoTip);

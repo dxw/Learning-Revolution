@@ -36,8 +36,10 @@
   </div>
   
   <div class="event_filtering clearfix">
+
+    <h3 class="toggler"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
     <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "#new_event" %></div>
-    <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
+
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
