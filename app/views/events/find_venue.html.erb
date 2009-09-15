@@ -15,26 +15,26 @@
 
 
 <div class="form_wrapper clearfix">
-<% unless @venues.blank? %>  
-<div class="existing_venues">
+  <% unless @venues.blank? %>  
+  <div class="existing_venues">
 
-  <% @venues.each do |venue| %>
-    <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
-      <div class="venue_choice">
-      <h4><%= venue.name %></h4>
-      <%# debugger %>
-      <h5><%= venue.address_1 %></h5>
-      <h5><%= venue.address_2 %></h5>
-      <%= "<h5> #{venue.address_3} </h5>" unless venue.address_3.blank? %>
-      <h5><%= venue.postcode %></h5>
-      <%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %>
-      </div>
+    <% @venues.each do |venue| %>
+      <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+        <div class="venue_choice">
+        <h4><%= venue.name %></h4>
+        <%# debugger %>
+        <h5><%= venue.address_1 %></h5>
+        <h5><%= venue.address_2 %></h5>
+        <%= "<h5> #{venue.address_3} </h5>" unless venue.address_3.blank? %>
+        <h5><%= venue.postcode %></h5>
+        <%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %>
+        </div>
+      <% end %>
     <% end %>
+
+  </div>
   <% end %>
 
-</div>
-
-<% end %>
   <div class="add_a_new_venue">
     
 <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
