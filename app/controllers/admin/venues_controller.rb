@@ -17,6 +17,10 @@ class Admin::VenuesController < Admin::AdminController
     end
   end
   
+  def index
+    @venues = Venue.paginate(:all, :page => params[:page])
+  end
+  
   def duplicates
     fix_duplicate if request.method == :post && params[:venue]
     @duplicate_venues = Venue.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
