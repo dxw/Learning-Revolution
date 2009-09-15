@@ -7,9 +7,6 @@ class Event < ActiveRecord::Base
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
 
-  attr_accessor :startday, :starthour, :startminute, :endhour, :endminute, :endday
-  before_validation :set_time
-  
   after_create :make_bitly_url
   
   
@@ -190,20 +187,6 @@ class Event < ActiveRecord::Base
     cal = Icalendar::Calendar.new
     cal.add_event to_ical_event
     cal.to_ical
-  end
-  def set_time
-    if startday and starthour and startminute
-      d = startday.to_i
-      h = starthour.to_i
-      m = startminute.to_i
-      self.start = Time.zone.local(2009, 10, d, h, m)
-    end
-    if endday and endhour and endminute
-      d = endday.to_i
-      h = endhour.to_i
-      m = endminute.to_i
-      self.end = Time.zone.local(2009, 10, d, h, m)
-    end
   end
   private
   def must_have_contact_details
