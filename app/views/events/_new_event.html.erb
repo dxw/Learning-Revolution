@@ -15,13 +15,8 @@
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_start">From</label>
-      <select id="event_startday" name="event[startday]">
-        <% Event::Days.each do |day| %>
-        <option<%= (params[:event] and (params[:event][:startday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
-        <% end %>
-      </select> October 2009
+    <div class="input clearfix input_with_tip datetime">
+      <label for="event_starthour">From</label>
       <select id="event_starthour" name="event[starthour]">
         <% Event::Hours.each do |hour| %>
         <option<%= (params[:event] and (params[:event][:starthour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
@@ -32,19 +27,22 @@
         <option<%= (params[:event] and (params[:event][:startminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
         <% end %>
       </select>
+
+      on
+
+      <select id="event_startday" name="event[startday]">
+        <% Event::Days.each do |day| %>
+        <option<%= (params[:event] and (params[:event][:startday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+        <% end %>
+      </select> October 2009
       <div class="input_tip">
         <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
         <div class="tooltip_arrow"></div>
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_end">until</label>
-      <select id="event_endday" name="event[endday]">
-        <% Event::Days.each do |day| %>
-        <option<%= (params[:event] and (params[:event][:endday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
-	<% end %>
-      </select> October 2009
+    <div class="input clearfix input_with_tip datetime">
+      <label for="event_endhour">until</label>
       <select id="event_endhour" name="event[endhour]">
         <% Event::Hours.each do |hour| %>
 	<option<%= (params[:event] and (params[:event][:endhour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
@@ -55,6 +53,14 @@
         <option<%= (params[:event] and (params[:event][:endminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
 	<% end %>
       </select>
+
+      on
+
+      <select id="event_endday" name="event[endday]">
+        <% Event::Days.each do |day| %>
+        <option<%= (params[:event] and (params[:event][:endday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+	<% end %>
+      </select> October 2009
       <div class="input_tip">
         <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
         <div class="tooltip_arrow"></div>
