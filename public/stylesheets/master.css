@@ -58,7 +58,6 @@ body {
   line-height:18px;
   text-align:center;
 }
-
 div.header, .header h1
 {
   width:940px;
@@ -79,7 +78,6 @@ body .flash, #errors{
   padding:10px;
   font-size:1em; /*override jquery-ui font-size */
 }
-
 body .ui-state-highlight, body .ui-state-error{
   padding:10px;
 }
@@ -87,6 +85,7 @@ body .ui-state-highlight, body .ui-state-error{
 div.errorExplanation{
   margin: 10px auto;
   padding: 6px 12px;
+  text-align:left;
 }
 div.errorExplanation h2{
 font-weight:bold;
@@ -97,6 +96,15 @@ div.errorExplanation ul{
 div.errorExplanation ul li{
   list-style: none;
 }
+
+/* The postcode errors don't fit inside a particular model right now, so they have their own style for now */
+
+p.post_code_error{
+  text-align:left;
+  margin: 10px auto;
+  padding: 6px 12px;
+}
+
 
 /* Site wide styles */
 
@@ -211,7 +219,6 @@ div.errorExplanation ul li{
 
 
 
-
 .content_block {
   float:left;
   width:940px;
@@ -277,7 +284,6 @@ div.errorExplanation ul li{
 
 }
 
-/* Specific styles */
 
 /* Content Pages */
 
@@ -313,6 +319,11 @@ div.new_event{
   background-color:#fff;
   position:relative;
 }
+
+#content_header img.heading{
+  margin-left:40px;
+}
+
 
 .event_filtering {
   margin:0 00px;
@@ -387,13 +398,17 @@ div.new_event{
 
 #content_header h2.find_an_event{
   display:block;
-  background-image:url('/images/headings/hd_find_an_event_in_october.png');
+  background-image:url('/images/headings/hd_find_an_event_in_october.gif');
   height:65px;
   width:400px;
   background-repeat:no-repeat;
   text-indent:-9999em;
   margin-left:18px;
   margin-top:18px;
+}
+
+#content_header img.heading{
+  margin-left:42px;
 }
 
 .form_wrapper form{
@@ -403,15 +418,17 @@ div.new_event{
   border:1px solid #c2c2c3;
   padding:12px;
 }
-h3.filter_description{
+h3.filter_description, h3.heading{
   float:left;
   width:660px;
   font-size:1.5em;
   margin-left:42px;
   margin-bottom:12px;
-  list-height:1.5;
+  line-height:1.5;
 }
-
+h3.heading{
+  float:none;
+}
 .cancel_search{
   float:left;
   margin-left:106px;
@@ -557,7 +574,7 @@ input.submit_your_event{
 
 .footer{
   min-height:30px;
-  width:100;
+  width:100%;
   background-color: #8b1713;
   background-image: url(/images/bg/bg_bottom.png);
   background-position: -35px -5px;

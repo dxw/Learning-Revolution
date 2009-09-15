@@ -106,7 +106,9 @@
   margin-left:42px;
   margin-top:36px;
 }
-
+#events_map ul li{
+  list-style: none;
+}
 
 
 /* This refers to the item listed liston the left hand side */
@@ -235,10 +237,62 @@ ul li.header .next{
   margin-left:18px;
 }
 
-/* Preview Styles */
-
-.event_preview #event_details{
-  margin-left:auto;
-  margin-right:auto;  
+#events_show div.events{
+  padding-bottom:0px;
 }
 
+/* Finding Duplicate Venue */
+
+.existing_venues{
+  float:left;
+  width:350px;
+  background:#fff;
+  border:1px solid #c9c9c9;
+  margin-left:42px;
+  padding-bottom:18px;
+}
+.existing_venues form{
+  width:250px;
+  padding-left:15px;
+}
+#events_find_venue form{
+  float:left;
+}
+.existing_venues h4{
+  margin-right:12px;
+  font-size:1.5em;
+  line-height:1.2em;
+}
+#events_find_venue input.confirm_venue{
+  margin-top:12px;
+}
+
+
+.add_a_new_venue{
+  float:left;
+}
+.add_a_new_venue form{
+  margin-top:0px;
+}
+.add_a_new_venue h4{
+  padding-top:18px;
+  margin-left:136px;
+}
+.add_a_new_venue div.input{
+  margin-left:20px;
+}
+.add_a_new_venue input.add_this_venue{
+  margin-left:120px;
+}
+/* Preview Styles */
+
+div.event_preview{
+  margin-left:auto;
+  margin-right:auto;
+  width:700px;
+  background:#fff;
+  border: 1px solid #c9c9c9;
+}
+div.form_submission{
+  float:left;
+}
