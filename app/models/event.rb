@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
 
-  attr_accessor :starthour, :startminute, :endhour, :endminute
+  attr_accessor :startday, :starthour, :startminute, :endhour, :endminute, :endday
   before_validation :set_time
   
   after_create :make_bitly_url
@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
   
   Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   Types = ["Class"]
+  Days = (1..Date.civil(2009, 10, -1).day).to_a
   Hours = (0..23).map{|h|'%02d'%h}
   Minutes = (0...60).step(5).map{|m|'%02d'%m}
   
@@ -191,15 +192,17 @@ class Event < ActiveRecord::Base
     cal.to_ical
   end
   def set_time
-    if starthour and startminute
+    if startday and starthour and startminute
+      d = startday.to_i
       h = starthour.to_i
       m = startminute.to_i
-      self.start = self.start + h.hour + m.minute
+      self.start = Time.zone.local(2009, 10, d, h, m)
     end
-    if endhour and endminute
+    if endday and endhour and endminute
+      d = endday.to_i
       h = endhour.to_i
       m = endminute.to_i
-      self.end = self.end + h.hour + m.minute if self.end
+      self.end = Time.zone.local(2009, 10, d, h, m)
     end
   end
   private
