@@ -65,6 +65,13 @@ h3.filter_description{
   background-color:#fff;
 }
 
+.existing_venues{
+  margin-left:22px;
+}
+.existing_venues form, .add_a_new_venue form{
+  margin-left:18px;
+}
+.new_venue form
 .footer{
   padding-bottom:36px;
 }
