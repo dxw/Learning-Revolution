@@ -90,9 +90,7 @@
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
       <select id="event_theme" name="event[theme]">
-        <% Event::Themes.each do |theme| %>
-        <option<%= (params[:event] and (params[:event][:theme] == theme)) ? ' selected="selected"' : '' %>><%= theme %></option>
-	<% end %>
+        <%= options_for_select(Event::Themes) %>
       </select>
       
       <div class="input_tip">
@@ -169,7 +167,7 @@
 
 
 
-    <%= image_submit_tag('/images/buttons/bt_preview_your_event.png', :alt => "Submit this event", :class => "submit_your_event png") %>
+    <%= image_submit_tag('/images/buttons/bt_preview_your_event.png', :alt => "Submit this event", :class => "submit_your_event") %>
     <% end %>
   </div>
 

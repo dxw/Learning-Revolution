@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers/all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  # uncomment this in development test validation on pages that need data POSTed.
+  # self.allow_forgery_protection = false
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   

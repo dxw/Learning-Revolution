@@ -1,27 +1,46 @@
-
-
 <div class="events">
 
-  <%= image_tag('headings/hd_add_an_event_to_the_calendar.png') %>
+  <div id="content_header" class="clearfix">
 
-  <% unless @venues.blank? %>
-    <h2>We already have the details of a venue near there</h2>
-    <% @venues.each do |venue| %>
-      <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
-        <%= venue.name %>
-        <%= submit_tag "It's at this venue" %>
-      <% end %>
+    <%= image_tag('headings/hd_choose_a_venue_for_this_event.gif', :class => "heading") %>
+
+    <% unless @venues.blank? %>
+      <h3 class="heading">We may already have the details of your venue; is it one of these? </h3>
+    <% else %>
+      <h3 class="heading">We don't currently have any venues listed in this postcode. Please add your venue to the listings.</h3>
     <% end %>
-  <% else %>
 
-    <h3>We don't currently have any venues listed in this postcode. Please add your venue to the listings.</h3>
+  </div>
 
-  <% end %>
 
 
 <div class="form_wrapper clearfix">
+  <% unless @venues.blank? %>  
+  <div class="existing_venues">
 
+    <% @venues.each do |venue| %>
+      <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
+        <div class="venue_choice">
+        <h4><%= venue.name %></h4>
+        <%# debugger %>
+        <h5><%= venue.address_1 %></h5>
+        <h5><%= venue.address_2 %></h5>
+        <%= "<h5> #{venue.address_3} </h5>" unless venue.address_3.blank? %>
+        <h5><%= venue.postcode %></h5>
+        <%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+  <% end %>
+
+  <div class="add_a_new_venue">
+    
 <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
+
+  <div><h4><%= image_tag 'headings/hd_add_a_venue_to_the_listings_smaller.gif', :alt => "Add a venue to the listings" %></h4></div>
+
   <div class="input clearfix">
     <label for="venue_name">Venue name</label>
     <%= text_field :venue, :name, :class => 'text' %>
@@ -57,8 +76,10 @@
     <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %>
   </div>
   
-  <%= submit_tag "Save this venue and add my event" %>
+  <%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %>
 <% end %>
+
+    </div>
 
 </div>
 </div>
