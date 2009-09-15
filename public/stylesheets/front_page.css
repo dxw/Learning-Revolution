@@ -96,8 +96,12 @@ img.be_a_part_of_the_festival{
   height:280px;
   width:480px;
 }
+.row .featured_event ul li{
+  width:480px;
+}
 .row li.featured_event{
   height:280px;
+  width:480px;
 }
 
 .row .featured_event h3{
