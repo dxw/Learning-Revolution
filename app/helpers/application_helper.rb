@@ -31,7 +31,6 @@ module ApplicationHelper
       s += '</span>'
     end
     s
-    
   end
   
 end

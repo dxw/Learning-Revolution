@@ -1,24 +1,39 @@
+
 <div id="content_header">
 
+  <%= image_tag('headings/hd_preview_your_event.gif', :class => "heading") %>
   
-  
-  <p>You are about to add this this event to the listings, are all the details correct?</p>
+  <h3 class="heading">You are about to add this this event to the listings, are all the details correct?</h3>
   
 </div>
 
 <div class="events">
 
-  <div class="event_preview">
+  <div class="form_wrapper clearfix">
+  
+    <div class="event_preview clearfix">
+      <% debugger %>
+      <div id="event_details">
+        <h2><% @new_event.title %></h2>
+      </div>
 
-  <%= render :partial => 'event_details', :locals => {:event => @new_event} %>
+      <%= render :partial => 'event_details', :locals => {:event => @new_event} %>
 
-  <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]) do %>
+    </div>
 
-    <p><em>Submissions to the Learning Revolution calendar are moderated, so your event won’t appear on the site until it’s been approved by our team. We always try to do this as quickly as possible.</em></p>
+    <div class="form_submission">
+    
+        <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]) do %>
 
+        <p><em>Submissions to the Learning Revolution calendar are moderated, so your event won’t appear on the site until it’s been approved by our team. We always try to do this as quickly as possible.</em></p>
 
-    <%= submit_tag "Save this event" %>
-  <% end %>
+        <%= image_submit_tag('buttons/bt_add_this_event_to_the_listings.gif', :alt => "Add this event to the listings")%>
+
+        <% end %>
+
+    </div>
+
+    
 
   </div>
 </div>

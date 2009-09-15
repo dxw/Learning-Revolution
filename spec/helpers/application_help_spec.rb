@@ -8,4 +8,6 @@ describe ApplicationHelper do
     included_modules.should include(ApplicationHelper)
   end
 
+  
+
 end

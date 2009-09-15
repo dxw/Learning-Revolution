@@ -10,18 +10,7 @@
     
       <div class="detail">
       
-      <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
-      <div class="time">
-        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%R%p") %></abbr>        
-      </div>
 
-      <% if event.end %>
-      <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
-      </div>
-      <% end %>
-
-      </div>
   
       <div class="detail">
       
