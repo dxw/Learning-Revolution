@@ -352,7 +352,7 @@ div.new_event{
   width:27em;
   margin-left:38px;
   padding:12px 0px 4px 0px;
-  display:none;
+  cursor:pointer;
   float:left;
 }
 
@@ -413,7 +413,7 @@ div.new_event{
   width:400px;
   background-repeat:no-repeat;
   text-indent:-9999em;
-  margin-left:18px;
+  margin-left:32px;
   margin-top:18px;
 }
 
@@ -558,6 +558,7 @@ ul.sm_icons li{
   background-image:url('/images/sm_icons.gif');
   background-repeat:no-repeat;
   border-bottom:none;
+  font-size:0.83em;
 }
 ul.sm_icons li a{
   text-decoration: none;
