@@ -114,7 +114,7 @@ VenueFinder = $.klass({
 
 InfoTip = $.klass({
 	initialize: function() {
-	  this.container = this.element.parent(".input_with_tip")
+	  this.container = this.element.parents(".input_with_tip")
 	  this.input_tip = this.container.find(".input_tip")
      this.input_tip.hide();
 	},
