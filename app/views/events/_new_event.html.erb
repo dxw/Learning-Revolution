@@ -15,75 +15,57 @@
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_start">From</label>
-      <%= event_form.text_field :start, :class => 'text datepicker' %>
+    <div class="input clearfix input_with_tip datetime">
+      <label for="event_starthour">From</label>
+      <select id="event_starthour" name="event[starthour]">
+        <% Event::Hours.each do |hour| %>
+        <option<%= (params[:event] and (params[:event][:starthour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
+        <% end %>
+      </select>
+      <select id="event_startminute" name="event[startminute]">
+        <% Event::Minutes.each do |minute| %>
+        <option<%= (params[:event] and (params[:event][:startminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
+        <% end %>
+      </select>
+
+      on
+
+      <select id="event_startday" name="event[startday]">
+        <% Event::Days.each do |day| %>
+        <option<%= (params[:event] and (params[:event][:startday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+        <% end %>
+      </select> October 2009
       <div class="input_tip">
         <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
         <div class="tooltip_arrow"></div>
       </div>
     </div>
 
-    <div class="input clearfix input_with_tip">
-      <label for="event_starthour">Start hour</label>
-      <select id="event_starthour" name="event[starthour]">
-        <% Event::Hours.each do |hour| %>
-	<option<%= (params[:event] and (params[:event][:starthour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
-	<% end %>
-      </select>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the hour of your event</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-    </div>
-
-    <div class="input clearfix input_with_tip">
-      <label for="event_startminute">Start minute</label>
-      <select id="event_startminute" name="event[startminute]">
-        <% Event::Minutes.each do |minute| %>
-        <option<%= (params[:event] and (params[:event][:startminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
-	<% end %>
-      </select>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the minute of your event</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-    </div> 
-
-    <div class="input clearfix input_with_tip">
-      <label for="event_end">until</label>
-      <%= event_form.text_field :end, :class => 'text datepicker' %>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-    </div>
-
-    <div class="input clearfix input_with_tip">
-      <label for="event_endhour">End hour</label>
+    <div class="input clearfix input_with_tip datetime">
+      <label for="event_endhour">until</label>
       <select id="event_endhour" name="event[endhour]">
         <% Event::Hours.each do |hour| %>
 	<option<%= (params[:event] and (params[:event][:endhour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
 	<% end %>
       </select>
-      <div class="input_tip">
-        <div class="tooltip">Please enter the hour of your event</div>
-        <div class="tooltip_arrow"></div>
-      </div>
-    </div>
-
-    <div class="input clearfix input_with_tip">
-      <label for="event_endminute">End minute</label>
       <select id="event_endminute" name="event[endminute]">
         <% Event::Minutes.each do |minute| %>
         <option<%= (params[:event] and (params[:event][:endminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
 	<% end %>
       </select>
+
+      on
+
+      <select id="event_endday" name="event[endday]">
+        <% Event::Days.each do |day| %>
+        <option<%= (params[:event] and (params[:event][:endday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+	<% end %>
+      </select> October 2009
       <div class="input_tip">
-        <div class="tooltip">Please enter the minute of your event</div>
+        <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
         <div class="tooltip_arrow"></div>
       </div>
-    </div> 
+    </div>
 
 
     <fieldset class="event_venue_form">
@@ -95,7 +77,7 @@
       
       <div class="input clearfix input_with_tip">
         <label for="venue_postcode">Postcode</label>
-        <%= text_field :venue, :postcode, :class => 'text input' %>
+        <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
         <div class="input_tip">
           <div class="tooltip">Enter the postcode of your venue's event. If your event is online, check the "no location" box.</div>
           <div class="tooltip_arrow"></div>
@@ -107,7 +89,11 @@
 
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
-      <%= event_form.select :theme, options_for_select(Event::Themes) %>
+      <select id="event_theme" name="event[theme]">
+        <% Event::Themes.each do |theme| %>
+        <option<%= (params[:event] and (params[:event][:theme] == theme)) ? ' selected="selected"' : '' %>><%= theme %></option>
+	<% end %>
+      </select>
       
       <div class="input_tip">
         <div class="tooltip">What's this event about? If none of these options fit, use "other".</div>
