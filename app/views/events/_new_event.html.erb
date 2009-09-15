@@ -17,22 +17,22 @@
 
     <div class="input clearfix input_with_tip datetime">
       <label for="event_starthour">From</label>
-      <select id="event_starthour" name="event[starthour]">
+      <select id="event_starthour" name="starthour">
         <% Event::Hours.each do |hour| %>
-        <option<%= (params[:event] and (params[:event][:starthour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
+        <option<%= (params[:starthour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
         <% end %>
       </select>
-      <select id="event_startminute" name="event[startminute]">
+      <select id="event_startminute" name="startminute">
         <% Event::Minutes.each do |minute| %>
-        <option<%= (params[:event] and (params[:event][:startminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
+        <option<%= (params[:startminute] == minute) ? ' selected="selected"' : '' %>><%= minute %></option>
         <% end %>
       </select>
 
       on
 
-      <select id="event_startday" name="event[startday]">
+      <select id="event_startday" name="startday">
         <% Event::Days.each do |day| %>
-        <option<%= (params[:event] and (params[:event][:startday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+        <option<%= (params[:startday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
         <% end %>
       </select> October 2009
       <div class="input_tip">
@@ -43,22 +43,22 @@
 
     <div class="input clearfix input_with_tip datetime">
       <label for="event_endhour">until</label>
-      <select id="event_endhour" name="event[endhour]">
+      <select id="event_endhour" name="endhour">
         <% Event::Hours.each do |hour| %>
-	<option<%= (params[:event] and (params[:event][:endhour] == hour)) ? ' selected="selected"' : '' %>><%= hour %></option>
+	<option<%= (params[:endhour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
 	<% end %>
       </select>
-      <select id="event_endminute" name="event[endminute]">
+      <select id="event_endminute" name="endminute">
         <% Event::Minutes.each do |minute| %>
-        <option<%= (params[:event] and (params[:event][:endminute] == minute)) ? ' selected="selected"' : '' %>><%= minute %></option>
+        <option<%= (params[:endminute] == minute) ? ' selected="selected"' : '' %>><%= minute %></option>
 	<% end %>
       </select>
 
       on
 
-      <select id="event_endday" name="event[endday]">
+      <select id="event_endday" name="endday">
         <% Event::Days.each do |day| %>
-        <option<%= (params[:event] and (params[:event][:endday] == day.to_s)) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+        <option<%= (params[:endday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
 	<% end %>
       </select> October 2009
       <div class="input_tip">

@@ -35,6 +35,18 @@ class EventsController < ApplicationController
   end
   
   def find_venue
+    if params[:startday] and params[:starthour] and params[:startminute]
+      d = params[:startday].to_i
+      h = params[:starthour].to_i
+      m = params[:startminute].to_i
+      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
+    end
+    if params[:endday] and params[:endhour] and params[:endminute]
+      d = params[:endday].to_i
+      h = params[:endhour].to_i
+      m = params[:endminute].to_i
+      params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
+    end
     @new_event = Event.new(params[:event])
     if params[:cyberevent]
       if @new_event.valid?
