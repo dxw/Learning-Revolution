@@ -502,6 +502,10 @@ ul.search_subscription_options li{
   font-size:1.33em;
   padding:3px;  
 }
+span.optional{
+  color:#8B1713;
+  font-style:italic;
+}
 .form_wrapper form select{
  
   width:312px;

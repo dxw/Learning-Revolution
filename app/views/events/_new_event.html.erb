@@ -42,7 +42,7 @@
     </div>
 
     <div class="input clearfix input_with_tip datetime">
-      <label for="event_endhour">until</label>
+      <label for="event_endhour">until <span class="optional">(optional)</span></label>
       <select id="event_endhour" name="endhour">
         <% Event::Hours.each do |hour| %>
 	<option<%= (params[:endhour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
@@ -125,7 +125,7 @@
       <div id="further_info">
 
         <div class="input clearfix input_with_tip">
-          <label for="event_organisation">Organisation</label>
+          <label for="event_organisation">Organisation <span class="optional">(optional)</span></label>
           <%= event_form.text_field :organisation, :class => 'text' %>
           <div class="input_tip">
            <div class="tooltip">If this event is being run by an organisation, enter the organisation's name here.</div>
