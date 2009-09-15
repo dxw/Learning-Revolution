@@ -18,7 +18,7 @@ class Admin::EventsController < Admin::AdminController
   end
   
   def index
-    @events = Event.find(:all, :conditions => ["title LIKE ?", "%#{params[:title]}%"])
+    @events = Event.paginate(:all, :page => params[:page], :conditions => ["title LIKE ?", "%#{params[:title]}%"])
   end
   
   def duplicates
