@@ -2,7 +2,7 @@
   
   <%# unless event.new_record? %>
   <%# why is this title hyperlinked like this? Can't work out what purpose it serves. %>
-  <h2><%= link_to "Sample Event title", "", :class => "url summary" %></h2>
+  <h2><%= link_to event.title, "", :class => "url summary" %></h2>
   <%# end %>
   <div class="clearfix detail_list">
     

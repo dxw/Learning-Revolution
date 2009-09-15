@@ -1,6 +1,5 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start, :contact_name, :theme, :event_type
-  validate :must_have_contact_details
+  validates_presence_of :title, :start, :contact_name, :theme, :event_type, :contact_email_address, :contact_phone_number
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
@@ -187,9 +186,5 @@ class Event < ActiveRecord::Base
     cal = Icalendar::Calendar.new
     cal.add_event to_ical_event
     cal.to_ical
-  end
-  private
-  def must_have_contact_details
-    errors.add(:contact_email_address, "can't be blank") if self.contact_email_address.blank? && self.contact_phone_number.blank?
   end
 end
