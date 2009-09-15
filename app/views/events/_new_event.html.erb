@@ -77,7 +77,7 @@
       
       <div class="input clearfix input_with_tip">
         <label for="venue_postcode">Postcode</label>
-        <%= text_field :venue, :postcode, :class => 'text input' %>
+        <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
         <div class="input_tip">
           <div class="tooltip">Enter the postcode of your venue's event. If your event is online, check the "no location" box.</div>
           <div class="tooltip_arrow"></div>
