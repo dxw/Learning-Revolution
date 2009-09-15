@@ -183,6 +183,7 @@ ul li.header .next{
   float:left;
   border-left:1px solid #c9c9c9;
   background-color:#fff;
+  text-align:left;
 }
 
 #event_details .detail_list{
@@ -286,13 +287,25 @@ ul li.header .next{
 }
 /* Preview Styles */
 
-div.event_preview{
-  margin-left:auto;
-  margin-right:auto;
-  width:700px;
-  background:#fff;
+div.event_preview #event_details{
   border: 1px solid #c9c9c9;
 }
-div.form_submission{
-  float:left;
+
+div.event_preview, div.form_submission{
+  margin-left:auto;
+  margin-right:auto;
+  width:600px;
+  text-align:center;
+}
+div.event_preview #event_details{
+  width:600px;
+}
+div.form_submission form{
+  width:578px;
+  margin-left:0px;
+  text-align:left;
+}
+div.form_submission form p{
+  margin-bottom:12px;
+  font-style:italic;
 }

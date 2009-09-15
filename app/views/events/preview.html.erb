@@ -3,7 +3,7 @@
 
   <%= image_tag('headings/hd_preview_your_event.gif', :class => "heading") %>
   
-  <h3 class="heading">You are about to add this this event to the listings, are all the details correct?</h3>
+  <h3 class="heading">You are about to add this this event to the listings, and it'll look something like this. Are all the details correct?</h3>
   
 </div>
 
@@ -12,10 +12,6 @@
   <div class="form_wrapper clearfix">
   
     <div class="event_preview clearfix">
-      <% #debugger %>
-      <div id="event_details">
-        <h2><% @new_event.title %></h2>
-      </div>
 
       <%= render :partial => 'event_details', :locals => {:event => @new_event} %>
 

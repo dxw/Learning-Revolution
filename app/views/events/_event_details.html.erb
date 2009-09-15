@@ -1,16 +1,28 @@
 <div id="event_details" class="event clearfix vevent">
-
-  <% unless event.new_record? %>
+  
+  <%# unless event.new_record? %>
   <%# why is this title hyperlinked like this? Can't work out what purpose it serves. %>
-  <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
-  <% end %>
+  <h2><%= link_to "Sample Event title", "", :class => "url summary" %></h2>
+  <%# end %>
   <div class="clearfix detail_list">
     
     <div class="span-2">
     
       <div class="detail">
       
+      <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
 
+      <div class="time">
+        <abbr class="dtstart" title="<%#= event.start.iso8601 %>"><%= Time.now.strftime("%R%p") %><%#= event.start.strftime("%R%p") %></abbr>        
+      </div>
+
+      <% if event.end %>
+      <div class="time">
+        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= Time.now.strftime("until %R%p") %><%#= event.end.strftime("until %R%p") %></abbr>
+      </div>
+      <% end %>
+
+      </div>
   
       <div class="detail">
       
@@ -51,21 +63,24 @@
 
     </div>
 
-    <% unless event.new_record? %>
+    <%# unless event.new_record? %>
 
     <div class="span-2 last">
 
+
+
+
     <ul class="sm_icons">
-      
-      <li class="calendar"><%= link_to "Add to Calendar", :id => @event.slug, :format => 'ics' %></li>
-      <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{event.bitly_url}" %></li>
+      <%# I'm having to comment these out for now,  %>
+      <li class="calendar"><%= link_to "Add to Calendar", :id => '@event.slug', :format => 'ics' %></li>
+      <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
       <li class="facebook"><%= link_to "Add to Facebook" %></li>
 
     </ul>
   
     </div>
 
-    <% end %>
+    <%# end %>
   
   </div>
   
