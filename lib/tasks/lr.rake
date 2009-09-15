@@ -59,9 +59,38 @@ namespace :lr do
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
-      
-      
-      
     end
+
+    task :norfolk => :environment do
+      require 'fastercsv'
+      FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/Norfolk event data.csv", :headers => :first_row) do |row|
+        #"Code","Name","StartDate","NoOfWeeks","StartTime","ADDRESS1","ADDRESS2","ADDRESS3","ADDRESS4","POSTCODE"
+        v = Venue.new
+        v.name = row["ADDRESS1"]
+        v.address_1 = row["ADDRESS2"]
+        v.address_2 = row["ADDRESS3"]
+        v.address_3 = row["ADDRESS4"]
+        v.postcode = row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]
+        v.county = "Norfolk"
+        v.save!
+
+        e = Event.new
+        e.venue = v
+        e.title = row["Name"]
+        e.theme = 'NorfolkData'
+        e.event_type = 'NorfolkType'
+        day, month, year = row["StartDate"].strip.split('/').map{|a|a.to_i}
+        hour, minute = row["StartTime"].strip.split(':').map{|a|a.to_i}
+        e.start = Time.zone.local(year, month, day) + hour.hours + minute.minutes
+        e.end = e.start + row["NoOfWeeks"].to_i.weeks
+        e.contact_name = "Nobody"
+        e.contact_phone_number = "000"
+        e.contact_email_address = "nobody@example.com"
+        e.published = true
+        e.save!
+        p "saved #{e.title}, id: #{e.id}"
+      end
+    end
+      
   end
 end
