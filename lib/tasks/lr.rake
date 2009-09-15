@@ -91,6 +91,43 @@ namespace :lr do
         p "saved #{e.title}, id: #{e.id}"
       end
     end
+
+    task :fol => :environment do
+      require 'fastercsv'
+      FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/Festival of Learning Events.csv", :headers => :first_row) do |row|
+        #"Timestamp","Title","Postcode","Category","Event type","Description","From","To","Organisation","Contact name","Contact phone number","Contact Email address"
+        v = Venue.new
+        v.name = "No Name"
+        v.postcode = row["Postcode"]
+        v.save!
+
+        e = Event.new
+        e.venue = v
+        e.title = row["Title"]
+        e.theme = row["Category"]
+        e.event_type = row["Event type"]
+        e.description = row["Description"]
+        e.organisation = row["Organisation"]
+        if row["From"].include? "/"
+          day, month, year = row["From"].strip.split('/').map{|a|a.to_i}
+          e.start = Time.zone.local(year, month, day)
+        else
+          e.start = Time.zone.parse(row["From"])
+        end
+        if row["To"].include? "/"
+          day, month, year = row["To"].strip.split('/').map{|a|a.to_i}
+          e.end = Time.zone.local(year, month, day)
+        else
+          e.end = Time.zone.parse(row["To"])
+        end
+        e.contact_name = row["Contact name"]
+        e.contact_phone_number = row["Contact phone number"]
+        e.contact_email_address = row["Contact Email address"]
+        e.published = true
+        e.save!
+        p "saved #{e.title}, id: #{e.id}"
+      end
+    end
       
   end
 end
