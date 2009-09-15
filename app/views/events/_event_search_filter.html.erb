@@ -25,18 +25,17 @@
 
     <ul class="search_subscription_options">
       <!-- <li class="email png">Send me these events as email.</li> -->
-      <% these_events = params[:id] ? "this event" : "these events" %>
-      <li class="calendar"><%= link_to "Add "+these_events+" to my calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
-      <li class="google_calendar"><%= link_to "Add "+these_events+" to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-      <% unless params[:id] %>
+    <% unless params[:id] %>
+      <li class="calendar"><%= link_to "Add these events to my calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
+      <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
       <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
-      <% end %>
+    <% end %>
+    
     </ul>
     
   </div>
   
   <div class="event_filtering clearfix">
-
     <h3 class="toggler"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
     <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "#new_event" %></div>
 
