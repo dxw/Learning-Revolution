@@ -89,7 +89,11 @@
 
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
-      <%= event_form.select :theme, options_for_select(Event::Themes) %>
+      <select id="event_theme" name="event[theme]">
+        <% Event::Themes.each do |theme| %>
+        <option<%= (params[:event] and (params[:event][:theme] == theme)) ? ' selected="selected"' : '' %>><%= theme %></option>
+	<% end %>
+      </select>
       
       <div class="input_tip">
         <div class="tooltip">What's this event about? If none of these options fit, use "other".</div>
