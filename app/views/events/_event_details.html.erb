@@ -33,10 +33,10 @@
       <% if event.venue.present? %>
         <h4><%= event.venue.name %></h4>
         <p class="location">
-          <%= event.venue.address_1 %><br />
-          <%= event.venue.address_2 %><br />
-          <%= event.venue.address_3 %><br />
-          <%= event.venue.city %><br />
+          <%= "#{event.venue.address_1} <br/>" unless event.venue.address_1.blank? %>
+          <%= "#{event.venue.address_2} <br/>" unless event.venue.address_2.blank? %>
+          <%= "#{event.venue.address_3} <br/>" unless event.venue.address_3.blank? %>
+          <%= "#{event.venue.city} <br/>" unless event.venue.city.blank? %>
           <%= "#{event.venue.county} <br/>" unless event.venue.county.blank? %>
           <%= event.venue.postcode %>
         </p>
@@ -97,7 +97,7 @@
       <span class="fn n"><%= "#{event.contact_name} - " %></span>
       <span class="org"><%= "#{event.organisation} -" if event.organisation.present? %></span> 
       <span class="tel"><%= "#{event.contact_phone_number if event.contact_phone_number} - " %></span> 
-      <a class="email" href="mailto:email"><%= event.contact_email_address if event.contact_email_address %></a>
+      <% unless event.contact_email_address.blank? %><a class="email" href="mailto:<%= event.contact_email_address %>"><%= event.contact_email_address %></a><% end %>
     </p>
 
     <% end %>

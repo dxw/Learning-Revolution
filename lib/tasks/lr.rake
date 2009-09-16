@@ -67,9 +67,9 @@ namespace :lr do
         #"Code","Name","StartDate","NoOfWeeks","StartTime","ADDRESS1","ADDRESS2","ADDRESS3","ADDRESS4","POSTCODE"
         v = Venue.new
         v.name = row["ADDRESS1"]
-        v.address_1 = row["ADDRESS2"]
-        v.address_2 = row["ADDRESS3"]
-        v.address_3 = row["ADDRESS4"]
+        v.address_1 = row["ADDRESS2"] unless row["ADDRESS2"] == 'Norfolk'
+        v.address_2 = row["ADDRESS3"] unless row["ADDRESS3"] == 'Norfolk'
+        v.address_3 = row["ADDRESS4"] unless row["ADDRESS4"] == 'Norfolk'
         v.postcode = row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]
         v.county = "Norfolk"
         v.save!
