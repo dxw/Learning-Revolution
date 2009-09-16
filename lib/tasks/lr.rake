@@ -193,4 +193,78 @@ namespace :lr do
     task :real_data => [:norfolk, :fol, :flf]
 
   end
+  task :import => :environment do
+    def str_to_datetime(str)
+      Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
+    end
+    def die(msg)
+      raise IOError, "csv row ##{@rownum}: #{msg}"
+    end
+    require 'fastercsv'
+    queue = []
+    @rownum = 0
+    FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/import.csv", :headers => :first_row) do |row|
+      @rownum += 1
+      #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
+      e = Event.new
+
+      if row["cyberevent"] == "true"
+        %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
+          unless row[f].blank?
+            p row[f]
+            die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+          end
+        }
+      elsif row["cyberevent"] == "false"
+        v = Venue.new
+        v.name = row["venue_name"]
+        v.address_1 = row["venue_address_1"]
+        v.address_2 = row["venue_address_2"]
+        v.address_3 = row["venue_address_3"]
+        v.city = row["venue_city"]
+        v.county = row["venue_county"]
+        v.postcode = row["venue_postcode"]
+        if v.invalid?
+          die "Venue fails validation for the following reasons: #{v.errors.full_messages.join(", ")}"
+        end
+        queue << v
+        e.venue = v
+      else
+        die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
+      end
+
+      e.title = row["title"]
+      e.description = row["description"]
+      #TODO: should cost be standardised?
+      e.cost = row["cost"]
+      #TODO: should min_age be standardised?
+      e.min_age = row["min_age"]
+      e.start = str_to_datetime(row["start"])
+      unless row["end"].blank?
+        e.end = str_to_datetime(row["end"])
+      end
+      if row["published"] == "true"
+        e.published = true
+      elsif row["published"] == "false"
+        e.published = false
+      else
+        die "published MUST be \"true\" or \"false\", got #{row["published"].inspect}"
+      end
+      e.theme = row["theme"]
+      e.event_type = row["event_type"]
+      e.picture = row["picture"]
+      e.contact_name = row["contact_name"]
+      e.contact_email_address = row["contact_email_address"]
+      e.contact_phone_number = row["contact_phone_number"]
+      e.organisation = row["organisation"]
+      if e.invalid?
+        die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
+      end
+      queue << e
+    end
+    queue.each do |ev|
+      ev.save!
+      p "saved #{ev.class}, id #{ev.id}"
+    end
+  end
 end
