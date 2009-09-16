@@ -22,6 +22,8 @@
         <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]) do %>
 
         <p><em>Submissions to the Learning Revolution calendar are moderated, so your event won’t appear on the site until it’s been approved by our team. We always try to do this as quickly as possible.</em></p>
+        
+        <p><em>If you have any questions, please contact the team on [email addr to be supplied]</em></p>
 
         <%= image_submit_tag('buttons/bt_add_this_event_to_the_listings.gif', :alt => "Add this event to the listings")%>
 

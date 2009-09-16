@@ -605,3 +605,7 @@ input.submit_your_event{
 .footer p, .footer  a{
     color:#8b1713;
 }
+
+.form_help {
+  font-style:italic;
+}
