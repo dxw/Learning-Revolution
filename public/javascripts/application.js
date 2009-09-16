@@ -33,27 +33,6 @@ YouTube = $.klass({
   }
 });
 
-RefineEventSearch = $.klass({
-  initialize: function(section_to_close) {
-    this.section_to_close = section_to_close;
-  },
-  onclick: function() {
-    this.section_to_close.slideToggle(this.section_to_close);
-  }
-});
-
-FormSlider = $.klass({
-  initialize: function() {
-    this.element_to_toggle = $("#"+this.element.attr("id").replace("toggles_", ""));
-    this.element_to_toggle.hide();
-  },
-  
-  onclick: function() {
-    this.element_to_toggle.slideToggle();
-    return false;
-  }
-});
-
 DateSlider = $.klass({
   initialize: function() {
     this.element.find('select').hide();
@@ -137,8 +116,8 @@ jQuery(function($) {
   $(".input_with_tip select").attach(InfoTip);
   $(".input_with_tip textarea").attach(InfoTip);
 //  $("input.datepicker").datepicker({ dateFormat: 'd MM yy', minDate: new Date(2009,9,01), maxDate: new Date(2009,9,31) });
+  $('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true});
 });
 
 
-$('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true});
 
