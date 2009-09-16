@@ -13,12 +13,12 @@
       <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
 
       <div class="time">
-        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%#= Time.now.strftime("%R%p") %><%= event.start.strftime("%R%p") %></abbr>        
+        <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%e %B %R%p") %></abbr>        
       </div>
 
       <% if event.end %>
       <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%#= Time.now.strftime("until %R%p") %><%= event.end.strftime("until %R%p") %></abbr>
+        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
       </div>
       <% end %>
 
