@@ -26,8 +26,10 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
+    And the page is valid XHTML
     When I press "Save this event"
     Then I should see "Event created successfully"
+    And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
   
@@ -39,6 +41,7 @@ Feature: Adding an event
     And I should see "Title can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"
+    And the page is valid XHTML
     And there should be 0 Event in the database
   
   Scenario: Adding a valid event from the calendar page with a new venue
@@ -56,6 +59,7 @@ Feature: Adding an event
     And I fill in "Postcode" with "E11 1PB"
     And I press "Submit this event"
     Then I should see "We don't currently have any venues listed in this postcode"
+    And the page is valid XHTML
     When I fill in "Venue name" with "Venue name"
     And I fill in "Address Line 1" with "Address 1 name"
     And I fill in "Address Line 2" with "Address 2 name"
@@ -72,8 +76,10 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
+    And the page is valid XHTML
     When I press "Save this event"
     Then I should see "Event created successfully"
+    And the page is valid XHTML
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
@@ -86,24 +92,28 @@ Feature: Adding an event
     And I should see "Title can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"
+    And the page is valid XHTML
     And there should be 0 Event in the database
   
   Scenario: Adding a valid event but forgetting post code
     When I go to the calendar for October 2009
     And I press "Submit this event"
     Then I should see "Post Code can't be blank"
+    And the page is valid XHTML
   
   Scenario: Adding a valid event but an malformed post code
     When I go to the calendar for October 2009
     And I fill in "Postcode" with "xxxxxxxxxxx"
     And I press "Submit this event"
     Then I should see "The post code you entered seems to be invalid"
+    And the page is valid XHTML
   
   Scenario: Adding a valid event but a non-existent well formed post code
     When I go to the calendar for October 2009
     And I fill in "Postcode" with "SW0z 0zz"
     And I press "Submit this event"
     Then I should see "We couldn't find anywhere with this postcode"
+    And the page is valid XHTML
   
   Scenario: Adding a valid event to an existing venue
     Given a valid venue called "Church hall"
@@ -124,6 +134,7 @@ Feature: Adding an event
     Then I should see "We may already have the details of your venue; is it one of these?"
     When I press "Choose this venue"
     Then I should see "You are about to add this this event to the listings"
+    And the page is valid XHTML
     And I should see "event title"
     And I should see "event description"
     And I should see "2004-10-23 11:20:00 +0100"
@@ -134,6 +145,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     When I press "Save this event"
     Then I should see "Event created successfully"
+    And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
@@ -159,6 +171,7 @@ Feature: Adding an event
     Then I should see "We may already have the details of your venue; is it one of these?"
     And I should see "Church hall"
     And I should see "School hall"
+    And the page is valid XHTML
 
   Scenario: Adding a valid event to a new venue, when there's an existing venue with same post code
     Given a valid venue called "Church hall"
@@ -193,8 +206,10 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
+    And the page is valid XHTML
     When I press "Save this event"
     Then I should see "Event created successfully"
+    And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 2 Venue in the database
     And I am on the calendar for October 2009

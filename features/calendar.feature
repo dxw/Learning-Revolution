@@ -12,6 +12,7 @@ Feature: Event admin
     When I go to the calendar for October 2009
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Secret Event"
+    And the page is valid XHTML
 
   Scenario: Viewing a calendar filtered by theme
     Given a valid event called "Octoberfest"
@@ -30,6 +31,7 @@ Feature: Event admin
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
+    And the page is valid XHTML
 
   Scenario: Viewing a calendar filtered by type and theme
     Given a valid event called "Octoberfest"
@@ -52,6 +54,7 @@ Feature: Event admin
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
+    And the page is valid XHTML
 
   Scenario: Viewing a calendar filtered by location
     Given a valid event called "Octoberfest"
@@ -61,6 +64,7 @@ Feature: Event admin
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
     And a valid event called "Secret Event"
+    And the event "Secret Event" is not published yet
     And the event "Secret Event" starts on "12th October 2009 12:00"
     And the event "Secret Event" is located at lat "51.584911" and lng "0.02591"
     When I go to the calendar for October 2009
@@ -69,4 +73,5 @@ Feature: Event admin
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
+    And the page is valid XHTML
     

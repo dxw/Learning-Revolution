@@ -1,9 +1,10 @@
 <div id="event_details" class="event clearfix vevent">
   
-  <%# unless event.new_record? %>
-  <%# why is this title hyperlinked like this? Can't work out what purpose it serves. %>
-  <h2><%= link_to event.title, "", :class => "url summary" %></h2>
-  <%# end %>
+  <% if event.new_record? %>
+    <h2><%= event.title %></h2>
+  <% else %>
+    <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
+  <% end %>
   <div class="clearfix detail_list">
     
     <div class="span-2">
@@ -18,7 +19,9 @@
 
       <% if event.end %>
       <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
+        <abbr class="dtend" title="<%= event.end.iso8601 %>">until
+	  <%= (event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime('%e %B') %>
+	  <%= event.end.strftime("%R%p") %></abbr>
       </div>
       <% end %>
 
@@ -64,18 +67,19 @@
     </div>
 
     <div class="span-2 last">
-
-    <ul class="sm_icons">
-      <%
-      	pa = params.dup
-      	pa.delete(:view)
-      %>
+    <% unless event.new_record? %>
+      <ul class="sm_icons">
+        <%
+        	pa = params.dup
+        	pa.delete(:view)
+        %>
       
-      <li class="calendar"><%= link_to "Add to calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
-      <li class="google_calendar"><%= link_to "Add to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-      <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
-      <li class="facebook"><%= link_to "Add to Facebook" %></li>
-    </ul>
+        <li class="calendar"><%= link_to "Add to calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
+        <li class="google_calendar"><%= link_to "Add to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
+        <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
+        <li class="facebook"><%= link_to "Add to Facebook" %></li>
+      </ul>
+    <% end %>
 
     </div>
   
