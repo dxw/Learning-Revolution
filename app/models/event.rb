@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :start, :contact_name, :theme, :event_type, :contact_email_address, :contact_phone_number
+  validates_presence_of :title, :start, :contact_name, :theme, :event_type, :contact_email_address
   
   belongs_to :possible_duplicate, :class_name => "Event"
   

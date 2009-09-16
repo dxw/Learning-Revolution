@@ -41,7 +41,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I check "This event has no location"
     And I press "Submit this event"
-    Then I should see "4 errors prohibited this new event from being save"
+    Then I should see "3 errors prohibited this new event from being save"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"
@@ -96,7 +96,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "E11 1PB"
     And I press "Submit this event"
-    Then I should see "4 errors prohibited this new event from being save"
+    Then I should see "3 errors prohibited this new event from being save"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"

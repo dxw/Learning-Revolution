@@ -45,10 +45,10 @@ describe Event do
     @event.should_not be_valid
   end
   
-  it "should not be without a contact phone number but with a contact email address" do
+  it "should be valid without a contact phone number but with a contact email address" do
     @event.contact_email_address = "james@abscond.org"
     @event.contact_phone_number = ""
-    @event.should_not be_valid
+    @event.should be_valid
   end
     
   it "not be valid without a start time" do
