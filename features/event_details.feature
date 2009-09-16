@@ -12,3 +12,5 @@ Feature: Event show page
     Then I should see "Octoberfest"
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
+    And the page is valid XHTML
+    

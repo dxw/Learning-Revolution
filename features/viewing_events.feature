@@ -10,8 +10,10 @@ Feature: Viewing events
     And the event "Festival of Ideas" is held at the venue "Town Hall"
     And I go to the event page for "Festival of Ideas"
     Then I should see "Festival of Ideas"
+    And the page is valid XHTML
 
   Scenario: Viewing an event without a venue
     Given a valid event called "Festival of Ideas"
     And I go to the event page for "Festival of Ideas"
     Then I should see "Festival of Ideas"
+    And the page is valid XHTML

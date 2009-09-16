@@ -13,3 +13,7 @@ end
 Then /^I should be denied access$/ do
   response.code.should == "401"
 end
+
+Then %r/the page is valid XHTML/ do
+  response.body.should be_xhtml_strict if ENV["VALIDATION"]
+end
