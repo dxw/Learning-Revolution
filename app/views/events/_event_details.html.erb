@@ -19,7 +19,9 @@
 
       <% if event.end %>
       <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>"><%= event.end.strftime("until %R%p") %></abbr>
+        <abbr class="dtend" title="<%= event.end.iso8601 %>">until
+	  <%= (event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime('%e %B') %>
+	  <%= event.end.strftime("%R%p") %></abbr>
       </div>
       <% end %>
 
