@@ -186,6 +186,8 @@ namespace :lr do
         p "saved #{e.title}, id: #{e.id}"
       end
     end
-      
+
+    task :real_data => [:norfolk, :fol, :flf]
+
   end
 end
