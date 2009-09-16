@@ -35,10 +35,10 @@ YouTube = $.klass({
 
 RefineEventSearch = $.klass({
   initialize: function(section_to_close) {
-    this.section_to_close = section_to_close
+    this.section_to_close = section_to_close;
   },
   onclick: function() {
-    this.section_to_close.slideToggle(this.section_to_close)
+    this.section_to_close.slideToggle(this.section_to_close);
   }
 });
 
@@ -59,8 +59,8 @@ DateSlider = $.klass({
     this.element.find('select').hide();
     var from_day = this.element.find("#filter_from_day");
     var to_day = this.element.find("#filter_to_day");
-    var current_from_day = this.element.find(".current_time_span .current_from_day")
-    var current_to_day = this.element.find(".current_time_span .current_to_day")
+    var current_from_day = this.element.find(".current_time_span .current_from_day");
+    var current_to_day = this.element.find(".current_time_span .current_to_day");
     this.element.find('.slider').slider({ 
       animate: true, 
       range: true, 
@@ -81,8 +81,8 @@ DateSlider = $.klass({
 
 EventFilterSlider = $.klass({
   initialize: function() {
-    this.hideable = this.element.find(".form_wrapper")
-    this.toggles = this.element.find(".toggles")
+    this.hideable = this.element.find(".form_wrapper");
+    this.toggles = this.element.find(".toggles");
     this.hideable.hide();
   },
   toggle: function() {
@@ -104,18 +104,18 @@ EventFilterSlider = $.klass({
       return false;
     }
   })
-})
+});
 
 VenueFinder = $.klass({
 	initialize: function() {
 		this.element.find(".new_venue_fields").hide();
 	}
-})
+});
 
 InfoTip = $.klass({
 	initialize: function() {
-	  this.container = this.element.parents(".input_with_tip")
-	  this.input_tip = this.container.find(".input_tip")
+	  this.container = this.element.parents(".input_with_tip");
+	  this.input_tip = this.container.find(".input_tip");
      this.input_tip.hide();
 	},
 	onfocus: function() {
@@ -124,7 +124,7 @@ InfoTip = $.klass({
 	onblur: function() {
 	  this.input_tip.hide();
 	}
-})
+});
 
 
 jQuery(function($) {
@@ -140,5 +140,5 @@ jQuery(function($) {
 });
 
 
-$('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true})
+$('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true});
 
