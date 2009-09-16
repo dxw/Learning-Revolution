@@ -87,6 +87,7 @@ namespace :lr do
         e.contact_phone_number = "000"
         e.contact_email_address = "nobody@example.com"
         e.published = true
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
@@ -124,6 +125,7 @@ namespace :lr do
         e.contact_phone_number = row["Contact phone number"]
         e.contact_email_address = row["Contact Email address"]
         e.published = true
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
@@ -182,6 +184,7 @@ namespace :lr do
         when "R"
           e.published = false
         end
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
