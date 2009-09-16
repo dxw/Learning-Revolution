@@ -158,6 +158,8 @@ li.event_link.active a, li.event_link.active a:hover{
   background-image:url('/images/tiles/list_gradient.jpg');
   background-repeat: repeat-y;
   background-position: 17px 0px;
+  width:959px;
+  border-bottom:1px solid #C2C2C3;
 }
 #events_list h2{
   font-size:1.5em;
@@ -215,7 +217,7 @@ ul li.header .next{
 
 }
 .detail_list ul.sm_icons{
-  margin-top:12px;
+  margin-top:20px;
 }
 .detail_list ul.sm_icons li{
   margin: 12px;
