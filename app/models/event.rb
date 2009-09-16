@@ -20,7 +20,9 @@ class Event < ActiveRecord::Base
                    :lat_column_name => :lat,
                    :lng_column_name => :lng
   
-  Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Themes = ["Community Action", "Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Themes.sort!
+  
   Types = ["Class"]
   Days = (1..Date.civil(2009, 10, -1).day).to_a
   Hours = (0..23).map{|h|'%02d'%h}
