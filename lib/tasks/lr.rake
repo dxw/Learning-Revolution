@@ -3,10 +3,10 @@ namespace :lr do
     task :seed => :environment do
       venue = Venue.create!(:name => "The Lido", :address_1 => "1 Berrick Street", :city => "London", :postcode => "N1 1AA")
       
-      Event.create!(:venue => venue, :title => "Open Yoga sessions", :featured => true, :published => true, :picture => "http://farm3.static.flickr.com/2343/1969404337_2eecb3bbb2.jpg", :start => "1 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Photography course", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Archery training", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Needlework", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Open Yoga sessions", :featured => true, :published => true, :picture => "http://farm3.static.flickr.com/2343/1969404337_2eecb3bbb2.jpg", :start => "1 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Photography course", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Archery training", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Needlework", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
     end
     
     task :mass_seed => :environment do
@@ -52,7 +52,8 @@ namespace :lr do
         e.organisation = nil
         e.contact_name = row["ContactNamePublic"] ? row["ContactNamePublic"] : 'NoName'
         e.contact_phone_number = row["TelephonePublic"]
-        e.contact_email_address = 'anonymous@example.com' unless e.contact_phone_number
+        e.contact_phone_number = '01234' if e.contact_phone_number.blank?
+        e.contact_email_address = 'anonymous@example.com'
         e.published = true
         e.picture = nil
         e.featured = false
