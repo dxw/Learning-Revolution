@@ -61,6 +61,7 @@ Feature: Event admin
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
     And a valid event called "Secret Event"
+    And the event "Secret Event" is not published yet
     And the event "Secret Event" starts on "12th October 2009 12:00"
     And the event "Secret Event" is located at lat "51.584911" and lng "0.02591"
     When I go to the calendar for October 2009

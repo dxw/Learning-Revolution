@@ -38,6 +38,7 @@ class Event < ActiveRecord::Base
   end
   def self.turn_filter_params_into_find_options(params)
     find_options = {}
+    find_options[:conditions] ||= []
     if !params[:theme].blank? && params[:event_type].blank?
       find_options[:conditions] = ["(theme LIKE ?)", "%#{params[:theme]}%"]
     end
@@ -47,17 +48,16 @@ class Event < ActiveRecord::Base
     if !params[:theme].blank? && !params[:event_type].blank?
       find_options[:conditions] = ["(theme LIKE ? AND event_type LIKE ?)", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
     end
-    
-    unless params[:location].blank?
-      find_options[:origin] = params[:location] + " GB"
-      find_options[:within] = 5
-    end
 
-    find_options[:conditions] ||= []
     if find_options[:conditions][0]
       find_options[:conditions][0] += " AND (published = 1)"
     else
       find_options[:conditions][0] = "(published = 1)"
+    end
+    
+    unless params[:location].blank?
+      find_options[:origin] = params[:location] + " GB"
+      find_options[:within] = 5
     end
 
     find_options[:limit] = 4
