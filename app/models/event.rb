@@ -8,7 +8,6 @@ class Event < ActiveRecord::Base
 
   after_create :make_bitly_url
   
-  
   belongs_to :venue, :foreign_key => "location_id"  
   
   named_scope :published, :conditions => { :published => true }
@@ -27,6 +26,14 @@ class Event < ActiveRecord::Base
   Days = (1..Date.civil(2009, 10, -1).day).to_a
   Hours = (0..23).map{|h|'%02d'%h}
   Minutes = (0...60).step(5).map{|m|'%02d'%m}
+  
+  HUMANIZED_ATTRIBUTES = {
+    :title => "Event name"
+  }
+
+  def self.human_attribute_name(attr)
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
   
   def self.find_by_month_with_filter_from_params(date, params={})
     # Have this check in here as the caching doesn't work in dev mode. Better solution desired.

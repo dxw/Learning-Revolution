@@ -68,7 +68,7 @@ Feature: Event admin
     And the event "Secret Event" starts on "12th October 2009 12:00"
     And the event "Secret Event" is located at lat "51.584911" and lng "0.02591"
     When I go to the calendar for October 2009
-    And I fill in "Location" with "E11 1PB GB"
+    And I fill in "Event Postcode" with "E11 1PB GB"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"

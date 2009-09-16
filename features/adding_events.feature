@@ -5,7 +5,7 @@ Feature: Adding an event
 
   Scenario: Adding a valid event with no venue
     When I go to the calendar for October 2009
-    And I fill in "Title" with "event title"
+    And I fill in "Event name" with "event title"
     And I select "Class" from "event_event_type"
     And I select "Food and Cookery" from "Category"
     And I fill in "Description" with "event description"
@@ -42,7 +42,7 @@ Feature: Adding an event
     And I check "This event has no location"
     And I press "Submit this event"
     Then I should see "4 errors prohibited this new event from being save"
-    And I should see "Title can't be blank"
+    And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"
     And the page is valid XHTML
@@ -50,7 +50,7 @@ Feature: Adding an event
   
   Scenario: Adding a valid event from the calendar page with a new venue
     When I go to the calendar for October 2009
-    And I fill in "Title" with "event title"
+    And I fill in "Event name" with "event title"
     And I select "Class" from "event_event_type"
     And I select "Food and Cookery" from "Category"
     And I fill in "Description" with "event description"
@@ -64,7 +64,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I fill in "Postcode" with "E11 1PB"
+    And I fill in "Event Postcode" with "E11 1PB"
     And I press "Submit this event"
     Then I should see "We don't currently have any venues listed in this postcode"
     And the page is valid XHTML
@@ -94,7 +94,7 @@ Feature: Adding an event
 
   Scenario: Adding an invalid event from the calendar page
     When I go to the calendar for October 2009
-    And I fill in "Postcode" with "E11 1PB"
+    And I fill in "Event Postcode" with "E11 1PB"
     And I press "Submit this event"
     Then I should see "4 errors prohibited this new event from being save"
     And I should see "Title can't be blank"
@@ -106,19 +106,19 @@ Feature: Adding an event
   Scenario: Adding a valid event but forgetting post code
     When I go to the calendar for October 2009
     And I press "Submit this event"
-    Then I should see "Post Code can't be blank"
+    Then I should see "Postcode can't be blank"
     And the page is valid XHTML
   
   Scenario: Adding a valid event but an malformed post code
     When I go to the calendar for October 2009
-    And I fill in "Postcode" with "xxxxxxxxxxx"
+    And I fill in "Event Postcode" with "xxxxxxxxxxx"
     And I press "Submit this event"
-    Then I should see "The post code you entered seems to be invalid"
+    Then I should see "The postcode you entered seems to be invalid"
     And the page is valid XHTML
   
   Scenario: Adding a valid event but a non-existent well formed post code
     When I go to the calendar for October 2009
-    And I fill in "Postcode" with "SW0z 0zz"
+    And I fill in "Event Postcode" with "SW0z 0zz"
     And I press "Submit this event"
     Then I should see "We couldn't find anywhere with this postcode"
     And the page is valid XHTML
@@ -127,7 +127,7 @@ Feature: Adding an event
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
     When I go to the calendar for October 2009
-    And I fill in "Title" with "event title"
+    And I fill in "Event name" with "event title"
     And I select "Class" from "event_event_type"
     And I select "Food and Cookery" from "Category"
     And I fill in "Description" with "event description"
@@ -141,7 +141,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I fill in "Postcode" with "TR18 5EG"
+    And I fill in "Event Postcode" with "TR18 5EG"
     And I press "Submit this event"
     Then I should see "We may already have the details of your venue; is it one of these?"
     When I press "Choose this venue"
@@ -168,7 +168,7 @@ Feature: Adding an event
     And a valid venue called "School hall"
     And the venue "School hall" has the post code "TR18 5EG"
     When I go to the calendar for October 2009
-    And I fill in "Title" with "event title"
+    And I fill in "Event name" with "event title"
     And I select "Class" from "event_event_type"
     And I select "Food and Cookery" from "Category"
     And I fill in "Description" with "event description"
@@ -178,7 +178,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I fill in "Postcode" with "TR18 5EG"
+    And I fill in "Event Postcode" with "TR18 5EG"
     And I press "Submit this event"
     Then I should see "We may already have the details of your venue; is it one of these?"
     And I should see "Church hall"
@@ -189,7 +189,7 @@ Feature: Adding an event
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
     When I go to the calendar for October 2009
-    And I fill in "Title" with "event title"
+    And I fill in "Event name" with "event title"
     And I select "Class" from "event_event_type"
     And I select "Food and Cookery" from "Category"
     And I fill in "Description" with "event description"
@@ -203,7 +203,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I fill in "Postcode" with "TR18 5EG"
+    And I fill in "Event Postcode" with "TR18 5EG"
     And I press "Submit this event"
     Then I should see "We may already have the details of your venue; is it one of these?"
     When I fill in "Venue name" with "Venue name"
