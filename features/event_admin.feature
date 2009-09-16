@@ -14,7 +14,6 @@ Feature: Event admin
     And I fill in "Description" with "event description"
     And I fill in "Theme" with "event theme"
     And I fill in "Type" with "event type"
-    And I fill in "Stage" with "event stage"
     And I select "November 23, 2004 11:20" as the "Start" date and time
     And I select "November 23, 2004 12:20" as the "End" date and time
     And I fill in "Cost" with "£1.50"

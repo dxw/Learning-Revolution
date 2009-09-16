@@ -44,7 +44,6 @@ namespace :lr do
         e.description = row["EventDetails"]
         e.theme = 'TheCoolTheme'
         e.event_type = 'CoolType'
-        e.stage = nil
         e.start = Date.parse(row["EventDate"]) if row["EventDate"]
         e.end = nil
         e.cost = row["Cost"]
