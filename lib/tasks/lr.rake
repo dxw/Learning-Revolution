@@ -128,6 +128,64 @@ namespace :lr do
         p "saved #{e.title}, id: #{e.id}"
       end
     end
+
+    task :flf => :environment do
+      require 'fastercsv'
+      csv = open(RAILS_ROOT+"/lib/tasks/data/cf-flf-events-to-13sept.csv").read
+      csv.gsub!("\x92", "\xe2\x80\x99") # Microsoft
+      csv.gsub!("\x93", "\xe2\x80\x9c") # smart
+      csv.gsub!("\x94", "\xe2\x80\x9d") # quotes
+      csv.gsub!("\xa3", "\xc2\xa3") # GBP
+
+      FasterCSV.new(csv, :headers => :first_row).each do |row|
+        #ActivityID,ActivityTitle,EventAddress1,EventAddress2,EventAddress3,EventTown,EventCountyID,EventPostCode,EventDetails,TelephonePublic,ContactNamePublic,EventDate,EventTime,BookingRequired,Cost,URL,KeyNum,SitePublishStatus,Active
+        v = Venue.new
+        v.name = row["EventAddress1"] ? row["EventAddress1"] : 'No Name'
+        v.address_1 = row["EventAddress2"]
+        v.address_2 = row["EventAddress3"]
+        v.city = row["EventTown"]
+        v.postcode = row["EventPostCode"]
+        v.save!
+
+        e = Event.new
+        e.venue = v
+
+        e.start = Time.zone.parse(row["EventDate"])
+        t = row["EventTime"]
+        unless t.nil?
+          begin
+            t2 = Time.zone.parse(c)
+            e.start = e.start + t2.hour.hours + t2.minute.minutes
+          rescue
+          end
+        end
+
+        e.title = row["ActivityTitle"]
+        e.description = row["EventDetails"]
+        if e.description.blank?
+          e.description = ""
+        else
+          e.description << "\n\n"
+        end
+        e.description << "Booking is #{row["BookingRequired"] ? '' : 'not '}required for this event."
+        e.description << "\n\nLink: #{row["URL"]}" if row["URL"]
+
+        e.contact_name = row["ContactNamePublic"] ? row["ContactNamePublic"] : 'No Name'
+        e.contact_phone_number = row["TelephonePublic"] ? row["TelephonePublic"] : 'No Number'
+        e.contact_email_address = "nobody@example.com"
+        e.cost = row["Cost"]
+        e.event_type = "FalafelType"
+        e.theme = "FalafelTheme"
+        case row["SitePublishStatus"]
+        when "P"
+          e.published = true
+        when "R"
+          e.published = false
+        end
+        e.save!
+        p "saved #{e.title}, id: #{e.id}"
+      end
+    end
       
   end
 end
