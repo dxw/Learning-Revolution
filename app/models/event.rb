@@ -8,7 +8,6 @@ class Event < ActiveRecord::Base
 
   after_create :make_bitly_url
   
-  
   belongs_to :venue, :foreign_key => "location_id"  
   
   named_scope :published, :conditions => { :published => true }
@@ -20,11 +19,21 @@ class Event < ActiveRecord::Base
                    :lat_column_name => :lat,
                    :lng_column_name => :lng
   
-  Themes = ["Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Themes = ["Community Action", "Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Themes.sort!
+  
   Types = ["Class"]
   Days = (1..Date.civil(2009, 10, -1).day).to_a
   Hours = (0..23).map{|h|'%02d'%h}
   Minutes = (0...60).step(5).map{|m|'%02d'%m}
+  
+  HUMANIZED_ATTRIBUTES = {
+    :title => "Event name"
+  }
+
+  def self.human_attribute_name(attr)
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
   
   def self.find_by_month_with_filter_from_params(date, params={})
     # Have this check in here as the caching doesn't work in dev mode. Better solution desired.
@@ -38,6 +47,7 @@ class Event < ActiveRecord::Base
   end
   def self.turn_filter_params_into_find_options(params)
     find_options = {}
+    find_options[:conditions] ||= []
     if !params[:theme].blank? && params[:event_type].blank?
       find_options[:conditions] = ["(theme LIKE ?)", "%#{params[:theme]}%"]
     end
@@ -47,17 +57,16 @@ class Event < ActiveRecord::Base
     if !params[:theme].blank? && !params[:event_type].blank?
       find_options[:conditions] = ["(theme LIKE ? AND event_type LIKE ?)", "%#{params[:theme]}%", "%#{params[:event_type]}%"]
     end
-    
-    unless params[:location].blank?
-      find_options[:origin] = params[:location] + " GB"
-      find_options[:within] = 5
-    end
 
-    find_options[:conditions] ||= []
     if find_options[:conditions][0]
       find_options[:conditions][0] += " AND (published = 1)"
     else
       find_options[:conditions][0] = "(published = 1)"
+    end
+    
+    unless params[:location].blank?
+      find_options[:origin] = params[:location] + " GB"
+      find_options[:within] = 5
     end
 
     find_options[:limit] = 4
@@ -100,7 +109,7 @@ class Event < ActiveRecord::Base
   end
     
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = ?", self.start.utc.to_date])
+    Event.find(:all, :conditions => ["DATE(start) = ? AND published = 1", self.start.utc.to_date])
   end
   
   def self.first_for_today
@@ -108,7 +117,7 @@ class Event < ActiveRecord::Base
   end
   
   def self.first_for_day(day)
-    Event.find(:first, :conditions => ["DATE(start) >= ?", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ?", day], :order => "start DESC")
+    Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
   end
   
   def check_duplicate

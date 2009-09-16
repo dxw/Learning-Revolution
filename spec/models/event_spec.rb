@@ -57,7 +57,6 @@ describe Event do
   end
   
   it "should accept approval" do
-    @event.published.should_not == true
     @event.should_receive(:save)
     @event.approve!
     @event.published.should == true

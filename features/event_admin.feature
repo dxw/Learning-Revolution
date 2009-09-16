@@ -37,7 +37,7 @@ Feature: Event admin
     And I follow "New event"
     And I press "Create"
     Then I should see "6 errors prohibited this event from being saved"
-    And I should see "Title can't be blank"
+    And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
     And I should see "Theme can't be blank"
     And I should see "Event type can't be blank"

@@ -7,7 +7,14 @@ describe ApplicationHelper do
     included_modules = (class << helper; self; end).send :included_modules
     included_modules.should include(ApplicationHelper)
   end
-
   
+  #it "should return a properly formatted postcode" do
+    # AN NAA    M1 1AA
+    # ANN NAA   M60 1NW
+    # AAN NAA   CR2 6XH
+    # AANN NAA  DN55 1PT
+    # ANA NAA   W1A 1HQ
+    # AANA NAA  EC1A 1BB
+  #end  
 
 end

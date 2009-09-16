@@ -30,7 +30,7 @@ module EventSpecHelper
         :contact_name => "value for contact_name",
         :contact_phone_number => "value for contact_phone_number",
         :contact_email_address => "value for contact_email_address",
-        :published => false,
+        :published => true,
         :picture => "value for picture",
         :featured => false,
         :venue => VenueSpecHelper.new

@@ -7,7 +7,7 @@
     <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif') if params[:action] == 'index' %>
 
     <div class="input clearfix input_with_tip">
-      <label for="event_title">Title</label>
+      <label for="event_title">Event name</label>
       <%= event_form.text_field :title, :class => 'text input' %>
       <div class="input_tip">
         <div class="tooltip">What's your event called?</div>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="input clearfix input_with_tip datetime">
-      <label for="event_starthour">From</label>
+      <label for="event_starthour">Start time</label>
       <select id="event_starthour" name="starthour">
         <% Event::Hours.each do |hour| %>
         <option<%= (params[:starthour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="input clearfix input_with_tip datetime">
-      <label for="event_endhour">until <span class="optional">(optional)</span></label>
+      <label for="event_endhour">End time <span class="optional">(optional)</span></label>
       <select id="event_endhour" name="endhour">
         <% Event::Hours.each do |hour| %>
 	<option<%= (params[:endhour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
@@ -76,10 +76,10 @@
       </div>
       
       <div class="input clearfix input_with_tip">
-        <label for="venue_postcode">Postcode</label>
+        <label for="venue_postcode">Event Postcode</label>
         <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
         <div class="input_tip">
-          <div class="tooltip">Enter the postcode of your venue's event. If your event is online, check the "no location" box.</div>
+          <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
           <div class="tooltip_arrow"></div>
         </div>
       </div>
@@ -121,7 +121,7 @@
 
     <fieldset id="more_info" >
       <legend><strong>Contact Info</strong></legend>
-
+      <p class="form_help">These details will not be publicly displayed</p>
       <div id="further_info">
 
         <div class="input clearfix input_with_tip">

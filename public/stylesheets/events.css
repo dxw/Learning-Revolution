@@ -270,6 +270,10 @@ ul li.header .next{
   margin-top:12px;
 }
 
+.fieldWithErrors input
+{
+   border: 1px solid #9D5540;
+}
 
 .add_a_new_venue{
   float:left;

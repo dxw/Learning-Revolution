@@ -27,10 +27,9 @@ module ApplicationHelper
     end
     unless params[:filter][:location].blank?
       s += ' happening within 5 miles of <span class="keyword">'
-      s += params[:filter][:location]
+      s += params[:filter][:location].upcase
       s += '</span>'
     end
     s
   end
-  
 end
