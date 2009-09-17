@@ -158,8 +158,4 @@ class EventsController < ApplicationController
     end
   end
 
-  def preview
-    p @new_event.venue
-  end
-
 end
