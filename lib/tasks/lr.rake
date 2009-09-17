@@ -190,9 +190,12 @@ namespace :lr do
       end
     end
 
+    desc "Import some real data"
     task :real_data => [:norfolk, :fol, :flf]
 
   end
+
+  desc "Import from CSV"
   task(:import, :csv, {:needs => :environment}) do |t,args|
     def str_to_datetime(str)
       Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
