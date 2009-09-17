@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   validates_presence_of :title, :start, :contact_name, :theme, :event_type, :contact_email_address
+  validates_format_of :contact_email_address, :with => /^$|\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   
   belongs_to :possible_duplicate, :class_name => "Event"
   

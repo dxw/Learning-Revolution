@@ -278,5 +278,10 @@ describe Event do
     @event.start = nil
     @event.should_not be_valid
   end
+
+  it "should not allow invalid email addresses" do
+    @event.contact_email_address = 'tom at thedextrousweb.com'
+    @event.should_not be_valid
+  end
   
 end
