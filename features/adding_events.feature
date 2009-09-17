@@ -84,6 +84,13 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
+    And I should see "Venue name"
+    And I should see "Address 1 name"
+    And I should see "Address 2 name"
+    And I should see "Address 3 name"
+    And I should see "City name"
+    And I should see "County name"
+    And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Add this event to the listings"
     Then I should see "Event created successfully"
@@ -155,6 +162,8 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
+    And I should see "Church hall"
+    And I should see "TR18 5EG"
     When I press "Add this event to the listings"
     Then I should see "Event created successfully"
     And the page is valid XHTML

@@ -94,7 +94,11 @@ class EventsController < ApplicationController
   
   def new_event
     @new_event = Event.new(params[:event])
-    @new_event.venue = Venue.new(params[:event].andand[:venue])
+    if params[:venue]
+      @new_event.venue = Venue.new(params[:venue])
+    elsif params[:event].andand[:location_id]
+      @new_event.venue = Venue.find(params[:event][:location_id])
+    end
   end
   
   def handle_postcode_errors
@@ -151,6 +155,10 @@ class EventsController < ApplicationController
       m = params[:endminute].to_i
       params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
     end
+  end
+
+  def preview
+    p @new_event.venue
   end
 
 end
