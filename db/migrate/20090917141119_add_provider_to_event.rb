@@ -1,6 +1,5 @@
 
 class AddProviderToEvent < ActiveRecord::Migration
-  extend MigrationHelpers
 
   def self.up
     create_table :providers do |t|
