@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_filter :new_event, :except => [:create]
   
   def index
+    params[:in_the_queue] = 'true'
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       set_map_bounds

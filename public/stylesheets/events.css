@@ -260,6 +260,7 @@ ul li.header .next{
 }
 #events_find_venue form{
   float:left;
+  margin-left:36px;
 }
 .existing_venues h4{
   margin-right:12px;
@@ -314,4 +315,25 @@ div.form_submission form{
 div.form_submission form p{
   margin-bottom:12px;
   font-style:italic;
+}
+
+/* What next */
+
+div#whats_next{
+  width:959px;
+}
+
+ul.post_event_choices{
+  margin-left:42px;
+}
+
+ul.post_event_choices li.content_block{
+  list-style: none;
+  padding:12px;
+  width:250px;
+}
+
+ul.post_event_choices li.content_block p{
+  font-size:1.33em;
+  margin-top:12px;
 }
