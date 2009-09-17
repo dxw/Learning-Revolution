@@ -194,7 +194,6 @@ namespace :lr do
 
   end
   task(:import, :csv, {:needs => :environment}) do |t,args|
-    args.with_defaults(:csv => RAILS_ROOT+"/lib/tasks/data/import.csv")
     def str_to_datetime(str)
       Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
     end
