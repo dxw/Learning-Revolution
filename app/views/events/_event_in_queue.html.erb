@@ -24,26 +24,31 @@
     
     <li class="content_block">
 
-      <h4><%= link_to (image_tag('headings/hd_add_another_event.gif', :alt => "Add another Event")), "" %></h4>
+      <h4><%= link_to (image_tag('headings/hd_add_another_event.gif', :alt => "Add another Event")) %></h4>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <p><%= link_to "Add another event to the listings", current_events_path %></p>
     
     </li>
     
     <li class="content_block">
     
-    <h4><%= image_tag('headings/hd_promote_your_event.gif', :alt => "Find out how to promote your event") %></h4>
+    <h4><%= link_to image_tag('headings/hd_promote_your_event.gif', :alt => "Find out how to promote your event"), "" %></h4>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <p><%= link_to "See our resources section", current_events_path %></p>
 
     </li>
 
     <li class="content_block">
     
-    <h4><%= image_tag('headings/hd_meet_other_organisers.gif', :alt => "Meet other organisers")  %></h4>
+    <h4><%= link_to image_tag('headings/hd_meet_other_organisers.gif', :alt => "Meet other organisers"), "" %></h4>
     
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
+    <p><%= link_to "Join our network on Ning", current_events_path %></p>
     </li>
     
   </ul>

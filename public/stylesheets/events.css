@@ -331,9 +331,16 @@ ul.post_event_choices li.content_block{
   list-style: none;
   padding:12px;
   width:250px;
+  position:relative;
 }
 
 ul.post_event_choices li.content_block p{
   font-size:1.33em;
   margin-top:12px;
+}
+ul.post_event_choices li.content_block h4 a{
+  display:block;
+  height:300px;
+  position:absolute;
+  width:250px;
 }
