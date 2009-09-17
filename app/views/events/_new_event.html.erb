@@ -67,25 +67,18 @@
       </div>
     </div>
 
+   <div class="input clearfix input_with_tip">
+     <label for="venue_postcode">Event Postcode</label>
+     <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
 
-    <fieldset class="event_venue_form">
-      
-      <div class="input input_with_tip clearfix">
-        <label for="cyberevent">This event has no location</label>
-        <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
-      </div>
-      
-      <div class="input clearfix input_with_tip">
-        <label for="venue_postcode">Event Postcode</label>
-        <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
-        <div class="input_tip">
-          <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
-          <div class="tooltip_arrow"></div>
-        </div>
-      </div>
-    </fieldset>
-
-
+     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
+     <label for="cyberevent" class="cyberevent">This event has no location</label>
+  
+     <div class="input_tip">
+       <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
+       <div class="tooltip_arrow"></div>
+     </div>
+   </div>
 
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>
@@ -143,7 +136,7 @@
         </div>
 
         <div class="input clearfix input_with_tip">
-          <label for="event_contact_phone_number">Contact Phone Number</label>
+          <label for="event_contact_phone_number">Contact Phone Number <span class="optional">(optional)</span></label>
           <%= event_form.text_field :contact_phone_number, :class => 'text' %>
           <div class="input_tip">
            <div class="tooltip">Please give us the phone number of the person we can talk to about this event, if we need to.</div>

@@ -5,13 +5,9 @@ Feature: Event admin
   
   Scenario: Viewing an unfiltered calendar
     Given a valid event called "Octoberfest"
-    And the event "Octoberfest" starts on "12th October 2009 12:00"
-    And a valid event called "Secret Event"
-    And the event "Secret Event" starts on "12th October 2009 12:00"
-    And the event "Secret Event" is not published yet
     When I go to the calendar for October 2009
-    Then I should see "Octoberfest" in the calendar on day "12"
-    And I should not see "Secret Event"
+    Then I should see "This site generates customised calendars of events during the Festival of Learning. Here's how to use it"
+    And I should not see "Octoberfest"
     And the page is valid XHTML
 
   Scenario: Viewing a calendar filtered by theme
