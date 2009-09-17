@@ -494,6 +494,21 @@ ul.search_subscription_options li{
   float:left;
   width:100px;
 }
+
+.form_wrapper form #cyberevent{
+  margin: 5px 0 0 100px;
+}
+
+
+.form_wrapper form label.cyberevent{
+  width: auto;
+  padding: 3px 0 0 5px;
+}
+
+.form_wrapper form label.disabled{
+  color: #888;
+}
+
 .form_wrapper form label.text{
   margin-top:6px;
 }

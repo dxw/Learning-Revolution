@@ -67,25 +67,18 @@
       </div>
     </div>
 
+   <div class="input clearfix input_with_tip">
+     <label for="venue_postcode">Event Postcode</label>
+     <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
 
-    <fieldset class="event_venue_form">
-      
-      <div class="input input_with_tip clearfix">
-        <label for="cyberevent">This event has no location</label>
-        <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
-      </div>
-      
-      <div class="input clearfix input_with_tip">
-        <label for="venue_postcode">Event Postcode</label>
-        <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
-        <div class="input_tip">
-          <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
-          <div class="tooltip_arrow"></div>
-        </div>
-      </div>
-    </fieldset>
-
-
+     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
+     <label for="cyberevent" class="cyberevent">This event has no location</label>
+  
+     <div class="input_tip">
+       <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
+       <div class="tooltip_arrow"></div>
+     </div>
+   </div>
 
     <div class="input clearfix input_with_tip">
       <label for="event_theme">Category</label>

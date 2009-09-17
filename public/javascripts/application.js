@@ -87,11 +87,12 @@ EventFilterSlider = $.klass({
   })
 });
 
-VenueFinder = $.klass({
-	initialize: function () {
-		this.element.find(".new_venue_fields").hide();
-	}
-});
+// No longer being used
+//VenueFinder = $.klass({
+//	initialize: function () {
+//		this.element.find(".new_venue_fields").hide();
+//	}
+//});
 
 InfoTip = $.klass({
 	initialize: function () {
@@ -107,18 +108,28 @@ InfoTip = $.klass({
 	}
 });
 
+DisableEventPostcode = $.klass({
+      onchange: function() {
+         $('#venue_postcode').attr('disabled', $('#cyberevent').attr('checked'));
+         
+         
+         $("label[for=venue_postcode]").toggleClass('disabled');
+      }
+});
+
 
 jQuery(function ($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
   $('.youtube_videos').attach(YouTube, 'DowningSt');
   $('.date_slider').attach(DateSlider);
   $('.event_filtering').attach(EventFilterSlider);
-  $('.event_venue_form').attach(VenueFinder);
+  // This is dead now: $('.event_venue_form').attach(VenueFinder);
   $(".input_with_tip input").attach(InfoTip);
   $(".input_with_tip select").attach(InfoTip);
   $(".input_with_tip textarea").attach(InfoTip);
 //  $("input.datepicker").datepicker({ dateFormat: 'd MM yy', minDate: new Date(2009,9,01), maxDate: new Date(2009,9,31) });
   $('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true});
+  $('#cyberevent').attach(DisableEventPostcode);
 });
 
 
