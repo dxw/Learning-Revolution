@@ -269,8 +269,18 @@ describe Event do
     @event.to_ical.should be_a(String)
   end
 
+  it "should be happy outputting ical with no description" do
+    @event.description = nil
+    @event.to_ical.should be_a(String)
+  end
+
   it "should not be valid without a start" do
     @event.start = nil
+    @event.should_not be_valid
+  end
+
+  it "should not allow invalid email addresses" do
+    @event.contact_email_address = 'tom at thedextrousweb.com'
     @event.should_not be_valid
   end
   

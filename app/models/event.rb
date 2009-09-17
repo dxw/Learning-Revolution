@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   validates_presence_of :title, :start, :contact_name, :theme, :event_type, :contact_email_address
+  validates_format_of :contact_email_address, :with => /^$|\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   
   belongs_to :possible_duplicate, :class_name => "Event"
   
@@ -9,6 +10,7 @@ class Event < ActiveRecord::Base
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
+  belongs_to :provider, :foreign_key => "provider_id"  
   
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
@@ -179,7 +181,7 @@ class Event < ActiveRecord::Base
     event.dtstart = start.to_datetime if start
     event.dtend = self.end.to_datetime if self.end
     event.summary = title
-    event.description = description
+    event.description = description ? description : ""
     event.description << "\n\nMore info: #{bitly_url}"
     event.created = created_at.to_datetime if created_at
     event.last_modified = updated_at.to_datetime if updated_at

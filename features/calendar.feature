@@ -26,30 +26,7 @@ Feature: Event admin
     And the event "Secret Event" has the theme "Food and Cookery"
     And the event "Secret Event" is not published yet
     When I go to the calendar for October 2009
-    And I select "Food and Cookery" from "Theme"
-    And I press "Search For Events"
-    Then I should see "Octoberfest" in the calendar on day "12"
-    And I should not see "Spanish Guitar"
-    And I should not see "Secret Event"
-    And the page is valid XHTML
-
-  Scenario: Viewing a calendar filtered by type and theme
-    Given a valid event called "Octoberfest"
-    And the event "Octoberfest" starts on "12th October 2009 12:00"
-    And the event "Octoberfest" has the theme "Food and Cookery"
-    And the event "Octoberfest" has the type "Class"
-    And a valid event called "Spanish Guitar"
-    And the event "Spanish Guitar" starts on "12th October 2009 12:00"
-    And the event "Spanish Guitar" has the theme "Food and Cookery"
-    And the event "Spanish Guitar" has the type "Lesson"
-    And a valid event called "Secret Event"
-    And the event "Secret Event" starts on "12th October 2009 12:00"
-    And the event "Secret Event" has the theme "Food and Cookery"
-    And the event "Secret Event" is not published yet
-    And the event "Secret Event" has the type "Class"
-    When I go to the calendar for October 2009
-    And I select "Food and Cookery" from "Theme"
-    And I select "Class" from "Event Type"
+    And I select "Food and Cookery" from "Area of Interest"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
     And I should not see "Spanish Guitar"

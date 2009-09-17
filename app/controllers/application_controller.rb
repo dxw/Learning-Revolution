@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  before_filter :set_page_title
+  def set_page_title
+    @page_title = "Learning Revolution"
+  end
+  def add_page_title(title)
+    @page_title = @page_title += " : #{title}"
+  end
+  
   def return_or_redirect_to(*args)
     unless params[:return_to].blank?
       redirect_to params[:return_to]
