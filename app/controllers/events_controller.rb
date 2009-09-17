@@ -1,15 +1,18 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue]
+  before_filter :add_events_to_page_title
   
   def index
     # params[:in_the_queue] = 'true' # switch this on to see the post event view
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
+      add_page_title "Map view"
       set_map_bounds
       set_from_and_to_to_dates
       @venues = Venue.find_venues_by_event_params(params[:filter])
     else
+      add_page_title "Calendar view"
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
       respond_to do |format|
         format.html
@@ -24,6 +27,7 @@ class EventsController < ApplicationController
   def show
     params[:view] = "list"
     @event = Event.find_by_slug(params[:id])
+    add_page_title @event.title
     redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
     respond_to do |format|
       format.html
@@ -158,4 +162,7 @@ class EventsController < ApplicationController
     end
   end
 
+  def add_events_to_page_title
+    add_page_title "Events"
+  end
 end
