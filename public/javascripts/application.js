@@ -1,8 +1,9 @@
 Flickr = $.klass({
   initialize: function (user_id) {
-    var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_' + user_id + '"></ul>');
-    this.element.replaceWith(element);
+    var current_element = this.element
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id=" + user_id + "&format=json&jsoncallback=?", function (data) { 
+      var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_' + user_id + '"></ul>');
+      current_element.replaceWith(element);
       $.each(data.items.slice(0, 8), function (i, item) { 
         element.append(
           '<li>' +
@@ -17,9 +18,10 @@ Flickr = $.klass({
 });
 YouTube = $.klass({
   initialize: function (user_id) {
-    var element = jQuery('<ul class="youtube_videos clearfix" id="youtube_videos_from_' + user_id + '"></ul>');
-    this.element.replaceWith(element);
+    var current_element = this.element
     $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?alt=json-in-script&callback=?", function (data) { 
+      var element = jQuery('<ul class="youtube_videos clearfix" id="youtube_videos_from_' + user_id + '"></ul>');
+      current_element.replaceWith(element);
       $.each(data.feed.entry.slice(0, 6), function (i, item) { 
         element.append(
           '<li>' +

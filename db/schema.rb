@@ -9,14 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090910100727) do
+ActiveRecord::Schema.define(:version => 20090916150649) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "theme"
     t.string   "event_type"
-    t.integer  "stage"
     t.datetime "start"
     t.datetime "end"
     t.string   "cost"

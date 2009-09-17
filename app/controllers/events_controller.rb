@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
-  before_filter :new_event, :except => [:create]
+  before_filter :new_event, :except => [:create, :find_venue]
   
   def index
+    # params[:in_the_queue] = 'true' # switch this on to see the post event view
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       set_map_bounds
@@ -30,39 +31,17 @@ class EventsController < ApplicationController
       format.xml { render :text => @event.to_xml }
       format.json { render :text => @event.to_json }
     end
-    
-    params[:view] = 'list'
   end
   
   def find_venue
-    if params[:startday] and params[:starthour] and params[:startminute]
-      d = params[:startday].to_i
-      h = params[:starthour].to_i
-      m = params[:startminute].to_i
-      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
-    end
-    if params[:endday] and params[:endhour] and params[:endminute]
-      d = params[:endday].to_i
-      h = params[:endhour].to_i
-      m = params[:endminute].to_i
-      params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
-    end
+    process_dates
     @new_event = Event.new(params[:event])
-    if params[:cyberevent]
-      if @new_event.valid?
-        render :action => :preview and return
-      else
-        render :action => :create and return
-      end
-    end
-    postcode_matches = params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
-    geo = Location.geocode(params[:venue][:postcode])
-    if @new_event.valid? && !params[:venue][:postcode].blank? && postcode_matches && geo.accuracy
+    if valid_cyber_event?
+      render :action => :preview and return
+    elsif event_valid_with_postcode?
       @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
     else
-      params[:postcode] = "We couldn't find anywhere with this postcode" unless geo.accuracy
-      params[:postcode] = "The postcode you entered seems to be invalid" unless postcode_matches
-      params[:postcode] = "Postcode can't be blank" if params[:venue][:postcode].blank?
+      handle_postcode_errors
       render :action => :create
     end
   end
@@ -70,22 +49,10 @@ class EventsController < ApplicationController
   def create
     @new_event = Event.new(params[:event])
     if params[:cyberevent]
-      if @new_event.save
-        flash[:notice] = "Event created successfully"
-        redirect_to current_events_path
-      end
+      succesful_save_redirect if @new_event.save
     else
-      if params[:event][:location_id].blank?
-        @venue = @new_event.venue = Venue.new(params[:venue])
-      else
-        @venue = @new_event.venue = Venue.find(params[:event][:location_id])
-      end
-      @new_event.valid?
-      @venue.valid?
-      if @new_event.valid? && @venue.valid? && @new_event.save!
-        flash[:notice] = "Event created successfully"
-        redirect_to current_events_path
-      end
+      find_or_create_venue
+      succesful_save_redirect if @new_event.valid? && @venue.valid? && @new_event.save!
     end
   end
   
@@ -118,17 +85,73 @@ class EventsController < ApplicationController
     params[:filter][:to] = Time.parse("#{params[:filter][:to_day]} #{params[:month]} #{params[:year]}") if params[:filter][:to_day]
   end
   
-  def new_event
-    @new_event = Event.new(params[:event])
-    @new_event.venue = Venue.new(params[:event].andand[:venue])
-  end
-
   def events_to_ical(events)
     calendar = Icalendar::Calendar.new
     events.each do |event|
       calendar.add_event event.to_ical_event
     end
     calendar.to_ical
+  end
+  
+  def new_event
+    @new_event = Event.new(params[:event])
+    @new_event.venue = Venue.new(params[:event].andand[:venue])
+  end
+  
+  def handle_postcode_errors
+    unless params[:cyberevent]
+      if params[:venue][:postcode].blank?
+        @new_event.errors.add_to_base "Postcode can't be blank"
+      elsif !postcode_valid?
+        @new_event.errors.add_to_base "The postcode you entered seems to be invalid"
+      elsif !postcode_exists?
+        @new_event.errors.add_to_base "We couldn't find anywhere with this postcode"
+      end
+    end
+  end
+  
+  def event_valid_with_postcode?
+    @new_event.valid? && !params[:venue][:postcode].blank? && postcode_valid? && postcode_exists?
+  end
+  
+  def postcode_valid?
+    params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
+  end
+  
+  def postcode_exists?
+    @postcode_exists ||= Location.geocode(params[:venue][:postcode]).accuracy
+  end
+  
+  def valid_cyber_event?
+    params[:cyberevent] && @new_event.valid?
+  end
+  
+  def succesful_save_redirect
+    flash[:notice] = "Event created successfully"
+    redirect_to current_events_path
+  end
+  
+  def find_or_create_venue
+    if params[:event][:location_id].blank?
+      @venue = @new_event.venue = Venue.new(params[:venue])
+    else
+      @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+    end
+  end
+  
+  def process_dates
+    if params[:startday] and params[:starthour] and params[:startminute]
+      d = params[:startday].to_i
+      h = params[:starthour].to_i
+      m = params[:startminute].to_i
+      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
+    end
+    if params[:endday] and params[:endhour] and params[:endminute]
+      d = params[:endday].to_i
+      h = params[:endhour].to_i
+      m = params[:endminute].to_i
+      params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
+    end
   end
 
 end

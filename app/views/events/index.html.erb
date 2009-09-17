@@ -1,3 +1,13 @@
+<% if params[:in_the_queue] %>
+
+    <div class="events">
+      
+     <%= render :partial => 'event_in_queue' %>      
+        
+    </div>
+
+<% else %>
+
   <div class="events">
      <%= render :partial => 'event_search_filter' %>
    
@@ -11,3 +21,5 @@
   </div>
 
   <%= render :partial => "new_event" %>
+  
+<% end %>
