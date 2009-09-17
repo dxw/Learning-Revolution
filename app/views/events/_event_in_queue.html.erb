@@ -1,0 +1,56 @@
+<div id="content_header" class="clearfix">
+
+  <% if flash[:notice] %>
+    <div class="flash ui-widget">
+      <div class="ui-state-highlight ui-corner-all">
+        <%= flash[:notice] %>          
+      </div>
+    </div>
+  <% end %>
+
+  <%= image_tag('headings/hd_great_your_events_been_submitted.gif', :class => "heading") %>
+
+    <div class="span-11">
+      <h3 class="heading">Great - your event's now in the queue for moderation and as soon as it's been approved and added to the calendar, you'll be notified. Here's what you can do in the meantime:</h3>
+  
+    </div>
+
+</div>
+
+
+<div id="whats_next" class="page_content clearfix">
+  
+  <ul class="post_event_choices row">
+    
+    <li class="content_block">
+
+      <h4><%= link_to (image_tag('headings/hd_add_another_event.gif', :alt => "Add another Event")) %></h4>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <p><%= link_to "Add another event to the listings", current_events_path %></p>
+    
+    </li>
+    
+    <li class="content_block">
+    
+    <h4><%= link_to image_tag('headings/hd_promote_your_event.gif', :alt => "Find out how to promote your event"), "" %></h4>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <p><%= link_to "See our resources section", current_events_path %></p>
+
+    </li>
+
+    <li class="content_block">
+    
+    <h4><%= link_to image_tag('headings/hd_meet_other_organisers.gif', :alt => "Meet other organisers"), "" %></h4>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <p><%= link_to "Join our network on Ning", current_events_path %></p>
+    </li>
+    
+  </ul>
+  
+</div>

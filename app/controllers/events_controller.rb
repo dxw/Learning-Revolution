@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_filter :new_event, :except => [:create, :find_venue]
   
   def index
+    # params[:in_the_queue] = 'true' # switch this on to see the post event view
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       set_map_bounds
