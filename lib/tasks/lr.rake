@@ -205,76 +205,87 @@ namespace :lr do
     end
 
     require 'fastercsv'
-    queue = []
     @rownum = 0
-    FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
-      @rownum += 1
-      #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
-      e = Event.new
+    ActiveRecord::Base.transaction do
+      FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
+        @rownum += 1
+        #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
+        e = Event.new
 
-      if row["cyberevent"] == "true"
-        %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
-          unless row[f].blank?
-            die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+        if row["cyberevent"] == "true"
+          %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
+            unless row[f].blank?
+              die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+            end
+          }
+        elsif row["cyberevent"] == "false"
+          v = Venue.find(:first, :conditions => {:name => row["venue_name"],
+                         :address_1 => row["venue_address_1"],
+                         :address_2 => row["venue_address_2"],
+                         :address_3 => row["venue_address_3"],
+                         :city => row["venue_city"],
+                         :county => row["venue_county"],
+                         :postcode => row["venue_postcode"]})
+          unless v
+            v = Venue.new
+            v.name = row["venue_name"]
+            v.address_1 = row["venue_address_1"]
+            v.address_2 = row["venue_address_2"]
+            v.address_3 = row["venue_address_3"]
+            v.city = row["venue_city"]
+            v.county = row["venue_county"]
+            v.postcode = row["venue_postcode"]
+            if v.invalid?
+              die "Venue fails validation for the following reasons: #{v.errors.full_messages.join(", ")}"
+            end
           end
-        }
-      elsif row["cyberevent"] == "false"
-        v = Venue.new
-        v.name = row["venue_name"]
-        v.address_1 = row["venue_address_1"]
-        v.address_2 = row["venue_address_2"]
-        v.address_3 = row["venue_address_3"]
-        v.city = row["venue_city"]
-        v.county = row["venue_county"]
-        v.postcode = row["venue_postcode"]
-        if v.invalid?
-          die "Venue fails validation for the following reasons: #{v.errors.full_messages.join(", ")}"
+          e.venue = v
+          v.save!
+        else
+          die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
         end
-        queue << v
-        e.venue = v
-      else
-        die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
-      end
 
-      p = Provider.new
-      p.name = row["provider_name"]
-      p.badge = row["provider_badge"]
-      unless p.name.blank? and p.badge.blank?
-        queue << p
-        e.provider = p
-      end
+        unless row["provider_name"].blank? and row["provider_badge"].blank?
+          pr = Provider.find(:first, :conditions => {:name => row["provider_name"], :badge => row["provider_badge"]})
+          unless pr
+            pr = Provider.new
+            pr.name = row["provider_name"]
+            pr.badge = row["provider_badge"]
+          end
+          e.provider = pr
+          pr.save!
+        end
 
-      e.title = row["title"]
-      e.description = row["description"]
-      e.cost = row["cost"]
-      e.min_age = row["min_age"]
-      die "start cannot be blank" if row["start"].blank?
-      e.start = str_to_datetime(row["start"])
-      unless row["end"].blank?
-        e.end = str_to_datetime(row["end"])
+        e.title = row["title"]
+        e.description = row["description"]
+        e.cost = row["cost"]
+        e.min_age = row["min_age"]
+        die "start cannot be blank" if row["start"].blank?
+        e.start = str_to_datetime(row["start"])
+        unless row["end"].blank?
+          e.end = str_to_datetime(row["end"])
+        end
+        if row["published"] == "true"
+          e.published = true
+        elsif row["published"] == "false"
+          e.published = false
+        else
+          die "published MUST be \"true\" or \"false\", got #{row["published"].inspect}"
+        end
+        e.theme = row["theme"]
+        e.event_type = row["event_type"]
+        e.picture = row["picture"]
+        e.contact_name = row["contact_name"]
+        e.contact_email_address = row["contact_email_address"]
+        e.contact_phone_number = row["contact_phone_number"]
+        e.organisation = row["organisation"]
+        if e.invalid?
+          die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
+        end
+
+        e.save!
+        p "saved #{e.class}, id #{e.id}" unless RAILS_ENV=='test'
       end
-      if row["published"] == "true"
-        e.published = true
-      elsif row["published"] == "false"
-        e.published = false
-      else
-        die "published MUST be \"true\" or \"false\", got #{row["published"].inspect}"
-      end
-      e.theme = row["theme"]
-      e.event_type = row["event_type"]
-      e.picture = row["picture"]
-      e.contact_name = row["contact_name"]
-      e.contact_email_address = row["contact_email_address"]
-      e.contact_phone_number = row["contact_phone_number"]
-      e.organisation = row["organisation"]
-      if e.invalid?
-        die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
-      end
-      queue << e
-    end
-    queue.each do |ev|
-      ev.save!
-      p "saved #{ev.class}, id #{ev.id}" unless RAILS_ENV=='test'
     end
   end
 end
