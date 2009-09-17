@@ -122,6 +122,7 @@ PostcodeHint = $.klass({
       on_initialise_or_blur: function() {
          if($('#filter_location').val() == '')
          {
+            // If you change this text, make sure you change it in EventsController#index too
             $('#filter_location').val('Enter your postcode here')
             $('#filter_location').addClass('empty');
          }
