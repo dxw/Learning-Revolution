@@ -179,7 +179,7 @@ class Event < ActiveRecord::Base
     event.dtstart = start.to_datetime if start
     event.dtend = self.end.to_datetime if self.end
     event.summary = title
-    event.description = description
+    event.description = description ? description : ""
     event.description << "\n\nMore info: #{bitly_url}"
     event.created = created_at.to_datetime if created_at
     event.last_modified = updated_at.to_datetime if updated_at

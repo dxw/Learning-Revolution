@@ -162,12 +162,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def preview
-    p @new_event.venue
-  end
-  
   def add_events_to_page_title
     add_page_title "Events"
   end
-
 end

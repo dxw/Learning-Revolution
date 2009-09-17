@@ -3,7 +3,9 @@
 	pa.delete(:view)
 %>
 <% content_for :head do %>
+  <% unless params[:id] %>
 	<link rel="alternate" type="application/atom+xml" href="<%= url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %>"/>
+  <% end %>
 	<link rel="alternate" type="text/calendar" href="<%= url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %>"/>
 <% end %>
 <div id="content_header" class="clearfix">
