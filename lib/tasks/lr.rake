@@ -193,17 +193,18 @@ namespace :lr do
     task :real_data => [:norfolk, :fol, :flf]
 
   end
-  task :import => :environment do
+  task(:import, :csv, {:needs => :environment}) do |t,args|
     def str_to_datetime(str)
       Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
     end
     def die(msg)
       raise IOError, "csv row ##{@rownum}: #{msg}"
     end
+
     require 'fastercsv'
     queue = []
     @rownum = 0
-    FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/import.csv", :headers => :first_row) do |row|
+    FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
       @rownum += 1
       #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
       e = Event.new
@@ -211,7 +212,6 @@ namespace :lr do
       if row["cyberevent"] == "true"
         %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
           unless row[f].blank?
-            p row[f]
             die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
           end
         }
@@ -235,10 +235,9 @@ namespace :lr do
 
       e.title = row["title"]
       e.description = row["description"]
-      #TODO: should cost be standardised?
       e.cost = row["cost"]
-      #TODO: should min_age be standardised?
       e.min_age = row["min_age"]
+      die "start cannot be blank" if row["start"].blank?
       e.start = str_to_datetime(row["start"])
       unless row["end"].blank?
         e.end = str_to_datetime(row["end"])
