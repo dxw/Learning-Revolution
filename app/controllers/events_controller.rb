@@ -55,14 +55,11 @@ class EventsController < ApplicationController
         render :action => :create and return
       end
     end
-    postcode_matches = params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
-    geo = Location.geocode(params[:venue][:postcode])
-    if @new_event.valid? && !params[:venue][:postcode].blank? && postcode_matches && geo.accuracy
+    postcode_valid?
+    if event_valid_with_postcode?
       @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
     else
-      params[:postcode] = "We couldn't find anywhere with this postcode" unless geo.accuracy
-      params[:postcode] = "The postcode you entered seems to be invalid" unless postcode_matches
-      params[:postcode] = "Postcode can't be blank" if params[:venue][:postcode].blank?
+      handle_postcode_errors
       render :action => :create
     end
   end
@@ -129,6 +126,28 @@ class EventsController < ApplicationController
       calendar.add_event event.to_ical_event
     end
     calendar.to_ical
+  end
+  
+  def handle_postcode_errors
+    if params[:venue][:postcode].blank?
+      @new_event.errors.add_to_base "Postcode can't be blank"
+    elsif !postcode_valid?
+      @new_event.errors.add_to_base "The postcode you entered seems to be invalid"
+    elsif !postcode_exists?
+      @new_event.errors.add_to_base "We couldn't find anywhere with this postcode"
+    end
+  end
+  
+  def event_valid_with_postcode?
+    @new_event.valid? && !params[:venue][:postcode].blank? && postcode_valid? && postcode_exists?
+  end
+  
+  def postcode_valid?
+    params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
+  end
+  
+  def postcode_exists?
+    @postcode_exists ||= Location.geocode(params[:venue][:postcode]).accuracy
   end
 
 end
