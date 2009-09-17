@@ -6,6 +6,7 @@
   padding-top:2px;
   padding-bottom:4px;
   position:relative;
+  min-height:18px;
 }
 #selector ul{
   display:inline;
@@ -40,6 +41,29 @@
   background-image:url(/images/css/selector_bg_hover.gif);
   background-position:-70px -10px;
 }
+
+
+/* If no events exist */
+
+h3.no_events{
+  margin-top:36px;
+}
+
+/*calendar example preview styles*/
+
+.example_calendar_view {
+  margin-top:24px;
+  
+}
+
+.example_calendar_view h3{
+  margin: 12px 0px 12px 42px;
+  font-size:1.5em;
+  line-height:1.5em;
+  margin-bottom:12px;
+  width:800px;
+}
+
 
 .calendar_view{
   width:860px;
