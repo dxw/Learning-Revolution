@@ -48,22 +48,10 @@ class EventsController < ApplicationController
   def create
     @new_event = Event.new(params[:event])
     if params[:cyberevent]
-      if @new_event.save
-        flash[:notice] = "Event created successfully"
-        redirect_to current_events_path
-      end
+      succesful_save_redirect if @new_event.save
     else
-      if params[:event][:location_id].blank?
-        @venue = @new_event.venue = Venue.new(params[:venue])
-      else
-        @venue = @new_event.venue = Venue.find(params[:event][:location_id])
-      end
-      @new_event.valid?
-      @venue.valid?
-      if @new_event.valid? && @venue.valid? && @new_event.save!
-        flash[:notice] = "Event created successfully"
-        redirect_to current_events_path
-      end
+      find_or_create_venue
+      succesful_save_redirect if @new_event.valid? && @venue.valid? && @new_event.save!
     end
   end
   
@@ -135,6 +123,19 @@ class EventsController < ApplicationController
   
   def valid_cyber_event?
     params[:cyberevent] && @new_event.valid?
+  end
+  
+  def succesful_save_redirect
+    flash[:notice] = "Event created successfully"
+    redirect_to current_events_path
+  end
+  
+  def find_or_create_venue
+    if params[:event][:location_id].blank?
+      @venue = @new_event.venue = Venue.new(params[:venue])
+    else
+      @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+    end
   end
   
   def process_dates
