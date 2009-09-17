@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   
   def index
     # params[:in_the_queue] = 'true' # switch this on to see the post event view
+    # params[:first_visit] = true # uncomment this to see the example view
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"

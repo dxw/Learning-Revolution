@@ -1,3 +1,5 @@
+
+
 <% if params[:in_the_queue] %>
 
     <div class="events">
@@ -12,14 +14,17 @@
      <%= render :partial => 'event_search_filter' %>
    
      <%= render :partial => 'view_selector' %>
-   
-     <% if params[:view] == "map" %>
+     <% if params[:first_visit] %>
+        <%= render :partial => 'example_calendar_view' %>
+     <% elsif params[:view] == "map" %>
+
        <%= render :partial => 'map_view' %>
      <% else params[:view] == "list" %>
        <%= render :partial => 'calendar_view' %>
      <% end %>
   </div>
 
+  <% if !params[:first_visit] %>
   <%= render :partial => "new_event" %>
-  
+  <% end %>
 <% end %>
