@@ -8,4 +8,13 @@ describe EventsHelper do
     included_modules.should include(EventsHelper)
   end
 
+  it "should return the 'refine image search' button if a search has been run" do
+
+  # mock up params hash
+    params = {}
+    params[:filter] = true
+
+    helper.stub!(:filter_check_button_path).and_return('/images/buttons/bt_search_for_events.gif')
+  end
+
 end
