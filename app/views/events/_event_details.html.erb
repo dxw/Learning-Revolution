@@ -89,7 +89,7 @@
 
     <% unless event.description.blank? %>
       <%= image_tag('headings/hd_event_details.gif', :alt => 'Event Details') %>
-      <%= simple_format event.description %>
+      <%= simple_format(auto_link(event.description)) %>
     <% end %>
 
     <% unless params[:action] == 'show' %>
@@ -106,7 +106,6 @@
 
   <% if event.provider and !event.provider.name.blank? and !event.provider.badge.blank? %>
   <div class="provider">
-    <p>Provided by:</p>
     <p><img src="<%= event.provider.badge %>" alt="<%= CGI.escapeHTML(event.provider.name) %>" title="<%= CGI.escapeHTML(event.provider.name) %>" /></p>
   </div>
   <% end %>
