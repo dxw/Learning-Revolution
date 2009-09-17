@@ -179,13 +179,14 @@ p.post_code_error{
 /* resources are the only menu icons wide enough to need a different size */
 .nav li.resources{
   background-position:-595px 1px;
-  width:105px;
+  width:245px;
   float:right;
   position:relative;
+  margin-right:0px;
 }
 .nav li.resources a{
   background-position:-595px 1px;
-  width:145px;
+  width:245px;
 }
 .nav li.about, .nav li.about a{
   background-position:-130px 1px;

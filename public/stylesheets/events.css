@@ -53,16 +53,39 @@ h3.no_events{
 
 .example_calendar_view {
   margin-top:24px;
-  
+  position:relative;
+  background-image:url(/images/example_calendar.jpg);
+  background-repeat: no-repeat;
+  width:959px;
+  min-height:700px;
+
 }
 
-.example_calendar_view h3{
+.example_calendar_view .help_text{
+  background:url(/images/css/white_trans_90_pc.png);
+  padding:18px;
+  border:2px solid #c3c3c3;
+  width:700px;
+  position:absolute;
+  left:100px;
+  top:100px;
+  
+}
+.example_calendar_view img.heading{
+  margin-left:42px;
+}
+.example_calendar_view ol li, .example_calendar_view h3{
   margin: 12px 0px 12px 42px;
-  font-size:1.5em;
   line-height:1.5em;
   margin-bottom:12px;
-  width:800px;
 }
+.example_calendar_view ol li{
+  font-size:1.33em;
+}
+.example_calendar_view h3{
+  font-size:1.5em;
+}
+
 
 
 .calendar_view{
