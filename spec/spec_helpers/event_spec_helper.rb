@@ -21,7 +21,6 @@ module EventSpecHelper
         :description => "value for description",
         :theme => "value for theme",
         :event_type => "value for type",
-        :stage => 1,
         :start => Time.now,
         :end => Time.now,
         :cost => "value for cost",

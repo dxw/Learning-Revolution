@@ -76,8 +76,8 @@
       
         <li class="calendar"><%= link_to "Add to calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
         <li class="google_calendar"><%= link_to "Add to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-        <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
-        <li class="facebook"><%= link_to "Add to Facebook" %></li>
+        <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{truncate(event.title)}: #{event.bitly_url}" %></li>
+        <li class="facebook"><%= link_to "Facebook", "http://www.facebook.com/share.php?u=#{url_for_event(event)}" %></li>
       </ul>
     <% end %>
 
@@ -91,15 +91,14 @@
     <%= simple_format event.description %>
 
     <% unless params[:action] == 'show' %>
-      <%# debugger %>
-    <%= image_tag('headings/hd_contact_details.gif', :alt => 'Contact Details') %>
-    <p class="vcard">
-      <span class="fn n"><%= "#{event.contact_name} - " %></span>
-      <span class="org"><%= "#{event.organisation} -" if event.organisation.present? %></span> 
-      <span class="tel"><%= "#{event.contact_phone_number if event.contact_phone_number} - " %></span> 
-      <% unless event.contact_email_address.blank? %><a class="email" href="mailto:<%= event.contact_email_address %>"><%= event.contact_email_address %></a><% end %>
-    </p>
-
+      <%= image_tag('headings/hd_contact_details.gif', :alt => 'Contact Details') %>
+      <p class="form_help">These details will not be publicly displayed</p>
+      <p class="vcard">
+        <span class="fn n"><%= "#{event.contact_name} - " %></span>
+        <span class="org"><%= "#{event.organisation} -" if event.organisation.present? %></span> 
+        <span class="tel"><%= "#{event.contact_phone_number if event.contact_phone_number} - " %></span> 
+        <% unless event.contact_email_address.blank? %><a class="email" href="mailto:<%= event.contact_email_address %>"><%= event.contact_email_address %></a><% end %>
+      </p>
     <% end %>
   </div>
   

@@ -3,10 +3,10 @@ namespace :lr do
     task :seed => :environment do
       venue = Venue.create!(:name => "The Lido", :address_1 => "1 Berrick Street", :city => "London", :postcode => "N1 1AA")
       
-      Event.create!(:venue => venue, :title => "Open Yoga sessions", :featured => true, :published => true, :picture => "http://farm3.static.flickr.com/2343/1969404337_2eecb3bbb2.jpg", :start => "1 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Photography course", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Archery training", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
-      Event.create!(:venue => venue, :title => "Needlework", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Open Yoga sessions", :featured => true, :published => true, :picture => "http://farm3.static.flickr.com/2343/1969404337_2eecb3bbb2.jpg", :start => "1 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Photography course", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Archery training", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
+      Event.create!(:theme => 'Theme', :contact_phone_number => '01234', :event_type => 'Type', :contact_name => 'Tom', :contact_email_address => 'tom@thedextrousweb.com', :venue => venue, :title => "Needlework", :featured => true, :published => true, :picture => "http://farm4.static.flickr.com/3080/3210572714_d6f9440846.jpg", :start => "2 october 2009".to_time)
     end
     
     task :mass_seed => :environment do
@@ -44,7 +44,6 @@ namespace :lr do
         e.description = row["EventDetails"]
         e.theme = 'TheCoolTheme'
         e.event_type = 'CoolType'
-        e.stage = nil
         e.start = Date.parse(row["EventDate"]) if row["EventDate"]
         e.end = nil
         e.cost = row["Cost"]
@@ -52,7 +51,8 @@ namespace :lr do
         e.organisation = nil
         e.contact_name = row["ContactNamePublic"] ? row["ContactNamePublic"] : 'NoName'
         e.contact_phone_number = row["TelephonePublic"]
-        e.contact_email_address = 'anonymous@example.com' unless e.contact_phone_number
+        e.contact_phone_number = '01234' if e.contact_phone_number.blank?
+        e.contact_email_address = 'anonymous@example.com'
         e.published = true
         e.picture = nil
         e.featured = false
@@ -87,6 +87,7 @@ namespace :lr do
         e.contact_phone_number = "000"
         e.contact_email_address = "nobody@example.com"
         e.published = true
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
@@ -124,6 +125,7 @@ namespace :lr do
         e.contact_phone_number = row["Contact phone number"]
         e.contact_email_address = row["Contact Email address"]
         e.published = true
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
@@ -182,6 +184,7 @@ namespace :lr do
         when "R"
           e.published = false
         end
+        e.featured = false
         e.save!
         p "saved #{e.title}, id: #{e.id}"
       end
@@ -189,5 +192,78 @@ namespace :lr do
 
     task :real_data => [:norfolk, :fol, :flf]
 
+  end
+  task(:import, :csv, {:needs => :environment}) do |t,args|
+    def str_to_datetime(str)
+      Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
+    end
+    def die(msg)
+      raise IOError, "csv row ##{@rownum}: #{msg}"
+    end
+
+    require 'fastercsv'
+    queue = []
+    @rownum = 0
+    FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
+      @rownum += 1
+      #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
+      e = Event.new
+
+      if row["cyberevent"] == "true"
+        %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
+          unless row[f].blank?
+            die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+          end
+        }
+      elsif row["cyberevent"] == "false"
+        v = Venue.new
+        v.name = row["venue_name"]
+        v.address_1 = row["venue_address_1"]
+        v.address_2 = row["venue_address_2"]
+        v.address_3 = row["venue_address_3"]
+        v.city = row["venue_city"]
+        v.county = row["venue_county"]
+        v.postcode = row["venue_postcode"]
+        if v.invalid?
+          die "Venue fails validation for the following reasons: #{v.errors.full_messages.join(", ")}"
+        end
+        queue << v
+        e.venue = v
+      else
+        die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
+      end
+
+      e.title = row["title"]
+      e.description = row["description"]
+      e.cost = row["cost"]
+      e.min_age = row["min_age"]
+      die "start cannot be blank" if row["start"].blank?
+      e.start = str_to_datetime(row["start"])
+      unless row["end"].blank?
+        e.end = str_to_datetime(row["end"])
+      end
+      if row["published"] == "true"
+        e.published = true
+      elsif row["published"] == "false"
+        e.published = false
+      else
+        die "published MUST be \"true\" or \"false\", got #{row["published"].inspect}"
+      end
+      e.theme = row["theme"]
+      e.event_type = row["event_type"]
+      e.picture = row["picture"]
+      e.contact_name = row["contact_name"]
+      e.contact_email_address = row["contact_email_address"]
+      e.contact_phone_number = row["contact_phone_number"]
+      e.organisation = row["organisation"]
+      if e.invalid?
+        die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
+      end
+      queue << e
+    end
+    queue.each do |ev|
+      ev.save!
+      p "saved #{ev.class}, id #{ev.id}"
+    end
   end
 end

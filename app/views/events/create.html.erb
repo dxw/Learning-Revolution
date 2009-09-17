@@ -3,13 +3,11 @@
   <div id="content_header" class='clearfix'>
     
   <%= image_tag('headings/hd_add_your_event_to_the_calendar.gif', :class => "heading", :alt => "Add an Event to the Calendar") %>
-  <% if !@new_event.errors.blank? || !params[:postcode].blank? %>
+  <% unless @new_event.errors.blank? %>
     <div id="errors" class="ui-widget">
       <div class="ui-state-error ui-corner-all">
         <%= error_messages_for :new_event %>        
-        <p class="post_code_error"><%= params[:postcode] %></p>
       </div>
-      
     </div>
   <% end %>
 
