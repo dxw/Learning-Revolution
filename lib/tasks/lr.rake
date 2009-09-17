@@ -193,17 +193,19 @@ namespace :lr do
     task :real_data => [:norfolk, :fol, :flf]
 
   end
-  task :import => :environment do
+  task(:import, :csv, {:needs => :environment}) do |t,args|
+    args.with_defaults(:csv => RAILS_ROOT+"/lib/tasks/data/import.csv")
     def str_to_datetime(str)
       Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
     end
     def die(msg)
       raise IOError, "csv row ##{@rownum}: #{msg}"
     end
+
     require 'fastercsv'
     queue = []
     @rownum = 0
-    FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/import.csv", :headers => :first_row) do |row|
+    FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
       @rownum += 1
       #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
       e = Event.new
