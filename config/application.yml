@@ -5,7 +5,8 @@ development:
   bitly_target_host: http://localhost
 
   event_uri_template: /events/:year/:month/:day/:stub
-  
+
+  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
 test:
   bitly_account: learningrevolution
   bitly_api_key: R_3440f2303ec9952df2250801cfba4baa
@@ -13,6 +14,8 @@ test:
   bitly_target_host: http://localhost
 
   event_uri_template: /events/:year/:month/:day/:stub  
+  
+  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw
 
 production:
   bitly_account: learningrevolution
@@ -22,3 +25,4 @@ production:
 
   event_uri_template: /events/:year/:month/:day/:stub
   
+  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
