@@ -76,7 +76,7 @@
       
         <li class="calendar"><%= link_to "Add to calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
         <li class="google_calendar"><%= link_to "Add to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-        <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to something" %></li>
+        <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{truncate(event.title)}: #{event.bitly_url}" %></li>
         <li class="facebook"><%= link_to "Add to Facebook" %></li>
       </ul>
     <% end %>
