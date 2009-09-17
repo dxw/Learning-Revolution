@@ -1,42 +1,18 @@
-
-
-<% if params[:in_the_queue] %>
-
-    <div class="events">
-      
-     <%= render :partial => 'event_in_queue' %>      
-        
-    </div>
-
-<% else %>
-
-  <div class="events">
-     <%= render :partial => 'event_search_filter' %>
-
-     <% if @new_events.blank? && !params[:first_visit] %>
-       <div id="selector"></div>
-       <h3 class="heading no_events">Sorry, we couldn't find any events of that ilk. Maybe try another search?</h3>
-
-     <% else %>
-       
-       <% if params[:first_visit] %>
-          <div id="selector"></div>
-          <%= render :partial => 'example_calendar_view' %>
-       <% elsif params[:view] == "map" %>
-
-         <%= render :partial => 'view_selector' %>
-         <%= render :partial => 'map_view' %>
-
-       <% else params[:view] == "list" %>
-
-         <%= render :partial => 'view_selector' %>
-         <%= render :partial => 'calendar_view' %>
-       <% end %>
-
-     <% end %>
-  </div>
-
-  <% if !params[:first_visit] %>
-  <%= render :partial => "new_event" %>
+<div class="events">
+  <%= render :partial => 'event_search_filter' %>
+  <% if false %>
+    <div id="selector"></div>
+    <%= render :partial => 'example_calendar_view' %>
+  <% elsif @events.blank? %>
+    <div id="selector"></div>
+    <h3 class="heading no_events">Sorry, we couldn't find any events of that ilk. Maybe try another search?</h3>
+  <% else %>
+    <% if params[:view] == "map" %>
+      <%= render :partial => 'view_selector' %>
+      <%= render :partial => 'map_view' %>
+    <% else params[:view] == "list" %>
+      <%= render :partial => 'view_selector' %>
+      <%= render :partial => 'calendar_view' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

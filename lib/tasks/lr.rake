@@ -189,12 +189,8 @@ namespace :lr do
         p "saved #{e.title}, id: #{e.id}"
       end
     end
-<<<<<<< Updated upstream:lib/tasks/lr.rake
 
     desc "Import some real data"
-=======
-    desc "Add the real damn data, Fool."
->>>>>>> Stashed changes:lib/tasks/lr.rake
     task :real_data => [:norfolk, :fol, :flf]
 
   end
