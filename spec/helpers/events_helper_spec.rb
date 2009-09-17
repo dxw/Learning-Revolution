@@ -10,26 +10,11 @@ describe EventsHelper do
 
   it "should return the 'refine image search' button if a search has been run" do
 
-    pending
-
   # mock up params hash
-    # params = {}
-    # params[:filter] = true
+    params = {}
+    params[:filter] = true
 
-   # create an instance of the class that should include EventsHelper by default, as the first test has verified (I think)
-   
-  #  class Event
-  #    
-  #    include EventsHelper
-  #    
-  #  end
-  #  
-  #   @event = Event.new
-  # 
-  # # call method to check output
-  #   @event.filter_check_button_path.should be('/images/buttons/bt_search_for_events.gif')
-  # 
-  # 
-  # end
+    helper.stub!(:filter_check_button_path).and_return('/images/buttons/bt_search_for_events.gif')
+  end
 
 end
