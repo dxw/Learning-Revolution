@@ -266,7 +266,7 @@ namespace :lr do
     end
     queue.each do |ev|
       ev.save!
-      p "saved #{ev.class}, id #{ev.id}"
+      p "saved #{ev.class}, id #{ev.id}" unless RAILS_ENV=='test'
     end
   end
 end
