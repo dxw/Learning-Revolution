@@ -28,7 +28,7 @@ module EventSpecHelper
         :organisation => "value for organisation",
         :contact_name => "value for contact_name",
         :contact_phone_number => "value for contact_phone_number",
-        :contact_email_address => "value for contact_email_address",
+        :contact_email_address => "contact_email_address@example.com",
         :published => true,
         :picture => "value for picture",
         :featured => false,
