@@ -212,7 +212,6 @@ namespace :lr do
       if row["cyberevent"] == "true"
         %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
           unless row[f].blank?
-            p row[f]
             die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
           end
         }
@@ -236,10 +235,9 @@ namespace :lr do
 
       e.title = row["title"]
       e.description = row["description"]
-      #TODO: should cost be standardised?
       e.cost = row["cost"]
-      #TODO: should min_age be standardised?
       e.min_age = row["min_age"]
+      die "start cannot be blank" if row["start"].blank?
       e.start = str_to_datetime(row["start"])
       unless row["end"].blank?
         e.end = str_to_datetime(row["end"])
