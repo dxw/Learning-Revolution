@@ -236,6 +236,14 @@ namespace :lr do
         die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
       end
 
+      p = Provider.new
+      p.name = row["provider_name"]
+      p.badge = row["provider_badge"]
+      unless p.name.blank? and p.badge.blank?
+        queue << p
+        e.provider = p
+      end
+
       e.title = row["title"]
       e.description = row["description"]
       e.cost = row["cost"]
