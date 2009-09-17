@@ -292,6 +292,10 @@ p.post_code_error{
 
 }
 
+.provider{
+  float:right;
+  margin-right:20px;
+}
 
 /* Content Pages */
 

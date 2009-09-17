@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
+  belongs_to :provider, :foreign_key => "provider_id"  
   
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
