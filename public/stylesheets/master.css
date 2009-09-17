@@ -518,6 +518,13 @@ ul.search_subscription_options li{
   font-size:1.33em;
   padding:3px;  
 }
+
+#filter_location.empty
+{
+   color: #a8a8a8;
+   font-weight: bold;
+}
+
 span.optional{
   color:#8B1713;
   font-style:italic;

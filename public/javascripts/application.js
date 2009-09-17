@@ -117,6 +117,31 @@ DisableEventPostcode = $.klass({
       }
 });
 
+PostcodeHint = $.klass({
+      
+      on_initialise_or_blur: function() {
+         if($('#filter_location').val() == '')
+         {
+            $('#filter_location').val('Enter your postcode here')
+            $('#filter_location').addClass('empty');
+         }
+      },
+      
+      initialize: function() {
+         this.on_initialise_or_blur()
+      },
+      
+      onblur: function() {
+         this.on_initialise_or_blur()
+      },
+               
+      onclick: function()
+      {
+         $('#filter_location').val('')
+         $('#filter_location').removeClass('empty');
+      }
+});
+
 
 jQuery(function ($) {
   $('.flickr_photos').attach(Flickr, '82586441@N00');
@@ -130,6 +155,7 @@ jQuery(function ($) {
 //  $("input.datepicker").datepicker({ dateFormat: 'd MM yy', minDate: new Date(2009,9,01), maxDate: new Date(2009,9,31) });
   $('.featured_events ul').cycle({fx: 'scrollLeft', pager: ".featured_event_nav", pause: true, pauseOnPagerHover: true});
   $('#cyberevent').attach(DisableEventPostcode);
+  $('#filter_location').attach(PostcodeHint);
 });
 
 
