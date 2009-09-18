@@ -119,11 +119,14 @@ DisableEventPostcode = $.klass({
 
 PostcodeHint = $.klass({
       
-      on_initialise_or_blur: function() {
-         if($('#filter_location').val() == '')
+      // If you change this text, make sure you change it in EventsController#index
+      empty_text: 'Enter your postcode here',
+      
+      on_initialise_or_blur: function() {         
+         
+         if($('#filter_location').val() == '' || $('#filter_location').val() == this.empty_text)
          {
-            // If you change this text, make sure you change it in EventsController#index too
-            $('#filter_location').val('Enter your postcode here')
+            $('#filter_location').val(this.empty_text)
             $('#filter_location').addClass('empty');
          }
       },
@@ -138,8 +141,11 @@ PostcodeHint = $.klass({
                
       onclick: function()
       {
-         $('#filter_location').val('')
-         $('#filter_location').removeClass('empty');
+         if($('#filter_location').val() == this.empty_text)
+         {
+            $('#filter_location').val('')
+            $('#filter_location').removeClass('empty');
+         }
       }
 });
 
