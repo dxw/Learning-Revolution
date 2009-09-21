@@ -1,6 +1,8 @@
 <div class="events">
   <%= render :partial => 'event_search_filter' %>
-  <% if true %>
+  
+  <%# TODO get this working conditionally, when there's nothing in the filter - t%>
+  <% if params[:filter].blank? %>
     <div id="selector"></div>
     <%= render :partial => 'example_calendar_view' %>
   <% elsif @events.blank? %>

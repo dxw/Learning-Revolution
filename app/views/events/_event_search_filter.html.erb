@@ -55,7 +55,7 @@
 
         <div class="filter_location clearfix filter input_with_tip">
           <label for="filter_location" class="text">Postcode</label>  
-          <%= text_field_tag "filter[location]", nil, :class => 'text' %>
+          <%= text_field_tag "filter[location]", nil, :class => 'text', :value => params[:filter][:location] %>
           <div class="input_tip">
              <div class="tooltip">Where are you? If you'd like to display events near you, enter your postcode here.</div>
              <div class="tooltip_arrow"></div>
