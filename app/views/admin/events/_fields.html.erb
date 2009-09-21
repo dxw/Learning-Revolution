@@ -64,6 +64,10 @@
 </div>
 
 <div class="input clearfix">
+<label for="event_provider">Provider</label><%= event_form.select :provider, [["None",0]]+Event.list_providers %>
+</div>
+
+<div class="input clearfix">
 <label for="event_featured">Featured</label><%= event_form.check_box :featured %>
 </div>
 

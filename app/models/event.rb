@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
+  before_validation :check_provider
 
   after_create :make_bitly_url
   
@@ -196,5 +197,25 @@ class Event < ActiveRecord::Base
     cal = Icalendar::Calendar.new
     cal.add_event to_ical_event
     cal.to_ical
+  end
+  def check_provider
+    if provider.blank?
+      true
+    else
+      File.exists?(RAILS_ROOT + '/public/' + AppConfig.badge + '/' + provider)
+    end
+  end
+  def provider_name
+    provider.split('/')[-1].split('.')[0..-2].join('.')
+  end
+  def provider_badge
+    '/' + AppConfig.badge + '/' + CGI::escape(provider)
+  end
+  def self.list_providers
+    Dir.glob(RAILS_ROOT + '/public/' + AppConfig.badge + '/*').map do
+      |pr|
+      e = Event.new(:provider=>pr)
+      [e.provider_name, e.provider_badge]
+    end
   end
 end
