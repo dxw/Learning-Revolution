@@ -104,7 +104,7 @@
     <% end %>
   </div>
 
-  <% if event.provider %>
+  <% unless event.provider.blank? %>
   <div class="provider">
     <p><img src="<%= event.provider_badge %>" alt="<%= CGI.escapeHTML(event.provider_name) %>" title="<%= CGI.escapeHTML(event.provider_name) %>" /></p>
   </div>

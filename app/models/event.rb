@@ -206,7 +206,11 @@ class Event < ActiveRecord::Base
     end
   end
   def provider_name
-    provider.split('/')[-1].split('.')[0..-2].join('.')
+    if provider.blank?
+      nil
+    else
+      provider.split('/')[-1].split('.')[0..-2].join('.')
+    end
   end
   def provider_badge
     '/' + AppConfig.badge + '/' + CGI::escape(provider)
@@ -214,8 +218,8 @@ class Event < ActiveRecord::Base
   def self.list_providers
     Dir.glob(RAILS_ROOT + '/public/' + AppConfig.badge + '/*').map do
       |pr|
-      e = Event.new(:provider=>pr)
-      [e.provider_name, e.provider_badge]
+      e = Event.new(:provider=>pr.split('/')[-1])
+      [e.provider_name, e.provider]
     end
   end
 end

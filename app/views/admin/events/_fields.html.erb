@@ -64,7 +64,7 @@
 </div>
 
 <div class="input clearfix">
-<label for="event_provider">Provider</label><%= event_form.select :provider, [["None",0]]+Event.list_providers %>
+<label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %>
 </div>
 
 <div class="input clearfix">
