@@ -29,6 +29,7 @@ Feature: Event admin
     And I should not see "Secret Event"
     And the page is valid XHTML
 
+@current
   Scenario: Viewing a calendar filtered by location
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
@@ -36,6 +37,9 @@ Feature: Event admin
     And a valid event called "Spanish Guitar"
     And the event "Spanish Guitar" starts on "12th October 2009 12:00"
     And the event "Spanish Guitar" is located at lat "50" and lng "50"
+    And a valid event called "Virtual Event"
+    And the event "Virtual Event" starts on "12th October 2009 12:00"
+    And the event "Virtual Event" has no location
     And a valid event called "Secret Event"
     And the event "Secret Event" is not published yet
     And the event "Secret Event" starts on "12th October 2009 12:00"
@@ -44,6 +48,7 @@ Feature: Event admin
     And I fill in "Postcode" with "E11 1PB GB"
     And I press "Search For Events"
     Then I should see "Octoberfest" in the calendar on day "12"
+    And I should see "Virtual Event" in the calendar on day "12"
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
     And the page is valid XHTML

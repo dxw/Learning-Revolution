@@ -1,8 +1,10 @@
 <div id="selector">
-   <ul>
-      <li>Display results as a:</li>
-      <li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", current_events_path(:view => "map", :filter => params[:filter]) %></li>
-      <li class="<%= params[:view] == "calendar" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar", current_events_path(:view => "calendar", :filter => params[:filter]) %></li>
-      <li class="<%= params[:view] == "list" ? "list_view_selected" : "list_view" %>"><%= link_to "List", current_events_path(:view => "list", :filter => params[:filter]) %></li>
-   </ul>
+   <% if params[:action] == 'show' then %>
+   <% else %>
+      <ul>
+         <li>Display results as a:</li>
+         <li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", current_events_path(:view => "map", :filter => params[:filter]) %></li>
+         <li class="<%= params[:view] == "calendar" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar", current_events_path(:view => "calendar", :filter => params[:filter]) %></li>
+      </ul>
+   <% end %>
 </div>

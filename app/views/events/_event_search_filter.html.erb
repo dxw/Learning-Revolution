@@ -46,7 +46,7 @@
 
         <div class="filter filter_theme clearfix input_with_tip">
           <label for="filter_theme">Area of Interest</label> 
-          <%= select_tag "filter[theme]", options_for_select([['Any theme', ""]]+Event::Themes, params[:filter][:theme]) %>
+          <%= select_tag "filter[theme]", options_for_select([['Any', ""]]+Event::Themes, params[:filter][:theme]) %>
           <div class="input_tip">
              <div class="tooltip">There are lots of events going on during October. You can use this to select a subject that interests you, or leave it as it is to display everything.</div>
              <div class="tooltip_arrow"></div>
