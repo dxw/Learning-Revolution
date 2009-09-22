@@ -181,7 +181,7 @@
 
    <div class="input clearfix input_with_tip">
      <%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'text input indented' %>
-     <label for="accept_tnc" class="indented">I accept the <%= link_to 'terms and conditions', {:controller => :pages, :slug => 'terms_conditions'}, {:popup => true} %></label>
+     <label for="accept_tnc" class="indented">I accept the <%= link_to 'terms and conditions', {:controller => 'pages', :action => 'show', :slug => 'terms_conditions'}, {:popup => true} %></label>
      <div class="input_tip">
        <div class="tooltip">The terms and conditions must be accepted.</div>
        <div class="tooltip_arrow"></div>
