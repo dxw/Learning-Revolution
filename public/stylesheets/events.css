@@ -132,9 +132,18 @@ h3.no_events{
   background-color:#781B30;
   color:#fff;
 }
+
+.events .calendar_view .more_link
+{
+   text-align: center;
+   margin: 8px 0 0 0;
+   
+   background: #DFC4C3;
+}
+
 .events .calendar_view .more_link a{
   font-style:italic;
-  font-size:0.83em;
+  font-size:0.9em;
   text-decoration: none;
 }
 .events .calendar_view a:hover{

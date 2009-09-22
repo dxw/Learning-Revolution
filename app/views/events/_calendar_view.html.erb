@@ -7,7 +7,7 @@
             <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event), {:title => h(event.title)} %></p>
         <% end %>
         <% if events[3] %>
-          <p class="more_link"><%= link_to "(See More Events)", path_for_event(events[3]) %></p>
+          <p class="more_link"><%= link_to "See more events &raquo;", path_for_event(events[3]) %></p>
         <% end %>
       <% end %>
     <% end %>
