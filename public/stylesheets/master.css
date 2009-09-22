@@ -619,6 +619,7 @@ ul.search_subscription_options li{
 span.optional{
   color:#8B1713;
   font-style:italic;
+  display: block;
 }
 .form_wrapper form select{
  
