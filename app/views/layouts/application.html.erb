@@ -63,9 +63,9 @@
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
         <li class="events"><%= link_to "Events", current_events_path %></li>
-        <li class="stories"><%= link_to "Stories" %></li>
-        <li class="about"><%= link_to "About" %></li>
-        <li class="resources"><%= link_to "Resources" %></li>
+        <li class="stories"><%= link_to "News", news_path %></li>
+        <li class="about"><%= link_to "About", :controller => :pages, :action => :show, :slug => 'about'%></li>
+        <li class="resources"><%= link_to "Promote Your Event", :controller => :pages, :action => :show, :slug => 'promote-your-event' %></li>
       </ul>
     </div>
     
