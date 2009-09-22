@@ -30,7 +30,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_slug(params[:id])
+    if params[:id].nil?
+      puts params.inspect
+      @event = Event.first_for_day("2009-10-#{params[:day]}")
+    else
+      @event = Event.find_by_slug(params[:id])
+    end
+    
     add_page_title @event.title
     redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
     respond_to do |format|
