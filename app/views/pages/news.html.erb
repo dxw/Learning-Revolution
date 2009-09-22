@@ -10,18 +10,18 @@
   
   
   <div class="content_wrapper">
+
+<%# debugger %>
     
-    <% debugger %>
     <div class="content">
       <% @ningfeed.each do |ningpost| %>
         
         <div class="post">
-          <h3><%= (ningpost/'title')%></h3>
-          <p class="date"><%= DateTime.parse((ningpost/'updated')).inner_html.strftime("at %I:%M%p, %e %B, %Y") %></p>
+          <h3><%= (ningpost/'title').inner_html %></h3>
+          <p class="date"><%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %></p>
           <p class="author"><%= (ningpost/'author') %></p>
           <p><%= (ningpost/'content').inner_text  %></p>
         </div>
-        
       
       <% end %>
       
