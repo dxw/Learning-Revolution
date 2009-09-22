@@ -5,7 +5,7 @@
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
   
     <div>
-      <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt= "Add an event to the calendar") if params[:action] == 'index' %>
+      <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt=> "Add an event to the calendar") if params[:action] == 'index' %>
     </div>
     
     <div class="input clearfix input_with_tip">
@@ -80,7 +80,7 @@
      <label for="venue_postcode">Event Postcode</label>
      <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
 
-     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input indented' %>
+     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'input indented' %>
      <label for="cyberevent" class="indented">This event has no location</label>
   
      <div class="input_tip">
@@ -180,7 +180,7 @@
     </fieldset>
 
    <div class="input clearfix input_with_tip">
-     <%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'text input indented' %>
+     <%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'input indented' %>
      <label for="accept_tnc" class="indented">I accept the <%= link_to 'terms and conditions', {:controller => 'pages', :action => 'show', :slug => 'terms_conditions'}, {:popup => true} %></label>
      <div class="input_tip">
        <div class="tooltip">The terms and conditions must be accepted.</div>

@@ -385,6 +385,7 @@ p.post_code_error{
 }
 div.new_event{
   margin-top:0px;
+  display:none;
 }
 
 #content_header{
@@ -579,7 +580,7 @@ ul.search_subscription_options li{
   float:left;
 }
 /* ie6 needs a different style - remember to change */
-.form_wrapper form input.indented{
+.form_wrapper form input#cyberevent{
   margin: 5px 5px 0 100px;
   float:left;
 }
