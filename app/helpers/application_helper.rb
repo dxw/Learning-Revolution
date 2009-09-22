@@ -21,14 +21,13 @@ module ApplicationHelper
     if params[:filter][:theme].blank? && params[:filter][:location].blank? then
       s = "Click \"Find Events\" to get started" 
     else
-      s = 'Now showing all <span class="keyword">'
-      s += params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize
-      s += '</span>'
+      s = 'Now showing all'
       unless params[:filter][:theme].blank?
-        s += " in <span class='keyword'>"
+        s += " <span class='keyword'>"
         s += params[:filter][:theme]
         s += "</span>"
       end
+      s += ' events'
       unless params[:filter][:location].blank?
         s += ' happening within 5 miles of <span class="keyword">'
         s += params[:filter][:location].upcase
