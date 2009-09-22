@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   def index
   end 
 
+  def show
+    @page = Page.find(:first, :conditions => {:slug => params[:slug]})
+    render :template => 'error', :status => 404 if @page.nil?
+  end
+
   def news
     require 'open-uri'
     # this needs to be given accessors to make it easier to iterate through
