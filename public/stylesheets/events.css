@@ -255,13 +255,16 @@ ul li.header .next{
 }
 #event_details h2{
   font-size:1.5em;
-  font-style:italic;
   font-weight:bold;
   padding-left:18px;
-  padding-bottom:12px;
+  padding-bottom:13px;
   padding-top:18px;
   border-bottom:1px solid #c9c9c9;
+}
 
+#event_details h2 a{
+  color: #000;
+  text-decoration: none;
 }
 .detail_list ul.sm_icons{
   margin-top:20px;
