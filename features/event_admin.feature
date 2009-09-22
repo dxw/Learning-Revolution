@@ -26,6 +26,7 @@ Feature: Event admin
     And I check "Published"
     And I fill in "Picture" with "http://www.google.co.uk/intl/en_uk/images/logo.gif"
     And I check "Featured"
+    And I select "Tom City Council" from "Provider"
     And I press "Create"
     Then I should see "Event created successfully"
     And I should see "event title"

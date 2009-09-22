@@ -273,16 +273,7 @@ namespace :lr do
           die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
         end
 
-        unless row["provider_name"].blank? and row["provider_badge"].blank?
-          pr = Provider.find(:first, :conditions => {:name => row["provider_name"], :badge => row["provider_badge"]})
-          unless pr
-            pr = Provider.new
-            pr.name = row["provider_name"]
-            pr.badge = row["provider_badge"]
-          end
-          e.provider = pr
-          pr.save!
-        end
+        e.provider = row["provider"]
 
         e.title = row["title"]
         e.description = row["description"]

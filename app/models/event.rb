@@ -6,11 +6,11 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
+  before_validation :check_provider
 
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
-  belongs_to :provider, :foreign_key => "provider_id"  
   
   named_scope :published, :conditions => { :published => true }
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
@@ -197,5 +197,29 @@ class Event < ActiveRecord::Base
     cal = Icalendar::Calendar.new
     cal.add_event to_ical_event
     cal.to_ical
+  end
+  def check_provider
+    if provider.blank?
+      true
+    else
+      File.exists?(RAILS_ROOT + '/public/' + AppConfig.badge + '/' + provider)
+    end
+  end
+  def provider_name
+    if provider.blank?
+      nil
+    else
+      provider.split('/')[-1].split('.')[0..-2].join('.')
+    end
+  end
+  def provider_badge
+    '/' + AppConfig.badge + '/' + CGI::escape(provider)
+  end
+  def self.list_providers
+    Dir.glob(RAILS_ROOT + '/public/' + AppConfig.badge + '/*').map do
+      |pr|
+      e = Event.new(:provider=>pr.split('/')[-1])
+      [e.provider_name, e.provider]
+    end
   end
 end
