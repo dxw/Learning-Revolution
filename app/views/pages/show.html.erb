@@ -1,3 +1,19 @@
-<h1><%= @page.title %></h1>
 
-<%= @page.content %>
+
+<div id="content_header">
+  
+ <%= image_tag('headings/hd_news.gif', :class => "heading", :alt => "News") %>
+  
+<h1><%= @page.title %></h1>
+  
+</div>
+
+  <div class="content_wrapper">
+
+    <div class="content">
+
+      <%= @page.content %>
+
+    </div>
+  
+</div>
