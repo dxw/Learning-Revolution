@@ -565,7 +565,7 @@ ul.search_subscription_options li{
 }
 /* ie6 needs a different style - remember to change */
 .form_wrapper form input#cyberevent{
-  margin: 5px 0px 0 100px;
+  margin:12px 0 0 150px;
   float:left;
 }
 .form_wrapper form label.cyberevent{
