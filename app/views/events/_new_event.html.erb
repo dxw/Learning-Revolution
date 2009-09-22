@@ -4,8 +4,10 @@
 
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
   
-    <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif') if params[:action] == 'index' %>
-
+    <div>
+      <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt= "Add an event to the calendar") if params[:action] == 'index' %>
+    </div>
+    
     <div class="input clearfix input_with_tip">
       <label for="event_title">Event name</label>
       <%= event_form.text_field :title, :class => 'text input' %>
@@ -186,8 +188,10 @@
      </div>
    </div>
 
-    <%= image_submit_tag('/images/buttons/bt_preview_your_event.png', :alt => "Submit this event", :class => "submit_your_event png") %>
-    <% end %>
+   <div>
+     <%= image_submit_tag('/images/buttons/bt_preview_your_event.png', :alt => "Submit this event", :class => "submit_your_event png") %>
+   </div>
+   <% end %>
   </div>
 
 </div>

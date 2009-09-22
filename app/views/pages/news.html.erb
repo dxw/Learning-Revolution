@@ -2,7 +2,7 @@
   
   <div id="content_header">
     
-    <%= image_tag('headings/hd_news.gif', :class => "heading") %>
+   <%= image_tag('headings/hd_news.gif', :class => "heading", :alt => "News") %>
     
     <h3 class="subheading">Latest Updates from the Festival of Learning Network</h3>
     
@@ -17,15 +17,14 @@
       <% @ningfeed.each do |ningpost| %>
         
         <div class="post">
-          <h3><%= (ningpost/'title').inner_html %></h3>
-          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author') %></p>
+          <h3><a href="<%= (ningpost/'link').first['href'] %>"><%= (ningpost/'title').inner_html %></a></h3>
+          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author/name').inner_text %></p>
           <p><%= (ningpost/'content').inner_text  %></p>
         </div>
       
       <% end %>
       
     </div>
-    
     
     <div class='content sidebar'>
       
@@ -34,13 +33,10 @@
         <h3 class="tk-gunplay">Festival of Learning on Youtube</h3>
 
         <object width="340" height="243">
-          <param name="movie" value="http://www.youtube.com/v/ohbOn7dMpjY&hl=en&fs=1&"></param>
+          <param name="movie" value="http://www.youtube.com/v/ohbOn7dMpjY&amp;hl=en&amp;fs=1&"></param>
           <param name="allowFullScreen" value="true"></param>
           <param name="allowscriptaccess" value="always"></param>
-          <embed src="http://www.youtube.com/v/ohbOn7dMpjY&hl=en&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="340" height="243"></embed>
         </object>
-
-
       </div>      
 
       <div class="block flickr_feed">
