@@ -728,3 +728,7 @@ input.submit_your_event{
   padding-top: 100px;
   font-size: 1.8em;
 }
+
+#events_map {
+  height: 600px;
+}
