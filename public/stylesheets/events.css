@@ -70,7 +70,7 @@ h3.no_events{
   top:100px;
   
 }
-.example_calendar_view img.heading{
+img.heading{
   margin-left:42px;
 }
 .example_calendar_view ol li, .example_calendar_view h3{
@@ -165,6 +165,26 @@ h3.no_events{
   list-style: none;
 }
 
+#events_show h3.heading{
+  margin-top:6px;
+  width:auto;
+  font-size:1.33em;
+}
+
+#events_show h4 {
+  margin-bottom:12px;
+  margin-left:42px;
+  font-size:1.33em;
+}
+#events_show a.listing{
+  font-style:italic;
+  text-decoration: underline;
+  border:none;
+  font-size:0.83em;
+}
+#events_show a:hover{
+  text-decoration: none;
+}
 
 /* This refers to the item listed liston the left hand side */
 
@@ -199,7 +219,7 @@ li.event_link a{
   text-decoration: none;
   font-style:italic;
   font-size:1.5em;
-  width:100%;
+  width:80%;
   color:#8b1713;
   padding:12px 10% 12px 10%;
   background-color: transparent;
@@ -211,7 +231,7 @@ display:block;
 text-decoration: none;
 font-style:italic;
 font-size:1.5em;
-width:100%;
+width:80%;
 color:#8b1713;
 padding:12px 10% 12px 10%;
 background-color: transparent;
@@ -394,7 +414,7 @@ div.form_submission form p{
   margin-bottom:12px;
   font-style:italic;
 }
-
+ 
 /* What next */
 
 div#whats_next{
