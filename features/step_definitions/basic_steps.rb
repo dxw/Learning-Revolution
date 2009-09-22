@@ -15,5 +15,5 @@ Then /^I should be denied access$/ do
 end
 
 Then %r/the page is valid XHTML/ do
-  response.body.should be_xhtml_strict if ENV["VALIDATION"]
+  response.body.should be_xhtml_strict
 end
