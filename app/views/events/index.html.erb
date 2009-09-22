@@ -7,7 +7,7 @@
     <%= render :partial => 'example_calendar_view' %>
   <% elsif @events.blank? %>
     <%= render :partial => 'view_selector' %>
-    <h3 class="heading no_events">Sorry, we couldn't find any events that matched your search. Please try a different theme or postcode.</h3>
+    <h3 class="heading no_events">Sorry, we couldn't find any events that matched your search. Please try another area of interest or a different postcode.</h3>
   <% else %>
     <% if params[:view] == "map" %>
       <%= render :partial => 'view_selector' %>
