@@ -29,6 +29,9 @@ a img { border: none; }
 {
    text-indent:-9999em;
 }
+form label.hidden{
+  position:absolute;
+} 
 
 /* Setting basic link styles */
 a{
@@ -556,14 +559,19 @@ ul.search_subscription_options li{
   width:100px;
 }
 
-.form_wrapper form #cyberevent{
-  margin: 5px 0 0 100px;
+.form_wrapper form div.cyberevent{
+  padding: 6px 0px;
+  float:left;
 }
-
-
+/* ie6 needs a different style - remember to change */
+.form_wrapper form input#cyberevent{
+  margin: 5px 0px 0 100px;
+  float:left;
+}
 .form_wrapper form label.cyberevent{
-  width: auto;
-  padding: 3px 0 0 5px;
+  width: 100px;
+  padding: 3px 0 0 0px;
+  float:left;
 }
 
 .form_wrapper form label.disabled{
