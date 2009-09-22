@@ -1,3 +1,5 @@
+require 'markup_validity' 
+
 Given "debugger" do
   debugger
 end
