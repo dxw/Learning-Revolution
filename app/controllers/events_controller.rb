@@ -6,10 +6,11 @@ class EventsController < ApplicationController
   def index
     # params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
+    
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
-    
+    puts params.inspect
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"
@@ -30,7 +31,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    params[:view] = "list"
     @event = Event.find_by_slug(params[:id])
     add_page_title @event.title
     redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)

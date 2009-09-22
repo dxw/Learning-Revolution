@@ -24,6 +24,12 @@ blockquote, q { quotes: "" ""; }
 a img { border: none; }
 /* END RESET */
 
+span.hidden
+{
+   height: 0px;
+   display: block;
+   text-indent:-9999em;
+}
 
 .hidden
 {
@@ -444,12 +450,17 @@ div.new_event{
   border:1px solid #C2C2C3;
   padding:12px;
   width:300px;
-  font-style:italic;
   position:absolute;
   left:500px;
   top:-15px;
   min-height:60px;
 }
+
+.form_wrapper .tooltip p
+{
+   padding-bottom: 8px;
+}
+
 .form_wrapper .tooltip_arrow{
   position:absolute;
   left:486px;
@@ -564,12 +575,12 @@ ul.search_subscription_options li{
   float:left;
 }
 /* ie6 needs a different style - remember to change */
-.form_wrapper form input#cyberevent{
-  margin: 5px 0px 0 100px;
+.form_wrapper form input.indented{
+  margin: 5px 5px 0 100px;
   float:left;
 }
-.form_wrapper form label.cyberevent{
-  width: 100px;
+.form_wrapper form label.indented{
+  width: 200px;
   padding: 3px 0 0 0px;
   float:left;
 }

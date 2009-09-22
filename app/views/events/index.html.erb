@@ -1,18 +1,17 @@
 <div class="events">
-  <%= render :partial => 'event_search_filter' %>
-  
-  <%# TODO get this working conditionally, when there's nothing in the filter - t%>
+  <%= render :partial => 'event_search_filter' %>  
+
   <% if params[:filter].blank? %>
     <div id="selector"></div>
     <%= render :partial => 'example_calendar_view' %>
-  <% elsif @events.blank? %>
-    <div id="selector"></div>
-    <h3 class="heading no_events">Sorry, we couldn't find any events that matched your search. Please try a different theme or postcode.</h3>
+  <% elsif (params[:view] == "calendar" && @events.blank?) || (params[:view] == "map" && @venues.blank?) %>
+    <%= render :partial => 'view_selector' %>
+    <h3 class="heading no_events">Sorry, we couldn't find any events that matched your search. Please try another area of interest or a different postcode.</h3>
   <% else %>
     <% if params[:view] == "map" %>
       <%= render :partial => 'view_selector' %>
       <%= render :partial => 'map_view' %>
-    <% else params[:view] == "list" %>
+    <% else params[:view] == "calendar" %>
       <%= render :partial => 'view_selector' %>
       <%= render :partial => 'calendar_view' %>
     <% end %>
