@@ -47,6 +47,12 @@ a:visited{
   color:#8b1713;
 }
 
+.trans a
+{
+   color: #000;
+   text-decoration: none;
+}
+
 /* Adding in clearfix to help with floats */
 .fieldWithErrors:after, .clearfix:after {
 	content: ".";

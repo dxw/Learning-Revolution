@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
     
     unless filters.nil?
-      path += "?filter[theme]=#{filters[:theme]}&amp;filter[location]=#{filters[:location]}"
+      path += "?filter[theme]=#{filters[:theme]}&amp;filter[location]=#{filters[:location]}&amp;last_view=#{filters[:last_view]}"
     end
     
     path
