@@ -19,7 +19,8 @@ class Event < ActiveRecord::Base
                    :default_formula => :sphere, 
                    :distance_field_name => :distance,
                    :lat_column_name => :lat,
-                   :lng_column_name => :lng
+                   :lng_column_name => :lng,
+                   :include_results_with_no_location => true
   
   Themes = ["Community Action", "Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
   Themes.sort!
@@ -36,7 +37,7 @@ class Event < ActiveRecord::Base
   def self.human_attribute_name(attr)
     HUMANIZED_ATTRIBUTES[attr.to_sym] || super
   end
-  
+    
   def self.find_by_month_with_filter_from_params(date, params={})
     # Have this check in here as the caching doesn't work in dev mode. Better solution desired.
     if RAILS_ENV == "development"
