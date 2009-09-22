@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   def index
     # params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
-    puts params
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
@@ -46,12 +45,13 @@ class EventsController < ApplicationController
   def find_venue
     process_dates
     @new_event = Event.new(params[:event])
-    if valid_cyber_event?
+    if valid_cyber_event? and valid_datetimes?
       render :action => :preview and return
-    elsif event_valid_with_postcode?
+    elsif event_valid_with_postcode? and valid_datetimes?
       @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
     else
       handle_postcode_errors
+      handle_datetime_errors
       render :action => :create
     end
   end
@@ -164,11 +164,26 @@ class EventsController < ApplicationController
       d = params[:endday].to_i
       h = params[:endhour].to_i
       m = params[:endminute].to_i
-      params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
+      begin
+        params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
+      rescue ArgumentError
+      end
     end
   end
 
   def add_events_to_page_title
     add_page_title "Events"
+  end
+  def valid_datetimes?
+    if @new_event.end and @new_event.end < @new_event.start
+      false
+    else
+      true
+    end
+  end
+  def handle_datetime_errors
+    unless valid_datetimes?
+      @new_event.errors.add_to_base "The event can't finish before it's begun"
+    end
   end
 end

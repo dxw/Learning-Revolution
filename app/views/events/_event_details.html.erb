@@ -5,6 +5,7 @@
   <% else %>
     <h2><%= link_to event.title, path_for_event(event), :class => "url summary" %></h2>
   <% end %>
+  
   <div class="clearfix detail_list">
     
     <div class="span-2">
@@ -74,8 +75,8 @@
         	pa.delete(:view)
         %>
       
-        <li class="calendar"><%= link_to "Add to calendar.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
-        <li class="google_calendar"><%= link_to "Add to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
+        <li class="calendar"><%= link_to "Add to iCal", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
+        <li class="google_calendar"><%= link_to "Add to Google Calendar", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
         <li class="twitter"><%= link_to "Tweet this event", "http://twitter.com/home?status=Going to #{truncate(event.title)}: #{event.bitly_url}" %></li>
         <li class="facebook"><%= link_to "Facebook", "http://www.facebook.com/share.php?u=#{url_for_event(event)}" %></li>
       </ul>
@@ -104,9 +105,9 @@
     <% end %>
   </div>
 
-  <% if event.provider and !event.provider.name.blank? and !event.provider.badge.blank? %>
+  <% unless event.provider.blank? %>
   <div class="provider">
-    <p><img src="<%= event.provider.badge %>" alt="<%= CGI.escapeHTML(event.provider.name) %>" title="<%= CGI.escapeHTML(event.provider.name) %>" /></p>
+    <p><img src="<%= event.provider_badge %>" alt="<%= CGI.escapeHTML(event.provider_name) %>" title="<%= CGI.escapeHTML(event.provider_name) %>" /></p>
   </div>
   <% end %>
   

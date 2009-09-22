@@ -25,6 +25,11 @@ a img { border: none; }
 /* END RESET */
 
 
+.hidden
+{
+   text-indent:-9999em;
+}
+
 /* Setting basic link styles */
 a{
   color:#8b1713;

@@ -28,15 +28,24 @@ namespace :lr do
       require 'fastercsv'
       FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/CFL-sample-data.csv", :headers => :first_row) do |row|
         
-        v = Venue.new
-        v.name      = row["EventAddress1"]
-        v.address_1 = row["EventAddress1"]
-        v.address_2 = row["EventAddress2"]
-        v.address_3 = row["EventAddress3"]
-        v.city      = row["EventTown"]
-        v.county    = nil # Only providing IDs currently
-        v.postcode  = row["EventPostCode"]
-        v.save!
+        v = Venue.find(:first, :conditions => {:name => row["EventAddress1"],
+                       :address_1 => row["EventAddress1"],
+                       :address_2 => row["EventAddress2"],
+                       :address_3 => row["EventAddress3"],
+                       :city => row["EventTown"],
+                       :county => nil,
+                       :postcode => row["EventPostCode"]})
+        unless v
+          v = Venue.new
+          v.name      = row["EventAddress1"]
+          v.address_1 = row["EventAddress1"]
+          v.address_2 = row["EventAddress2"]
+          v.address_3 = row["EventAddress3"]
+          v.city      = row["EventTown"]
+          v.county    = nil # Only providing IDs currently
+          v.postcode  = row["EventPostCode"]
+          v.save!
+        end
         
         e = Event.new
         e.venue = v
@@ -65,14 +74,22 @@ namespace :lr do
       require 'fastercsv'
       FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/Norfolk event data.csv", :headers => :first_row) do |row|
         #"Code","Name","StartDate","NoOfWeeks","StartTime","ADDRESS1","ADDRESS2","ADDRESS3","ADDRESS4","POSTCODE"
-        v = Venue.new
-        v.name = row["ADDRESS1"]
-        v.address_1 = row["ADDRESS2"] unless row["ADDRESS2"] == 'Norfolk'
-        v.address_2 = row["ADDRESS3"] unless row["ADDRESS3"] == 'Norfolk'
-        v.address_3 = row["ADDRESS4"] unless row["ADDRESS4"] == 'Norfolk'
-        v.postcode = row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]
-        v.county = "Norfolk"
-        v.save!
+        v = Venue.find(:first, :conditions => {:name => row["ADDRESS1"],
+                       :address_1 => row["ADDRESS2"],
+                       :address_2 => row["ADDRESS3"],
+                       :address_3 => row["ADDRESS4"],
+                       :county => "Norfolk",
+                       :postcode => row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]})
+        unless v
+          v = Venue.new
+          v.name = row["ADDRESS1"]
+          v.address_1 = row["ADDRESS2"] unless row["ADDRESS2"] == 'Norfolk'
+          v.address_2 = row["ADDRESS3"] unless row["ADDRESS3"] == 'Norfolk'
+          v.address_3 = row["ADDRESS4"] unless row["ADDRESS4"] == 'Norfolk'
+          v.postcode = row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]
+          v.county = "Norfolk"
+          v.save!
+        end
 
         e = Event.new
         e.venue = v
@@ -97,10 +114,14 @@ namespace :lr do
       require 'fastercsv'
       FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/Festival of Learning Events.csv", :headers => :first_row) do |row|
         #"Timestamp","Title","Postcode","Category","Event type","Description","From","To","Organisation","Contact name","Contact phone number","Contact Email address"
-        v = Venue.new
-        v.name = "No Name"
-        v.postcode = row["Postcode"]
-        v.save!
+        v = Venue.find(:first, :conditions => {:name => "No Name",
+                       :postcode => row["Postcode"]})
+        unless v
+          v = Venue.new
+          v.name = "No Name"
+          v.postcode = row["Postcode"]
+          v.save!
+        end
 
         e = Event.new
         e.venue = v
@@ -141,13 +162,20 @@ namespace :lr do
 
       FasterCSV.new(csv, :headers => :first_row).each do |row|
         #ActivityID,ActivityTitle,EventAddress1,EventAddress2,EventAddress3,EventTown,EventCountyID,EventPostCode,EventDetails,TelephonePublic,ContactNamePublic,EventDate,EventTime,BookingRequired,Cost,URL,KeyNum,SitePublishStatus,Active
-        v = Venue.new
-        v.name = row["EventAddress1"] ? row["EventAddress1"] : 'No Name'
-        v.address_1 = row["EventAddress2"]
-        v.address_2 = row["EventAddress3"]
-        v.city = row["EventTown"]
-        v.postcode = row["EventPostCode"]
-        v.save!
+        v = Venue.find(:first, :conditions => {:name => row["EventAddress1"] ? row["EventAddress1"] : 'No Name',
+                       :address_1 => row["EventAddress2"],
+                       :address_2 => row["EventAddress3"],
+                       :county => row["EventTown"],
+                       :postcode => row["EventPostCode"]})
+        unless v
+          v = Venue.new
+          v.name = row["EventAddress1"] ? row["EventAddress1"] : 'No Name'
+          v.address_1 = row["EventAddress2"]
+          v.address_2 = row["EventAddress3"]
+          v.city = row["EventTown"]
+          v.postcode = row["EventPostCode"]
+          v.save!
+        end
 
         e = Event.new
         e.venue = v
@@ -245,16 +273,7 @@ namespace :lr do
           die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
         end
 
-        unless row["provider_name"].blank? and row["provider_badge"].blank?
-          pr = Provider.find(:first, :conditions => {:name => row["provider_name"], :badge => row["provider_badge"]})
-          unless pr
-            pr = Provider.new
-            pr.name = row["provider_name"]
-            pr.badge = row["provider_badge"]
-          end
-          e.provider = pr
-          pr.save!
-        end
+        e.provider = row["provider"]
 
         e.title = row["title"]
         e.description = row["description"]

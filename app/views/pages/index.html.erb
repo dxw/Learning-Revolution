@@ -78,7 +78,7 @@
         <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button png'), current_events_path+"#new_event" %>
         <img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group"></img>
         <p class="caption">Meet other organisers and get help organising your group.</p>
-          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button png'), current_events_path %>
+          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button png'), 'http://thelearningrevolution.ning.com' %>
       </div>
     </div>
     <div class="content_block last">
@@ -90,21 +90,22 @@
         <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
           <div class="info">
             <span class="label"><label  for="name">Name:</label></span> 
-            <span><input type="text" name="cm-name" id="name" size="25" /></span>
+            <span><input type="text" tabindex="0" name="cm-name" id="name" size="25" /></span>
           </div>
           <div class="info">
             <span class="label"><label for="tyjrdi-tyjrdi">Email Address:</label></span>
-            <span><input type="text" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
+            <span><input type="text" tabindex="1" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
           </div>
           <div>
-            <span class="button"><input type="image" src="/images/buttons/bt_sign_up.gif" class="png" value="Subscribe" /></span>
+            <span class="button"><input type="image" tabindex="2" src="/images/buttons/bt_sign_up.gif" class="png" value="Subscribe" alt="Subscribe" /></span>
           </div>
         </form>
 
         <ul class="sm_icons">
-          <li class="twitter"><%= link_to "@festival_of_learning", "http://twitter.com/festival_of_learning" %></li>
-          <li class="facebook"><%= link_to "Become a fan" %></li>
-          <li class="rss"><%= link_to "Subscribe via RSS" %></li>
+          <li class="twitter"><%= link_to "@learnrevolution", "http://twitter.com/learnrevolution" %></li>
+         <!-- Commented out pending link from BIS -->
+         <!-- <li class="facebook"><%= link_to "Become a fan" %></li> -->
+          <li class="rss"><%= link_to "News Feed", "http://thelearningrevolution.ning.com/profiles/blog/feed?xn_auth=no" %></li>
         </ul>
       </div>
     </div>

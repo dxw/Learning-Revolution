@@ -11,6 +11,6 @@ class AddProviderToEvent < ActiveRecord::Migration
 
   def self.down
     drop_table :providers
-    drop_column :events, :provider_id
+    remove_column :events, :provider_id
   end
 end
