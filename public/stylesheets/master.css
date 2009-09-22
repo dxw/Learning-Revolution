@@ -196,15 +196,15 @@ p.post_code_error{
 .nav li.news, .nav li.news a{
   background-position:-470px 1px;
 }
-/* resources are the only menu icons wide enough to need a different size */
-.nav li.resources{
+/* promote are the only menu icons wide enough to need a different size */
+.nav li.promote{
   background-position:-595px 1px;
   width:245px;
   float:right;
   position:relative;
   margin-right:0px;
 }
-.nav li.resources a{
+.nav li.promote a{
   background-position:-595px 1px;
   width:245px;
 }
@@ -232,7 +232,7 @@ p.post_code_error{
 .nav li.news a:hover{
   background-position:-470px -69px;  
 }
-.nav li.resources a:hover{
+.nav li.promote a:hover{
   background-position:-595px -69px;
 }
 .nav li.about a:hover{
