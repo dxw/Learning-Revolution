@@ -45,5 +45,9 @@ class ApplicationController < ActionController::Base
   def current_events_path(options={})
     events_by_month_path(2009, "October", options)
   end
+
+  def render_404
+    render :template => 'error', :status => 404
+  end
   
 end
