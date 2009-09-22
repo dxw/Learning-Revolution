@@ -59,11 +59,13 @@
         <p><%= event.theme.blank? ? "Other" : event.theme %></p>
       </div>
 
+      <% unless event.cost.blank? %>
       <div class="detail">
         <%= image_tag('headings/hd_cost.gif', :alt => 'Cost') %>
-        <p><%= event.cost.blank? ? "Free" : event.cost %></p>
+        <p><%= event.cost %></p>
 
       </div>    
+      <% end %>
 
       <% unless event.more_info.blank? %>
       <div class="detail">
