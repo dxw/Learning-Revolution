@@ -10,6 +10,21 @@
   
   
   <div class="content_wrapper">
+
+<%# debugger %>
+    
+    <div class="content">
+      <% @ningfeed.each do |ningpost| %>
+        
+        <div class="post">
+          <h3><%= (ningpost/'title').inner_html %></h3>
+          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author') %></p>
+          <p><%= (ningpost/'content').inner_text  %></p>
+        </div>
+      
+      <% end %>
+      
+    </div>
     
     
     <div class='content sidebar'>

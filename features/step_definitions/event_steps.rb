@@ -26,6 +26,12 @@ Given /^the event "([^\"]*)" is located at lat "([^\"]*)" and lng "([^\"]*)"$/ d
   event.update_attribute(:lng, lng)
 end
 
+Given /^the event "([^\"]*)" has no location$/ do |title|
+  event = find_or_create(Event, :title => title)
+  event.update_attribute(:lat, nil)
+  event.update_attribute(:lng, nil)
+end
+
 Given /^the event "([^\"]*)" is not published yet$/ do |title|
   find_or_create(Event, :title => title).update_attribute(:published, false)
 end
