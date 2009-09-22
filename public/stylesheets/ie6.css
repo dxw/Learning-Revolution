@@ -77,6 +77,12 @@ h3.filter_description{
   height:740px;
 }
 
+/* Adding a new_event */
+.form_wrapper form input#cyberevent{
+  margin: 5px 0px 0 200px;
+  float:left;
+}
+
 
 #events_list{
   margin-right:0px;

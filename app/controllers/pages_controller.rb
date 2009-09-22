@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   end 
 
   def news
-    
     require 'hpricot'
     require 'open-uri'
     # this needs to be given accessors to make it easier to iterate through

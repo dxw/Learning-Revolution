@@ -78,9 +78,10 @@
      <label for="venue_postcode">Event Postcode</label>
      <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
 
-     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'text input' %>
+   <div class="clearfix cyberevent">
      <label for="cyberevent" class="cyberevent">This event has no location</label>
-  
+     <%= check_box_tag :cyberevent, 'true', params[:cyberevent], :class => 'input' %>
+   </div>  
      <div class="input_tip">
        <div class="tooltip">Where's the event happening? Please enter the postcode of your events's venue &mdash; not your home postcode! If your event is online, check the "no location" box.</div>
        <div class="tooltip_arrow"></div>
@@ -174,8 +175,7 @@
 
 
    <div class="input clearfix input_with_tip">
-     <%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'text input' %>
-     <label for="accept_tnc" class="accept_tnc">I accept the</label> <%= link_to 'terms and conditions', {:controller => :pages, :slug => 'terms_conditions'}, {:popup => true} %>
+     <label for="accept_tnc" class="accept_tnc">I accept the</label> <%= link_to 'terms and conditions', {:controller => :pages, :slug => 'terms_conditions'}, {:popup => true} %>      <%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'input' %>
   
      <div class="input_tip">
        <div class="tooltip">The terms and conditions must be accepted.</div>
