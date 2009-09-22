@@ -304,19 +304,51 @@ p.post_code_error{
 
 /* Content Pages */
 
-.page_content {
-border-bottom:1px solid #C2C2C3;
-border-top:1px solid #C2C2C3;
-padding:18px 0;
-background-image:url('/images/css/silver_bg.png');
-background-position:0 -80px;
+.content_wrapper .content{
+  width:460px;
+  margin-left:42px;
+  background:#fff;
+  border:1px solid #c2c2c3;
+  padding:12px;
+  float:left;
 }
 
-.page_content ul{
-  
+.content_wrapper .content .post{
+  margin: 12px 0px;
 }
 
+.content_wrapper .content h3{
+  font-size:1.25em;
+  font-weight:bold;
+  padding-bottom:8px;
+}
+.content_wrapper .content .date{
+  font-size:1em;
+  font-style:italic;
+  color:#666;
+  padding: 6px 0px;
+}
+.content_wrapper .content .entry{
+  font-size:0.92em;
+}
 
+.content_wrapper .sidebar{
+  float:left;
+  width:340px;
+  margin-left:18px;
+}
+.content_wrapper .sidebar h3{
+  margin-left:6px;
+}
+.content_wrapper .block{
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:1px solid #c9c9c9;
+}
+.flickr_feed ul.flickr_photos{
+  margin: 6px auto;
+  width:300px;
+}
 
 
 /* Events */
@@ -348,7 +380,7 @@ div.new_event{
   position:relative;
   
 }
-.form_wrapper {
+.form_wrapper, .content_wrapper {
   border-bottom:1px solid #C2C2C3;
   border-top:1px solid #C2C2C3;
   padding:18px 0;
@@ -441,7 +473,7 @@ div.new_event{
 }
 h3.filter_description, h3.heading{
   float:left;
-  width:660px;
+  width:600px;
   font-size:1.5em;
   margin-left:42px;
   margin-bottom:12px;
@@ -449,6 +481,15 @@ h3.filter_description, h3.heading{
 }
 h3.heading{
   float:none;
+}
+h3.subheading{
+  font-style:italic;
+  width:600px;
+  font-size:1.33em;
+  margin-left:42px;
+  padding-top:6px;
+  padding-bottom:12px;
+  line-height:1.5;
 }
 .cancel_search{
   float:left;
