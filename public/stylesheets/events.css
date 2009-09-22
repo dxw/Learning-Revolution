@@ -171,21 +171,22 @@ h3.no_events{
 #events_list{
   width:380px;
   float:left;
-  padding-top:18px;
   margin-right:0px;
   background-image:none;
-
+  border-right:1px solid #c9c9c9;
+  border-bottom:1px solid #c9c9c9;
 }
 #events_list ul{
-  
+  border-right:1px solid #c9c9c9;
 }
 #events_list li.header{
   border-bottom:1px solid #c9c9c9;
   padding-bottom:12px;
+  padding-top:18px;
 }
 #events_list li.foot{
-  border-bottom:1px solid #c9c9c9;
   padding: 8px 0 12px 0;
+  border-bottom:1px solid #c9c9c9;
 }
 li.event_link{
 
@@ -198,32 +199,46 @@ li.event_link a{
   text-decoration: none;
   font-style:italic;
   font-size:1.5em;
-  width:80%;
+  width:100%;
   color:#8b1713;
   padding:12px 10% 12px 10%;
   background-color: transparent;
   line-height:1.2;
+  overflow:hidden;
 }
+#events_list li.active span{
+display:block;
+text-decoration: none;
+font-style:italic;
+font-size:1.5em;
+width:100%;
+color:#8b1713;
+padding:12px 10% 12px 10%;
+background-color: transparent;
+line-height:1.2;
+overflow:hidden;
+}
+
 li.event_link a:hover{
-  background-color:#8b1713;
-  color:#fff;
-}
-li.event_link.active a, li.event_link.active a:hover{
   background-color:#fff;
   color:#8b1713;
 }
+li.event_link.active a, li.event_link.active a:hover, #events_list li.active span{
+  background-color:#8b1713;
+  color:#fff;
+}
 
 .listing{
-  background-image:url('/images/tiles/list_gradient.jpg');
+  background-image:url('/images/tiles/list_gradient_event.jpg');
   background-repeat: repeat-y;
-  background-position: 17px 0px;
+  background-position: 8px 0px;
   width:959px;
   border-bottom:1px solid #C2C2C3;
 }
 #events_list h2{
   font-size:1.5em;
   float:left;
-  width:210px;
+  width:205px;
   text-align:center;
 } 
 .incrementor{
@@ -243,7 +258,6 @@ ul li.foot .next {
   padding-bottom:36px;
   width:578px;
   float:left;
-  border-left:1px solid #c9c9c9;
   background-color:#fff;
   text-align:left;
 }

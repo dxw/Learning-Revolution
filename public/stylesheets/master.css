@@ -381,6 +381,7 @@ p.post_code_error{
 }
 div.new_event{
   margin-top:0px;
+  display:none;
 }
 
 #content_header{
