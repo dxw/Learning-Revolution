@@ -61,4 +61,9 @@ class ApplicationController < ActionController::Base
     render :template => 'error', :status => 500
   end
   
+  def render_404
+    @status = 404
+    render :template => 'error', :status => 404
+  end
+  
 end
