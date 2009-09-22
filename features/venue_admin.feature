@@ -35,6 +35,7 @@ Feature: Venue admin
     When I go to the venue admin index page
     And I follow "Venue 1"
     And I fill in "Name" with "New Venue name"
+    And I fill in "Address 1" with "123 Anywhere St"
     And I press "Save"
     Then I should see "Venue saved successfully"
     And I should see "New Venue name"

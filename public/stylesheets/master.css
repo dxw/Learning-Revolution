@@ -614,6 +614,7 @@ ul.search_subscription_options li{
 span.optional{
   color:#8B1713;
   font-style:italic;
+  display: block;
 }
 .form_wrapper form select{
  
@@ -716,4 +717,24 @@ input.submit_your_event{
 
 .form_help {
   font-style:italic;
+}
+
+/* Errors */
+
+body.render_error .header h1 
+{
+   padding-left: 300px;
+}
+
+body.render_error .inner
+{
+   padding: 20px;
+}
+
+body.render_error h1
+{
+   font-size: 1.7em;
+   font-weight: bold;
+   
+   padding-bottom: 8px;
 }
