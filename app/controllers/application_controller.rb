@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   # uncomment this in development test validation on pages that need data POSTed.
   # self.allow_forgery_protection = false
 
+  # adding this overrites the local method, so we can see the 404 and 500 pages 
+  # alias_method :rescue_action_locally, :rescue_action_in_public
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   unless ActionController::Base.consider_all_requests_local

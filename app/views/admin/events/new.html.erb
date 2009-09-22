@@ -1,6 +1,18 @@
+<div id="content_header">
+
+  <%= image_tag('headings/admin/hd_new_venue_admin.gif', :class => "heading") %>
+
+  <h3 class="heading">You can add a new event here</h3>
+</div>
+
 <div class="form_wrapper clearfix">
+  
   <% form_for [:admin, @event] do |event_form| %>
     <%= render :partial => "fields", :locals => {:event_form => event_form} %>
-    <p><%= event_form.submit "Create" %></p>
+
+    <div>
+      <%= image_submit_tag('/images/buttons/bt_add_this_event_to_the_listings.gif', :alt => "Submit this event", :class => "submit_your_event png") %>
+    </div>
+
   <% end %>
 </div>
