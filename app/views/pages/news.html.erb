@@ -17,8 +17,8 @@
       <% @ningfeed.each do |ningpost| %>
         
         <div class="post">
-          <h3><%= (ningpost/'title').inner_html %></h3>
-          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author/name/') %></p>
+          <h3><a href="<%= (ningpost/'link').first['href'] %>"><%= (ningpost/'title').inner_html %></a></h3>
+          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author/name').inner_text %></p>
           <p><%= (ningpost/'content').inner_text  %></p>
         </div>
       
