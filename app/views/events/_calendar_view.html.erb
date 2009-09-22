@@ -4,7 +4,7 @@
       <% t.day(:day_method => :start) do |day, events| %>
         <p class="day"><%= day.day %></p>
         <% events[0..2].each do |event| %>
-            <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event) %></p>
+            <p class="event <%= event.theme %>"><%= link_to h(event.title), path_for_event(event), {:title => h(event.title)} %></p>
         <% end %>
         <% if events[3] %>
           <p class="more_link"><%= link_to "(See More Events)", path_for_event(events[3]) %></p>

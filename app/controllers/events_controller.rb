@@ -45,13 +45,14 @@ class EventsController < ApplicationController
   def find_venue
     process_dates
     @new_event = Event.new(params[:event])
-    if valid_cyber_event? and valid_datetimes?
+    if valid_cyber_event? and valid_datetimes? and tandc_checked?
       render :action => :preview and return
-    elsif event_valid_with_postcode? and valid_datetimes?
+    elsif event_valid_with_postcode? and valid_datetimes? and tandc_checked?
       @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
     else
       handle_postcode_errors
       handle_datetime_errors
+      handle_tandc
       render :action => :create
     end
   end
@@ -184,6 +185,14 @@ class EventsController < ApplicationController
   def handle_datetime_errors
     unless valid_datetimes?
       @new_event.errors.add_to_base "The event can't finish before it's begun"
+    end
+  end
+  def tandc_checked?
+    params[:accept_tnc] == 'true'
+  end
+  def handle_tandc
+    unless tandc_checked?
+      @new_event.errors.add_to_base "You must accept the terms and conditions"
     end
   end
 end
