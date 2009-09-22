@@ -60,20 +60,21 @@ module Geokit
 
         if reflection = Geokit::ActsAsMappable.end_of_reflection_chain(self.through, self)
           metaclass.instance_eval do
-            [ :distance_column_name, :default_units, :default_formula, :lat_column_name, :lng_column_name, :qualified_lat_column_name, :qualified_lng_column_name ].each do |method_name|
+            [ :distance_column_name, :default_units, :default_formula, :lat_column_name, :lng_column_name, :qualified_lat_column_name, :qualified_lng_column_name, :include_results_with_no_location ].each do |method_name|
               define_method method_name do
                 reflection.klass.send(method_name)
               end
             end
           end
         else
-          cattr_accessor :distance_column_name, :default_units, :default_formula, :lat_column_name, :lng_column_name, :qualified_lat_column_name, :qualified_lng_column_name
+          cattr_accessor :distance_column_name, :default_units, :default_formula, :lat_column_name, :lng_column_name, :qualified_lat_column_name, :qualified_lng_column_name, :include_results_with_no_location
 
           self.distance_column_name = options[:distance_column_name]  || 'distance'
           self.default_units = options[:default_units] || Geokit::default_units
           self.default_formula = options[:default_formula] || Geokit::default_formula
           self.lat_column_name = options[:lat_column_name] || 'lat'
           self.lng_column_name = options[:lng_column_name] || 'lng'
+          self.include_results_with_no_location = options[:include_results_with_no_location] || false
           self.qualified_lat_column_name = "#{table_name}.#{lat_column_name}"
           self.qualified_lng_column_name = "#{table_name}.#{lng_column_name}"
 
@@ -321,6 +322,7 @@ module Geokit
           end
 
           if distance_condition
+            distance_condition += " OR events.lat IS NULL" if include_results_with_no_location
             [:within, :beyond, :range].each { |option| options.delete(option) }
             options[:conditions] = merge_conditions(options[:conditions], distance_condition)
           end
@@ -331,6 +333,7 @@ module Geokit
           sw,ne = bounds.sw, bounds.ne
           lng_sql = bounds.crosses_meridian? ? "(#{qualified_lng_column_name}<#{ne.lng} OR #{qualified_lng_column_name}>#{sw.lng})" : "#{qualified_lng_column_name}>#{sw.lng} AND #{qualified_lng_column_name}<#{ne.lng}"
           bounds_sql = "#{qualified_lat_column_name}>#{sw.lat} AND #{qualified_lat_column_name}<#{ne.lat} AND #{lng_sql}"
+          bounds_sql += " OR events.lat IS NULL" if include_results_with_no_location
           options[:conditions] = merge_conditions(options[:conditions], bounds_sql)
         end
 
