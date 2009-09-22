@@ -470,3 +470,70 @@ Feature: Adding an event
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
+
+  Scenario: Adding a valid event from the calendar page with a new, invalid venue, then fixing it and resubmitting, and editing, and resubmitting
+    When I go to the calendar for October 2009
+    And I fill in "Event name" with "event title"
+    And I select "Class" from "event_event_type"
+    And I select "Food and Cookery" from "Category"
+    And I fill in "Description" with "event description"
+    And I select "11" from "starthour"
+    And I select "20" from "startminute"
+    And I select "23rd" from "startday"
+    And I select "12" from "endhour"
+    And I select "20" from "endminute"
+    And I select "23rd" from "endday"
+    And I fill in "Organisation" with "BIS"
+    And I fill in "Contact Name" with "event organiser"
+    And I fill in "Contact Phone Number" with "020 8547 3847"
+    And I fill in "Contact Email Address" with "contact@test.com"
+    And I fill in "Event Postcode" with "E11 1PB"
+    And I check "I accept the"
+    And I press "Submit this event"
+    Then I should see "We don't currently have any venues listed in this postcode"
+    And the page is valid XHTML
+    When I fill in "Address Line 1" with "Address 1 name"
+    And I fill in "Address Line 2" with "Address 2 name"
+    And I fill in "Address Line 3" with "Address 3 name"
+    And I fill in "City" with "City name"
+    And I fill in "County" with "County name"
+    And I press "Add this venue for my event"
+    Then I should see "1 error prohibited this new venue from being save"
+    And I should see "Name can't be blank"
+    And the page is valid XHTML
+    And there should be 0 Event in the database
+    And there should be 0 Venue in the database
+    Then I fill in "Venue name" with "Venue name"
+    And I press "Add this venue for my event"
+    Then I should see "You're about to add this this event to the listings"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "23 October 11:20AM"
+    And I should see "until 12:20PM"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    And I should see "Venue name"
+    And I should see "E11 1PB"
+    And the page is valid XHTML
+    When I press "Edit this event"
+    Then I check "This event has no location"
+    And I press "Submit this event"
+    Then I should see "You're about to add this this event to the listings"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "23 October 11:20AM"
+    And I should see "until 12:20PM"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    And I should see "This event has no location"
+    And the page is valid XHTML
+    When I press "Add this event to the listings"
+    Then I should see "Event created successfully"
+    And the page is valid XHTML
+    Then there should be 1 Event in the database
+    And there should be 1 Venue in the database
+    And I am on the calendar for October 2009
