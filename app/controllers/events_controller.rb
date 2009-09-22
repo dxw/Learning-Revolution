@@ -85,7 +85,10 @@ class EventsController < ApplicationController
 
   def create
     @new_event = Event.new(params[:event])
-    if params[:cyberevent]
+    if params['edit.x']
+      p 'edit'
+      render :action => :create
+    elsif params[:cyberevent]
       succesful_save_redirect if @new_event.save
     else
       find_or_create_venue
