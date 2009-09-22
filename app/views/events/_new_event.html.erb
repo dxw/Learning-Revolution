@@ -4,9 +4,11 @@
 
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
   
-    <div>
-      <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt=> "Add an event to the calendar") if params[:action] == 'index' %>
-    </div>
+    <% if params[:action] == 'index' %>
+       <div>
+         <%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt=> "Add an event to the calendar") %>
+       </div>
+    <% end %>
     
     <div class="input clearfix input_with_tip">
       <label for="event_title">Event name</label>
@@ -48,14 +50,14 @@
     <div class="input clearfix input_with_tip datetime">
       <label for="event_endhour">End time <span class="optional">(optional)</span></label>
       <select id="event_endhour" name="endhour">
-        <option value="NONE"></option>
+        <option value="NONE">&nbsp;</option>
         <% Event::Hours.each do |hour| %>
 	<option<%= (params[:endhour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
 	<% end %>
       </select>
       <label for="event_endminute" class="hidden">Event end time (minutes past the hour)</label>
       <select id="event_endminute" name="endminute">
-        <option value="NONE"></option>
+        <option value="NONE">&nbsp;</option>
         <% Event::Minutes.each do |minute| %>
         <option<%= (params[:endminute] == minute) ? ' selected="selected"' : '' %>><%= minute %></option>
 	<% end %>
@@ -65,7 +67,7 @@
 
       <label for="event_endday" class="hidden">Event end day (in October)</label>
       <select id="event_endday" name="endday">
-        <option value="NONE"></option>
+        <option value="NONE">&nbsp;</option>
         <% Event::Days.each do |day| %>
         <option<%= (params[:endday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
 	<% end %>

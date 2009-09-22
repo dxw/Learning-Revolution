@@ -10,6 +10,7 @@ class EventsController < ApplicationController
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
+        
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"
@@ -17,6 +18,7 @@ class EventsController < ApplicationController
       set_from_and_to_to_dates
       @venues = Venue.find_venues_by_event_params(params[:filter])
     else
+      params[:view] = 'calendar'
       add_page_title "Calendar view"
       @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
       respond_to do |format|
@@ -30,14 +32,25 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_slug(params[:id])
-    add_page_title @event.title
-    redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
-    respond_to do |format|
-      format.html
-      format.ics { render :text => @event.to_ical }
-      format.xml { render :text => @event.to_xml }
-      format.json { render :text => @event.to_json }
+    if params[:id].nil?
+      puts params.inspect
+      @event = Event.first_for_day("2009-10-#{params[:day]}")
+    else
+      @event = Event.find_by_slug(params[:id])
+    end
+    
+    if @event.nil?
+      @status = 404
+      render :template => 'error', :status => 404
+    else
+      add_page_title @event.title
+      redirect_to path_for_event(@event) and return if request.format == 'html' && request.path != path_for_event(@event)
+      respond_to do |format|
+        format.html
+        format.ics { render :text => @event.to_ical }
+        format.xml { render :text => @event.to_xml }
+        format.json { render :text => @event.to_json }
+      end
     end
   end
   
@@ -84,7 +97,6 @@ class EventsController < ApplicationController
   
   def ensure_filters
     params[:filter] ||= {}
-    params[:view] ||= 'calendar'
   end
   
   include Geokit::Geocoders

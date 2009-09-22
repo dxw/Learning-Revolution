@@ -1,12 +1,16 @@
 <div class="events clearfix">
-  <%= render :partial => 'event_search_filter' %>
- 
-  <%= render :partial => 'view_selector' %>
+  <h2>Event details</h2>
+  
+  <div style="background: red; width: 200px; margin: 10px; padding: 20px; height: 20px">
+     <% if params[:last_view] == 'map' %>
+        <%= link_to "&laquo; Back to the map", current_events_path(:view => "map", :filter => params[:filter]) %>
+     <% else %>
+        <%= link_to "&laquo; Back to the calendar", current_events_path(:view => "calendar", :filter => params[:filter]) %>
+     <% end %>
+  </div>
 
   <div class="listing clearfix">
     <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
     <%= render :partial => "event_details", :locals => {:event => @event} %>
   </div>
-
-  <%= render :partial => "new_event" %>
 </div>
