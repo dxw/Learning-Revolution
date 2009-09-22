@@ -175,6 +175,10 @@ h3.no_events{
   border-bottom:1px solid #c9c9c9;
   padding-bottom:12px;
 }
+#events_list li.foot{
+  border-bottom:1px solid #c9c9c9;
+  padding: 8px 0 12px 0;
+}
 li.event_link{
 
   border-bottom:1px solid #8b1713;
@@ -219,12 +223,13 @@ li.event_link.active a, li.event_link.active a:hover{
   width:85px;
   text-align:center;
 }
-ul li.header .next{
+ul li.header .next,
+ul li.foot .next {
   float:right;
 }
 .incrementor a{
   font-style:italic;
-  font-size:0.83em;
+  font-size:0.9em;
 }
 #event_details{
   padding-bottom:36px;
