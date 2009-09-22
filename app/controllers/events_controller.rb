@@ -10,7 +10,6 @@ class EventsController < ApplicationController
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
-    puts params.inspect
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"

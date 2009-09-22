@@ -15,5 +15,4 @@ public/specs.html
 *.tmproj
 
 public/index.html
-vendor/gems/hpricot-0.8.1
 log

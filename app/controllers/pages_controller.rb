@@ -6,7 +6,10 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(:first, :conditions => {:slug => params[:slug]})
-    render :template => 'error', :status => 404 if @page.nil?
+    if @page.nil?
+      @status = 404
+      render :template => 'error', :status => 404
+    end
   end
 
   def news
