@@ -65,6 +65,13 @@
 
       </div>    
 
+      <% unless event.more_info.blank? %>
+      <div class="detail">
+        <%= image_tag('headings/hd_more_info.gif', :alt => 'More info URL') %>
+        <p><%= link_to event.more_info %></p>
+      </div>
+      <% end %>
+
     </div>
 
     <div class="span-2 last">

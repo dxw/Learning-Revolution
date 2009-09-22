@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090921085404) do
+ActiveRecord::Schema.define(:version => 20090922095610) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20090921085404) do
     t.float    "lng"
     t.string   "bitly_url"
     t.string   "provider"
+    t.string   "more_info"
   end
 
   add_index "events", ["lat"], :name => "index_events_on_lat"
