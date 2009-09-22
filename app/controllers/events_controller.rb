@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   def index
     # params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
-    puts params
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
