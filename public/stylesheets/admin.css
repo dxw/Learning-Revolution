@@ -16,6 +16,12 @@ background-color: #fff;
 padding-top:18px;
 }
 
+.admin_wrapper{
+  background-image:url(/images/bg/bg_admin_mid.jpg);
+  background-position:-35px 0px;
+  width:970px;
+}
+
 /*Override styles for header*/
 .admin .nav_banner {
   background-image: url('/images/css/admin_nav_menu_bg.jpg');
