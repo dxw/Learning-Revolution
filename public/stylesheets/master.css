@@ -24,6 +24,12 @@ blockquote, q { quotes: "" ""; }
 a img { border: none; }
 /* END RESET */
 
+span.hidden
+{
+   height: 0px;
+   display: block;
+   text-indent:-9999em;
+}
 
 .hidden
 {

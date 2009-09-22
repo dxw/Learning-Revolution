@@ -23,7 +23,7 @@
         <abbr class="dtend" title="<%= event.end.iso8601 %>">until<%=
 	  (event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime(' %e %B') %><%=
 	  event.end.strftime(" %R%p") %></abbr>
-      </div>
+      </div>f
       <% end %>
 
       </div>
@@ -63,7 +63,6 @@
       <div class="detail">
         <%= image_tag('headings/hd_cost.gif', :alt => 'Cost') %>
         <p><%= event.cost %></p>
-
       </div>    
       <% end %>
 
