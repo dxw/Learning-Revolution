@@ -17,19 +17,25 @@ module ApplicationHelper
   end
 
   def current_filter_description
-    s = 'Now showing all <span class="keyword">'
-    s += params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize
-    s += '</span>'
-    unless params[:filter][:theme].blank?
-      s += " related to <span class='keyword'>"
-      s += params[:filter][:theme]
-      s += "</span>"
-    end
-    unless params[:filter][:location].blank?
-      s += ' happening within 5 miles of <span class="keyword">'
-      s += params[:filter][:location].upcase
+    
+    if params[:filter][:theme].blank? && params[:filter][:location].blank? then
+      s = "Click \"Find Events\" to get started" 
+    else
+      s = 'Now showing all <span class="keyword">'
+      s += params[:filter][:event_type].blank? ? "events" : params[:filter][:event_type].downcase.pluralize
       s += '</span>'
+      unless params[:filter][:theme].blank?
+        s += " in <span class='keyword'>"
+        s += params[:filter][:theme]
+        s += "</span>"
+      end
+      unless params[:filter][:location].blank?
+        s += ' happening within 5 miles of <span class="keyword">'
+        s += params[:filter][:location].upcase
+        s += '</span>'
+      end
     end
+    
     s
   end
 end
