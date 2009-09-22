@@ -213,7 +213,7 @@ Feature: Adding an event
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
     And I press "Submit this event"
-    Then I should see "We may already have the details of your venue; is it one of these?"
+    Then I should see "We may already have the details of your venue"
     When I press "Choose this venue"
     Then I should see "You're about to add this this event to the listings"
     And the page is valid XHTML
@@ -253,7 +253,7 @@ Feature: Adding an event
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
     And I press "Submit this event"
-    Then I should see "We may already have the details of your venue; is it one of these?"
+    Then I should see "We may already have the details of your venue"
     And I should see "Church hall"
     And I should see "School hall"
     And the page is valid XHTML
@@ -279,7 +279,7 @@ Feature: Adding an event
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
     And I press "Submit this event"
-    Then I should see "We may already have the details of your venue; is it one of these?"
+    Then I should see "We may already have the details of your venue"
     When I fill in "Venue name" with "Venue name"
     And I fill in "Address Line 1" with "Address 1 name"
     And I fill in "Address Line 2" with "Address 2 name"
