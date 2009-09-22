@@ -275,7 +275,7 @@ ul li.foot .next {
   margin-top:20px;
 }
 .detail_list ul.sm_icons li{
-  margin: 12px;
+  margin: 12px ;
 }
 #event_details h4, #event_details img, #event_details p, #event_details div.time{
   float:left;
