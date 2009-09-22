@@ -3,7 +3,7 @@
 <div class="form_wrapper clearfix">
 
   <div class="content_header clearfix">
-    <%= image_tag('headings/admin/hd_venues_admin.png', :class => 'header') %>
+    <%= image_tag('headings/admin/hd_venues_admin.gif', :class => 'header') %>
 
   </div>
 
@@ -44,12 +44,14 @@
 
 </div>
 
+<div class="content_wrapper">
+
  <% unless @venues.blank? %>
   <div id="results">
-    
+  
     <h3>Results From your Search</h3>
-    
-    
+  
+  
     <ul class="results clearfix">
       <% @venues.each do |venue| %>
         <li>
@@ -62,4 +64,6 @@
   <%= will_paginate @venues %>
   </div>
 
+
+</div>
 
