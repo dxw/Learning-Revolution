@@ -71,6 +71,13 @@ h3.filter_description{
   height:18px;
 }
 
+/* For the Events pages */
+
+.example_calendar_view{
+  height:740px;
+}
+
+
 #events_list{
   margin-right:0px;
   background-image:none;

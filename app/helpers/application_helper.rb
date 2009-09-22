@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def current_filter_description
     
-    if params[:filter][:theme].blank? && params[:filter][:location].blank? then
+    if params[:filter][:theme].nil? && params[:filter][:location].nil? then
       s = "Click \"Find Events\" to get started" 
     else
       s = 'Now showing all'
