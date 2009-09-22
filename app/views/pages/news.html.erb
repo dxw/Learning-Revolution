@@ -18,8 +18,7 @@
         
         <div class="post">
           <h3><%= (ningpost/'title').inner_html %></h3>
-          <p class="date"><%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %></p>
-          <p class="author"><%= (ningpost/'author') %></p>
+          <p class="date">Posted at <%= DateTime.parse((ningpost/'updated').inner_html.to_s).strftime("at %I:%M%p, %e %B, %Y") %>, by <%= (ningpost/'author') %></p>
           <p><%= (ningpost/'content').inner_text  %></p>
         </div>
       
