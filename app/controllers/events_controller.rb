@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   def find_venue
     process_dates
     @new_event = Event.new(params[:event])
-    if valid_cyber_event? and valid_datetimes? and tandc_checked?
+    if @fasttrack or (valid_cyber_event? and valid_datetimes? and tandc_checked?)
       render :action => :preview and return
     elsif event_valid_with_postcode? and valid_datetimes? and tandc_checked?
       @venues = Venue.find_all_by_postcode(params[:venue][:postcode])
@@ -55,7 +55,21 @@ class EventsController < ApplicationController
       render :action => :create
     end
   end
-  
+
+  def preview
+    if !params[:event][:location_id].blank? or valid_venue?
+      @fasttrack = true
+      return find_venue
+    else
+      @new_venue = Venue.new(params[:venue])
+      if @new_venue.valid?
+        render :action => :preview
+      else
+        render :action => :find_venue
+      end
+    end
+  end
+
   def create
     @new_event = Event.new(params[:event])
     if params[:cyberevent]
@@ -114,7 +128,7 @@ class EventsController < ApplicationController
   
   def handle_postcode_errors
     unless params[:cyberevent]
-      if params[:venue][:postcode].blank?
+      if !params[:event].andand[:location_id] && params[:venue].andand[:postcode].blank?
         @new_event.errors.add_to_base "Postcode can't be blank"
       elsif !postcode_valid?
         @new_event.errors.add_to_base "The postcode you entered seems to be invalid"
@@ -125,14 +139,16 @@ class EventsController < ApplicationController
   end
   
   def event_valid_with_postcode?
-    @new_event.valid? && !params[:venue][:postcode].blank? && postcode_valid? && postcode_exists?
+    @new_event.valid? && !params[:venue].andand[:postcode].blank? && postcode_valid? && postcode_exists?
   end
   
   def postcode_valid?
+    return true if params[:event].andand[:location_id]
     params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
   end
   
   def postcode_exists?
+    return true if params[:event].andand[:location_id]
     @postcode_exists ||= Location.geocode(params[:venue][:postcode]).accuracy
   end
   
@@ -187,11 +203,14 @@ class EventsController < ApplicationController
     end
   end
   def tandc_checked?
-    params[:accept_tnc] == 'true'
+    params[:event].andand[:location_id] or params[:accept_tnc] == 'true'
   end
   def handle_tandc
     unless tandc_checked?
       @new_event.errors.add_to_base "You must accept the terms and conditions"
     end
+  end
+  def valid_venue?
+    @new_veune.andand.valid?
   end
 end
