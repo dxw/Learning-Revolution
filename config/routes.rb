@@ -11,11 +11,14 @@ ActionController::Routing::Routes.draw do |map|
   map.news '/news', :controller => 'pages', :action => 'news'
     
   map.events_by_month "/events/:year/:month.:format", :controller => 'events', :conditions => { :method => :get }, :format => 'html'
-  map.events "/events/", :controller => 'events', :action => "create", :conditions => { :method => :post }
+  map.events "/events", :controller => 'events', :action => "create", :conditions => { :method => :post }
   map.find_venue_for_events "/events/venue", :controller => "events", :action => "find_venue", :conditions => {:method => :post}
   map.preview_events "/events/preview", :controller => "events", :action => "preview", :conditions => {:method => :post}
   map.with_options :path_prefix => "/events/:year/:month", :controller => 'events', :conditions => { :method => :get } do |events|
     events.event "/:day/:id.:format", :action => "show", :format => 'html'
   end
   map.venue_events "/venues/:venue_id/events/:year/:month", :controller => 'venues', :action => "events", :conditions => { :method => :get }
+
+  map.pages '/:slug', :controller => 'pages', :action => 'show'
+  map.error404 '*path', :controller => 'application', :action => 'render_404'
 end
