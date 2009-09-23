@@ -38,3 +38,15 @@ module ApplicationHelper
     s
   end
 end
+
+module ActionView::Helpers::FormHelper
+  def text_field(object_name, method, options = {})
+    object = options.andand[:object]
+    #if options[:object]
+      #object = options[:object]
+    #else
+      #object = instance_variable_get '@'+object_name.to_s
+    #end
+    "<span class='#{ object.andand.errors.andand[method] ? 'fieldWithErrors' : '' }'><input type='text' id='event_#{method}' name='event[#{method}]' class='text input' value='#{object.andand[method]}' /></span></p>"
+  end
+end
