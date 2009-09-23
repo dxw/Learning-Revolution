@@ -1,9 +1,9 @@
   <div class="row clearfix" id="intro">
       <div class="featured_block">
         
-        <img src="/images/headings/hd_be_a_part_of_the_festival.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/>
+        <p><img src="/images/headings/hd_be_a_part_of_the_festival.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/></p>
       
-        <img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" />
+        <p><img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" /></p>
 
 
         <p class="standfirst">This October we're making it easier than ever to find something new to do</p>
@@ -46,7 +46,7 @@
 
     <div class="content_block">
       <div class="content_block_content secondary_block">
-        <img src="/images/headings/hd_featured_events.gif" alt="Featured Events" class="png"></img>
+        <p><img src="/images/headings/hd_featured_events.gif" alt="Featured Events" class="png" /></p>
         <ul>
         <% Event.featured.find(:all, :limit => 3).each do |event| %>
           <li class="clearfix">
@@ -72,11 +72,11 @@
     </div>
     <div class="content_block">
       <div class="content_block_content secondary_block share_space_and_groups">
-        <img src="/images/headings/hd_share_your_space_for_events.gif" alt="Share your Space for Events" class="png"></img>
+        <p><img src="/images/headings/hd_share_your_space_for_events.gif" alt="Share your Space for Events" class="png" /></p>
         <p class="caption">You can help out by adding your space for groups who want to learn.</p>
 
         <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button png'), current_events_path+"#new_event" %>
-        <img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group"></img>
+        <p><img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group" /></p>
         <p class="caption">Meet other organisers and get help organising your group.</p>
           <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button png'), 'http://thelearningrevolution.ning.com' %>
       </div>

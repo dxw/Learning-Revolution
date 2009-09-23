@@ -12,28 +12,28 @@
     <p class="form_help">These details can only be changed by admins on this site.</p>
 
     <div class="input clearfix">
-    <label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %>
+    <p><label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %>
+    <p><label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %></p>
     </div>
 
 
     <div class="input clearfix">
-    <label for="event_published">Published</label><%= event_form.check_box :published %>
+    <p><label for="event_published">Published</label><%= event_form.check_box :published %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %>
+    <p><label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %>
+    <p><label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_featured">Featured</label><%= event_form.check_box :featured %>
+    <p><label for="event_featured">Featured</label><%= event_form.check_box :featured %></p>
     </div>
 
   </fieldset>
