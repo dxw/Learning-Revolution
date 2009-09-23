@@ -33,7 +33,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
@@ -88,7 +88,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
@@ -151,7 +151,7 @@ Feature: Adding an event
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
@@ -228,7 +228,7 @@ Feature: Adding an event
     And I should see "Church hall"
     And I should see "TR18 5EG"
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 1 Venue in the database
@@ -298,7 +298,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 2 Venue in the database
@@ -334,7 +334,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
@@ -389,7 +389,7 @@ Feature: Adding an event
     And I should see "contact@test.com"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
@@ -465,7 +465,7 @@ Feature: Adding an event
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
@@ -532,7 +532,7 @@ Feature: Adding an event
     And I should see "This event has no location"
     And the page is valid XHTML
     When I press "Add this event to the listings"
-    Then I should see "Event created successfully"
+    Then I am on the event success page
     And the page is valid XHTML
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
