@@ -3,21 +3,20 @@
 <%= image_tag('headings/admin/hd_fol_admin_area.gif', :class => "heading") %>
 
 <h3 class="heading">Festival of Learning Admin Area </h3>
+
+<%= (flash[:notice].nil? ? '' : "<div class='admin_flash'>#{flash[:notice]}</div>") %>
+
 </div>
 
 <div class="content_wrapper clearfix">
 
   <div class="content clearfix">
     <div class="span-11">
-      <%= flash[:notice] %>
-
       
-      <h3><%= link_to "Administer Pages", admin_pages_path %></h3>
-
+      <h3><%= link_to "Moderate Events", "/admin/events/moderations" %></h3>
       <h3><%= link_to "Administer Venues", admin_venues_path %></h3>
-
-      <h3><%= link_to "Administer Events", admin_events_path %></h3>
-
+      <h3><%= link_to "Administer Venues", admin_venues_path %></h3>
+      <h3><%= link_to "Administer Pages", admin_pages_path %></h3>
     </div>
 
   </div>

@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_filter :add_events_to_page_title
   
   def index
-    # params[:in_the_queue] = 'true' # switch this on to see the post event view
+    params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
     
     if(params[:filter][:location] == 'Enter your postcode here')

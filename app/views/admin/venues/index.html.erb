@@ -1,14 +1,10 @@
 <div id="content_header">
+     <%= image_tag('headings/admin/hd_venues_admin.gif', :class => 'heading') %>
+    <h3>Add and edit venues, and merge duplicates</h3>
+
+  <%= (flash[:venue].nil? ? '' : "<div class='admin_flash'>#{flash[:venue]}</div>") %>
   
-<div class="form_wrapper clearfix">
-
-  <div class="content_header clearfix">
-    <%= image_tag('headings/admin/hd_venues_admin.gif', :class => 'header') %>
-
-  </div>
-
-  <%= flash[:venue] %>
-
+  <div class="form_wrapper clearfix">
 
 <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
@@ -28,8 +24,6 @@
 
   <div><%= hidden_field_tag "view", params[:view] %></div>
 
-
-
   <% end %>
 
 
@@ -39,10 +33,10 @@
       <li><%= link_to "Find duplicates", duplicates_admin_venues_path %></li>
     </ul>
   </div>
+  </div>
 
 
 
-</div>
 
 <div class="content_wrapper">
 
@@ -66,4 +60,4 @@
   </div>
 
 </div>
-
+</div>

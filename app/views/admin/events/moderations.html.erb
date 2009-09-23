@@ -6,27 +6,25 @@
   <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue.</h3>
 
   <%= flash[:notices] %>
-
+  <%= flash[:event] %>
+  
 </div>
 
 <div class="form_wrapper">
-  
-<%= flash[:event] %>
-<% if @event %>
-  <div class="unmoderated_event">
-
-  <%= render :partial => "event_info_block", :locals => {:event => @event} %>
-  
-  <% form_tag moderate_admin_event_path(@event), :method => :put do %>
-    <%= submit_tag "Approve" %>
-    <%= link_to "Skip", "?from=#{@event.id}" %>
-    <%= submit_tag "Delete" %>
-  <% end %>
-
-  </div>
-</div>
-
-<% else %>
-  <h2>No more events to moderate</h2>
-<% end %>
+   <div class="unmoderated_event">
+      <% if @event %>
+        
+      
+        <%= render :partial => "event_info_block", :locals => {:event => @event} %>
+        
+        <% form_tag moderate_admin_event_path(@event), :method => :put do %>
+           <%= link_to "(Skip)", "?from=#{@event.id}", :class => "skip" %>  
+           <%= submit_tag "Approve" %>
+           <%= submit_tag "Delete" %>
+        <% end %>
+      
+      <% else %>
+        <h2>No more events to moderate</h2>
+      <% end %>
+   </div>
 </div>
