@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :ensure_filters
-  before_filter :new_event, :except => [:create, :find_venue]
+  before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
   
   def index
@@ -172,8 +172,7 @@ class EventsController < ApplicationController
   end
   
   def succesful_save_redirect
-    flash[:notice] = "Event created successfully"
-    redirect_to current_events_path
+    redirect_to events_success_path
   end
   
   def find_or_create_venue

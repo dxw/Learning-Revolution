@@ -28,6 +28,8 @@ module NavigationHelpers
     when /the event page for "(.+)"/
       event = find_or_create(Event, :title => $1)
       event_path(event.start.year, event.start.month, event.start.day, event.slug)
+    when /the event success page/
+      events_success_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end
