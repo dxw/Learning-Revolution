@@ -10,12 +10,16 @@ Feature: Event admin
     Given a valid venue called "London"
     When I go to the event admin index page
     And I follow "New event"
-    I fill in "Event name" with "New event title"
+    And I fill in "Event name" with "New event title"
     And I fill in "Description" with "event description"
-    And I fill in "Theme" with "event theme"
-    And I fill in "Type" with "event type"
-    And I select "November 23, 2004 11:20" as the "Start" date and time
-    And I select "November 23, 2004 12:20" as the "End" date and time
+    And I fill in "Category" with "event theme"
+    And I fill in "Event Type" with "event type"
+    And I select "11" from "starthour"
+    And I select "20" from "startminute"
+    And I select "23rd" from "startday"
+    And I select "12" from "endhour"
+    And I select "20" from "endminute"
+    And I select "23rd" from "endday"
     And I fill in "Cost" with "£1.50"
     And I fill in "Min Age" with "13"
     And I select "London" from "Venue"
@@ -27,20 +31,18 @@ Feature: Event admin
     And I fill in "Picture" with "http://www.google.co.uk/intl/en_uk/images/logo.gif"
     And I check "Featured"
     And I select "Tom City Council" from "Provider"
-    And I press "Create"
+    And I press "Submit this event"
     Then I should see "Event created successfully"
-    And I should see "event title"
-    And I am on the event admin index page
+    And the page is valid XHTML
     
   Scenario: Submitting an empty form
     When I go to the event admin index page
     And I follow "New event"
-    And I press "Create"
-    Then I should see "5 errors prohibited this event from being saved"
+    And I press "Submit this event"
+    Then I should see "3 errors prohibited this event from being saved"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
-    And I should see "Theme can't be blank"
-    And I should see "Event type can't be blank"
+    And I should see "Contact email address can't be blank"
     And I am on the event admin index page
   
   Scenario: Editing a valid event

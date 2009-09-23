@@ -2,7 +2,7 @@
 
   <div id="content_header" class="clearfix">
 
-    <%= image_tag('headings/hd_choose_a_venue_for_this_event.gif', :class => "heading") %>
+    <p><%= image_tag('headings/hd_choose_a_venue_for_this_event.gif', :class => "heading") %></p>
 
     <% unless @venues.blank? %>
       <h3 class="heading">We may already have the details of your venue &mdash; is it one of these? </h3>
@@ -13,7 +13,7 @@
   <% if @new_venue and !@new_venue.errors.blank? %>
     <div id="errors" class="ui-widget">
       <div class="ui-state-error ui-corner-all">
-        <%= error_messages_for :new_venue %>        
+        <%= error_messages_for :new_venue %>
       </div>
     </div>
   <% end %>
@@ -30,12 +30,11 @@
       <% form_for @new_event, :url => preview_events_path(:event => params[:event].merge({:location_id => venue.id})) do %>
         <div class="venue_choice">
         <h4><%= venue.name %></h4>
-        <%# debugger %>
         <h5><%= venue.address_1 %></h5>
         <h5><%= venue.address_2 %></h5>
         <%= "<h5> #{venue.address_3} </h5>" unless venue.address_3.blank? %>
         <h5><%= venue.postcode %></h5>
-        <%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %>
+        <p><%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %></p>
         </div>
       <% end %>
     <% end %>
@@ -50,41 +49,41 @@
   <div><h4><%= image_tag 'headings/hd_add_a_venue_to_the_listings_smaller.gif', :alt => "Add a venue to the listings" %></h4></div>
 
   <div class="input clearfix">
-    <label for="venue_name">Venue name</label>
-    <%= text_field :venue, :name, :class => 'text' %>
+    <p><label for="venue_name">Venue name</label>
+    <%= text_field :venue, :name, :class => 'text' %></p>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_address_1">Address Line 1</label>
-    <%= text_field :venue, :address_1, :class => 'text' %>
+    <p><label for="venue_address_1">Address Line 1</label>
+    <%= text_field :venue, :address_1, :class => 'text' %></p>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_address_2">Address Line 2 <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :address_2, :class => 'text' %>
+    <p><label for="venue_address_2">Address Line 2 <span class="optional">(optional)</span></label>
+    <%= text_field :venue, :address_2, :class => 'text' %></p>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_address_3">Address Line 3 <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :address_3, :class => 'text' %>
+    <p><label for="venue_address_3">Address Line 3 <span class="optional">(optional)</span></label>
+    <%= text_field :venue, :address_3, :class => 'text' %></p>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_city">City <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :city, :class => 'text' %>
+    <p><label for="venue_city">City <span class="optional">(optional)</span></label>
+    <%= text_field :venue, :city, :class => 'text' %></p>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_county">County <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :county, :class => 'text' %>
+    <p><label for="venue_county">County <span class="optional">(optional)</span></label>
+    <%= text_field :venue, :county, :class => 'text' %></p>
   </div>
   
   <div class="input clearfix">
-    <label for="venue_county">Post Code</label>
-    <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %>
+    <p><label for="venue_postcode">Post Code</label>
+    <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %></p>
   </div>
   
-  <div><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></div>
+  <div><p><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></p></div>
 <% end %>
 
     </div>

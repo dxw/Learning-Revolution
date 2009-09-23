@@ -2,7 +2,145 @@
 <%= error_messages_for :event %>
 </div>
 
-<%= render :partial => 'events/time_venue_date', :locals => {:event_form => event_form}  %>
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_title">Event name</label>
+    <%= event_form.text_field :title, :class => 'text input' %>
+  </p>
+  <div class="input_tip">
+    <div class="tooltip">What's your event called?</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip datetime">
+  <p>
+    <label for="event_starthour">Start time</label>
+  </p>
+  <select id="event_starthour" name="starthour">
+    <% Event::Hours.each do |hour| %>
+    <option<%= (params[:starthour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
+    <% end %>
+  </select>
+  <label for="event_startminute" class="hidden">Event start time (minutes past the hour)</label>
+  <select id="event_startminute" name="startminute">
+    <% Event::Minutes.each do |minute| %>
+    <option<%= (params[:startminute] == minute) ? ' selected="selected"' : '' %>><%= minute %></option>
+    <% end %>
+  </select>
+
+  on
+
+  <label for="event_startday" class="hidden">Event start day (in October)</label>
+  <select id="event_startday" name="startday">
+    <% Event::Days.each do |day| %>
+    <option<%= (params[:startday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+    <% end %>
+  </select> October 2009</p>
+  <div class="input_tip">
+    <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip datetime">
+  <p>
+    <label for="event_endhour">End time <span class="optional">(optional)</span></label>
+  </p>
+  <select id="event_endhour" name="endhour">
+    <option value="NONE">&nbsp;</option>
+    <% Event::Hours.each do |hour| %>
+    <option<%= (params[:endhour] == hour) ? ' selected="selected"' : '' %>><%= hour %></option>
+    <% end %>
+  </select>
+  <label for="event_endminute" class="hidden">Event end time (minutes past the hour)</label>
+  <select id="event_endminute" name="endminute">
+    <option value="NONE">&nbsp;</option>
+    <% Event::Minutes.each do |minute| %>
+    <option<%= (params[:endminute] == minute) ? ' selected="selected"' : '' %>><%= minute %></option>
+    <% end %>
+  </select>
+
+  on
+
+  <label for="event_endday" class="hidden">Event end day (in October)</label>
+  <select id="event_endday" name="endday">
+    <option value="NONE">&nbsp;</option>
+    <% Event::Days.each do |day| %>
+    <option<%= (params[:endday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
+    <% end %>
+  </select> October 2009</p>
+  <div class="input_tip">
+    <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_location_id">Venue</label>
+    <%= event_form.collection_select :location_id, Venue.all, :id, :name, :include_blank => true %>
+  </p>
+
+  <div class="input_tip">
+    <div class="tooltip">
+      <p>Where's the event happening? Please enter the postcode of your events's venue, not your home postcode!</p>
+
+      <p>You'll add the rest of the venue's details in the next step.</p>
+
+      <p>If your event is online, check the "no location" box.</p>
+
+    </div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_theme">Category</label>
+    <select id="event_theme" name="event[theme]">
+      <%= options_for_select(Event::Themes) %>
+    </select>
+  </p>
+
+  <div class="input_tip">
+    <div class="tooltip">What's this event about? If none of these options fit, use "other".</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_event_type">Event Type</label>
+    <%= event_form.select :event_type, options_for_select(Event::Types) %>
+  </p>
+  <div class="input_tip">
+    <div class="tooltip">What kind of event is this? If none of these options fit, use "other".</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_description">Description</label>
+    <%= event_form.text_area :description, :cols => 38, :rows => 10, :class => 'text' %>
+  </p>
+  <div class="input_tip">
+    <div class="tooltip">What's this event all about? Let people know what they'll be doing, if there's anything they'll need and why they should go along.</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
+
+<div class="input clearfix input_with_tip">
+  <p>
+    <label for="event_more_info">More Info URL</label>
+    <%= event_form.text_field :more_info, :class => 'text input' %>
+  </p>
+  <div class="input_tip">
+    <div class="tooltip">If there's a web page with more information about this event, you can link to it here.</div>
+    <div class="tooltip_arrow"></div>
+  </div>
+</div>
 
 <%= render :partial => 'events/event_contact', :locals => {:event_form => event_form}  %>
 
@@ -12,28 +150,28 @@
     <p class="form_help">These details can only be changed by admins on this site.</p>
 
     <div class="input clearfix">
-    <label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %>
+    <p><label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %>
+    <p><label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %></p>
     </div>
 
 
     <div class="input clearfix">
-    <label for="event_published">Published</label><%= event_form.check_box :published %>
+    <p><label for="event_published">Published</label><%= event_form.check_box :published %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %>
+    <p><label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %>
+    <p><label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %></p>
     </div>
 
     <div class="input clearfix">
-    <label for="event_featured">Featured</label><%= event_form.check_box :featured %>
+    <p><label for="event_featured">Featured</label><%= event_form.check_box :featured %></p>
     </div>
 
   </fieldset>

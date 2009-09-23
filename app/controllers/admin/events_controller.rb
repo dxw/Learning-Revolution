@@ -1,18 +1,21 @@
 class Admin::EventsController < Admin::AdminController
+  
+  before_filter :process_dates, :only => [:create, :update]
+  
   make_resourceful do
     actions :all
     
     response_for :create do |format|
       format.html do 
-        redirect_to :action => :index
         flash[:event] = "Event created successfully"
+        redirect_to :action => :index
       end
     end
     
     response_for :update do |format|
       format.html do 
-        return_or_redirect_to :action => :index
         flash[:event] = "Event saved successfully"
+        return_or_redirect_to :action => :index
       end
     end
   end
@@ -58,4 +61,23 @@ class Admin::EventsController < Admin::AdminController
       duplicate.fix_duplicate(:original)
     end
   end
+  
+  def process_dates
+    if params[:startday] and params[:starthour] and params[:startminute]
+      d = params[:startday].to_i
+      h = params[:starthour].to_i
+      m = params[:startminute].to_i
+      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
+    end
+    if params[:endday] and params[:endhour] and params[:endminute]
+      d = params[:endday].to_i
+      h = params[:endhour].to_i
+      m = params[:endminute].to_i
+      begin
+        params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
+      rescue ArgumentError
+      end
+    end
+  end
+  
 end

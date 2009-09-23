@@ -196,7 +196,7 @@ p.post_code_error{
 .nav li.news, .nav li.news a{
   background-position:-470px 1px;
 }
-/* resources are the only menu icons wide enough to need a different size */
+/* promote are the only menu icons wide enough to need a different size */
 .nav li.promote_your_event{
   background-position:-595px 1px;
   width:245px;
@@ -718,6 +718,15 @@ input.submit_your_event{
 .form_help {
   font-style:italic;
 }
+
+#events_map noscript p {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 1.8em;
+}
+
+#events_map {
+  height: 600px;
 
 /* Errors */
 
