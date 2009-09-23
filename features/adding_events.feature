@@ -37,6 +37,16 @@ Feature: Adding an event
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
+    And there should be an Event whose start datetime is "2009-10-23 11:20"
+    And there should be an Event whose end datetime is "2009-10-23 12:20"
+    And there should be an Event whose title is "event title"
+    And there should be an Event whose event_type is "Class"
+    And there should be an Event whose theme is "Food and Cookery"
+    And there should be an Event whose description is "event description"
+    And there should be an Event whose organisation is "BIS"
+    And there should be an Event whose contact_name is "event organiser"
+    And there should be an Event whose contact_phone_number is "020 8547 3847"
+    And there should be an Event whose contact_email_address is "contact@test.com"
   
   Scenario: Adding an invalid event with end time < start time
     When I go to the calendar for October 2009
@@ -535,5 +545,5 @@ Feature: Adding an event
     Then I am on the event success page
     And the page is valid XHTML
     Then there should be 1 Event in the database
-    And there should be 1 Venue in the database
+    And there should be 0 Venue in the database
     And I am on the calendar for October 2009

@@ -8,6 +8,15 @@ Then /^there should be (\d+) (\S+) in the database$/ do |count, model|
   eval("#{model}.count").should == count.to_i
 end
 
+Then /^there should be an? (\S+) whose (\S+) is "(.*?)"$/ do |model, field, value|
+  eval(model).find(:all, :conditions => {field.to_sym => value}).count.should > 0
+end
+
+Then /^there should be an? (\S+) whose (\S+) datetime is "(.*?)"$/ do |model, field, dt|
+  value = Time.zone.parse(dt)
+  eval(model).find(:all, :conditions => {field.to_sym => value}).count.should > 0
+end
+
 Given /^I am logged in$/ do
   basic_auth('lr_admin', 'learning is fun!')
 end
