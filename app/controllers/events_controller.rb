@@ -88,6 +88,7 @@ class EventsController < ApplicationController
     if params['edit']
       params.merge!({:startday => '%02d'% @new_event.start.day, :starthour => '%02d'% @new_event.start.hour, :startminute => '%02d'% @new_event.start.min})
       params.merge!({:endday => '%02d'% @new_event.end.andand.day, :endhour => '%02d'% @new_event.end.andand.hour, :endminute => '%02d'% @new_event.end.andand.min}) unless @new_event.end.blank?
+      params[:event].merge!({:postcode => @new_event.venue.andand.postcode})
       render :action => :create
     elsif params[:cyberevent]
       succesful_save_redirect if @new_event.save
