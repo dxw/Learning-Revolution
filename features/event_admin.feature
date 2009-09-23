@@ -10,7 +10,7 @@ Feature: Event admin
     Given a valid venue called "London"
     When I go to the event admin index page
     And I follow "New event"
-    And I fill in "Title" with "event title"
+    I fill in "Event name" with "New event title"
     And I fill in "Description" with "event description"
     And I fill in "Theme" with "event theme"
     And I fill in "Type" with "event type"
@@ -47,7 +47,7 @@ Feature: Event admin
     Given a valid event called "event 1"
     When I go to the event admin index page
     And I follow "event 1"
-    And I fill in "Title" with "New event title"
+    And I fill in "Event name" with "New event title"
     And I press "Save"
     Then I should see "Event saved successfully"
     And I should see "New event title"
