@@ -1,14 +1,30 @@
-<h2>Festival of Learning Admin Area </h2>
 <div id="content_header" class="clearfix">
-  <div class="current_event_filtering clearfix">
+
+<%= image_tag('headings/admin/hd_fol_admin_area.gif', :class => "heading") %>
+
+<h3 class="heading">Festival of Learning Admin Area </h3>
+</div>
+
+<div class="content_wrapper clearfix">
+
+  <div class="content clearfix">
     <div class="span-11">
       <%= flash[:notice] %>
+
+      
+      <h3><%= link_to "Administer Pages", admin_pages_path %></h3>
+
+      <h3><%= link_to "Administer Venues", admin_venues_path %></h3>
+
+      <h3><%= link_to "Administer Events", admin_events_path %></h3>
+
     </div>
 
   </div>
+
   
-  <div class="event_filtering clearfix">
-    
-  </div>
+</div>
+
+
   
 </div>
