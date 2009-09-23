@@ -60,22 +60,22 @@
   </div>
 
   <div class="input clearfix">
-    <label for="venue_address_2">Address Line 2</label>
+    <label for="venue_address_2">Address Line 2 <span class="optional">(optional)</span></label>
     <%= text_field :venue, :address_2, :class => 'text' %>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_address_3">Address Line 3</label>
+    <label for="venue_address_3">Address Line 3 <span class="optional">(optional)</span></label>
     <%= text_field :venue, :address_3, :class => 'text' %>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_city">City</label>
+    <label for="venue_city">City <span class="optional">(optional)</span></label>
     <%= text_field :venue, :city, :class => 'text' %>
   </div>
 
   <div class="input clearfix">
-    <label for="venue_county">County</label>
+    <label for="venue_county">County <span class="optional">(optional)</span></label>
     <%= text_field :venue, :county, :class => 'text' %>
   </div>
   
@@ -84,7 +84,7 @@
     <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %>
   </div>
   
-  <%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %>
+  <div><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></div>
 <% end %>
 
     </div>

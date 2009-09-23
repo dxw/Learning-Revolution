@@ -22,6 +22,14 @@ padding-top:18px;
   width:970px;
 }
 
+.admin .content_wrapper h3 a{
+  text-decoration: underline;
+  color:#8B1713;
+}
+.admin .content_wrapper h3 a:hover{
+  text-decoration: none;
+}
+
 /*Override styles for header*/
 .admin .nav_banner {
   background-image: url('/images/css/admin_nav_menu_bg.jpg');
@@ -98,12 +106,18 @@ h3{
 
 /* Duplicate Sorting*/
 
-.m_duplicates form{
-  margin-left:20px;
+.m_duplicates form, .m_moderates form{
+  margin-left:15px;
   padding-top:20px;
+  width:890px;
 }
 
-.duplicate{
+.m_duplicates .venue_pair{
+  clear:left;
+  margin-top:12px;
+}
+
+.duplicate, .unmoderated_event{
   width:420px;
   float:left;
   background:#fff;
@@ -112,28 +126,36 @@ h3{
   margin-left:10px;
 }
 
-.duplicate ul{
+.unmoderated_event ul. .duplicate ul{
   border-top:1px solid #c2c2c3;
   border-bottom:1px solid #c2c2c3;
   margin-bottom:12px;
 }
 
-.duplicate .item{
+.unmoderated_event .item, .duplicate .item{
   padding:6px;
   border-left:1px solid #c2c2c3;
   border-right:1px solid #c2c2c3;
 }
-.duplicate .even{
+.unmoderated_event .even , .duplicate .even{
   background:#f7f7f7;
 }
-.duplicate .label{
+.unmoderated_event .label, .duplicate .label{
   float:left;
   width:100px;
 }
-.duplicate .value{
+.unmoderated_event .value, .duplicate .value{
   float:left;
   width:275px;
 }
+
+/* Moderation queue */
+
+.unmoderated_event form{
+  width:394px;
+  margin-left:0px;
+}
+
 
 /* Pages Admin */
 

@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   # uncomment this in development test validation on pages that need data POSTed.
   # self.allow_forgery_protection = false
 
+  # adding this overrites the local method, so we can see the 404 and 500 pages 
+  # alias_method :rescue_action_locally, :rescue_action_in_public
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   unless ActionController::Base.consider_all_requests_local
@@ -42,7 +45,7 @@ class ApplicationController < ActionController::Base
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
     
     unless filters.nil?
-      path += "?filter[theme]=#{filters[:theme]}&amp;filter[location]=#{filters[:location]}&amp;last_view=#{filters[:last_view]}"
+      path += "?filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}&amp;last_view=#{filters[:last_view]}"
     end
     
     path
@@ -59,6 +62,11 @@ class ApplicationController < ActionController::Base
   def render_500
     @status = 500
     render :template => 'error', :status => 500
+  end
+  
+  def render_404
+    @status = 404
+    render :template => 'error', :status => 404
   end
   
 end

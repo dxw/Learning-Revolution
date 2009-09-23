@@ -1,26 +1,45 @@
-<%= flash[:duplicates] %>
+
+<div id="content_header">
+  
+  <%= image_tag('headings/admin/hd_duplicate_events.gif', :class => 'heading') %>
+
+  <h3 class="heading">Possible duplicate events are listed here, for comparison and updating of info. Once info has been updated, you can then delete the duplicate.</h3>
+
+  <%= flash[:event] %>
+  <%= flash[:duplicates] %>
+
+</div>
+
+<div class="form_wrapper clearfix">
 
   <% form_tag do %>
     <% @duplicate_events.each do |duplicate_event| %>
-        <div class="duplicate">
+        
+        <div class="venue_pair">
+          <div class="duplicate">
 
-          <h3>New Event</h3>
-          <%= render :partial => "event_info_block", :locals => {:event => duplicate_event} %>
-          <p>
-            <%= submit_tag "Remove new event", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %> or
-            <%= link_to "Edit new event", edit_admin_event_path(duplicate_event) %>
-          </p>
-        </div>
-        <div class="duplicate">
-          <h3>Original Event</h3>
-          <%= render :partial => "event_info_block", :locals => {:event => duplicate_event.possible_duplicate} %>
-          <p>
-            <%= submit_tag "Remove original event", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %>
-           or <%= link_to "Edit original event", edit_admin_event_path(duplicate_event.possible_duplicate, :return_to => request.path) %>
-           </p>
+            <h3>New Event</h3>
+            <%= render :partial => "event_info_block", :locals => {:event => duplicate_event} %>
+            <p>
+              <%= submit_tag "Remove new event", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %> or
+              <%= link_to "Edit new event", edit_admin_event_path(duplicate_event) %>
+            </p>
+          </div>
+          <div class="duplicate">
+            <h3>Original Event</h3>
+            <%= render :partial => "event_info_block", :locals => {:event => duplicate_event.possible_duplicate} %>
+            <p>
+              <%= submit_tag "Remove original event", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %>
+             or <%= link_to "Edit original event", edit_admin_event_path(duplicate_event.possible_duplicate, :return_to => request.path) %>
+             </p>
+          </div>
+
+          
         </div>
     <% end %>
   <% end %>
 <% if @duplicate_events.blank? %>
   <h2>We don't think there are any duplicate events</h2>
 <% end %>
+
+</div>

@@ -1,0 +1,42 @@
+    <fieldset id="more_info" >
+      <legend><strong>Contact Info</strong></legend>
+      <p class="form_help">These details will not be publicly displayed</p>
+      <div id="further_info">
+
+        <div class="input clearfix input_with_tip">
+          <label for="event_organisation">Organisation <span class="optional">(optional)</span></label>
+          <%= event_form.text_field :organisation, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">If this event is being run by an organisation, enter the organisation's name here.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
+        </div>
+
+        <div class="input clearfix input_with_tip">
+          <label for="event_contact_name">Contact Name</label>
+          <%= event_form.text_field :contact_name, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the name of someone we can contact about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
+        </div>
+
+        <div class="input clearfix input_with_tip">
+          <label for="event_contact_phone_number">Contact Phone Number <span class="optional">(optional)</span></label>
+          <%= event_form.text_field :contact_phone_number, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the phone number of the person we can talk to about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
+        </div>
+
+        <div class="input clearfix input_with_tip">
+          <label for="event_contact_email_address">Contact Email Address</label>
+          <%= event_form.text_field :contact_email_address, :class => 'text' %>
+          <div class="input_tip">
+           <div class="tooltip">Please give us the email address of the person we can talk to about this event, if we need to.</div>
+           <div class="tooltip_arrow"></div>
+         </div>
+        </div>
+      </div>
+    </fieldset>

@@ -2,77 +2,40 @@
 <%= error_messages_for :event %>
 </div>
 
+<%= render :partial => 'events/time_venue_date', :locals => {:event_form => event_form}  %>
 
-<div class="input clearfix">
-<label for="event_title">Title</label><%= event_form.text_field :title , :class =>'text input' %>
-</div>
+<%= render :partial => 'events/event_contact', :locals => {:event_form => event_form}  %>
 
-<div class="input clearfix">
-<label for="event_description">Description</label><%= event_form.text_area :description, :cols => 38, :rows => 10, :class =>'text' %>
-</div>
+<fieldset>
+  <legend><strong>Admin Info</strong></legend>
 
-<div class="input clearfix">
-<label for="event_theme">Theme</label><%= event_form.text_field :theme , :class =>'text input' %>
-</div>
+    <p class="form_help">These details can only be changed by admins on this site.</p>
 
-<div class="input clearfix">
-<label for="event_event_type">Type</label><%= event_form.text_field :event_type , :class =>'text input' %>
-</div>
+    <div class="input clearfix">
+    <label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %>
+    </div>
 
-<div class="input clearfix datetime">
-<label for="event_start">Start</label><%= event_form.datetime_select :start %>
-</div>
+    <div class="input clearfix">
+    <label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %>
+    </div>
 
-<div class="input clearfix datetime">
-<label for="event_end">End</label><%= event_form.datetime_select :end %>
-</div>
 
-<div class="input clearfix">
-<label for="event_cost">Cost</label><%= event_form.text_field :cost , :class =>'text input' %>
-</div>
+    <div class="input clearfix">
+    <label for="event_published">Published</label><%= event_form.check_box :published %>
+    </div>
 
-<div class="input clearfix">
-<label for="event_min_age">Min Age</label><%= event_form.text_field :min_age , :class =>'text input' %>
-</div>
+    <div class="input clearfix">
+    <label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %>
+    </div>
 
-<div class="input clearfix">
-<label for="event_location_id">Venue</label><%= event_form.select :location_id, Venue.all.collect {|p| [ p.name, p.id ] } %>
-</div>
+    <div class="input clearfix">
+    <label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %>
+    </div>
 
-<div class="input clearfix">
-<label for="event_more_info">More info URL</label><%= event_form.text_field :more_info , :class =>'text input' %>
-</div>
+    <div class="input clearfix">
+    <label for="event_featured">Featured</label><%= event_form.check_box :featured %>
+    </div>
 
-<div class="input clearfix">
-<label for="event_organisation">Organisation</label><%= event_form.text_field :organisation , :class =>'text input' %>
-</div>
+  </fieldset>
 
-<div class="input clearfix">
-<label for="event_contact_name">Contact Name</label><%= event_form.text_field :contact_name , :class =>'text input' %>
-</div>
-
-<div class="input clearfix">
-<label for="event_contact_phone_number">Contact Phone Number </label><%= event_form.text_field :contact_phone_number , :class =>'text input' %>
-</div>
-
-<div class="input clearfix">
-<label for="event_contact_email_address">Contact Email Address</label><%= event_form.text_field :contact_email_address , :class =>'text input' %>
-</div>
-
-<div class="input clearfix">
-<label for="event_published">Published</label><%= event_form.check_box :published %>
-</div>
-
-<div class="input clearfix">
-<label for="event_picture">Picture</label><%= event_form.text_field :picture , :class =>'text input' %>
-</div>
-
-<div class="input clearfix">
-<label for="event_provider">Provider</label><%= event_form.select(:provider, [["None",""]]+Event.list_providers, {:selected => @event.provider}) %>
-</div>
-
-<div class="input clearfix">
-<label for="event_featured">Featured</label><%= event_form.check_box :featured %>
-</div>
-
-<%= return_to_hidden_field %>
+<div><%= return_to_hidden_field %></div>

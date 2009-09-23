@@ -197,14 +197,14 @@ p.post_code_error{
   background-position:-470px 1px;
 }
 /* promote are the only menu icons wide enough to need a different size */
-.nav li.promote{
+.nav li.promote_your_event{
   background-position:-595px 1px;
   width:245px;
   float:right;
   position:relative;
   margin-right:0px;
 }
-.nav li.promote a{
+.nav li.promote_your_event a{
   background-position:-595px 1px;
   width:245px;
 }
@@ -232,7 +232,7 @@ p.post_code_error{
 .nav li.news a:hover{
   background-position:-470px -69px;  
 }
-.nav li.promote a:hover{
+.nav li.promote_your_event a:hover{
   background-position:-595px -69px;
 }
 .nav li.about a:hover{
@@ -399,11 +399,6 @@ div.new_event{
   background-color:#fff;
   position:relative;
 }
-
-#content_header img.heading{
-  margin-left:40px;
-}
-
 
 .event_filtering {
   margin:0 00px;
@@ -619,6 +614,7 @@ ul.search_subscription_options li{
 span.optional{
   color:#8B1713;
   font-style:italic;
+  display: block;
 }
 .form_wrapper form select{
  
@@ -731,4 +727,23 @@ input.submit_your_event{
 
 #events_map {
   height: 600px;
+
+/* Errors */
+
+body.render_error .header h1 
+{
+   padding-left: 300px;
+}
+
+body.render_error .inner
+{
+   padding: 20px;
+}
+
+body.render_error h1
+{
+   font-size: 1.7em;
+   font-weight: bold;
+   
+   padding-bottom: 8px;
 }

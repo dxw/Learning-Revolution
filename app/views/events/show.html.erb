@@ -1,13 +1,11 @@
-<div class="events clearfix">
-  <h2>Event details</h2>
+    <div class="events clearfix">
+
+  <h2><%= image_tag('headings/hd_event_details2.gif', :alt => "Event details",:class => "heading") %></h2>
   
-  <div style="background: red; width: 200px; margin: 10px; padding: 20px; height: 20px">
-     <% if params[:last_view] == 'map' %>
-        <%= link_to "&laquo; Back to the map", current_events_path(:view => "map", :filter => params[:filter]) %>
-     <% else %>
-        <%= link_to "&laquo; Back to the calendar", current_events_path(:view => "calendar", :filter => params[:filter]) %>
-     <% end %>
-  </div>
+  <% if params %>
+  <h3 class="heading">Listings for <strong><%= "#{params[:month]} #{params[:day].to_i.ordinalize}, #{params[:year]}" %></strong>. <%= link_to "&laquo; Back to search results", current_events_path(:view => "calendar", :filter => params[:filter]), :class => "listing" %></h3> 
+
+<% end %>
 
   <div class="listing clearfix">
     <%= render :partial => "events_list", :locals => {:event => @event, :day => @event.start} %>
