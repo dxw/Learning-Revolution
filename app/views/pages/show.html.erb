@@ -1,6 +1,6 @@
 <div id="content_header">
 
-  <h2><%= image_tag("headings/pages/#{@page.title.gsub(' ','_')}.gif", :class => "heading", :alt => "#{@page.title}") %></h2>
+  <h2><%= image_tag("headings/pages/#{@page.title.downcase.gsub(' ','_')}.gif", :class => "heading", :alt => "#{@page.title}") %></h2>
   
 </div>
 

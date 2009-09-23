@@ -423,6 +423,11 @@ div#whats_next{
   width:959px;
 }
 
+div#whats_next .content_block h4
+{
+   padding-bottom: 8px;
+}
+
 ul.post_event_choices{
   margin-left:42px;
 }

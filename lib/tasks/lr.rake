@@ -75,7 +75,7 @@ namespace :lr do
       FasterCSV.foreach(RAILS_ROOT+"/lib/tasks/data/Norfolk event data.csv", :headers => :first_row) do |row|
         #"Code","Name","StartDate","NoOfWeeks","StartTime","ADDRESS1","ADDRESS2","ADDRESS3","ADDRESS4","POSTCODE"
         v = Venue.find(:first, :conditions => {:name => row["ADDRESS1"],
-                       :address_1 => row["ADDRESS2"],
+                       :address_1 => row["ADDRESS2"] ? row["ADDRESS2"] : 'Blank',
                        :address_2 => row["ADDRESS3"],
                        :address_3 => row["ADDRESS4"],
                        :county => "Norfolk",
@@ -83,7 +83,7 @@ namespace :lr do
         unless v
           v = Venue.new
           v.name = row["ADDRESS1"]
-          v.address_1 = row["ADDRESS2"] unless row["ADDRESS2"] == 'Norfolk'
+          v.address_1 = row["ADDRESS2"].blank? ? 'Blank' : row["ADDRESS2"]
           v.address_2 = row["ADDRESS3"] unless row["ADDRESS3"] == 'Norfolk'
           v.address_3 = row["ADDRESS4"] unless row["ADDRESS4"] == 'Norfolk'
           v.postcode = row["POSTCODE"].blank? ? 'NO5 1DE' : row["POSTCODE"]
@@ -106,7 +106,7 @@ namespace :lr do
         e.published = true
         e.featured = false
         e.save!
-        p "saved #{e.title}, id: #{e.id}"
+        p "saved #{e.title}, id: #{e.id}" unless RAILS_ENV=='test'
       end
     end
 
@@ -119,6 +119,7 @@ namespace :lr do
         unless v
           v = Venue.new
           v.name = "No Name"
+          v.address_1 = "No Address 1"
           v.postcode = row["Postcode"]
           v.save!
         end
@@ -148,7 +149,7 @@ namespace :lr do
         e.published = true
         e.featured = false
         e.save!
-        p "saved #{e.title}, id: #{e.id}"
+        p "saved #{e.title}, id: #{e.id}" unless RAILS_ENV=='test'
       end
     end
 
@@ -163,14 +164,14 @@ namespace :lr do
       FasterCSV.new(csv, :headers => :first_row).each do |row|
         #ActivityID,ActivityTitle,EventAddress1,EventAddress2,EventAddress3,EventTown,EventCountyID,EventPostCode,EventDetails,TelephonePublic,ContactNamePublic,EventDate,EventTime,BookingRequired,Cost,URL,KeyNum,SitePublishStatus,Active
         v = Venue.find(:first, :conditions => {:name => row["EventAddress1"] ? row["EventAddress1"] : 'No Name',
-                       :address_1 => row["EventAddress2"],
+                       :address_1 => row["EventAddress2"].blank? ? 'Blank' : row["EventAddress2"],
                        :address_2 => row["EventAddress3"],
                        :county => row["EventTown"],
                        :postcode => row["EventPostCode"]})
         unless v
           v = Venue.new
           v.name = row["EventAddress1"] ? row["EventAddress1"] : 'No Name'
-          v.address_1 = row["EventAddress2"]
+          v.address_1 = row["EventAddress2"].blank? ? 'Blank' : row["EventAddress2"]
           v.address_2 = row["EventAddress3"]
           v.city = row["EventTown"]
           v.postcode = row["EventPostCode"]
@@ -214,7 +215,7 @@ namespace :lr do
         end
         e.featured = false
         e.save!
-        p "saved #{e.title}, id: #{e.id}"
+        p "saved #{e.title}, id: #{e.id}" unless RAILS_ENV=='test'
       end
     end
 
