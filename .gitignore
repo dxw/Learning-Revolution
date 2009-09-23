@@ -13,6 +13,6 @@ coverage/*
 db/*.sqlite3
 public/specs.html
 *.tmproj
-vendor/gems
+vendor/gems*
 public/index.html
 log

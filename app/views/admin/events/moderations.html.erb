@@ -1,7 +1,20 @@
+
+<div id="content_header">
+  
+  <%= image_tag('headings/admin/hd_moderate_events.gif', :class => 'heading') %>
+
+  <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue.</h3>
+
+  <%= flash[:notices] %>
+
+</div>
+
 <div class="form_wrapper">
   
 <%= flash[:event] %>
 <% if @event %>
+  <div class="unmoderated_event">
+
   <%= render :partial => "event_info_block", :locals => {:event => @event} %>
   
   <% form_tag moderate_admin_event_path(@event), :method => :put do %>
@@ -9,6 +22,8 @@
     <%= link_to "Skip", "?from=#{@event.id}" %>
     <%= submit_tag "Delete" %>
   <% end %>
+
+  </div>
 </div>
 
 <% else %>

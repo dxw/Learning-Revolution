@@ -1,31 +1,39 @@
-  <div class="form_wrapper clearfix">
-
-    <div class="content_header clearfix">
-      <%= image_tag('headings/admin/hd_events_admin.gif', :class => 'header') %>
-
-    </div>
-
-    <%= flash[:event] %>
-    
-    <% form_tag admin_events_path, :method => :get, :id => "events_filter_form" do %>
-
-      <div class="filter_location clearfix filter">
-        <label for="title" class="text">Title</label>  
-        <%= text_field_tag "title", nil, :class => 'text' %>
-      </div>
-
-      <div class="submit_options clearfix">
-        <%= image_submit_tag('/images/buttons/bt_search_for_events.gif', :alt => "Search For Events", :class => "search_for_events") %>
-      </div>
-
-    <% end %>
+<div id="content_header">
   
-    <div class="secondary_options">
-      <ul>
-        <li><%= link_to "New Event", new_admin_event_path %></li>
-        <li><%= link_to "Find duplicates", duplicates_admin_events_path %></li>
-      </ul>
+  <%= image_tag('headings/admin/hd_events_admin.gif', :class => 'heading') %>
+
+  <h3>Search for events to update and edit here</h3>
+
+  <%= flash[:event] %>
+
+  <div class="form_wrapper clearfix">
+  
+  <% form_tag admin_events_path, :method => :get, :id => "events_filter_form" do %>
+
+    <div class="filter_location clearfix filter">
+      <label for="title" class="text">Title</label>  
+      <%= text_field_tag "title", nil, :class => 'text' %>
     </div>
+
+    <div class="submit_options clearfix">
+      <%= image_submit_tag('/images/buttons/bt_search_for_events.gif', :alt => "Search For Events", :class => "search_for_events") %>
+    </div>
+
+  <% end %>
+
+  <div class="secondary_options">
+    <ul>
+      <li><%= link_to "New Event", new_admin_event_path %></li>
+      <li><%= link_to "Find duplicates", duplicates_admin_events_path %></li>
+    </ul>
+  </div>
+
+
+  </div>
+  
+</div>
+
+  <div class="form_wrapper clearfix">
 
     <% unless @events.blank? %>
     <div id="results">
@@ -46,4 +54,4 @@
       <%= will_paginate @events %>
     </div>
 
-</div>
+  </div>
