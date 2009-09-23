@@ -57,4 +57,8 @@ describe "rake lr:import" do
     }
   end
 
+  it "should be happy with real_data" do
+    #@rake['lr:dev:real_data'].invoke
+  end
+
 end
