@@ -581,7 +581,7 @@ ul.search_subscription_options li{
   float:left;
 }
 /* ie6 needs a different style - remember to change */
-.form_wrapper form input#cyberevent{
+.form_wrapper form input.indented{
   margin: 5px 5px 0 100px;
   float:left;
 }

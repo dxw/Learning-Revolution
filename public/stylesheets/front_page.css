@@ -126,6 +126,12 @@ img.be_a_part_of_the_festival{
 .secondary_block{
   min-height:310px;
 }
+
+.featured .content_block_content li
+{
+   min-height: 50px;
+}
+
 .content_block_content li{
   position:relative;
   padding-left:85px;

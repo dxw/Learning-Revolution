@@ -390,6 +390,7 @@ ul li.foot .next {
 .add_a_new_venue input.add_this_venue{
   margin-left:120px;
 }
+
 /* Preview Styles */
 
 div.event_preview #event_details{
@@ -400,21 +401,49 @@ div.event_preview, div.form_submission{
   margin-left:auto;
   margin-right:auto;
   width:600px;
-  text-align:center;
+ 
 }
 div.event_preview #event_details{
   width:600px;
 }
-div.form_submission form{
-  width:578px;
-  margin-left:0px;
-  text-align:left;
+div.form_submission form div{
+   display: inline;
 }
-div.form_submission form p{
-  margin-bottom:12px;
-  font-style:italic;
+
+div.form_submission form{
+  margin:0px;
+  padding: 0;
+  text-align:left;
+  display: inline;
+  background: none;
+  border: none;
+}
+
+div.form_submission #edit_form
+{
+   margin-left: 40px;
+   width: 200px;
+}
+
+
+.submit_message
+{
+  margin: 20px auto;
+  
+  background-color:#fff;
+  border: 1px solid #C9C9C9;
+  
+  padding:18px;
+  width:564px;
+  
+  position:relative;
 }
  
+.submit_message p{
+  margin-bottom:12px;
+}
+
+
 /* What next */
 
 
