@@ -17,5 +17,5 @@ Then /^I should be denied access$/ do
 end
 
 Then %r/the page is valid XHTML/ do
-  response.body.should be_xhtml_strict
+  response.body.should(be_xhtml_strict) unless ENV['SKIP_VALIDATION']
 end
