@@ -47,6 +47,6 @@ module ActionView::Helpers::FormHelper
     #else
       #object = instance_variable_get '@'+object_name.to_s
     #end
-    "<span class='#{ object.andand.errors.andand[method] ? 'fieldWithErrors' : '' }'><input type='text' id='event_#{method}' name='event[#{method}]' class='text input' value='#{object.andand[method]}' /></span></p>"
+    "<span class='#{ object.andand.errors.andand[method] ? 'fieldWithErrors' : '' }'><input type='text' id='#{object_name}_#{method}' name='#{object_name}[#{method}]' class='text input' value='#{object.andand[method]}' /></span>"
   end
 end
