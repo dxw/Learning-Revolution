@@ -94,6 +94,13 @@ h3{
   font-size:18px;
   margin-bottom:12px;
 }
+
+#content_header h3{
+  margin-left:40px;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
 .results li{
   list-style: none;
   float:left;
@@ -114,16 +121,16 @@ h3{
 
 .m_duplicates .venue_pair{
   clear:left;
-  margin-top:12px;
+  padding: 12px 0;
 }
 
 .duplicate, .unmoderated_event{
-  width:420px;
+  width:410px;
   float:left;
   background:#fff;
   border:1px solid #c2c2c3;
   padding:6px;
-  margin-left:10px;
+  margin-left: 15px;
 }
 
 .unmoderated_event ul. .duplicate ul{
@@ -134,8 +141,6 @@ h3{
 
 .unmoderated_event .item, .duplicate .item{
   padding:6px;
-  border-left:1px solid #c2c2c3;
-  border-right:1px solid #c2c2c3;
 }
 .unmoderated_event .even , .duplicate .even{
   background:#f7f7f7;
@@ -143,6 +148,7 @@ h3{
 .unmoderated_event .label, .duplicate .label{
   float:left;
   width:100px;
+  font-weight: bold;
 }
 .unmoderated_event .value, .duplicate .value{
   float:left;
@@ -156,6 +162,9 @@ h3{
   margin-left:0px;
 }
 
+.unmoderated_event .skip{
+  float: right;
+}
 
 /* Pages Admin */
 
@@ -203,8 +212,24 @@ margin-bottom:12px;
   margin-top:0px;
   padding-top:28px;
   padding-bottom:24px;
+  
   width:970px;
 }
 .footer a{
   color:#8b1713;
+}
+
+.admin_flash
+{
+   margin: 0 0 10px 40px;
+   padding: 5px;
+   font-weight: bold;
+   background: #77BF77;
+   border: 1px solid green;
+}
+
+.errorExplanation
+{
+   background: #BF7777;
+   border: 1px solid red;
 }

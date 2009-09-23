@@ -6,13 +6,14 @@ class Admin::PagesController < Admin::AdminController
     @page = Page.find(params[:id])
   end
   def update
-    page = Page.find(params[:id])
-    page[:title] = request.params[:page][:title]
-    page[:slug] = request.params[:page][:slug]
-    page[:content] = request.params[:page][:content]
-    page.save
-
-    return_or_redirect_to :action => :index
-    flash[:page] = "Page saved successfully"
+    @page = Page.find(params[:id])
+    @page.update_attributes(params[:page])
+    
+    if @page.save then
+      return_or_redirect_to :action => :index
+      flash[:page] = "Page saved successfully"
+    else
+      render :action => :edit
+    end
   end
 end

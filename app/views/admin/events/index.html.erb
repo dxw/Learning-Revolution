@@ -4,14 +4,14 @@
 
   <h3>Search for events to update and edit here</h3>
 
-  <%= flash[:event] %>
+  <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
 
   <div class="form_wrapper clearfix">
   
   <% form_tag admin_events_path, :method => :get, :id => "events_filter_form" do %>
 
     <div class="filter_location clearfix filter">
-      <label for="title" class="text">Title</label>  
+      <label for="title" class="text">Event name</label>  
       <%= text_field_tag "title", nil, :class => 'text' %>
     </div>
 
@@ -23,6 +23,7 @@
 
   <div class="secondary_options">
     <ul>
+      <li><%= link_to "Moderate Events", "/admin/events/moderations" %></li>
       <li><%= link_to "New Event", new_admin_event_path %></li>
       <li><%= link_to "Find duplicates", duplicates_admin_events_path %></li>
     </ul>
@@ -30,28 +31,27 @@
 
 
   </div>
-  
 </div>
 
-  <div class="form_wrapper clearfix">
+<div class="form_wrapper clearfix">
 
-    <% unless @events.blank? %>
-    <div id="results">
-      
-      <h3>Results From your Search</h3>
-      
-      
-      <ul class="results clearfix">
-        <% @events.each do |event| %>
-          <li>
-          <p><%= link_to event.title, edit_admin_event_path(event) %></p>
-          <p><%= event.start.strftime("%A %e %b") %></p>
-          </li>
-        <% end %>
-      </ul>
-      <% end %>
+ <% unless @events.blank? %>
+ <div id="results">
+   
+   <h3>Results From your Search</h3>
+   
+   
+   <ul class="results clearfix">
+     <% @events.each do |event| %>
+       <li>
+       <p><%= link_to event.title, edit_admin_event_path(event) %></p>
+       <p><%= event.start.strftime("%A %e %b") %></p>
+       </li>
+     <% end %>
+   </ul>
+   <% end %>
 
-      <%= will_paginate @events %>
-    </div>
+   <%= will_paginate @events %>
+ </div>
 
-  </div>
+</div>

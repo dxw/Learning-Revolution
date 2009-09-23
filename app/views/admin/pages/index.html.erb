@@ -1,13 +1,10 @@
-<div class="pages_admin">
-    
-  <div class="content_header clearfix">
-    <%= image_tag('headings/admin/hd_pages_admin.gif', :class => 'header') %>
-  </div>
+<div id="content_header">
+  <%= image_tag('headings/admin/hd_pages_admin.gif', :class => 'heading') %>
+  <h3>Manage the content of static pages</h3>
 
-  <%= flash[:page] %>
+  <%= (flash[:page].nil? ? '' : "<div class='admin_flash'>#{flash[:page]}</div>") %>
 
-
-  <div class="page_content clearfix">
+  <div class="form_wrapper clearfix">
 
       <% unless @pages.blank? %>
 

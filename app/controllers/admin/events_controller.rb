@@ -18,7 +18,7 @@ class Admin::EventsController < Admin::AdminController
   end
   
   def index
-    @events = Event.paginate(:all, :page => params[:page], :conditions => ["title LIKE ?", "%#{params[:title]}%"])
+    @events = Event.paginate(:all, :page => params[:page], :conditions => ["title LIKE ?", "%#{params[:title]}%"], :order => 'start')
   end
   
   def duplicates
@@ -38,10 +38,10 @@ class Admin::EventsController < Admin::AdminController
     event = Event.find(params[:id])
     if params[:commit] == "Approve"
       event.approve!
-      flash[:event] = "#{event.title} has been published"
+      flash[:event] = "<em>#{event.title}</em> has been published"
     elsif params[:commit] == "Delete"
       event.destroy
-      flash[:event] = "#{event.title} has been deleted"
+      flash[:event] = "<em>#{event.title}</em> has been deleted"
     end
     redirect_to moderations_admin_events_path, :from => event.id
   end

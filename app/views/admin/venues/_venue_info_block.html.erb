@@ -1,7 +1,23 @@
-<p><strong>Name:</strong> <%= venue.name %>          </p>
-<p><strong>Address 1:</strong> <%= venue.address_1 %></p>
-<p><strong>Address 2:</strong> <%= venue.address_2 %></p>
-<p><strong>Address 3:</strong> <%= venue.address_3 %></p>
-<p><strong>City:</strong> <%= venue.city %>          </p>
-<p><strong>County:</strong> <%= venue.county %>      </p>
-<p><strong>Postcode:</strong> <%= venue.postcode %>  </p>
+<ul>
+  <li class="item clearfix odd">
+    <div class="label">Name</div> <div class="value"><%= venue.name %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Address 1</div> <div class="value"><%= venue.address_1 %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Address 2</div> <div class="value"><%= venue.address_2 %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Address 3</div> <div class="value"><%= venue.address_3 %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">City</div> <div class="value"><%= venue.city %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">County</div> <div class="value"><%= venue.county %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Postcode</div> <div class="value"><%= venue.postcode %></div>
+  </li>
+</ul>
