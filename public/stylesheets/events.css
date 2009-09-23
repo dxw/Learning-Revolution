@@ -417,16 +417,26 @@ div.form_submission form p{
  
 /* What next */
 
+
+
 div#whats_next{
   width:959px;
 }
 
+div#whats_next .content_block h4
+{
+   padding-bottom: 8px;
+}
+
 ul.post_event_choices{
   margin-left:42px;
+  width:900px;
 }
 
 ul.post_event_choices li.content_block{
-  list-style: none;
+  background-image:none;
+  background-color:#fff;
+  list-style:none;
   padding:12px;
   width:250px;
   position:relative;
@@ -434,11 +444,16 @@ ul.post_event_choices li.content_block{
 
 ul.post_event_choices li.content_block p{
   font-size:1.33em;
-  margin-top:12px;
+  margin-top:24px;
+}
+ul.post_event_choices li.content_block p a{
+  font-size:0.9em;
 }
 ul.post_event_choices li.content_block h4 a{
   display:block;
   height:300px;
   position:absolute;
   width:250px;
+  font-size:1.33em;
+  margin-bottom:12px;
 }
