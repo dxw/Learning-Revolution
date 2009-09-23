@@ -13,7 +13,7 @@
   <% if @new_venue and !@new_venue.errors.blank? %>
     <div id="errors" class="ui-widget">
       <div class="ui-state-error ui-corner-all">
-        <p><%= error_messages_for :new_venue %></p>
+        <%= error_messages_for :new_venue %>
       </div>
     </div>
   <% end %>
