@@ -21,7 +21,10 @@ class Admin::EventsController < Admin::AdminController
   end
   
   def index
-    @events = Event.paginate(:all, :page => params[:page], :conditions => ["title LIKE ?", "%#{params[:title]}%"], :order => 'start')
+    a = "%#{params[:title]}%"
+    arr = []
+    cond = %w[title description theme event_type cost min_age organisation contact_name contact_phone_number contact_email_address].map{|field|arr<<a;"#{field} LIKE ?"}.join(' OR ')
+    @events = Event.paginate(:all, :page => params[:page], :conditions => [cond]+arr, :order => 'start')
   end
   
   def duplicates
