@@ -10,7 +10,7 @@ Feature: Event admin
     Given a valid venue called "London"
     When I go to the event admin index page
     And I follow "New event"
-    I fill in "Event name" with "New event title"
+    And I fill in "Event name" with "New event title"
     And I fill in "Description" with "event description"
     And I fill in "Theme" with "event theme"
     And I fill in "Type" with "event type"
