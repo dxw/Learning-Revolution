@@ -430,6 +430,7 @@ div#whats_next .content_block h4
 
 ul.post_event_choices{
   margin-left:42px;
+  width:900px;
 }
 
 ul.post_event_choices li.content_block{

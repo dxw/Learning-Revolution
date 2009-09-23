@@ -126,3 +126,10 @@ li.event_link a{
     height: 200px; /*must have*/
 }
 
+
+#events_success .content{
+  width:959px;
+}
+#events_success .footer{
+  width:959px;  
+}
