@@ -26,9 +26,15 @@
 
       <h4><%= link_to (image_tag('headings/hd_add_another_event.gif', :alt => "Add another Event")) %></h4>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>
+      Have you got another event you could add to the calendar?    
+    </p>
     
-    <p><%= link_to "Add another event to the listings", current_events_path %></p>
+    <p>
+      You can submit any event you think is suitable. You don't have to be running it yourself. 
+    </p>
+    
+    <p><%= link_to "Add another event  &raquo;", current_events_path+"#new_event" %></p>
     
     </li>
     
@@ -36,9 +42,15 @@
     
     <h4><%= link_to image_tag('headings/hd_promote_your_event.gif', :alt => "Find out how to promote your event"), "" %></h4>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>
+      If you're running an event, it's usually essential to promote it well.
+    </p>
 
-    <p><%= link_to "See our resources section", current_events_path %></p>
+    <p>
+      We've got lots of tips and tricks to help make your event really successful.
+    </p>
+    
+    <p><%= link_to "Promote your event &raquo;", "/promote-your-event" %></p>
 
     </li>
 
@@ -46,9 +58,11 @@
     
     <h4><%= link_to image_tag('headings/hd_meet_other_organisers.gif', :alt => "Meet other organisers"), "" %></h4>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Join our social network to meet fellow event organisers.</p>
+    
+    <p>You can also share your views with us, and help to develop a culture of learning for all adults.</p>
 
-    <p><%= link_to "Join our network on Ning", current_events_path %></p>
+    <p><%= link_to "Join our network on Ning", "http://thelearningrevolution.ning.com/" %></p>
     </li>
     
   </ul>
