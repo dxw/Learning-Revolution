@@ -20,6 +20,10 @@ Given /^the event "([^\"]*)" has the type "([^\"]*)"$/ do |title, type|
   find_or_create(Event, :title => title).update_attribute(:event_type, type)
 end
 
+Given /^the event "([^\"]*)" has the description "([^\"]*)"$/ do |title, description|
+  find_or_create(Event, :title => title).update_attribute(:description, description)
+end
+
 Given /^the event "([^\"]*)" is located at lat "([^\"]*)" and lng "([^\"]*)"$/ do |title, lat, lng|
   event = find_or_create(Event, :title => title)
   event.update_attribute(:lat, lat)

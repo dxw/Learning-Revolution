@@ -116,4 +116,25 @@ Feature: Event admin
     Then I should not see "event 1 has been deleted"
     And I should not see "event 1 has been published"
     And I should see "event 2"
-  
+
+  Scenario: Searching for an event by title
+    Given a valid event called "apples"
+    When I go to the event admin index page
+    And I fill in "Event name" with "apples"
+    And I press "Search For Events"
+    Then I should see "apples"
+
+  Scenario: Searching for an event by title, differing case
+    Given a valid event called "apples"
+    When I go to the event admin index page
+    And I fill in "Event name" with "Apples"
+    And I press "Search For Events"
+    Then I should see "apples"
+
+  Scenario: Searching for an event by description
+    Given a valid event called "apples"
+    And the event "apples" has the description "bananas"
+    And I go to the event admin index page
+    And I fill in "Event name" with "bananas"
+    And I press "Search For Events"
+    Then I should see "apples"
