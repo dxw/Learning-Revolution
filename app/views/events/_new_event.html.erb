@@ -11,7 +11,7 @@
     <%= render :partial => 'event_contact', :locals => {:event_form => event_form} %>
 
    <div class="input clearfix input_with_tip">
-     <p><%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'input indented', :checked => !params['edit.x'].blank? %>
+     <p><%= check_box_tag :accept_tnc, 'true', params[:accept_tnc], :class => 'input indented', :checked => !params['edit'].blank? %>
      <label for="accept_tnc" class="indented">I accept the <%= link_to 'terms and conditions', {:controller => 'pages', :action => 'show', :slug => 'terms_conditions'}, {:popup => true} %></label></p>
      <div class="input_tip">
        <div class="tooltip">The terms and conditions must be accepted.</div>
