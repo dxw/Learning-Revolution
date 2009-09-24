@@ -41,10 +41,6 @@ describe "rake lr:import" do
     lambda { @rake[@task].invoke(RAILS_ROOT+"/lib/tasks/lr.rake") }.should raise_error(IOError)
   end
 
-  it "should fail when cyberevent is true, but there's an address" do
-    lambda { @rake[@task].invoke(RAILS_ROOT+"/spec/rake_data/cyberevent_true_but_has_addr.csv") }.should raise_error(IOError)
-  end
-
   it "should fail when cyberevent is false, but there's no address" do
     lambda { @rake[@task].invoke(RAILS_ROOT+"/spec/rake_data/cyberevent_false_but_no_addr.csv") }.should raise_error(IOError)
   end
