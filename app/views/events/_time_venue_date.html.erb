@@ -75,7 +75,7 @@
 <div class="input clearfix input_with_tip">
   <p>
     <label for="venue_postcode">Event Postcode</label>
-    <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : '' %>"/>
+    <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.postcode : '') %>"/>
   </p>
 
   <p>
