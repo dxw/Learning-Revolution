@@ -7,7 +7,7 @@
            <p class="event <%= event.theme %>"><%= link_to event_accessibility_info(event) + h(event.title), path_for_event(event, params[:filter].merge({:last_view => 'calendar'})), {:title => h(event.title), :class => "tip"} %></p>
         <% end %>
         <% if events[3] %>
-        <p class="more_link"><%= link_to "More on the #{day.day.ordinalize} &raquo;", path_for_event(events[3]) %></p>
+        <p class="more_link"><%= link_to "More on the #{day.day.ordinalize} &raquo;", path_for_event(events[3], params[:filter].merge({:last_view => 'calendar'})) %></p>
         <% end %>
       <% end %>
     <% end %>

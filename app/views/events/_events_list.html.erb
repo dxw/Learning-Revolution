@@ -1,18 +1,18 @@
 <div id="events_list" class="span-6">
   <ul class="clearfix">
     <li class="header clearfix">
-      <div class="incrementor"><%= link_to "&laquo; Prev day", path_for_event(Event.first_for_day(day-1.day)), :class => 'trigger' %></div>
-      <h2><%= day.strftime("%A %e %b") %></h2>
-      <div class="incrementor next"><%= link_to "Next day &raquo;", path_for_event(Event.first_for_day(day+1.day)), :class => 'trigger' %></div>
+      <div class="incrementor"><%=prev_link(@event.start.day, filter, params[:last_view]) %></div>
+      <h2><%= this_event_start.strftime("%A %e %b") %></h2>
+      <div class="incrementor next"><%=next_link(@event.start.day, filter, params[:last_view]) %></div>
     </li>
 
     <% @event.same_day_events.each do |event| %>
-      <li class="event_link <%= "active"if event.slug == params[:id] %>"><%= (event.slug == params[:id]) ? "<span>#{event.title}</span>" : (link_to event.title, path_for_event(event)) %></li>
+      <li class="event_link <%= "active" if event.slug == params[:id] %>"><%= (event.slug == params[:id]) ? "<span>#{event.title}</span>" : (link_to event.title, path_for_event(event)) %></li>
     <% end %>
     
     <li class="foot clearfix">
-      <div class="incrementor"><%= link_to "&laquo; Prev day", path_for_event(Event.first_for_day(day-1.day)), :class => 'trigger' %></div>
-      <div class="incrementor next"><%= link_to "Next day &raquo;", path_for_event(Event.first_for_day(day+1.day)), :class => 'trigger' %></div>
+      <div class="incrementor"><%=prev_link(@event.start.day, filter, params[:last_view]) %></div>
+      <div class="incrementor next"><%=next_link(@event.start.day, filter, params[:last_view]) %></div>
     </li>
   </ul>  
 </div>

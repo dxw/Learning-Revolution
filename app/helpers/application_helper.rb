@@ -4,8 +4,8 @@ module ApplicationHelper
     hidden_field_tag "return_to", params[:return_to]
   end
     
-  def path_for_event(event, filters = nil)
-    controller.path_for_event(event, filters)
+  def path_for_event(event, filters = nil, last_view = 'calendar')
+    controller.path_for_event(event, filters, last_view)
   end
   
   def url_for_event(event)
