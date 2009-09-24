@@ -22,6 +22,11 @@ padding-top:18px;
   width:970px;
 }
 
+.admin .content_wrapper h3{
+  font-family: "gunplay-1","gunplay-2";
+  font-weight:normal;
+  }
+
 .admin .content_wrapper h3 a{
   text-decoration: underline;
   color:#8B1713;
@@ -79,6 +84,7 @@ float:left;
   list-style: none;
   margin-left:12px;
   padding:6px;
+
 }
 #results{
   margin-left:42px;
