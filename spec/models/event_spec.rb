@@ -310,4 +310,10 @@ describe Event do
     b = EventSpecHelper.save(:start => Time.parse("1st October 2009 12:00"))
     a.same_day_events.should include(b)
   end
+
+  it "should be happy with BST in first_for_day" do
+    a = EventSpecHelper.save(:start => Time.parse("5th October 2009 00:00"))
+    b = EventSpecHelper.save(:start => Time.parse("5th October 2009 12:00"))
+    Event.first_for_day.should == a
+  end
 end

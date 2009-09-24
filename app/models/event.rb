@@ -121,9 +121,10 @@ class Event < ActiveRecord::Base
   end  
   
   def self.first_for_day(day)
-    #Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
-    
-    Event.find(:first, :conditions => ["DATE(start) = DATE(?) AND published = 1", day], :order => "start ASC")      
+    zone_beginning_of_day = Time.local(2009, 10, day)
+    utc_beginning_of_day = zone_beginning_of_day.utc
+    utc_end_of_day = (utc_beginning_of_day+1.day)
+    Event.find(:first, :conditions => ["start >= ? AND start < ? AND published = 1", utc_beginning_of_day.strftime('%Y-%m-%d %H:%M'), utc_end_of_day.strftime('%Y-%m-%d %H:%M')], :order => "start ASC")
   end
   
   def self.step_backwards_from(event)
