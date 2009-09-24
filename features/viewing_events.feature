@@ -31,3 +31,32 @@ Feature: Viewing events
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
     And the page is valid XHTML
+    
+  Scenario: Browsing backwards through the event list
+    Given a valid event called "Event 1" 
+    And a valid event called "Event 2"
+    And the event "Event 1" starts on "1st October 2009 12:00"
+    And the event "Event 2" starts on "2nd October 2009 12:00"
+    When I go to the event page for "Event 2"
+    Then I should see "Event 2"
+    And I should see "2 Oct"
+    And the page is valid XHTML
+    When I follow "« Prev day"
+    Then I should see "Event 1"
+    And I should see "1 Oct"
+    And the page is valid XHTML
+    
+  Scenario: Browsing forwards through the event list
+    Given a valid event called "Event 1" 
+    And a valid event called "Event 2"
+    And the event "Event 1" starts on "1st October 2009 12:00"
+    And the event "Event 2" starts on "2nd October 2009 12:00"
+    When I go to the event page for "Event 1"
+    Then I should see "Event 1"
+    Then I should see "1 Oct"
+    And the page is valid XHTML
+    When I follow "Next day »"
+    Then I should see "Event 2"
+    Then I should see "2 Oct"
+    And the page is valid XHTML
+    
