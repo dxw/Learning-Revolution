@@ -40,9 +40,6 @@ class ApplicationController < ActionController::Base
     return "/" unless event
     
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
-    
-    puts filters.inspect
-    
     unless filters.nil? || filters.empty?
       path += "?filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}&amp;last_view=#{last_view}"
     end

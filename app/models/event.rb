@@ -123,6 +123,14 @@ class Event < ActiveRecord::Base
     Event.find(:first, :conditions => ["DATE(start) = DATE(?) AND published = 1", day], :order => "start ASC")      
   end
   
+  def self.step_backwards_from(event)
+    Event.find(:first, :conditions => ["DATE(start) < DATE(?) AND published = 1", event.start], :order => "start DESC", :limit => 1)
+  end
+  
+  def self.step_forwards_from(event)
+    Event.find(:first, :conditions => ["DATE(start) > DATE(?) AND published = 1", event.start], :order => "start ASC", :limit => 1)
+  end
+  
   def check_duplicate
     possible_duplicate?
     true
