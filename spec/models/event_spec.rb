@@ -304,5 +304,10 @@ describe Event do
     @event.contact_email_address = 'tom at thedextrousweb.com'
     @event.should_not be_valid
   end
-  
+
+  it "should be happy with BST" do
+    a = EventSpecHelper.save(:start => Time.parse("1st October 2009 00:00"))
+    b = EventSpecHelper.save(:start => Time.parse("1st October 2009 12:00"))
+    a.same_day_events.should include(b)
+  end
 end
