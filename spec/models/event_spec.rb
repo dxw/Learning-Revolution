@@ -239,11 +239,10 @@ describe Event do
   end
   
   it "should be able to find the first event of a day" do
-    Date.stub!(:today).and_return(Time.parse("2nd October 2009").to_date)
     past_event = EventSpecHelper.save(:start => Time.parse("1st October 2009 10:00"))
     present_event = EventSpecHelper.save(:start => Time.parse("2nd October 2009 10:00"))
     future_event = EventSpecHelper.save(:start => Time.parse("3rd October 2009 10:00"))
-    Event.first_for_today.should == present_event
+    Event.first_for_day(Time.parse("2nd October 2009 10:00")).should == present_event
   end
   
   it "should generate a slug of the-events-title-id from 'The Event's Title'" do

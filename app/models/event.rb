@@ -115,11 +115,7 @@ class Event < ActiveRecord::Base
     
   def same_day_events
     Event.find(:all, :conditions => ["DATE(start) = DATE(?) AND published = 1", self.start.utc.to_date])
-  end
-  
-  def self.first_for_today
-    self.first_for_day(Date.today)
-  end
+  end  
   
   def self.first_for_day(day)
     #Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
