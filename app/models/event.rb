@@ -114,7 +114,10 @@ class Event < ActiveRecord::Base
   end
     
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = DATE(?) AND published = 1", self.start.utc.to_date])
+    zone_beginning_of_day = Time.local(self.start.year, self.start.month, self.start.day)
+    utc_beginning_of_day = zone_beginning_of_day.utc
+    utc_end_of_day = (utc_beginning_of_day+1.day)
+    Event.find(:all, :conditions => ["start >= ? AND start < ? AND published = 1", utc_beginning_of_day.strftime('%Y-%m-%d %H:%M'), utc_end_of_day.strftime('%Y-%m-%d %H:%M')])
   end  
   
   def self.first_for_day(day)
