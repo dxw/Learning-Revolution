@@ -1,0 +1,145 @@
+
+/* Add styling for header and footer sections */
+.header, .footer, .container {
+  width:80%;
+  clear:both;
+}
+
+.header h1{
+  float:left;
+}
+#direct_gov_link{
+  float:right;
+}
+
+
+body {
+	font-family: georgia, serif;
+	background: white;
+	font-size: 11pt;
+	margin: 0 5%;
+}
+
+td, th, h1, h2, h3, h4, h5, h6 {
+	font-family: verdana, sans-serif;
+}
+
+li {
+	font-family: georgia, serif;
+}
+
+p {
+	font-size: 10pt;
+	font-family: georgia, serif;
+	line-height: 1.2em;
+}
+a {
+  color:#781B30;
+}
+
+
+
+
+
+
+div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #new_event, .hidden, .details_list .last, .incrementor, .heading a.listing, li.foot {
+  display:none;
+}
+
+/* displaying the table */
+
+.calendar_view{
+  width:860px;
+}
+.events .calendar_view table {
+  margin-left:40px;
+  margin-top:40px;
+  margin-bottom:40px;
+  width:100%;
+  background-color:#fff;
+}
+.events .calendar_view th {
+  border-bottom: 1px solid #DDD;
+  text-align:center;
+  color:#777;
+  padding-bottom:8px;
+}
+.events .calendar_view td {
+  border-bottom: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  vertical-align: top;
+  width:14%;
+}
+
+.events .calendar_view td .day {
+
+  padding:4px 4%;
+  text-align:right;
+  font-size:0.83em;
+  font-style:italic;
+}
+.events .calendar_view td.notmonth {
+  background-color: #DDD;
+}
+.events .calendar_view .event a {
+  display:block;
+  margin-top:5px;
+  text-decoration:none;
+  color:#781B30;
+  overflow:hidden;
+}
+.events .calendar_view .event a.allday {
+  background-color:#781B30;
+  color:#fff;
+}
+
+.events .calendar_view .more_link
+{
+   text-align: center;
+   margin: 8px 0 0 0;
+   
+   background: #DFC4C3;
+}
+
+.events .calendar_view .more_link a{
+  font-style:italic;
+  font-size:0.9em;
+  text-decoration: none;
+}
+.events .calendar_view a:hover{
+  text-decoration: underline;
+}
+
+
+/* Single Listing */
+
+
+#event_details{
+  padding-bottom:36pt;
+  width:80%;
+
+  background-color:#fff;
+  text-align:left;
+}
+
+#event_details .detail_list{
+  border-bottom:1px solid #c9c9c9;
+  background:#eee;
+  padding-bottom:12px;
+}
+#event_details .detail_list .span-2{
+  margin-top:12px;
+  float:left;
+  width:25%;
+}
+#event_details .detail_list .last{
+  display:none;
+}
+#event_details .detail{
+  min-height:60px;
+  padding-right:10px;
+}
+#event_details .description{
+  clear:left;
+  float:left;
+}
