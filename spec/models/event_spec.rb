@@ -244,7 +244,7 @@ describe Event do
     future_event = EventSpecHelper.save(:start => Time.parse("3rd October 2009 10:00"))
     Event.first_for_day(Time.parse("2nd October 2009 10:00")).should == present_event
   end
-
+  
   it "should generate a slug of the-events-title-id from 'The Event's Title'" do
     @event.title = "The Event's Title"
     @event.stub!(:id).and_return(23)

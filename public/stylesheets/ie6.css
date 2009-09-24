@@ -70,6 +70,12 @@ h3.filter_description{
   height:18px;
 }
 
+/* For the News Page */
+
+.content_wrapper .content{
+margin-left:21px
+}
+
 /* For the Events pages */
 
 .example_calendar_view{
