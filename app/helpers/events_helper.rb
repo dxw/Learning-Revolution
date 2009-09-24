@@ -11,13 +11,13 @@ module EventsHelper
   end
   
   def prev_link(day, filters, last_view) 
-    return make_link(day-1, "&laquo; Prev day", filters, last_view) if day > 1
+    return make_link(day-1, "&laquo; Prev", filters, last_view) if day > 1
     
     ''
   end
   
   def next_link(day, filters, last_view)
-    return make_link(day+1, "Next day &raquo;", filters, last_view) if day < 31
+    return make_link(day+1, "Next &raquo;", filters, last_view) if day < 31
     
     ''
   end
