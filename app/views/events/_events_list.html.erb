@@ -1,9 +1,9 @@
 <div id="events_list" class="span-6">
   <ul class="clearfix">
     <li class="header clearfix">
-      <div class="incrementor"><%=prev_link(@event.start.day, filter, params[:last_view]) %></div>
-      <h2><%= this_event_start.strftime("%A %e %b") %></h2>
-      <div class="incrementor next"><%=next_link(@event.start.day, filter, params[:last_view]) %></div>
+      <div class="incrementor"><%=prev_link(@event, filter, params[:last_view]) %></div>
+      <h2><%= @event.start.strftime("%A %e %b") %></h2>
+      <div class="incrementor next"><%=next_link(@event, filter, params[:last_view]) %></div>
     </li>
 
     <% @event.same_day_events.each do |event| %>
@@ -11,8 +11,8 @@
     <% end %>
     
     <li class="foot clearfix">
-      <div class="incrementor"><%=prev_link(@event.start.day, filter, params[:last_view]) %></div>
-      <div class="incrementor next"><%=next_link(@event.start.day, filter, params[:last_view]) %></div>
+      <div class="incrementor"><%=prev_link(@event, filter, params[:last_view]) %></div>
+      <div class="incrementor next"><%=next_link(@event, filter, params[:last_view]) %></div>
     </li>
   </ul>  
 </div>

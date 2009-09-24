@@ -245,6 +245,34 @@ describe Event do
     Event.first_for_day(Time.parse("2nd October 2009 10:00")).should == present_event
   end
   
+  it "should find the next event by day" do
+    event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
+    event3 = EventSpecHelper.save(:start => Time.parse("3nd October 2009"))
+    Event.step_forwards_from(event1).should==event2
+  end
+  
+  it "should find the next event by day when there is an intervening day with no events" do
+    event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event3 = EventSpecHelper.save(:start => Time.parse("3nd October 2009"))
+    
+    Event.step_forwards_from(event1).should==event3
+  end
+  
+  it "should find the previous event by day" do
+    event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event2 = EventSpecHelper.save(:start => Time.parse("2nd October 2009"))
+    event3 = EventSpecHelper.save(:start => Time.parse("3nd October 2009"))
+    Event.step_backwards_from(event2).should==event1
+  end
+  
+  it "should find the previous event by day when there is an intervening day with no events" do
+    event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
+    event3 = EventSpecHelper.save(:start => Time.parse("3nd October 2009"))
+    
+    Event.step_backwards_from(event3).should==event1
+  end
+  
   it "should generate a slug of the-events-title-id from 'The Event's Title'" do
     @event.title = "The Event's Title"
     @event.stub!(:id).and_return(23)

@@ -41,7 +41,7 @@ Feature: Viewing events
     Then I should see "Event 2"
     And I should see "2 Oct"
     And the page is valid XHTML
-    When I follow "« Prev day"
+    When I follow "« Prev"
     Then I should see "Event 1"
     And I should see "1 Oct"
     And the page is valid XHTML
@@ -55,7 +55,7 @@ Feature: Viewing events
     Then I should see "Event 1"
     Then I should see "1 Oct"
     And the page is valid XHTML
-    When I follow "Next day »"
+    When I follow "Next »"
     Then I should see "Event 2"
     Then I should see "2 Oct"
     And the page is valid XHTML
