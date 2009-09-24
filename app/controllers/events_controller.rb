@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 
   def show
     if params[:id].nil?
-      @event = Event.first_for_day("2009-10-#{params[:day]}")
+      @event = Event.first_for_day(Time.zone.local(2009, 10, params[:day].to_i))
     else
       @event = Event.find_by_slug(params[:id])
     end
