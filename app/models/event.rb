@@ -114,13 +114,25 @@ class Event < ActiveRecord::Base
   end
     
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = DATE(?) AND published = 1", self.start.utc.to_date])
+    zone_beginning_of_day = Time.local(self.start.year, self.start.month, self.start.day)
+    utc_beginning_of_day = zone_beginning_of_day.utc
+    utc_end_of_day = (utc_beginning_of_day+1.day)
+    Event.find(:all, :conditions => ["start >= ? AND start < ? AND published = 1", utc_beginning_of_day.strftime('%Y-%m-%d %H:%M'), utc_end_of_day.strftime('%Y-%m-%d %H:%M')])
   end  
   
   def self.first_for_day(day)
-    #Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
-    
-    Event.find(:first, :conditions => ["DATE(start) = DATE(?) AND published = 1", day], :order => "start ASC")      
+    zone_beginning_of_day = Time.local(day.year, day.month, day.day)
+    utc_beginning_of_day = zone_beginning_of_day.utc
+    utc_end_of_day = (utc_beginning_of_day+1.day)
+    Event.find(:first, :conditions => ["start >= ? AND start < ? AND published = 1", utc_beginning_of_day.strftime('%Y-%m-%d %H:%M'), utc_end_of_day.strftime('%Y-%m-%d %H:%M')], :order => "start ASC")
+  end
+  
+  def self.step_backwards_from(event)
+    Event.find(:first, :conditions => ["DATE(start) < DATE(?) AND published = 1", event.start], :order => "start DESC", :limit => 1)
+  end
+  
+  def self.step_forwards_from(event)
+    Event.find(:first, :conditions => ["DATE(start) > DATE(?) AND published = 1", event.start], :order => "start ASC", :limit => 1)
   end
   
   def check_duplicate

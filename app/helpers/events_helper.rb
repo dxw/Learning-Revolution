@@ -10,25 +10,25 @@ module EventsHelper
     info += "</span>"
   end
   
-  def prev_link(day, filters, last_view) 
-    return make_link(day-1, "&laquo; Prev", filters, last_view) if day > 1
-    
+  def prev_link(event, filters, last_view)
+    target = Event.step_backwards_from(event)
+    return make_link(target, "&laquo; Prev", filters, last_view) unless target.nil?
+
     ''
   end
   
-  def next_link(day, filters, last_view)
-    return make_link(day+1, "Next &raquo;", filters, last_view) if day < 31
-    
+  def next_link(event, filters, last_view)
+    target = Event.step_forwards_from(event)
+    return make_link(target, "Next &raquo;", filters, last_view) unless target.nil?
     ''
   end
   
   private 
-  def make_link(day, text, filters, last_view)
-    link = "/events/2009/October/#{day-1}?last_view=#{last_view}"
-      
-    unless filters.nil? || filters.empty?
-      link += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}"
-    end
+  def make_link(event, text, filters, last_view)
+    link = "/events/2009/October/#{event.start.day}"
+    
+    link += "?last_view=#{last_view}" unless last_view.nil? || last_view.empty?
+    link += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
     
     link_to(text, link, :class => 'trigger')
   end
