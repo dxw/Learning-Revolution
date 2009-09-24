@@ -43,9 +43,7 @@ class EventsController < ApplicationController
       render :template => 'error', :status => 404
     else
       add_page_title @event.title
-      
-      puts params.inspect
-      
+            
       redirect_to path_for_event(@event, params[:filter], params[:last_view]).gsub('&amp;', '&') and return if request.format == 'html' && request.path != path_for_event(@event)
       
       respond_to do |format|
