@@ -64,6 +64,10 @@ border:1px solid #c2c2c3;
 padding:12px;
 float:left;
 }
+.secondary_options ul li{
+  font-family: "gunplay-1","gunplay-2";
+  font-size:1.33em;
+}
 .page_list{
   margin-left:42px;
   width:260px;
