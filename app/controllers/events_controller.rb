@@ -33,8 +33,8 @@ class EventsController < ApplicationController
 
   def show
     if params[:id].nil?
-      puts params.inspect
       @event = Event.first_for_day("2009-10-#{params[:day]}")
+      puts @event.start.inspect
     else
       @event = Event.find_by_slug(params[:id])
     end

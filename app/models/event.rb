@@ -114,7 +114,7 @@ class Event < ActiveRecord::Base
   end
     
   def same_day_events
-    Event.find(:all, :conditions => ["DATE(start) = ? AND published = 1", self.start.utc.to_date])
+    Event.find(:all, :conditions => ["DATE(start) = DATE(?) AND published = 1", self.start.utc.to_date])
   end
   
   def self.first_for_today
@@ -122,7 +122,9 @@ class Event < ActiveRecord::Base
   end
   
   def self.first_for_day(day)
-    Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
+    #Event.find(:first, :conditions => ["DATE(start) >= ? AND published = 1", day], :order => "start ASC") || Event.find(:first, :conditions => ["DATE(start) <= ? AND published = 1", day], :order => "start DESC")
+    
+    Event.find(:first, :conditions => ["DATE(start) = DATE(?) AND published = 1", day], :order => "start ASC")      
   end
   
   def check_duplicate
@@ -147,7 +149,7 @@ class Event < ActiveRecord::Base
   end
   
   def possible_duplicate?
-    Event.find(:all, :conditions => ["DATE(start) = ?", self.start.utc.to_date]).each do |event|
+    Event.find(:all, :conditions => ["DATE(start) = DATE(?)", self.start.utc.to_date]).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     !! self.possible_duplicate
