@@ -156,6 +156,13 @@ p.post_code_error{
   padding-top:18px;
 }
 
+/*  */
+
+.news{
+  background-image:url(/images/bg/bg_mid.png);
+  background-position: -35px 0;
+  
+}
 
 /* Nav bar across the whole page */
 
@@ -380,10 +387,9 @@ p.post_code_error{
   width:300px;
 }
 
-
 /* Events */
 
-.events, .new_event{
+.events, .new_event, .news, .about, .terms-conditions, .privacy-policy{
   background-image: url(/images/bg/bg_mid.png);
   background-position: -35px 0px;
   width:970px;

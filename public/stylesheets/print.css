@@ -1,9 +1,20 @@
-
 /* Add styling for header and footer sections */
+
 .header, .footer, .container {
   width:80%;
   clear:both;
+  float:left;
 }
+.header{
+  border-bottom:1px solid #c9c9c9;
+}
+
+.footer{
+  border-top:1px solid #c9c9c9;
+  padding-top:18px;
+}
+
+
 
 .header h1{
   float:left;
@@ -12,14 +23,12 @@
   float:right;
 }
 
-
 body {
 	font-family: georgia, serif;
 	background: white;
 	font-size: 11pt;
 	margin: 0 5%;
 }
-
 td, th, h1, h2, h3, h4, h5, h6 {
 	font-family: verdana, sans-serif;
 }
@@ -37,16 +46,13 @@ a {
   color:#781B30;
 }
 
-
-
-
-
+/* These elements should never be displayed on the site */
 
 div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #new_event, .hidden, .details_list .last, .incrementor, .heading a.listing, li.foot {
   display:none;
 }
 
-/* displaying the table */
+/* Displaying the table */
 
 .calendar_view{
   width:860px;
@@ -93,14 +99,11 @@ div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #ne
   color:#fff;
 }
 
-.events .calendar_view .more_link
-{
+.events .calendar_view .more_link{
    text-align: center;
    margin: 8px 0 0 0;
-   
    background: #DFC4C3;
 }
-
 .events .calendar_view .more_link a{
   font-style:italic;
   font-size:0.9em;
@@ -110,9 +113,7 @@ div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #ne
   text-decoration: underline;
 }
 
-
-/* Single Listing */
-
+/* Single Event Listing */
 
 #event_details{
   padding-bottom:36pt;
@@ -121,7 +122,6 @@ div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #ne
   background-color:#fff;
   text-align:left;
 }
-
 #event_details .detail_list{
   border-bottom:1px solid #c9c9c9;
   background:#eee;
@@ -142,4 +142,11 @@ div.event_filtering, ul.search_subscription_options, #selector, .nav_banner, #ne
 #event_details .description{
   clear:left;
   float:left;
+}
+
+/* News and content page listings */
+
+.sidebar .block ul li{
+  margin: 6px;
+  display:inline;
 }
