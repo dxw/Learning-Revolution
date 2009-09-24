@@ -1,5 +1,5 @@
 <div class="events clearfix">
-  <h2><%= image_tag('headings/hd_event_details2.gif', :alt => "Event details",:class => "heading") %></h2>
+  <h2><%= image_tag('headings/hd_event_details.gif', :alt => "Event details",:class => "heading") %></h2>
   
   <% if params %>
     <h3 class="heading">Listings for <strong><%= "#{params[:month]} #{params[:day].to_i.ordinalize}, #{params[:year]}" %></strong>. <%= link_to "&laquo; Back to search results", current_events_path(:view => params[:last_view], :filter => params[:filter]), :class => "listing" %></h3> 
