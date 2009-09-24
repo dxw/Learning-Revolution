@@ -472,11 +472,11 @@ ul.post_event_choices li.content_block{
 }
 
 ul.post_event_choices li.content_block p{
-  font-size:1.33em;
+  font-size:1.25em;
   margin-top:24px;
 }
 ul.post_event_choices li.content_block p a{
-  font-size:0.9em;
+  font-size:1.15em;
 }
 ul.post_event_choices li.content_block h4 a{
   display:block;
