@@ -112,8 +112,14 @@ DisableEventPostcode = $.klass({
       onchange: function() {
          $('#venue_postcode').attr('disabled', $('#cyberevent').attr('checked'));
          
-         
-         $("label[for=venue_postcode]").toggleClass('disabled');
+         if($('#cyberevent').attr('checked'))
+         {
+            $("label[for=venue_postcode]").addClass('disabled');
+         }
+         else
+         {
+            $("label[for=venue_postcode]").removeClass('disabled');
+         }
       }
 });
 
