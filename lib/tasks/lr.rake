@@ -227,7 +227,13 @@ namespace :lr do
   desc "Import from CSV"
   task(:import, :csv, {:needs => :environment}) do |t,args|
     def str_to_datetime(str)
-      Time.zone.local(*str.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/)[1..5])
+      date_bits = *str.match(/^(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2})/)
+      
+      if date_bits.nil?
+         die "Invalid date format #{str}, expected: dd/mm/yy hh:mm"
+      end
+      
+      Time.zone.local(date_bits[3], date_bits[2], date_bits[1], date_bits[4], date_bits[5])
     end
     def die(msg)
       raise IOError, "csv row ##{@rownum}: #{msg}"
@@ -243,11 +249,11 @@ namespace :lr do
 
         if row["cyberevent"] == "true"
           %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
-            unless row[f].blank?
-              die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
-            end
+         #   unless row[f].blank?
+         #     die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+         #   end
           }
-        elsif row["cyberevent"] == "false"
+        elsif row["cyberevent"] == "false" || row["cyberevent"].nil?
           v = Venue.find(:first, :conditions => {:name => row["venue_name"],
                          :address_1 => row["venue_address_1"],
                          :address_2 => row["venue_address_2"],
@@ -270,8 +276,6 @@ namespace :lr do
           end
           e.venue = v
           v.save!
-        else
-          die "cyberevent MUST be \"true\" or \"false\", got #{row["cyberevent"].inspect}"
         end
 
         e.provider = row["provider"]
@@ -287,10 +291,8 @@ namespace :lr do
         end
         if row["published"] == "true"
           e.published = true
-        elsif row["published"] == "false"
+        elsif row["published"] == "false" || row["published"].nil?
           e.published = false
-        else
-          die "published MUST be \"true\" or \"false\", got #{row["published"].inspect}"
         end
         e.theme = row["theme"]
         e.event_type = row["event_type"]
@@ -303,8 +305,11 @@ namespace :lr do
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
 
-        e.save!
-        p "saved #{e.class}, id #{e.id}" unless RAILS_ENV=='test'
+        if e.save!
+           p "saved #{e.class}, id #{e.id}" unless RAILS_ENV=='test'
+        else
+           die "save failed"
+        end
       end
     end
   end

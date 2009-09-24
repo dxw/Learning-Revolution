@@ -733,6 +733,7 @@ input.submit_your_event{
 
 #events_map {
   height: 600px;
+}
 
 /* Errors */
 
@@ -752,4 +753,16 @@ body.render_error h1
    font-weight: bold;
    
    padding-bottom: 8px;
+}
+
+/* Pages */
+
+body#pages_show .content_wrapper .content
+{
+   width: 600px;
+}   
+
+body#pages_show .content p
+{
+   margin-bottom: 12px;
 }
