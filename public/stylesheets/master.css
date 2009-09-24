@@ -149,7 +149,7 @@ p.post_code_error{
 .content{
   width:970px;
   text-align:left;
-  background-image:url(/images/bg/bg_top.png);
+  background-image:url(/images/bg/bg_top.jpg);
   background-position: -35px 0;
   background-repeat: no-repeat;
   background-color: #fff;
@@ -698,7 +698,8 @@ background-position:0 -152px;
 }
 /* Submitting Events*/
 input.submit_your_event{
-  margin-left:86px;
+  margin-left:100px;
+  margin-top:12px;
 }
   
 

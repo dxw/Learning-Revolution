@@ -12,16 +12,14 @@ module EventsHelper
   
   def prev_link(event, filters, last_view)
     target = Event.step_backwards_from(event)
-    
     return make_link(target, "&laquo; Prev", filters, last_view) unless target.nil?
-    
+
     ''
   end
   
   def next_link(event, filters, last_view)
     target = Event.step_forwards_from(event)
     return make_link(target, "Next &raquo;", filters, last_view) unless target.nil?
-    
     ''
   end
   
