@@ -64,7 +64,7 @@
     <div class="nav_banner">
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
-        <li class="events"><%= link_to "Events", current_events_path %></li>
+        <li class="events"><%= link_to "Events", current_events_path(:view => params[:last_view], :filter => params[:filter]) %></li>
         <li class="news"><%= link_to "News", "/news" %></li>
         <li class="about"><%= link_to "About", "/about" %></li>
         <li class="promote_your_event"><%= link_to "Promote Your Event", "/promote-your-event" %></li>
