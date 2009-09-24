@@ -64,7 +64,11 @@ EventFilterSlider = $.klass({
   initialize: function () {
     this.hideable = this.element.find(".form_wrapper");
     this.toggles = this.element.find(".toggles");
-    this.hideable.hide();
+    this.hideable.hide(function() {
+      // added for IE6 and IE7 to correctly hide child elements too.
+      $(".input_tip").hide();
+    });
+
   },
   toggle: function () {
     this.hideable.slideToggle();
@@ -87,24 +91,22 @@ EventFilterSlider = $.klass({
   })
 });
 
-// No longer being used
-//VenueFinder = $.klass({
-//	initialize: function () {
-//		this.element.find(".new_venue_fields").hide();
-//	}
-//});
-
 InfoTip = $.klass({
 	initialize: function () {
 	  this.container = this.element.parents(".input_with_tip");
 	  this.input_tip = this.container.find(".input_tip");
+	  // need to explicitly hide the tool tip, for IE6 and 7
+    this.input_tip_tool_tip = this.input_tip.find('.tooltip');
     this.input_tip.hide();
+    this.input_tip_tool_tip.hide()
 	},
 	onfocus: function () {
 	  this.input_tip.show();
+    this.input_tip_tool_tip.show()
 	},
 	onblur: function () {
 	  this.input_tip.hide();
+    this.input_tip_tool_tip.hide()
 	}
 });
 
@@ -112,8 +114,14 @@ DisableEventPostcode = $.klass({
       onchange: function() {
          $('#venue_postcode').attr('disabled', $('#cyberevent').attr('checked'));
          
-         
-         $("label[for=venue_postcode]").toggleClass('disabled');
+         if($('#cyberevent').attr('checked'))
+         {
+            $("label[for=venue_postcode]").addClass('disabled');
+         }
+         else
+         {
+            $("label[for=venue_postcode]").removeClass('disabled');
+         }
       }
 });
 
