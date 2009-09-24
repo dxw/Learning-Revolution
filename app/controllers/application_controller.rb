@@ -13,9 +13,6 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  unless ActionController::Base.consider_all_requests_local
-    rescue_from RuntimeError, :with => :render_500
-  end
   
   before_filter :set_page_title
   def set_page_title
@@ -59,14 +56,20 @@ class ApplicationController < ActionController::Base
     events_by_month_path(2009, "October", options)
   end
 
-  def render_500
+  def render_500(exception=nil)
     @status = 500
     render :template => 'error', :status => 500
+    Notifier.deliver_error_notification('500',exception)
   end
   
-  def render_404
+  def render_404(exception=nil)
     @status = 404
     render :template => 'error', :status => 404
+    Notifier.deliver_error_notification('404',exception)
   end
-  
+
+  def rescue_action_in_public(exception)
+    render_500(exception)
+  end
+
 end

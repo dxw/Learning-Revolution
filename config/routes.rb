@@ -20,5 +20,5 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.venue_events "/venues/:venue_id/events/:year/:month", :controller => 'venues', :action => "events", :conditions => { :method => :get }
 
-  map.pages '/:slug', :controller => 'pages', :action => 'show'
+  map.pages '/:slug', :controller => 'application', :action => 'render_404'
 end
