@@ -43,48 +43,47 @@
   <% end %>
 
   <div class="add_a_new_venue">
-    
-<% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
-
-  <div><h4><%= image_tag 'headings/hd_add_a_venue_to_the_listings_smaller.gif', :alt => "Add a venue to the listings" %></h4></div>
-
-  <div class="input clearfix">
-    <p><label for="venue_name">Venue name</label>
-    <%= text_field :venue, :name, :class => 'text' %></p>
-  </div>
-
-  <div class="input clearfix">
-    <p><label for="venue_address_1">Address Line 1</label>
-    <%= text_field :venue, :address_1, :class => 'text' %></p>
-  </div>
-
-  <div class="input clearfix">
-    <p><label for="venue_address_2">Address Line 2 <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :address_2, :class => 'text' %></p>
-  </div>
-
-  <div class="input clearfix">
-    <p><label for="venue_address_3">Address Line 3 <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :address_3, :class => 'text' %></p>
-  </div>
-
-  <div class="input clearfix">
-    <p><label for="venue_city">City <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :city, :class => 'text' %></p>
-  </div>
-
-  <div class="input clearfix">
-    <p><label for="venue_county">County <span class="optional">(optional)</span></label>
-    <%= text_field :venue, :county, :class => 'text' %></p>
-  </div>
-  
-  <div class="input clearfix">
-    <p><label for="venue_postcode">Post Code</label>
-    <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %></p>
-  </div>
-  
-  <div><p><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></p></div>
-<% end %>
+   <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
+   
+     <div><h4><%= image_tag 'headings/hd_add_a_venue_to_the_listings_smaller.gif', :alt => "Add a venue to the listings" %></h4></div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_name">Venue name</label>
+       <%= text_field :venue, :name, :class => 'text' %></p>
+     </div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_address_1">Address Line 1</label>
+       <%= text_field :venue, :address_1, :class => 'text' %></p>
+     </div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_address_2">Address Line 2 <span class="optional">(optional)</span></label>
+       <%= text_field :venue, :address_2, :class => 'text' %></p>
+     </div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_address_3">Address Line 3 <span class="optional">(optional)</span></label>
+       <%= text_field :venue, :address_3, :class => 'text' %></p>
+     </div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_city">City <span class="optional">(optional)</span></label>
+       <%= text_field :venue, :city, :class => 'text' %></p>
+     </div>
+   
+     <div class="input clearfix">
+       <p><label for="venue_county">County <span class="optional">(optional)</span></label>
+       <%= text_field :venue, :county, :class => 'text' %></p>
+     </div>
+     
+     <div class="input clearfix">
+       <p><label for="venue_postcode">Post Code</label>
+       <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %></p>
+     </div>
+     
+     <div><p><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></p></div>
+   <% end %>
 
     </div>
 
