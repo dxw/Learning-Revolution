@@ -33,6 +33,7 @@
       <%= image_tag('headings/hd_where.gif', :alt => 'Where') %>
       <% if event.venue.present? %>
         <h4><%= event.venue.name %></h4>
+        
         <p class="location">
           <%= "#{event.venue.address_1} <br/>" unless event.venue.address_1.blank? %>
           <%= "#{event.venue.address_2} <br/>" unless event.venue.address_2.blank? %>
@@ -41,6 +42,8 @@
           <%= "#{event.venue.county} <br/>" unless event.venue.county.blank? %>
           <%= event.venue.postcode %>
         </p>
+        
+        <p class="location_map"><a href="http://maps.google.co.uk/maps?q=<%=event.venue.lat%>,<%=event.venue.lng%>&amp;z=15">Find venue on a map &raquo;</a></p>
       <% else %>
         <p>This event has no location</p>
       <% end %>

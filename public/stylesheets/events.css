@@ -172,6 +172,11 @@ h3.no_events{
 }
 
 
+#events_show h2 img.heading
+{
+   margin-left: 40px;
+}
+
 #events_show h3.heading{
   margin-top:6px;
   width:auto;
@@ -305,6 +310,12 @@ ul li.foot .next {
   min-height:60px;
   padding-right:10px;
 }
+
+#event_details .detail .location_map
+{
+   padding-top: 8px;
+}
+
 .detail abbr.dtstart, abbr.dtend{
   float:left;
 }
@@ -364,8 +375,8 @@ ul li.foot .next {
   padding-left:15px;
 }
 #events_find_venue form{
-  float:left;
-  margin-left:36px;
+
+  margin-left:10px;
 }
 .existing_venues h4{
   margin-right:12px;
