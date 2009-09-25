@@ -27,7 +27,7 @@
                 <%= event.start.day.ordinalize %>
               </div>
             </div>
-            <h3 class="trans"><%= link_to "#{event.title} &raquo", path_for_event(event) %></h3>
+            <h3 class="trans"><%= link_to "#{event.title} &raquo;", path_for_event(event) %></h3>
           </li>
         <% end %>
         </ul>
@@ -61,12 +61,11 @@
             <div class="calendar_date_description">
               <h4><%= link_to truncate(event.title, :length => 30), path_for_event(event) %></h4>
               <p class="time_place"><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
-              <%= simple_format truncate(event.description, :length => 50) %>
-          
+              <%= simple_format truncate(event.description, :length => 50) unless event.description.empty? %>
             </div>
           </li>
         <% end %>
-          <li class="see_more"><span class="trigger"><%= link_to "See more events", current_events_path %></span></li>
+          <li class="see_more"><span class="trigger"><%= link_to "See more events &raquo;", current_events_path %></span></li>
         </ul>
       </div>
     </div>
@@ -121,11 +120,11 @@
 
         <div class="photos">
           <%= image_tag('headings/hd_photos_from_our_events.gif', :alt => "Photos from our events", :class => 'heading') %>
-          <%= link_to "view photos from our flickr account", "http://flickr.com/photos/abscond", :class => "flickr_photos" %>
+          <%= link_to "Photos from our flickr account", "http://www.flickr.com/photos/learningrevolution", :class => "flickr_photos" %>
         </div>
         <div class="videos">
           <%= image_tag('headings/hd_video_from_our_events.gif', :alt => "Video from our events", :class => 'heading') %>
-          <%= link_to "view photos from our YouTube account", "http://youtube.com", :class => "youtube_videos" %>
+          <%= link_to "Videos from our YouTube account", "http://www.youtube.com/user/learnrevolution", :class => "youtube_videos" %>
         </div>
 
     </div>

@@ -32,7 +32,7 @@
     <% Event::Days.each do |day| %>
     <option<%= (params[:startday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
     <% end %>
-  </select> October 2009</p>
+  </select> October 2009
   <div class="input_tip">
     <div class="tooltip">Please enter the time your event starts &mdash; when should people show up?</div>
     <div class="tooltip_arrow"></div>
@@ -65,7 +65,7 @@
     <% Event::Days.each do |day| %>
     <option<%= (params[:endday] == day.to_s) ? ' selected="selected"' : '' %> value="<%= day %>"><%= ActiveSupport::Inflector.ordinalize(day) %></option>
     <% end %>
-  </select> October 2009</p>
+  </select> October 2009
   <div class="input_tip">
     <div class="tooltip">Please enter the time your event ends &mdash; when will people probably be done? If your event is happening more than once, add an event for each.</div>
     <div class="tooltip_arrow"></div>
