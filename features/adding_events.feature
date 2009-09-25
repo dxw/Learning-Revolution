@@ -548,7 +548,7 @@ Feature: Adding an event
     And there should be 0 Venue in the database
     And I am on the calendar for October 2009
 
-  Scenario: Adding a valid event from the calendar page with a new venue, going back and resubmitting
+  Scenario: Adding a valid event from the calendar page with an existing venue, going back and resubmitting
     Given a valid venue called "MyName"
     And the venue "MyName" has the post code "E11 1PB"
     When I go to the calendar for October 2009
@@ -597,6 +597,66 @@ Feature: Adding an event
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
     And I should see "MyName"
+    And I should see "E11 1PB"
+    And the page is valid XHTML
+    When I press "Add this event to the listings"
+    Then I am on the event success page
+    And the page is valid XHTML
+    Then there should be 1 Event in the database
+    And there should be 1 Venue in the database
+    And I am on the calendar for October 2009
+
+  Scenario: Adding a valid event from the calendar page with a new venue, going back and resubmitting
+    When I go to the calendar for October 2009
+    And I fill in "Event name" with "event title"
+    And I select "Class" from "event_event_type"
+    And I select "Food and Cookery" from "Category"
+    And I fill in "Description" with "event description"
+    And I select "11" from "starthour"
+    And I select "20" from "startminute"
+    And I select "23rd" from "startday"
+    And I select "12" from "endhour"
+    And I select "20" from "endminute"
+    And I select "23rd" from "endday"
+    And I fill in "Organisation" with "BIS"
+    And I fill in "Contact Name" with "event organiser"
+    And I fill in "Contact Phone Number" with "020 8547 3847"
+    And I fill in "Contact Email Address" with "contact@test.com"
+    And I fill in "Event Postcode" with "E11 1PB"
+    And I check "I accept the"
+    And I press "Submit this event"
+    Then I should see "We don't currently"
+    And the page is valid XHTML
+    When I fill in "Venue name" with "namae"
+    And I fill in "Address Line 1" with "adoresu"
+    When I press "Add this venue for my event"
+    Then I should see "You're about to add this this event to the listings"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "23 October 11:20AM"
+    And I should see "until 12:20PM"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    And I should see "namae"
+    And I should see "adoresu"
+    And I should see "E11 1PB"
+    And the page is valid XHTML
+    When I press "Edit this event"
+    And I press "Submit this event"
+    When I press "Add this venue for my event"
+    Then I should see "You're about to add this this event to the listings"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "23 October 11:20AM"
+    And I should see "until 12:20PM"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    And I should see "namae"
+    And I should see "adoresu"
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Add this event to the listings"

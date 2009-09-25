@@ -75,7 +75,14 @@
 <div class="input clearfix input_with_tip">
   <p>
     <label for="venue_postcode">Event Postcode</label>
-    <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue] and params[:venue][:postcode]) ? params[:venue][:postcode] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.postcode : '') %>"/>
+    <input type="text" id="venue_postcode" name="venue[postcode]" size="30" class="text input" value="<%= (params[:venue].andand[:postcode]) ? params[:venue][:postcode] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.postcode : '') %>"/>
+
+    <input type="hidden" name="venue[name]" value="<%= (params[:venue].andand[:name]) ? params[:venue][:name] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.name : '') %>"/>
+    <input type="hidden" name="venue[address_1]" value="<%= (params[:venue].andand[:address_1]) ? params[:venue][:address_1] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.address_1 : '') %>"/>
+    <input type="hidden" name="venue[address_2]" value="<%= (params[:venue].andand[:address_2]) ? params[:venue][:address_2] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.address_2 : '') %>"/>
+    <input type="hidden" name="venue[address_3]" value="<%= (params[:venue].andand[:address_3]) ? params[:venue][:address_3] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.address_3 : '') %>"/>
+    <input type="hidden" name="venue[city]" value="<%= (params[:venue].andand[:city]) ? params[:venue][:city] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.city : '') %>"/>
+    <input type="hidden" name="venue[county]" value="<%= (params[:venue].andand[:county]) ? params[:venue][:county] : (params[:event].andand[:location_id] ? Venue.find(:first, params[:event][:location_id].to_i).andand.county : '') %>"/>
   </p>
 
   <p>
