@@ -516,6 +516,12 @@ h3.filter_description, h3.heading{
   margin-bottom:12px;
   line-height:1.5;
 }
+
+.filter_description em
+{
+   font-style: italic;
+}
+
 h3.heading{
   float:none;
 }
