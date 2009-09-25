@@ -301,7 +301,11 @@ namespace :lr do
         e.contact_email_address = row["contact_email_address"]
         e.contact_phone_number = row["contact_phone_number"]
         e.organisation = row["organisation"]
-        if e.invalid?
+        
+	e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
+	e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
+
+	if e.invalid?
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
 

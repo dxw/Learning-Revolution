@@ -28,3 +28,10 @@ end
 Then %r/the page is valid XHTML/ do
   response.body.should(be_xhtml_strict) unless ENV['SKIP_VALIDATION']
 end
+
+Then /^I should see image "([^\"]*)"$/ do |alt|
+  response.should have_selector("img", :alt => alt)
+end
+
+
+
