@@ -42,7 +42,6 @@
   background-position:-70px -10px;
 }
 
-
 /* If no events exist */
 
 h3.no_events{
@@ -164,6 +163,11 @@ img.heading{
 #events_map ul li{
   list-style: none;
 }
+
+#events_map h4{
+  font-weight:bold;
+}
+
 
 #events_show h3.heading{
   margin-top:6px;
