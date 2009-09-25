@@ -227,7 +227,7 @@ namespace :lr do
   desc "Import from CSV"
   task(:import, :csv, {:needs => :environment}) do |t,args|
     def str_to_datetime(str)
-      date_bits = *str.match(/^(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2})/)
+      date_bits = *str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4}) (\d{2}):(\d{2})/)
       
       if date_bits.nil?
          die "Invalid date format #{str}, expected: dd/mm/yy hh:mm"
