@@ -61,12 +61,11 @@
             <div class="calendar_date_description">
               <h4><%= link_to truncate(event.title, :length => 30), path_for_event(event) %></h4>
               <p class="time_place"><%= event.venue.name %> - <%= event.venue.city %>, <%= event.start.strftime("%l:%M%p") %> onwards</p>
-              <%= simple_format truncate(event.description, :length => 50) %>
-          
+              <%= simple_format truncate(event.description, :length => 50) unless event.description.empty? %>
             </div>
           </li>
         <% end %>
-          <li class="see_more"><span class="trigger"><%= link_to "See more events", current_events_path %></span></li>
+          <li class="see_more"><span class="trigger"><%= link_to "See more events &raquo;", current_events_path %></span></li>
         </ul>
       </div>
     </div>
