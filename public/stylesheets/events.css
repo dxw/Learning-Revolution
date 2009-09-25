@@ -70,21 +70,24 @@ h3.no_events{
   top:100px;
   
 }
-img.heading{
-  margin-left:42px;
-}
-.example_calendar_view ol li, .example_calendar_view h3{
-  margin: 12px 0px 12px 42px;
-  line-height:1.5em;
-  margin-bottom:12px;
+.example_calendar_view img.heading{
+  margin-left:18px;
 }
 .example_calendar_view ol li{
+  margin: 12px 0px 12px 52px;
+  line-height:1.5em;
   font-size:1.33em;
+  margin-bottom:12px;
 }
+
 .example_calendar_view h3{
   font-size:1.5em;
 }
 
+.example_calendar_view p{
+  margin: 18px 0 0 18px;
+  font-size:1.1em;
+}
 
 
 .calendar_view{
