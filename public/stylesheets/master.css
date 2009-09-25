@@ -493,7 +493,6 @@ div.new_event{
   background-repeat:no-repeat;
   text-indent:-9999em;
   margin-left:32px;
-  margin-top:18px;
 }
 
 #content_header img.heading{
@@ -563,7 +562,7 @@ ul.search_subscription_options{
   font-size:0.83em;
   padding-left:12px;
   margin-bottom:12px;
-  margin-top:42px;
+  margin-top:18px;
 }
 ul.search_subscription_options li{
   padding-left:42px;

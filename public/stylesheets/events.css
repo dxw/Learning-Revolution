@@ -56,7 +56,7 @@ h3.no_events{
   background-image:url(/images/example_calendar.jpg);
   background-repeat: no-repeat;
   width:959px;
-  min-height:700px;
+  min-height:400px;
 }
 
 .example_calendar_view .help_text{
@@ -66,7 +66,7 @@ h3.no_events{
   width:700px;
   position:absolute;
   left:100px;
-  top:100px;
+  top:55px;
   
 }
 .example_calendar_view img.heading{
