@@ -60,3 +60,16 @@ Feature: Viewing events
     Then I should see "2 Oct"
     And the page is valid XHTML
     
+  Scenario: Browsing backwards through the event list on the 1st of October
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "1st October 2009 12:00"
+    When I go to the event page for "Event 1"
+    Then I should not see "« Prev"
+    And the page is valid XHTML
+    
+  Scenario: Browsing forwards through the event list on the 31st of October
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the event page for "Event 1"
+    Then I should not see "Next »"
+    And the page is valid XHTML
