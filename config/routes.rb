@@ -20,5 +20,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.venue_events "/venues/:venue_id/events/:year/:month", :controller => 'venues', :action => "events", :conditions => { :method => :get }
 
+  map.venue "/venues/:venue_id.:format", :controller => 'venues', :action => 'venue_for_map', :conditions => { :method => :get }
+
+  # map.venue_for_map "/venues/:venue_id/events.js", :controller => 'venues', :action  => 'venue_for_map', :conditions => { :method => :get }
+
   map.pages '/:slug', :controller => 'pages', :action => 'show'
 end

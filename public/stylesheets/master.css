@@ -703,7 +703,7 @@ li.google_calendar{
 background-position:0 -152px;
 }
 /* Submitting Events*/
-input.submit_your_event{
+input.continue{
   margin-left:100px;
   margin-top:12px;
 }
