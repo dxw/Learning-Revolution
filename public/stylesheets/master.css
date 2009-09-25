@@ -767,3 +767,15 @@ body#pages_show .content p
 {
    margin-bottom: 12px;
 }
+body#pages_show .content p
+{
+   margin-bottom: 12px;
+}
+body#pages_show .content ul li, ol li{
+  margin-left:18px;
+  list-style: square;
+}
+body#pages_show .content blockquote{
+  margin-left:24px;
+  color:#444;
+}
