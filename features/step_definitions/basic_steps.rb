@@ -33,5 +33,10 @@ Then /^I should see image "([^\"]*)"$/ do |alt|
   response.should have_selector("img", :alt => alt)
 end
 
+Then "what" do
+  puts response.body
+end
 
-
+Then "where" do
+  puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
+end
