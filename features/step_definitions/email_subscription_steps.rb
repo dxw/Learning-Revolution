@@ -1,5 +1,5 @@
 Then /^I should receive an events listing email$/ do
-  pending
+  Then "I should receive an email"
 end
 
 Given /^I have requested an email of events filtered by the theme "([^\"]*)"$/ do |arg1|
