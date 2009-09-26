@@ -24,16 +24,18 @@
       <h3 class="filter_description"><%= current_filter_description%></h3> 
 
     </div>
-
-    <% unless params[:id] || @events.empty? %>
-    <ul class="search_subscription_options">
-      <!-- <li class="email png">Send me these events as email.</li> -->
     
-      <li class="calendar"><%= link_to "Add these events to iCal", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
-      <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-      <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>    
-    </ul>
-    <% end %>
+    <% unless params[:id] -%>
+      <% if @events.present? || @venues.present? %>
+        <ul class="search_subscription_options">
+          <!-- <li class="email png">Send me these events as email.</li> -->
+    
+          <li class="calendar"><%= link_to "Add these events to iCal", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
+          <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
+          <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>    
+        </ul>
+      <% end -%>
+    <% end -%>
     
   </div>
   
