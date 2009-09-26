@@ -17,24 +17,26 @@ module ApplicationHelper
   end
 
   def current_filter_description
-    
     if params[:filter][:theme].nil? && params[:filter][:location].nil? then
-      s = "Click <em>find events in your area</em> to get started" 
+      "Click <em>find events in your area</em> to get started" 
     else
-      s = 'Now showing all'
-      unless params[:filter][:theme].blank?
-        s += " <span class='keyword'>"
-        s += params[:filter][:theme]
-        s += "</span>"
-      end
-      s += ' events'
-      unless params[:filter][:location].blank?
-        s += ' happening within 5 miles of <span class="keyword">'
-        s += params[:filter][:location].upcase
-        s += '</span>'
-      end
+      "Now showing " + current_filter_core_description
     end
-    
+  end
+  
+  def current_filter_core_description
+    s = 'all'
+    unless params[:filter][:theme].blank?
+      s += " <span class='keyword'>"
+      s += params[:filter][:theme]
+      s += "</span>"
+    end
+    s += ' events'
+    unless params[:filter][:location].blank?
+      s += ' happening within 5 miles of <span class="keyword">'
+      s += params[:filter][:location].upcase
+      s += '</span>'
+    end
     s
   end
 end
