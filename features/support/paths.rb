@@ -25,6 +25,8 @@ module NavigationHelpers
       moderations_admin_events_path
     when /the calendar for October 2009/
       events_by_month_path(2009, "October")
+    when /the calendar for October 2009 filtered by the theme "(.+)"/
+      events_by_month_path(:year => 2009, :month => 'October', :filter => {:theme => $1})
     when /the event page for "(.+)"/
       event = find_or_create(Event, :title => $1)
       event_path(event.start.year, event.start.month, event.start.day, event.slug)

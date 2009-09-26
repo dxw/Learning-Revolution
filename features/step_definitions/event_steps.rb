@@ -44,3 +44,11 @@ When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |t
   venue = find_or_create(Venue, :name => title)
   set_hidden_field("event[location_id]", :to => venue.id) 
 end
+
+When /^someone adds an event called "([^\"]*)"$/ do |title|
+  pending
+end
+
+When /^an administrator approves the event "([^\"]*)"$/ do |title|
+  pending
+end
