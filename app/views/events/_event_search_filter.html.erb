@@ -1,6 +1,9 @@
 <%
 	pa = params.dup
 	pa.delete(:view)
+	pa[:filter] = params[:filter].dup
+	pa[:filter].delete(:from)
+	pa[:filter].delete(:to)
 %>
 <% content_for :head do %>
   <% unless params[:id] %>
