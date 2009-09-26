@@ -1,0 +1,11 @@
+<!-- TODO: Layout for me please -->
+<h3>Send events as email</h3>
+<p>To receive an email listing <%= current_filter_core_description %>, simply fill in your email address below.</p>
+<% form_for(:email_subscription, :url => email_subscriptions_path(:filter => params[:filter], :last_view => @last_view)) do |f| -%>
+  <p>
+    <%= f.label(:email, "Email address") %><br />
+    <%= f.text_field(:email) %>
+  </p>
+  <p><%= submit_tag("Send") %></p>
+<% end -%>
+<p>Changed your mind? <%= link_to("Go back.", events_by_month_path(:year => 2009, :month => 'October', :filter => params[:filter], :view => @last_view)) %></p>
