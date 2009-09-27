@@ -25,17 +25,34 @@ module ApplicationHelper
   end
   
   def current_filter_core_description
+    filter_core_description(params[:filter])
+  end
+  
+  def filter_core_description(filter={}, html=true)
+    filter ||= {}
     s = 'all'
-    unless params[:filter][:theme].blank?
-      s += " <span class='keyword'>"
-      s += params[:filter][:theme]
-      s += "</span>"
+    unless filter[:theme].blank?
+      if html
+        s += " <span class='keyword'>"
+      else
+        s += " "
+      end
+      s += filter[:theme]
+      if html
+        s += "</span>"
+      end
     end
     s += ' events'
-    unless params[:filter][:location].blank?
-      s += ' happening within 5 miles of <span class="keyword">'
-      s += params[:filter][:location].upcase
-      s += '</span>'
+    unless filter[:location].blank?
+      if html
+        s += ' happening within 5 miles of <span class="keyword">'
+      else
+        s += ' happening within 5 miles of '
+      end
+      s += filter[:location].upcase
+      if html
+        s += '</span>'
+      end
     end
     s
   end
