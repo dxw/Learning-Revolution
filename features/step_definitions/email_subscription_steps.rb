@@ -33,5 +33,8 @@ Then /^I should receive an event update email$/ do
 end
 
 Given /^I have received an event update email$/ do
-  pending
+  When "someone adds an event called \"Goose Juggling\" with the theme \"Sport and Physical Activity\""
+  And "an administrator approves the event \"Goose Juggling\""
+  And "the daily email updates are sent"
+  Then "I should receive an event update email"
 end

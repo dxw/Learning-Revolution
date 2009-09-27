@@ -35,11 +35,10 @@ Feature: Email Subscription
     Then I should receive an event update email
     And I should see "Goose Juggling" within the email body
   
-  @wip
   Scenario: Unsubscribing from event updates by email
-    Given I have subscribed to updates about events filtered by the theme "Food and Cookery"
+    Given I have subscribed to updates about events filtered by the theme "Sport and Physical Activity"
     And I have received an event update email
-    When I open the email
-    And I follow "Unsubscribe" in the email
-    And I press "Unsubscribe"
+    When I open the email with subject "update"
+    And I follow "unsubscribe" in the email
+    And I press "Yes, unsubscribe me."
     Then I should see "unsubscribed"
