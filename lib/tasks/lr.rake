@@ -227,7 +227,7 @@ namespace :lr do
   desc "Import from CSV"
   task(:import, :csv, {:needs => :environment}) do |t,args|
     def str_to_datetime(str)
-      date_bits = *str.match(/^(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2})/)
+      date_bits = *str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4}) (\d{2}):(\d{2})/)
       
       if date_bits.nil?
          die "Invalid date format #{str}, expected: dd/mm/yy hh:mm"
@@ -301,7 +301,11 @@ namespace :lr do
         e.contact_email_address = row["contact_email_address"]
         e.contact_phone_number = row["contact_phone_number"]
         e.organisation = row["organisation"]
-        if e.invalid?
+        
+	e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
+	e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
+
+	if e.invalid?
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
 

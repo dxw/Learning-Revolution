@@ -19,7 +19,7 @@ module ApplicationHelper
   def current_filter_description
     
     if params[:filter][:theme].nil? && params[:filter][:location].nil? then
-      s = "Click \"Find Events\" to get started" 
+      s = "Click <em>find events in your area</em> to get started" 
     else
       s = 'Now showing all'
       unless params[:filter][:theme].blank?
@@ -36,6 +36,12 @@ module ApplicationHelper
     end
     
     s
+  end
+  
+  def end_time(event)
+    s = ''
+    s += event.end.strftime('%e %B ') unless event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')
+    s += event.end.strftime("%R%p")
   end
 end
 

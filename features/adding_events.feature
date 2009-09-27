@@ -21,7 +21,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
     And I should see "event description"
@@ -66,7 +66,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "1 error prohibited this new event from being save"
     And I should see "The event can't finish before it's begun"
     And the page is valid XHTML
@@ -87,7 +87,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
     And I should see "event description"
@@ -107,7 +107,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "3 errors prohibited this new event from being save"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
@@ -133,7 +133,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We don't currently have any venues listed in this postcode"
     And the page is valid XHTML
     When I fill in "Venue name" with "Venue name"
@@ -171,7 +171,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "3 errors prohibited this new event from being save"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
@@ -182,7 +182,7 @@ Feature: Adding an event
   Scenario: Adding a valid event but forgetting post code
     When I go to the calendar for October 2009
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "Postcode can't be blank"
     And the page is valid XHTML
   
@@ -190,7 +190,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "xxxxxxxxxxx"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "The postcode you entered seems to be invalid"
     And the page is valid XHTML
   
@@ -198,7 +198,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "SW0z 0zz"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We couldn't find anywhere with this postcode"
     And the page is valid XHTML
   
@@ -222,7 +222,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We may already have the details of your venue"
     When I press "Choose this venue"
     Then I should see "You're about to add this this event to the listings"
@@ -262,7 +262,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We may already have the details of your venue"
     And I should see "Church hall"
     And I should see "School hall"
@@ -288,7 +288,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "TR18 5EG"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We may already have the details of your venue"
     When I fill in "Venue name" with "Venue name"
     And I fill in "Address Line 1" with "Address 1 name"
@@ -332,7 +332,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
     And I should see "event description"
@@ -367,7 +367,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "1 error prohibited this new event from being save"
     And I should see "The event can't finish before it's begun"
     And the page is valid XHTML
@@ -388,7 +388,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
     And I should see "event description"
@@ -408,7 +408,7 @@ Feature: Adding an event
     When I go to the calendar for October 2009
     And I check "This event has no location"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "3 errors prohibited this new event from being save"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"
@@ -422,7 +422,7 @@ Feature: Adding an event
     And I check "This event has no location"
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "1 error prohibited this new event from being save"
     And I should see "You must accept the terms and conditions"
     And the page is valid XHTML
@@ -446,7 +446,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We don't currently have any venues listed in this postcode"
     And the page is valid XHTML
     When I fill in "Address Line 1" with "Address 1 name"
@@ -499,7 +499,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We don't currently have any venues listed in this postcode"
     And the page is valid XHTML
     When I fill in "Address Line 1" with "Address 1 name"
@@ -529,7 +529,7 @@ Feature: Adding an event
     And the page is valid XHTML
     When I press "Edit this event"
     Then I check "This event has no location"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
     And I should see "event description"
@@ -568,7 +568,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We may already have"
     And the page is valid XHTML
     When I press "Choose this venue"
@@ -585,7 +585,7 @@ Feature: Adding an event
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Edit this event"
-    And I press "Submit this event"
+    And I press "Continue"
     When I press "Choose this venue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
@@ -624,7 +624,7 @@ Feature: Adding an event
     And I fill in "Contact Email Address" with "contact@test.com"
     And I fill in "Event Postcode" with "E11 1PB"
     And I check "I accept the"
-    And I press "Submit this event"
+    And I press "Continue"
     Then I should see "We don't currently"
     And the page is valid XHTML
     When I fill in "Venue name" with "namae"
@@ -644,7 +644,7 @@ Feature: Adding an event
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Edit this event"
-    And I press "Submit this event"
+    And I press "Continue"
     When I press "Add this venue for my event"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"

@@ -159,8 +159,8 @@ PostcodeHint = $.klass({
 
 
 jQuery(function ($) {
-  $('.flickr_photos').attach(Flickr, '82586441@N00');
-  $('.youtube_videos').attach(YouTube, 'DowningSt');
+  $('.flickr_photos').attach(Flickr, '42889703@N05');
+  $('.youtube_videos').attach(YouTube, 'learnrevolution');
   $('.date_slider').attach(DateSlider);
   $('.event_filtering').attach(EventFilterSlider);
   // This is dead now: $('.event_venue_form').attach(VenueFinder);

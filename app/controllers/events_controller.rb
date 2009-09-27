@@ -51,6 +51,7 @@ class EventsController < ApplicationController
         format.ics { render :text => @event.to_ical }
         format.xml { render :text => @event.to_xml }
         format.json { render :text => @event.to_json }
+        format.pdf { render :layout => false }
       end
     end
   end

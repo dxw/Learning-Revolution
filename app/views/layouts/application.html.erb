@@ -82,8 +82,18 @@
 
 <%= render :partial => 'layouts/footer' %>  
 
-<p style="color: #fff; font-weight: bold;">IMPORTANT: underneath me is the Speedtrap tag. It needs to be uncommented when we go live. But not before.</p>
+<p style="color: #fff; font-weight: bold;">IMPORTANT: underneath me are the Speedtrap &amp; analytics tags. They need to be uncommented when we go live. But not before.</p>
 <!--<script type="text/javascript" src="/public/javascripts/ProphetInsert.js"></script>
-<noscript><img src='http://directgov.stcllctrs.com/OWCPZPDTRUV/noScript.bmp' alt="Stats Collection Image" /></noscript> -->
+<noscript><img src='http://directgov.stcllctrs.com/OWCPZPDTRUV/noScript.bmp' alt="Stats Collection Image" /></noscript>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10821729-1");
+pageTracker._trackPageview();
+} catch(err) {}</script> -->
 </body>
 </html>

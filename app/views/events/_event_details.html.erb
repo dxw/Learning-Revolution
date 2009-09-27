@@ -20,9 +20,7 @@
 
       <% if event.end %>
       <div class="time">
-        <abbr class="dtend" title="<%= event.end.iso8601 %>">until<%=
-	  (event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime(' %e %B') %><%=
-	  event.end.strftime(" %R%p") %></abbr>
+        <abbr class="dtend" title="<%= event.end.iso8601 %>">until <%= end_time(event) %></abbr>
       </div>
       <% end %>
 
@@ -33,6 +31,7 @@
       <%= image_tag('headings/hd_where.gif', :alt => 'Where') %>
       <% if event.venue.present? %>
         <h4><%= event.venue.name %></h4>
+        
         <p class="location">
           <%= "#{event.venue.address_1} <br/>" unless event.venue.address_1.blank? %>
           <%= "#{event.venue.address_2} <br/>" unless event.venue.address_2.blank? %>
@@ -41,6 +40,8 @@
           <%= "#{event.venue.county} <br/>" unless event.venue.county.blank? %>
           <%= event.venue.postcode %>
         </p>
+        
+        <p class="location_map"><a href="http://maps.google.co.uk/maps?q=<%=event.venue.lat%>,<%=event.venue.lng%>&amp;z=15">Find venue on a map &raquo;</a></p>
       <% else %>
         <p>This event has no location</p>
       <% end %>
@@ -56,7 +57,7 @@
       </div>
       <div class="detail">
         <%= image_tag('headings/hd_event_type.gif', :alt => 'Theme') %>
-        <p><%= event.theme.blank? ? "Other" : event.theme %></p>
+        <p><%=h event.theme.blank? ? "Other" : event.theme %></p>
       </div>
 
       <% unless event.cost.blank? %>

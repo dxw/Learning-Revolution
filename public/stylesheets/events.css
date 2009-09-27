@@ -56,7 +56,7 @@ h3.no_events{
   background-image:url(/images/example_calendar.jpg);
   background-repeat: no-repeat;
   width:959px;
-  min-height:700px;
+  min-height:400px;
 }
 
 .example_calendar_view .help_text{
@@ -66,24 +66,27 @@ h3.no_events{
   width:700px;
   position:absolute;
   left:100px;
-  top:100px;
+  top:55px;
   
 }
-img.heading{
-  margin-left:42px;
-}
-.example_calendar_view ol li, .example_calendar_view h3{
-  margin: 12px 0px 12px 42px;
-  line-height:1.5em;
-  margin-bottom:12px;
+.example_calendar_view img.heading{
+  margin-left:18px;
 }
 .example_calendar_view ol li{
+  margin: 12px 0px 12px 52px;
+  line-height:1.5em;
   font-size:1.33em;
+  margin-bottom:12px;
 }
+
 .example_calendar_view h3{
   font-size:1.5em;
 }
 
+.example_calendar_view p{
+  margin: 18px 0 0 18px;
+  font-size:1.1em;
+}
 
 
 .calendar_view{
@@ -168,6 +171,11 @@ img.heading{
   font-weight:bold;
 }
 
+
+#events_show h2 img.heading
+{
+   margin-left: 40px;
+}
 
 #events_show h3.heading{
   margin-top:6px;
@@ -302,6 +310,12 @@ ul li.foot .next {
   min-height:60px;
   padding-right:10px;
 }
+
+#event_details .detail .location_map
+{
+   padding-top: 8px;
+}
+
 .detail abbr.dtstart, abbr.dtend{
   float:left;
 }
@@ -361,8 +375,8 @@ ul li.foot .next {
   padding-left:15px;
 }
 #events_find_venue form{
-  float:left;
-  margin-left:36px;
+
+  margin-left:10px;
 }
 .existing_venues h4{
   margin-right:12px;
