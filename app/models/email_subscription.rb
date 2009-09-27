@@ -12,6 +12,14 @@ class EmailSubscription < ActiveRecord::Base
     update_attribute(:last_sent_at, Time.now.utc)
   end
   
+  def deliver_update
+    events = updated_events
+    if events.present?
+      EmailSubscriptionMailer.deliver_update(self, events)
+      update_attribute(:last_sent_at, Time.now.utc)
+    end
+  end
+  
   def all_events
     Event.find_all_with_filter_from_params(filter)
   end
@@ -35,4 +43,7 @@ class EmailSubscription < ActiveRecord::Base
     update_attribute(:confirmed_at, Time.now.utc)
   end
   
+  def self.deliver_all_updates!
+    confirmed.each{|es| es.deliver_update}
+  end
 end
