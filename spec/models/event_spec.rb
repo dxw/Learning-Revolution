@@ -189,7 +189,6 @@ describe Event do
       Event.find_by_month_with_filter_from_params(date, params)
     end
     
-    
     it "should find events in a month" do
       event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"))
       event2 = EventSpecHelper.save(:start => Time.parse("31st October 2009 11:59"))
@@ -220,7 +219,37 @@ describe Event do
       event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
       Event.find_by_month_with_filter(Time.parse("1st October 2009"), :conditions => ["theme LIKE ? AND event_type LIKE ?", "%cooking%", "%class%"]).should == [event1]
     end
+    
+    it "should find all events matching filter, ignoring date and usual limit of four per day" do
+      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
+      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :event_type => "test")
+      event3a = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3b = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3c = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3d = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3e = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3f = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
+      Event.find_all_with_filter_from_params(:theme => "cooking").should ==
+        [event1, event3a, event3b, event3c, event3d, event3e, event3f]
+    end
+    
+    it "should find all events matching filter added since given date" do
+      event1 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "cooking", :event_type => "class")
+      event2 = EventSpecHelper.save(:start => Time.parse("1st October 2009"), :theme => "swimming", :event_type => "test")
+      event3a = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3b = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3c = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3d = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3e = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event3f = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "cooking", :event_type => "class")
+      event4 = EventSpecHelper.save(:start => Time.parse("1st November 2009"), :theme => "swimming", :event_type => "test")
       
+      [event1, event3a, event3c, event3d].each{|e| e.update_attribute(:created_at, 2.days.from_now)}
+      
+      Event.find_all_with_filter_from_params_added_since(1.day.from_now, :theme => "cooking").should == 
+        [event1, event3a, event3c, event3d]
+    end
   end
     
   it "should find events on same day" do
