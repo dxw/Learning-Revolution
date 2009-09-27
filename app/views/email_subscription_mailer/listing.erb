@@ -3,7 +3,7 @@ TODO: Proper copy for this email please
 As requested, here is your listing of <%= filter_core_description(@email_subscription.filter, false) %>:
 
 To receive an email updates when new events are added, go here:
-TODO: subscription link
+<%= confirm_email_subscription_url(:id => @email_subscription, :secret => @email_subscription.secret, :only_path => false) %>
 
 <% @events.each do |event| -%>
 =============================================================================

@@ -5,11 +5,14 @@ Then /^I should receive an events listing email$/ do
 end
 
 Given /^I have requested an email of events filtered by the theme "([^\"]*)"$/ do |arg1|
-  pending
+  Given "I am on the calendar for October 2009 filtered by the theme \"Food and Cookery\""
+  When 'I follow "Send me these events as email."'
+  And 'I fill in "Email address" with "example@example.com"'
+  And 'I press "Send"'
 end
 
 Given /^I have received the events listing email$/ do
-  pending
+  Then "I should receive an events listing email"
 end
 
 Given /^I have subscribed to updates about events filtered by the theme "([^\"]*)"$/ do |arg1|

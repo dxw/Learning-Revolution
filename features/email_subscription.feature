@@ -22,8 +22,7 @@ Feature: Email Subscription
     Given I have requested an email of events filtered by the theme "Food and Cookery"
     And I have received the events listing email
     When I open the email
-    And I follow "subscribe to updates" in the email
-    And I press "Yes"
+    And I follow "subscription" in the email
     Then I should see "now subscribed"
   
   @wip

@@ -3,7 +3,9 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "email_subscription_mailer/listing" do
   before(:each) do
     assigns[:email_subscription] = mock_model(EmailSubscription,
-      :filter => {:theme => "Food and Cookery", :location => "E11 1PB"}
+      :filter => {:theme => "Food and Cookery", :location => "E11 1PB"},
+      :secret => 'abcdefgh',
+      :to_param => '1'
     )
     assigns[:events] = [
       mock_model(Event,
@@ -40,5 +42,10 @@ describe "email_subscription_mailer/listing" do
     response.body.should =~ /15 October 19:00PM/
     response.body.should =~ /The Kernel/
     response.body.should =~ /http:\/\/test.host\/events\/2009\/10\/15\/adventures-in-corn/
+  end
+  
+  it "should have a link to subscribe to updates" do
+    render 'email_subscription_mailer/listing'
+    response.body.should =~ Regexp.new("http://test.host/email_subscriptions/1/confirm/abcdefgh")
   end
 end
