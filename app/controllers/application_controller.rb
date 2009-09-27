@@ -47,10 +47,6 @@ class ApplicationController < ActionController::Base
     path
   end
   
-  def url_for_event(event)
-    event_url(event.start.year, event.start.month, event.start.day, event.slug)
-  end
-  
   def current_events_path(options={})
     events_by_month_path(2009, "October", options)
   end

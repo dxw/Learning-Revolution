@@ -8,8 +8,8 @@ module ApplicationHelper
     controller.path_for_event(event, filters, last_view)
   end
   
-  def url_for_event(event)
-    controller.url_for_event(event)
+  def url_for_event(event, options={})
+    event_url(event.start.year, event.start.month, event.start.day, event.slug, options)
   end
   
   def current_events_path(options={})
