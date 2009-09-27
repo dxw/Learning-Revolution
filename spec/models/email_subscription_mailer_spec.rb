@@ -6,9 +6,9 @@ describe EmailSubscriptionMailer do
   
   describe "listing" do
     before(:each) do
-      @email_subscription = mock_model(EmailSubscription, :email => "example@example.com")
-    
-      @email = EmailSubscriptionMailer.create_listing(@email_subscription)
+      @email_subscription = mock_model(EmailSubscription, :email => "example@example.com", :filter => nil)
+      @events = [mock_model(Event, :title => nil, :start => Time.now.utc, :end => nil, :venue => nil, :slug => '1')]
+      @email = EmailSubscriptionMailer.create_listing(@email_subscription, @events)
     end
   
     it "should be set to be delivered to the correct email address" do

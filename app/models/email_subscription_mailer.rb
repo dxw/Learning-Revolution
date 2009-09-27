@@ -1,10 +1,11 @@
 class EmailSubscriptionMailer < ActionMailer::Base
-  def listing(email_subscription)
-    subject    'EmailSubscriptionMailer#listing'
+  helper ApplicationHelper
+  
+  def listing(email_subscription, events)
+    subject    "Your Learning Revolution events listing"
     recipients email_subscription.email
-    from       ''
-    
-    body       :greeting => 'Hi,'
+    from       'Learning Revolution <noreply@learningrevolution.direct.gov.uk>'
+    body       :email_subscription => email_subscription, :events => events
   end
 
   def update(sent_at = Time.now)

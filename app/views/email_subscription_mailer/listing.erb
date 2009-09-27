@@ -1,1 +1,23 @@
-TODO: Content for me please
+TODO: Proper copy for this email please
+
+As requested, here is your listing of <%= filter_core_description(@email_subscription.filter, false) %>:
+
+To receive an email updates when new events are added, go here:
+TODO: subscription link
+
+<% @events.each do |event| -%>
+=============================================================================
+<%= event.title %>
+<% if event.end -%>
+<%= event.start.strftime("%e %B %R%p") %> until<%=
+(event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime(' %e %B') %><%=
+event.end.strftime(" %R%p") %>
+<% else -%>
+<%= event.start.strftime("%e %B %R%p") %>
+<% end -%>
+<% if event.venue -%>
+<%= event.venue.name %>
+<% end -%>
+<%= url_for_event(event, :only_path => false) %>
+<% end -%>
+=============================================================================

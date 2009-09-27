@@ -9,7 +9,7 @@ describe EmailSubscription do
   
   it "should send the initial listing email after being created" do
     es = EmailSubscription.new(:email => "example@example.com")
-    EmailSubscriptionMailer.should_receive(:deliver_listing).with(es)
+    EmailSubscriptionMailer.should_receive(:deliver_listing).with(es, [])
     es.save
   end
 end
