@@ -70,7 +70,8 @@
       <% unless event.more_info.blank? %>
       <div class="detail">
         <%= image_tag('headings/hd_more_info.gif', :alt => 'More info URL') %>
-        <p><%= link_to event.more_info %></p>
+        <p><%= link_to "More information &raquo;", event.more_info %></p>
+        <p class="not_endorsed">Please note: We have not reviewed external links and we do not endorse them.</p>
       </div>
       <% end %>
 
@@ -87,7 +88,7 @@
         <li class="calendar"><%= link_to "Add to iCal", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
         <li class="google_calendar"><%= link_to "Add to Google Calendar", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
         <li class="twitter"><%= link_to "Tweet this event", URI.escape("http://twitter.com/home?status=Going to #{truncate(event.title)}: #{event.bitly_url}") %></li>
-        <li class="facebook"><%= link_to "Facebook", "http://www.facebook.com/share.php?u=#{url_for_event(event)}" %></li>
+        <li class="facebook"><%= link_to "Facebook", "http://www.facebook.com/sharer.php?u=#{CGI::escape(url_for_event(event))}&amp;t=#{CGI::escape(event.title)}" %></li>
       </ul>
     <% end %>
 
@@ -101,7 +102,7 @@
       <%= image_tag('headings/hd_event_details_smaller.gif', :alt => 'Event Details') %>
       <%= simple_format(auto_link(event.description)) %>
     <% end %>
-
+    
     <% unless params[:action] == 'show' %>
       <%= image_tag('headings/hd_contact_details.gif', :alt => 'Contact Details') %>
       <p class="form_help">These details will not be publicly displayed</p>
@@ -111,6 +112,8 @@
         <span class="tel"><%= "#{event.contact_phone_number if event.contact_phone_number} - " %></span> 
         <% unless event.contact_email_address.blank? %><a class="email" href="mailto:<%= event.contact_email_address %>"><%= event.contact_email_address %></a><% end %>
       </p>
+    <% else %>
+       <p class="offensive">Offensive? Incorrect? <a href="mailto:<%=AppConfig.contact_email %>">Please let us know</a>. Make sure you include a link to this page in your email.
     <% end %>
   </div>
 

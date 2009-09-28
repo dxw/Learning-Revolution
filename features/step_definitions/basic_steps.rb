@@ -33,5 +33,7 @@ Then /^I should see image "([^\"]*)"$/ do |alt|
   response.should have_selector("img", :alt => alt)
 end
 
-
+Then /^I should not see image "([^\"]*)"$/ do |alt|
+  response.should_not have_selector("img", :alt => alt)
+end
 
