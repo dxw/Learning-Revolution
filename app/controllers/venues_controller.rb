@@ -17,12 +17,10 @@ class VenuesController < ApplicationController
   end
 
   def venue_for_map
-    respond_to do |format|
       params[:filter] ||= {}
       venue = Venue.find(params[:venue_id])
-      format.js {render :json => [venue].collect{|venue| {"title" => venue.name, "address_1" => venue.address_1, "postcode" => venue.postcode, "events" => venue.events}}}
-    end
-    
+      @venue = Venue.find(params[:venue_id])
+      render :partial => 'events/events_at_a_venue'
   end
 
 end
