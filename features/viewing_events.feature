@@ -3,6 +3,13 @@ Feature: Viewing events
   I should be view the details page of each event
   In order to see important info about each event
   So that I can attend
+  
+  Scenario: Reporting an offensive or incorrect event
+    Given a valid event called "Event 1"
+    And I go to the event page for "Event 1"
+    Then I should see "Event 1"
+    And I should see "Offensive? Incorrect?"
+    And the page is valid XHTML
 
   Scenario: Viewing an event with a venue
     Given a valid event called "Festival of Ideas"

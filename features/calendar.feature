@@ -29,7 +29,6 @@ Feature: Calendar
     And I should not see "Secret Event"
     And the page is valid XHTML
 
-@current
   Scenario: Viewing a calendar filtered by location
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
@@ -52,4 +51,33 @@ Feature: Calendar
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
     And the page is valid XHTML
+    
+  Scenario: Browsing back to the calendar
+    Given a valid event called "Event 1"
+    And the event "Event 1" starts on "1st October 2009 12:00"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    Then I should see "Event 1"
+    When I follow "Event 1"
+    Then I should see "Listings for 1st October 2009"
+    When I follow "« Back to search results"
+    Then I should be on the calendar for October 2009
+    And I should see "Event 1"
+    And I should not see image "How to use this site"
+    When I follow "Event 1"
+    Then I should see "Listings for 1st October 2009"
+    When I follow "Events"
+    Then I should be on the calendar for October 2009
+    And I should see "Event 1"
+    And I should not see image "How to use this site"
+    
+  Scenario: Viewing the results on a map
+    Given a valid event called "Octoberfest"
+    And the event "Octoberfest" starts on "12th October 2009 12:00"
+    And the event "Octoberfest" is located at lat "51.584911" and lng "0.02591"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    Then I should be on the calendar for October 2009
+    When I follow "Map"
+    Then I should see the map
     

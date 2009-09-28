@@ -341,10 +341,15 @@ ul li.foot .next {
 
 .offensive
 {
-   padding-left: 12px;
+   padding-top: 12px;
    font-size: 0.9em;
 }
 
+.not_endorsed
+{
+   padding-top: 6px;
+   font-size: 0.9em;
+}
 #event_details h4, #event_details img, #event_details p, #event_details div.time{
   float:left;
   clear:left;
