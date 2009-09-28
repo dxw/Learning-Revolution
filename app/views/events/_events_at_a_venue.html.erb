@@ -1,0 +1,27 @@
+<%# first add the venue details  %>
+<h4 class="gmap_venue_title"><%= @venue.name %></h4>
+<p class="gmap_venue_address"><%= @venue.address_1 ? "#{@venue.address_1}, " : "" %><%= @venue.postcode %><p>
+
+<%# then loop through events %>
+<%# you have to explicitly add the classes here, because google maps sizes the containing speech bubble first %>
+<ul>
+  <%# one for every day in October %>
+  <% dates = Array(1..31) %>
+
+  <% @venue.events.each do |ev| %>
+    
+    <li class="gmap_resized">
+    <%# cycle through possible dates to add a sub heading for each day, before listing events %>
+    <% dates.each do |d| %>    
+      <% if d == ev.start.day %>
+        <h5><%= ev.start.strftime"%a %d %b" %></h5>
+        <%# once a day has been listed, we don't want to see it printed on the next iteration %>
+        <% dates.delete(d) %>
+      <% end %>
+    <% end %>
+    <p><%= link_to "#{ev.start.strftime('%H:%M%p')} - #{ev.title}", path_for_event(ev) %></p>
+    </li>
+  
+  <% end %>
+</ul>
+
