@@ -286,9 +286,14 @@ namespace :lr do
         e.min_age = row["min_age"]
         die "start cannot be blank" if row["start"].blank?
         e.start = str_to_datetime(row["start"])
+        
         unless row["end"].blank?
           e.end = str_to_datetime(row["end"])
+          die "Events cannot end before they have started" if e.end < e.start
         end
+        
+        die "You cannot import events that aren't in October 2009" if e.start.month != 10 || e.start.year != 2009
+
         if row["published"] == "true"
           e.published = true
         elsif row["published"] == "false" || row["published"].nil?
