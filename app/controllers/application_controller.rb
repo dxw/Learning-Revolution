@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   # This method needs to be modified to use the event URL structure specified in config/application.yml
   #
   
-  def path_for_event(event, filters = nil, last_view = 'calendar')
+  def path_for_event(event, filters = nil, last_view = nil)
     return "/" unless event
     
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}?"
