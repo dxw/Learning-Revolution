@@ -43,27 +43,13 @@ function initialize_google_map_events_map() {
       
       GEvent.addListener(marker_<%= venue.id %>, "click", function() {
         marker_<%= venue.id %>.openInfoWindowHtml("<h1>Loading...</h1>");
-        $.getJSON( "/venues/<%= venue.id %>.js" , function(data) {
-
-          //debugger
-          html = ""
-          
-          html += "<h4>" + data[0].title + "</h4>"
-          html += "<p>" + (data[0].address_1 ? data[0].address_1 + ',' : "" ) + " " + data[0].postcode + "</p>"
-          html += "<ul>"
-          $.each(data[0].events, function(i, item) { 
-  //          debugger
-            friendly_date = item.event.start.replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(.*)/, "$1,$2,$3,$4,$5")
-            friendly_date = friendly_date.split(',')
-            item_date = new Date( parseInt(friendly_date[0]), (parseInt(friendly_date[1]) -1), parseInt(friendly_date[2]), parseInt(friendly_date[3]), parseInt(friendly_date[4]) )
-//            debugger
-            item_date = item_date.strftime('%A %d %B, %H:%M%P');
-//            debugger
-            html += '<li>' + item_date + ': <a href="'+item.event.url+ '">'+item.event.title, +"</a></li>";
-          });
-          html += "</ul>"
-          marker_<%= venue.id %>.openInfoWindowHtml(html);
-        }) 
+        
+        $.ajax({
+          type: 'GET',
+          url: "/venues/<%= venue.id %>",
+          datatype: "html",
+          success: function(data) {marker_<%= venue.id %>.openInfoWindowHtml(data);}
+        });
      	});
       
       marker_manager.addMarker(marker_<%= venue.id %>, 1);

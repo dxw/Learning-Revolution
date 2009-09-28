@@ -162,16 +162,32 @@ h3.no_events{
   width:875px;
   margin-left:42px;
   margin-top:36px;
+  margin-bottom:24px;
 }
 #events_map ul li{
   list-style: none;
+  font-size:12px;
+}
+li.gmap_resized{
+  display:block;
+}
+h4.gmap_venue_title{
+    font-weight:bold;
+    font-size:1.13em;
+}
+p.gmap_venue_address{
+    font-style:italic;
+    color:#333;
+}
+li.gmap_resized p{
+    font-weight:bold;
+    font-size:0.83em;
 }
 
-#events_map h4{
+li.gmap_resized h5{
   font-weight:bold;
+  margin-top:6px  
 }
-
-
 #events_show h2 img.heading
 {
    margin-left: 40px;
