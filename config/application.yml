@@ -8,6 +8,8 @@ development:
 
   google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
   badge: badges
+  
+  contact_email: learningrevolution@bis.gsi.gov.uk
 
 test:
   bitly_account: learningrevolution
@@ -19,6 +21,8 @@ test:
   
   google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw
   badge: badges
+  
+  contact_email: learningrevolution@bis.gsi.gov.uk
 
 production:
   bitly_account: learningrevolution
@@ -30,3 +34,5 @@ production:
   
   google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
   badge: badges
+  
+  contact_email: learningrevolution@bis.gsi.gov.uk

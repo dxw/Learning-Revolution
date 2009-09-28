@@ -338,6 +338,13 @@ ul li.foot .next {
 .detail_list ul.sm_icons li{
   margin: 12px ;
 }
+
+.offensive
+{
+   padding-left: 12px;
+   font-size: 0.9em;
+}
+
 #event_details h4, #event_details img, #event_details p, #event_details div.time{
   float:left;
   clear:left;

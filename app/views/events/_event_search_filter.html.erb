@@ -25,7 +25,7 @@
 
     </div>
 
-    <% unless params[:id] || @events.empty? %>
+    <% unless params[:id] || @events.nil? || @events.empty? %>
     <ul class="search_subscription_options">
       <!-- <li class="email png">Send me these events as email.</li> -->
     
