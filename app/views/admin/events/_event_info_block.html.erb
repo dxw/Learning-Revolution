@@ -1,4 +1,4 @@
-<ul>
+<ul class="first">
   <li class="item clearfix odd">
     <div class="label">Title</div> <div class="value"><%= event.title %></div>
   </li>
@@ -20,11 +20,22 @@
   <li class="item clearfix even">
     <div class="label">Cost</div> <div class="value"><%= event.cost %></div>
   </li>
+  <li class="item clearfix even">
+    <div class="label">Venue</div> <div class="value">
+      <%= event.venue.name %><br />
+      <%= event.venue.address_1 + "<br />" unless event.venue.address_1.nil? %>
+      <%= event.venue.address_2 + "<br />" unless event.venue.address_2.nil? %>
+      <%= event.venue.address_3 + "<br />" unless event.venue.address_3.nil? %>
+      <%= event.venue.city + "<br />" unless event.venue.city.nil? %>
+      <%= event.venue.county + "<br />" unless event.venue.county.nil? %>
+      <%= event.venue.postcode + "<br />" unless event.venue.postcode.nil? %>
+    </div>
+  </li>
+</ul>
+
+<ul>
   <li class="item clearfix odd">
     <div class="label">Min Age</div> <div class="value"><%= event.min_age %></div>
-  </li>
-  <li class="item clearfix even">
-    <div class="label">Venue</div> <div class="value"><%= event.location_id %></div>
   </li>
   <li class="item clearfix odd">
     <div class="label">Organisation</div> <div class="value"><%= event.organisation %></div>

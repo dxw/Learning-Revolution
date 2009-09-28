@@ -13,6 +13,7 @@ class Admin::EventsController < Admin::AdminController
     end
     
     response_for :update do |format|
+      
       format.html do 
         flash[:event] = "Event saved successfully"
         return_or_redirect_to :action => :index
@@ -34,7 +35,7 @@ class Admin::EventsController < Admin::AdminController
   
   def moderations
     if params[:from]
-      @event = Event.find(:first, :conditions => ["(published IS NULL OR published != 1) AND id > ?", params[:from]], :order => "id ASC")
+      @event = Event.find(:first, :conditions => ["(published IS NULL OR published != 1) AND id = ?", params[:from]], :order => "id ASC")
     else
       @event = Event.find(:first, :conditions => "published IS NULL OR published != 1", :order => "created_at ASC")
     end
