@@ -39,10 +39,10 @@ class ApplicationController < ActionController::Base
   def path_for_event(event, filters = nil, last_view = 'calendar')
     return "/" unless event
     
-    path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
-    unless filters.nil? || filters.empty?
-      path += "?filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}&amp;last_view=#{last_view}"
-    end
+    path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}?"
+    
+    path += "last_view=#{last_view}" unless last_view.nil? || last_view.empty?
+    path += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
     
     path
   end

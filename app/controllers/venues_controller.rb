@@ -22,6 +22,5 @@ class VenuesController < ApplicationController
       @venue = Venue.find(params[:venue_id])
       render :partial => 'events/events_at_a_venue'
   end
-
 end
  

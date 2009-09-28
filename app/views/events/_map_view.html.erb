@@ -36,23 +36,26 @@ function initialize_google_map_events_map() {
     marker_manager = new MarkerManager(events_map);
     
     <% @venues.each do |venue| %>
-	   var icon = new GIcon(G_DEFAULT_ICON, '/images/map_learner_icon.png');
-      icon.iconSize = new GSize(21, 31)
-
-      var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>), icon);
-      
-      GEvent.addListener(marker_<%= venue.id %>, "click", function() {
-        marker_<%= venue.id %>.openInfoWindowHtml("<h1>Loading...</h1>");
-        
-        $.ajax({
-          type: 'GET',
-          url: "/venues/<%= venue.id %>",
-          datatype: "html",
-          success: function(data) {marker_<%= venue.id %>.openInfoWindowHtml(data);}
-        });
-     	});
-      
-      marker_manager.addMarker(marker_<%= venue.id %>, 1);
+      <% puts 'sdfsd' %>
+      <% if venue.has_published_events %>
+         var icon = new GIcon(G_DEFAULT_ICON, '/images/map_learner_icon.png');
+         icon.iconSize = new GSize(21, 31)
+   
+         var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>), icon);
+         
+         GEvent.addListener(marker_<%= venue.id %>, "click", function() {
+           marker_<%= venue.id %>.openInfoWindowHtml("<h1>Loading...</h1>");
+           
+           $.ajax({
+             type: 'GET',
+             url: '<%= make_venue_ajax_url(venue, params[:filter]) %>',
+             datatype: "html",
+             success: function(data) {marker_<%= venue.id %>.openInfoWindowHtml(data);}
+           });
+         });
+         
+         marker_manager.addMarker(marker_<%= venue.id %>, 1);
+      <% end %>
     <% end %>
     
   }

@@ -34,6 +34,8 @@ class EventsController < ApplicationController
   def show
     if params[:id].nil?
       @event = Event.first_for_day(Time.zone.local(2009, 10, params[:day].to_i))
+      
+      redirect_to path_for_event(@event, params[:filter], params[:last_view]).gsub('&amp;', '&') and return
     else
       @event = Event.find_by_slug(params[:id])
     end
@@ -44,8 +46,8 @@ class EventsController < ApplicationController
     else
       add_page_title @event.title
             
-      redirect_to path_for_event(@event, params[:filter], params[:last_view]).gsub('&amp;', '&') and return if request.format == 'html' && request.path != path_for_event(@event)
-      
+      puts path_for_event(@event).gsub('&amp;', '&') + "\n" + request.path + "\n\n"
+
       respond_to do |format|
         format.html
         format.ics { render :text => @event.to_ical }

@@ -25,11 +25,11 @@ module EventsHelper
   
   private 
   def make_link(event, text, filters, last_view)
-    link = "/events/2009/October/#{event.start.day}"
-    
-    link += "?last_view=#{last_view}" unless last_view.nil? || last_view.empty?
+    link_to(text, path_for_event(event, filters, last_view), :class => 'trigger')
+  end
+  
+  def make_venue_ajax_url(venue, filters)
+    link = "/venues/#{venue.id}?last_view=map"
     link += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
-    
-    link_to(text, link, :class => 'trigger')
   end
 end

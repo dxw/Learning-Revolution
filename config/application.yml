@@ -6,7 +6,7 @@ development:
 
   event_uri_template: /events/:year/:month/:day/:stub
 
-  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
+    
   badge: badges
   
   contact_email: learningrevolution@bis.gsi.gov.uk
