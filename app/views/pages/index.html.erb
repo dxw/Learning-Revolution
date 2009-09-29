@@ -17,11 +17,13 @@
       <div class="featured_events">
         <ul>
           <li class="featured_event">
-            <%= image_tag 'front_page_calendar.jpg', :alt => "Sample Event Calendar" %>
+            <a href="/events/2009/October"><%= image_tag 'front_page_calendar.jpg', :alt => "Sample Event Calendar" %></a>
+            
+            <h3 class="trans"><a href="/events/2009/October">Find something to do in October &raquo;</a></h3>
           </li>
         <% Event.featured.find(:all, :conditions => 'length(picture) > 0').each_with_index do |event, count| %>
           <li class="featured_event" id="featured_event_<%= count+1 %>">
-            <%= image_tag event.picture if event.picture %>
+            <a href="<%= path_for_event(event) %>"><%= image_tag event.picture if event.picture %></a>
             <div class="calendar_date">
               <div class="month">
                 <%= Date::MONTHNAMES[event.start.month][0..2] %>
