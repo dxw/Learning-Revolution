@@ -68,7 +68,11 @@ class ApplicationController < ActionController::Base
   end
 
   def rescue_action_in_public(exception)
-    render_500(exception)
+    if exception.is_a? ActionController::RoutingError
+      render_404(exception)
+    else
+      render_500(exception)
+    end
   end
 
 end

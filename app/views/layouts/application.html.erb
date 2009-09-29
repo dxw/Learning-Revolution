@@ -51,7 +51,7 @@
   <%= yield :head %>
 </head>
 
-<body class="<%= "c_#{params[:controller].gsub('/','_')} " "m_#{params[:action].gsub('/','_')}" %>" id="<%= "#{params[:controller].gsub('/','_')}_#{params[:action].gsub('/','_')}" %>">
+<body class="<%= "c_#{params[:controller].andand.gsub('/','_')} " "m_#{params[:action].andand.gsub('/','_')}" %>" id="<%= "#{params[:controller].andand.gsub('/','_')}_#{params[:action].andand.gsub('/','_')}" %>">
     <div class="header">
       
       <h1><a href="/"><img src="/images/fol_logo.png" alt="Learning Revolution Logo" /></a></h1>
