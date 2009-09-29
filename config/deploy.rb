@@ -1,5 +1,5 @@
-set :stages, %w(staging production)
-set :default_stage, 'staging'
+set :stages, %w(testing staging production)
+set :default_stage, 'testing'
 require 'capistrano/ext/multistage'
 
 set :application, "learning_revolution"
