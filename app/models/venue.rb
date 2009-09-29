@@ -25,6 +25,6 @@ class Venue < Location
   end
   
   def has_published_events
-    events.select{|e| puts e.inspect; e.published}.size > 0
+    events.select{|e| e.published}.size > 0
   end
 end

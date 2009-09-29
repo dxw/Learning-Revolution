@@ -36,7 +36,6 @@ function initialize_google_map_events_map() {
     marker_manager = new MarkerManager(events_map);
     
     <% @venues.each do |venue| %>
-      <% puts 'sdfsd' %>
       <% if venue.has_published_events %>
          var icon = new GIcon(G_DEFAULT_ICON, '/images/map_learner_icon.png');
          icon.iconSize = new GSize(21, 31)
