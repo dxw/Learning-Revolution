@@ -42,6 +42,8 @@ module NavigationHelpers
       '/copyright'
     when /the promote your event page/
       '/promote-your-event'
+    when /news/
+      '/news'
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end

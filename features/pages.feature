@@ -35,3 +35,7 @@ Feature: Pages
       When I go to the the promote your event page
       Then I should see image "Promote Your Event"
       And the page is valid XHTML
+      
+   Scenario: Viewing the the news page
+      When I go to the the news page
+      Then I should see image "News"
