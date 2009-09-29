@@ -6,6 +6,7 @@ development:
 
   event_uri_template: /events/:year/:month/:day/:stub
 
+  google_maps_key:
     
   badge: badges
   
