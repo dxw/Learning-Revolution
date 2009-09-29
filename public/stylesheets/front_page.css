@@ -135,11 +135,14 @@ a#view_event_calendar{
 .share_space_and_groups p{
   margin-left:15px;
 }
-.share_space_and_groups img{
-  margin-left:5px;
+.share_space_and_groups img.button{
+  margin-left:7px;
 }
 .share_space_and_groups img.organise_group{
-  margin-left:15px;
+  margin-left:0px;
+}
+img.follow_festival{
+  margin-left:5px;
 }
 .secondary_block{
   min-height:310px;
@@ -244,11 +247,14 @@ form#bis_email_signup{
   padding-bottom:12px;
 }
 .photos_and_videos .heading{
-  margin-left:0px;
+  margin-left:4px;
+  margin-bottom:6px;
   text-align:left;
+  float:left;
 }
 .videos .heading{
   margin-left:48px;
+  margin-bottom:6px;
   text-align:left;
 }
 .photos_and_videos .photos {
@@ -265,6 +271,7 @@ form#bis_email_signup{
 }
 ul.flickr_photos,
 ul.youtube_videos {
+  clear:left;
   list-style:none;
 }
 ul.youtube_videos {
