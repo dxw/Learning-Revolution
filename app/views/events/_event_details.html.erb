@@ -117,7 +117,7 @@
     <% end %>
   </div>
 
-  <% unless event.provider.blank? %>
+  <% unless event.provider.blank? || !File.exists?(RAILS_ROOT + '/public/' + AppConfig.badge + '/' + event.provider) %>
   <div class="provider">
     <p><img src="<%= event.provider_badge %>" alt="<%= CGI.escapeHTML(event.provider_name) %>" title="<%= CGI.escapeHTML(event.provider_name) %>" /></p>
   </div>
