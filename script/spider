@@ -2,7 +2,7 @@
 
 # For a list of broken lists, look at the bottom of log/wget and log/wget-admin
 
-wget --recursive http://lain:3000/ -o log/wget
-wget --recursive --user=lr_admin --password='learning is fun!' http://lain:3000/admin -o log/wget-admin
+wget --recursive http://staging.learnrev-001.vm.brightbox.net/ -o log/wget
+wget --recursive --user=lr_admin --password='learning is fun!' http://staging.learnrev-001.vm.brightbox.net/admin -o log/wget-admin
 
-find lain:3000 -type f -\! -name '*.jpg*' -and -\! -name '*.gif*' -and -\! -name '*.png*' -and -\! -name '*.js*' -and -\! -name '*.css*' -and -\! -name '*.txt' -and -\! -name '*.atom*' -and -\! -name '*.ics*' -print0 | xargs -0 ruby -rubygems -e 'require "markup_validity";ARGV.each{|f|begin;MarkupValidity::Validator.new(open(f),MarkupValidity::Validator::XHTML1_STRICT);p [f,:happy];rescue;p [f,:sad];end}'
+find staging.learnrev-001.vm.brightbox.net -type f -\! -name '*.jpg*' -and -\! -name '*.gif*' -and -\! -name '*.png*' -and -\! -name '*.js*' -and -\! -name '*.css*' -and -\! -name '*.txt' -and -\! -name '*.atom*' -and -\! -name '*.ics*' -print0 | xargs -0 ruby -rubygems -e 'require "markup_validity";ARGV.each{|f|begin;MarkupValidity::Validator.new(open(f),MarkupValidity::Validator::XHTML1_STRICT);p [f,:happy];rescue;p [f,:sad];end}'
