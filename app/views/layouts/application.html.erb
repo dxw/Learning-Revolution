@@ -36,7 +36,6 @@
    
    <link rel="alternate" type="application/atom+xml" title="News Feed" href="http://thelearningrevolution.ning.com/profiles/blog/feed?xn_auth=no" />
 
-  <script src="/javascripts/strftime.js" type="text/javascript"></script>
   <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
   <script src="/javascripts/jquery.cycle.core.js" type="text/javascript"></script>
   <script src="/javascripts/jquery.cycle.transitions.js" type="text/javascript"></script>
@@ -51,7 +50,7 @@
   <%= yield :head %>
 </head>
 
-<body class="<%= "c_#{params[:controller].gsub('/','_')} " "m_#{params[:action].gsub('/','_')}" %>" id="<%= "#{params[:controller].gsub('/','_')}_#{params[:action].gsub('/','_')}" %>">
+<body class="<%= "c_#{params[:controller].andand.gsub('/','_')} " "m_#{params[:action].andand.gsub('/','_')}" %>" id="<%= "#{params[:controller].andand.gsub('/','_')}_#{params[:action].andand.gsub('/','_')}" %>">
     <div class="header">
       
       <h1><a href="/"><img src="/images/fol_logo.png" alt="Learning Revolution Logo" /></a></h1>

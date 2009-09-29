@@ -58,17 +58,21 @@ class ApplicationController < ActionController::Base
   def render_500(exception=nil)
     @status = 500
     render :template => 'error', :status => 500
-    Notifier.deliver_error_notification('500',exception)
+    Notifier.deliver_error_notification('500',exception,request)
   end
   
   def render_404(exception=nil)
     @status = 404
     render :template => 'error', :status => 404
-    Notifier.deliver_error_notification('404',exception)
+    Notifier.deliver_error_notification('404',exception,request)
   end
 
   def rescue_action_in_public(exception)
-    render_500(exception)
+    if exception.is_a? ActionController::RoutingError
+      render_404(exception)
+    else
+      render_500(exception)
+    end
   end
 
 end
