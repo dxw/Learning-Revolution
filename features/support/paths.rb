@@ -30,6 +30,20 @@ module NavigationHelpers
       event_path(event.start.year, event.start.month, event.start.day, event.slug)
     when /the event success page/
       events_success_path
+    when /the frequently asked questions page/
+      '/frequently-asked-questions'
+    when /about/
+      '/about'
+    when /the privacy policy/
+      '/privacy-policy'
+    when /the terms and conditions/
+      '/terms-and-conditions'
+    when /the copyright page/
+      '/copyright'
+    when /the promote your event page/
+      '/promote-your-event'
+    when /news/
+      '/news'
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n"
     end

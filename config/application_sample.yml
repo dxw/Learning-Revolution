@@ -6,6 +6,7 @@ development:
 
   event_uri_template: /events/:year/:month/:day/:stub
 
+  yahoo_api_key:
   google_maps_key:
     
   badge: badges
@@ -20,6 +21,7 @@ test:
 
   event_uri_template: /events/:year/:month/:day/:stub  
   
+  yahoo_api_key: 7SI401vV34HiBOmMRY1Hj.7N_NFTn5oA_oAD9gys99MHdRyFGKkHEy1bMmOfhlw-
   google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw
   badge: badges
   
@@ -33,7 +35,8 @@ production:
 
   event_uri_template: /events/:year/:month/:day/:stub
   
-  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhS6yI4Oky2btJnizjKkhx0I2b61jBSWUb_l1DnqFARJb38kjFSVsk0Bcw  
+  yahoo_api_key: 7SI401vV34HiBOmMRY1Hj.7N_NFTn5oA_oAD9gys99MHdRyFGKkHEy1bMmOfhlw-
+  google_maps_key: ABQIAAAA9hPO1yRskyJFY-uwV_gAqhTIXty0RZjPK94OBBEAE5LamIlH1hRE7kn2Ml0WJdYWkdaP0uVM86K3jQ  
   badge: badges
   
   contact_email: learningrevolution@bis.gsi.gov.uk

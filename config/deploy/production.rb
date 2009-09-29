@@ -1,11 +1,15 @@
+require 'brightbox/recipes'
+require 'brightbox/passenger'
+set :domain, "production.learnrev-001.vm.brightbox.net"
+
 set :rails_env, "production"
 
-set :user, 'jamesd'
+set :user, 'rails'
 
-role :app, "thedextrousweb.com"
-role :web, "thedextrousweb.com"
-role :db,  "thedextrousweb.com", :primary => true
+role :app, "production.learnrev-001.vm.brightbox.net"
+role :web, "production.learnrev-001.vm.brightbox.net"
+role :db,  "production.learnrev-001.vm.brightbox.net", :primary => true
 
-set :branch, "master"
+set :branch, "production"
 
-set :deploy_to, "/var/vhosts/thedextrousweb.com/dev.learning/checkout"
+set :deploy_to, "/home/rails/default"
