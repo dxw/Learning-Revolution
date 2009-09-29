@@ -44,3 +44,8 @@ When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |t
   venue = find_or_create(Venue, :name => title)
   set_hidden_field("event[location_id]", :to => venue.id) 
 end
+
+Then /^I should see the map$/ do
+  response.should have_selector('div', :class => 'events_map')
+end
+

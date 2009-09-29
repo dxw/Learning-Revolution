@@ -78,6 +78,8 @@ Feature: Calendar
     When I go to the calendar for October 2009
     And I press "Search For Events"
     Then I should be on the calendar for October 2009
+    And I should see "Now showing all events"
     When I follow "Map"
     Then I should see the map
+    And the page is valid XHTML
     
