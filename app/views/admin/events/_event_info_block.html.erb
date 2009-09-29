@@ -22,6 +22,9 @@
   </li>
   <li class="item clearfix even">
     <div class="label">Venue</div> <div class="value">
+      <% if event.venue.blank? %>
+      There is no venue
+      <% else %>
       <%= event.venue.name %><br />
       <%= event.venue.address_1 + "<br />" unless event.venue.address_1.nil? %>
       <%= event.venue.address_2 + "<br />" unless event.venue.address_2.nil? %>
@@ -29,6 +32,7 @@
       <%= event.venue.city + "<br />" unless event.venue.city.nil? %>
       <%= event.venue.county + "<br />" unless event.venue.county.nil? %>
       <%= event.venue.postcode + "<br />" unless event.venue.postcode.nil? %>
+      <% end %>
     </div>
   </li>
 </ul>
