@@ -22,7 +22,7 @@ namespace :deploy do
   end
      
   desc "Creates additional symlinks and restarts sphinx"
-  task :after_update_code do
+  task :before_update_code do
     if symlinked_dirs
       symlinked_dirs.each do |item| 
         src, dest = item

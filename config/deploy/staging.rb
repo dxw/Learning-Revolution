@@ -1,3 +1,7 @@
+require 'brightbox/recipes'
+require 'brightbox/passenger'
+set :domain, "staging.learnrev-001.vm.brightbox.net"
+
 set :rails_env, "production"
 
 set :user, 'rails'
