@@ -38,7 +38,6 @@ YouTubePlayer = $.klass({
   initialize: function (user_id) {
     var current_element = this.element
     $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?&orderby=updated&alt=json-in-script&callback=?", function (data) { 
-
       var latest_video_url = data.feed.entry[0].media$group.media$content[0].url
       var element = jQuery('<object width="340" height="243">');
       element.append(
@@ -47,8 +46,7 @@ YouTubePlayer = $.klass({
         '<param name="allowscriptaccess" value="always"></param>' +
         '</object>'
         );
-      debugger
-      current_element.after(element);
+      current_element.replaceWith(element);
     });
   }
 });
@@ -176,7 +174,7 @@ PostcodeHint = $.klass({
 
 
 jQuery(function ($) {
-  $('.featured_youtube h3').attach(YouTubePlayer, 'learnrevolution');
+  $('.youtube_video_player').attach(YouTubePlayer, 'learnrevolution');
   $('.flickr_photos').attach(Flickr, '42889703@N05');
   $('.youtube_videos').attach(YouTube, 'learnrevolution');
   $('.date_slider').attach(DateSlider);
