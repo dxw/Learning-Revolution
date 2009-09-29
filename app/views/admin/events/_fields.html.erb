@@ -79,7 +79,7 @@
 <div class="input clearfix input_with_tip">
   <p>
     <label for="event_location_id">Venue</label>
-    <%= event_form.collection_select :location_id, Venue.all, :id, :name, :include_blank => true %>
+    <%= event_form.collection_select :location_id, Venue.find(:all, :order => 'name'), :id, :name, :include_blank => true %>
   </p>
 
   <div class="input_tip">
