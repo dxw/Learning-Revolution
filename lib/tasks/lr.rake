@@ -247,13 +247,7 @@ namespace :lr do
         #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
         e = Event.new
 
-        if row["cyberevent"] == "true"
-          %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
-         #   unless row[f].blank?
-         #     die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
-         #   end
-          }
-        elsif row["cyberevent"] == "false" || row["cyberevent"].nil?
+        if row["cyberevent"].nil? || row["cyberevent"].downcase == "false"
           v = Venue.find(:first, :conditions => {:name => row["venue_name"],
                          :address_1 => row["venue_address_1"],
                          :address_2 => row["venue_address_2"],
@@ -276,6 +270,13 @@ namespace :lr do
           end
           e.venue = v
           v.save!
+        elsif row["cyberevent"].downcase == "true"
+          %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
+         #   unless row[f].blank?
+         #     die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+         #   end
+          }
+        
         end
 
         e.provider = row["provider"]
@@ -294,11 +295,12 @@ namespace :lr do
         
         die "You cannot import events that aren't in October 2009" if e.start.month != 10 || e.start.year != 2009
 
-        if row["published"] == "true"
-          e.published = true
-        elsif row["published"] == "false" || row["published"].nil?
+        if row["published"].nil? || row["published"].downcase == "false"
           e.published = false
+        elsif row["published"].downcase == "true"
+          e.published = true
         end
+        
         e.theme = row["theme"]
         e.event_type = row["event_type"]
         e.picture = row["picture"]
@@ -312,6 +314,12 @@ namespace :lr do
       
         e.more_info = row["more_info"]
         
+        if row["booking required"].nil? || row["booking required"].downcase == "false"
+          e.booking_required = false
+        elsif row["booking required"].downcase == "true"
+          e.booking_required = true
+        end
+        
         if e.invalid?
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
@@ -319,7 +327,7 @@ namespace :lr do
         if e.save!
           p "saved #{e.class}, id #{e.id}, row #{@rownum}" unless RAILS_ENV=='test'
         else
-           die "save failed"
+          die "save failed"
         end
       end
     end
