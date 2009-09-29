@@ -1,6 +1,6 @@
-Page.create!(:slug => "about", :title => "About", :content => "<p>About</p>") unless Page.find(:all, :conditions => {:slug => 'about'}).size > 0
-Page.create!(:slug => "terms-conditions", :title => "Terms and Conditions", :content => "<p>Terms</p>") unless Page.find(:all, :conditions => {:slug => 'terms-conditions'}).size > 0
-Page.create!(:slug => "privacy", :title => "Your Privacy", :content => "<p>Privacy</p>") unless Page.find(:all, :conditions => {:slug => 'privacy'}).size > 0
-Page.create!(:slug => "promote-your-event", :title => "Promote Your Event", :content => "<p>Promote</p>") unless Page.find(:all, :conditions => {:slug => 'promote-your-event'}).size > 0
-Page.create!(:slug => "frequently-asked-questions", :title => "Frequently Asked Questions", :content => "<p>FAQ</p>")  unless Page.find(:all, :conditions => {:slug => 'frequently-asked-questions'}).size > 0
-Page.create!(:slug => "copyright", :title => "Copyright", :content => "<p>Copyright</p>") unless Page.find(:all, :conditions => {:slug => 'copyright'}).size > 0
+Page.create!(:slug => "about", :title => "About", :content => File.read("#{RAILS_ROOT}/db/page_contents/about.html")) unless Page.find(:all, :conditions => {:slug => 'about'}).size > 0
+Page.create!(:slug => "terms-conditions", :title => "Terms and Conditions", :content => File.read("#{RAILS_ROOT}/db/page_contents/terms-conditions.html")) unless Page.find(:all, :conditions => {:slug => 'terms-conditions'}).size > 0
+Page.create!(:slug => "privacy", :title => "Your Privacy", :content => File.read("#{RAILS_ROOT}/db/page_contents/privacy.html")) unless Page.find(:all, :conditions => {:slug => 'privacy'}).size > 0
+Page.create!(:slug => "promote-your-event", :title => "Promote Your Event", :content => File.read("#{RAILS_ROOT}/db/page_contents/promote-your-event.html")) unless Page.find(:all, :conditions => {:slug => 'promote-your-event'}).size > 0
+Page.create!(:slug => "frequently-asked-questions", :title => "Frequently Asked Questions", :content => File.read("#{RAILS_ROOT}/db/page_contents/frequently-asked-questions.html"))  unless Page.find(:all, :conditions => {:slug => 'frequently-asked-questions'}).size > 0
+Page.create!(:slug => "copyright", :title => "Copyright", :content => File.read("#{RAILS_ROOT}/db/page_contents/copyright.html")) unless Page.find(:all, :conditions => {:slug => 'copyright'}).size > 0
