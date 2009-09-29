@@ -4,7 +4,7 @@ end
 
 Given /^the event "([^\"]*)" is held at the venue "([^\"]*)"$/ do |title, venue_title|
   event = find_or_create(Event, :title => title)
-  event.venue = find_or_create(Venue, :name => venue_title)
+  event.venue = find_or_create(Venue, :name => venue_title, :postcode => "E11 1PB")
   event.save!
 end
 
@@ -46,6 +46,6 @@ When /^we assume the user successfully picks "([^\"]*)" form autosuggest$/ do |t
 end
 
 Then /^I should see the map$/ do
-  response.should have_selector('div', :class => 'events_map')
+  response.should have_selector('div', :id => 'events_map')
 end
 

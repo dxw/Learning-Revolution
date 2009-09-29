@@ -75,6 +75,7 @@ Feature: Calendar
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
     And the event "Octoberfest" is located at lat "51.584911" and lng "0.02591"
+    And the event "Octoberfest" is held at the venue "Octoberfest Venue"
     When I go to the calendar for October 2009
     And I press "Search For Events"
     Then I should be on the calendar for October 2009
