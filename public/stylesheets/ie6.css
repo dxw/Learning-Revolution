@@ -12,7 +12,9 @@ left:-7px;
   position:relative;
   left:8px;
 }
-
+body#pages_index .content{
+  background-position: 0 435px;
+}
 .standfirst{
   
   width:200px;
