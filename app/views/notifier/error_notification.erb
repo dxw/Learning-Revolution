@@ -6,15 +6,19 @@ Message:
 
 <%= @message.inspect %>
 
-Exception:
-
-<%= @exception.inspect %>
-
 HTTP:
 Host: <%= @host %>
 Request URI: <%= @requesturi %>
 Referer: <%= @referer %>
 Remote IP: <%= @remote_ip %>
 User agent string: <%= @useragentstring %><%= @useragentstring.andand.include?('Uzbl') ? "\nThis user is cool." : '' %>
+
+Exception:
+
+<%= @exception.inspect %>
+
+Backtrace:
+
+<%= @exception.andand.backtrace.andand.join("\n") %>
 
 EOF
