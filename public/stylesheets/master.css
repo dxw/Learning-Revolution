@@ -29,14 +29,20 @@ span.hidden
    height: 0px;
    display: block;
    text-indent:-9999em;
+   width:0px;
 }
 
 .hidden
 {
    text-indent:-9999em;
+   width:0px; 
+   height:0px;  
 }
 form label.hidden{
   position:absolute;
+  width:0px; 
+  height:0px;  
+
 } 
 
 /* Setting basic link styles */
@@ -787,6 +793,7 @@ body#pages_show .content p
 }
 .content_wrapper .sidebar ul li, ol li{
   margin-left:0px;
+  list-style: none;
 }
 body#pages_show .content blockquote{
   margin-left:24px;
