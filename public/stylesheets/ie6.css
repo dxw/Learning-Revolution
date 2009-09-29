@@ -39,7 +39,8 @@ body#pages_index .content{
   margin-left:6px;
 }
 .videos .heading{
-  margin-left:48px;
+  margin-left:28px;
+  display:inline;
 }
 .photos_and_videos .photos {
   width:430px;
