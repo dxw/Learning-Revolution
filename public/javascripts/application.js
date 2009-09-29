@@ -34,7 +34,24 @@ YouTube = $.klass({
     });
   }
 });
+YouTubePlayer = $.klass({
+  initialize: function (user_id) {
+    var current_element = this.element
+    $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?&orderby=updated&alt=json-in-script&callback=?", function (data) { 
 
+      var latest_video_url = data.feed.entry[0].media$group.media$content[0].url
+      var element = jQuery('<object width="340" height="243">');
+      element.append(
+        '<param name="movie" value="' + latest_video_url  + '&amp;hl=en&amp;fs=1"></param>' + 
+        '<param name="allowFullScreen" value="true"></param>' +
+        '<param name="allowscriptaccess" value="always"></param>' +
+        '</object>'
+        );
+      debugger
+      current_element.after(element);
+    });
+  }
+});
 DateSlider = $.klass({
   initialize: function () {
     this.element.find('select').hide();
@@ -159,6 +176,7 @@ PostcodeHint = $.klass({
 
 
 jQuery(function ($) {
+  $('.featured_youtube h3').attach(YouTubePlayer, 'learnrevolution');
   $('.flickr_photos').attach(Flickr, '42889703@N05');
   $('.youtube_videos').attach(YouTube, 'learnrevolution');
   $('.date_slider').attach(DateSlider);

@@ -1,8 +1,13 @@
 /* Front Page */
 
 body#pages_index .content{
-  background:none;
   width:auto;
+  background-image:url(http://learningrevolution.direct.gov.uk/images/fol_bg_silhouette.jpg);
+  background-repeat: repeat-x;
+  background-color:#8B1713;
+/*  background-attachment:fixed;*/
+  background-position: 0 410px;
+  
 }
 body#pages_index .footer{
   color:#8B1713;
