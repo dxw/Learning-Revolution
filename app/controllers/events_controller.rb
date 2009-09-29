@@ -46,8 +46,6 @@ class EventsController < ApplicationController
     else
       add_page_title @event.title
             
-      puts path_for_event(@event).gsub('&amp;', '&') + "\n" + request.path + "\n\n"
-
       respond_to do |format|
         format.html
         format.ics { render :text => @event.to_ical }
