@@ -10,4 +10,10 @@ Exception:
 
 <%= @exception.inspect %>
 
+HTTP:
+Request URI: <%= @requesturi %>
+Referer: <%= @referer %>
+Remote IP: <%= @remote_ip %>
+User agent string: <%= @useragentstring %><%= @useragentstring.andand.include?('Uzbl') ? "\nThis user is cool." : '' %>
+
 EOF
