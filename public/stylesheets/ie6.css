@@ -97,6 +97,17 @@ margin-left:21px
   height:740px;
 }
 
+.events .calendar_view span.hidden{
+  display:none;
+}
+
+.events .calendar_view p.event{
+  margin:4px;
+  padding:0px;
+  height:1.3em;
+  overflow:hidden;
+}
+
 /* Adding a new_event */
 .form_wrapper form input#cyberevent, .form_wrapper form input#accept_tnc{
   margin: 5px 0px 0 100px;
