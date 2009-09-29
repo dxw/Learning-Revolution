@@ -36,16 +36,19 @@ YouTube = $.klass({
 });
 YouTubePlayer = $.klass({
   initialize: function (user_id) {
-    var current_element = this.element
+    var current_element = this.element;
     $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?&orderby=updated&alt=json-in-script&callback=?", function (data) { 
-      var latest_video_url = data.feed.entry[0].media$group.media$content[0].url
-      var element = jQuery('<object width="340" height="243">');
+      var latest_video_url = data.feed.entry[0].media$group.media$content[0].url;
+      var element = jQuery('<div class="player_wrapper">');
       element.append(
+        '<object width="340" height="243">' +
         '<param name="movie" value="' + latest_video_url  + '&amp;hl=en&amp;fs=1"></param>' + 
         '<param name="allowFullScreen" value="true"></param>' +
         '<param name="allowscriptaccess" value="always"></param>' +
-        '</object>'
-        );
+        '<embed src="' + latest_video_url + '" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="340" height="243"></embed>' +
+        '</object>' + 
+        '</div>'
+      );
       current_element.replaceWith(element);
     });
   }
