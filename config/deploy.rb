@@ -11,7 +11,8 @@ set :branch, "deploy"
 set :git_shallow_clone, 1
 
 set :local_shared_files, [
-  'config/database.yml'
+  'config/database.yml',
+  'config/application.yml'
 ]
 
 namespace :deploy do
