@@ -236,7 +236,7 @@ namespace :lr do
       Time.zone.local(date_bits[3], date_bits[2], date_bits[1], date_bits[4], date_bits[5])
     end
     def die(msg)
-      raise IOError, "csv row ##{@rownum}: #{msg}"
+      raise IOError, "csv row ##{@rownum+1}: #{msg}"
     end
 
     require 'fastercsv'
@@ -289,7 +289,7 @@ namespace :lr do
         
         unless row["end"].blank?
           e.end = str_to_datetime(row["end"])
-          die "Events cannot end before they have started" if e.end < e.start
+          die "Events cannot end before they have started (#{e.end} < #{e.start})" if e.end < e.start
         end
         
         die "You cannot import events that aren't in October 2009" if e.start.month != 10 || e.start.year != 2009
@@ -307,15 +307,17 @@ namespace :lr do
         e.contact_phone_number = row["contact_phone_number"]
         e.organisation = row["organisation"]
         
-	e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
-	e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
-
-	if e.invalid?
+        e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
+        e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
+      
+        e.more_info = row["more_info"]
+        
+        if e.invalid?
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
 
         if e.save!
-           p "saved #{e.class}, id #{e.id}" unless RAILS_ENV=='test'
+          p "saved #{e.class}, id #{e.id}, row #{@rownum}" unless RAILS_ENV=='test'
         else
            die "save failed"
         end

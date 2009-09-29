@@ -71,6 +71,30 @@ describe Event do
     Event.featured.should == [@event]
   end
   
+  describe "more_info validation" do    
+    it "should add http:// to the beginning of links if it's missing" do
+      @event.more_info = "www.google.com"
+      @event.save!
+      @event.more_info.should == "http://www.google.com"
+    end
+    
+    it "should not add http:// to the beginning of links if it's already there" do
+      @event.more_info = "http://www.google.com"
+      @event.save!
+      @event.more_info.should == "http://www.google.com"
+    end
+    
+    it "should not add http:// to the beginning of blank links" do
+      @event.more_info = ""
+      @event.save!
+      @event.more_info.should == ""
+    end
+    
+    it "should always return true" do
+      @event.check_more_info.should == true
+    end
+  end
+  
   describe "checking for duplicates" do
     
     it "should not be flagged as a possible duplicate if there's an event with same date but different title" do

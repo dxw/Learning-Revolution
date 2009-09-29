@@ -1,11 +1,11 @@
 set :rails_env, "production"
 
-set :user, 'jamesd'
+set :user, 'rails'
 
-role :app, "thedextrousweb.com"
-role :web, "thedextrousweb.com"
-role :db,  "thedextrousweb.com", :primary => true
+role :app, "staging.learnrev-001.vm.brightbox.net"
+role :web, "staging.learnrev-001.vm.brightbox.net"
+role :db,  "staging.learnrev-001.vm.brightbox.net", :primary => true
 
 set :branch, "master"
 
-set :deploy_to, "/var/vhosts/thedextrousweb.com/dev.learning/checkout"
+set :deploy_to, "/home/rails/staging"
