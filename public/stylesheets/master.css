@@ -793,6 +793,7 @@ body#pages_show .content p
 }
 .content_wrapper .sidebar ul li, ol li{
   margin-left:0px;
+  list-style: none;
 }
 body#pages_show .content blockquote{
   margin-left:24px;
