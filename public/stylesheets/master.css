@@ -156,12 +156,10 @@ p.post_code_error{
   padding-top:18px;
 }
 
-/*  */
-
-.news{
+.content .news, .content .cms{
   background-image:url(/images/bg/bg_mid.png);
   background-position: -35px 0;
-  
+  background-repeat:repeat-y;
 }
 
 /* Nav bar across the whole page */
@@ -763,7 +761,6 @@ body.render_error h1
 {
    font-size: 1.7em;
    font-weight: bold;
-   
    padding-bottom: 8px;
 }
 
@@ -782,11 +779,11 @@ body#pages_show .content p
 {
    margin-bottom: 12px;
 }
-.content_wraper .content ul li, ol li{
+.content_wrapper .content ul li, ol li{
   margin-left:18px;
   list-style: square;
 }
-.content_wraper .sidebar ul li, ol li{
+.content_wrapper .sidebar ul li, ol li{
   margin-left:0px;
 }
 body#pages_show .content blockquote{
