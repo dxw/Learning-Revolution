@@ -7,10 +7,23 @@ left:-7px;
 
 /*front page */
 
+/*nudge IE6 over to centre the rowpa*/
+.first_row{
+  position:relative;
+  left:8px;
+}
+
 .standfirst{
   
   width:200px;
 }
+#view_event_calendar img{
+  margin-top:30px;
+  margin-bottom:6px;
+}
+
+
+
 .site_intro .featured_block {
   width:490px;
 }

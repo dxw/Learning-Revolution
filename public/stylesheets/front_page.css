@@ -51,23 +51,37 @@ body#pages_index .footer p a, body#pages_index .footer p{
 }
 
 img.be_a_part_of_the_festival{
-  margin: 10px 0px 0px 20px;
+  margin: 18px 0px 0px 12px;
 }
-.standfirst{
-  margin-top:18px;
+.featured_block .standfirst{
+  margin-top:6px;
   width:410px;
   line-height: 1.5;
   font-size:1.5em;
-  margin-top:18px;
+  margin-top:12px;
+  margin-left:18px;
+}
+.featured_block .subheading {
+  line-height: 1.5;
+  margin-left:18px;
+  margin-top:6px;
+  font-size:1.33em;
+  width:410px;
 }
 #calendar_thumbnail{
   float:left;
   margin-left:20px;
 }
-#view_event_calendar{
+
+a#view_event_calendar{
   clear:both;
   display:block;
-  margin-left:20px;
+  margin-left:14px;
+  margin-bottom:12px;
+}
+#view_event_calendar img{
+  margin-top:24px;
+  margin-bottom:6px;
 }
 
 .row .featured_event_nav {
@@ -87,7 +101,6 @@ img.be_a_part_of_the_festival{
   color:#fff;
   text-decoration:none;
 }
-
 .row .featured_event_nav a.activeSlide {
   background-color:#fff; 
   color:#40000B;
