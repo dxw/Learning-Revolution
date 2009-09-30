@@ -1,20 +1,15 @@
 <div class='content sidebar'>
 
-        <% if @latest_youtube_vid_url %>
-	  <div class="block featured_youtube">
-     	    <h3 class="tk-gunplay">Festival of Learning on Youtube</h3>
-            <object width="340" height="243">
-              <param name="movie" value="<%= @latest_youtube_vid_url %>&amp;hl=en&amp;fs=1"></param>
-              <param name="allowFullScreen" value="true"></param>
-              <param name="allowscriptaccess" value="always"></param>
+    <% if @latest_youtube_vid_url %>
+      <div class="block featured_youtube">
+       <h3 class="tk-gunplay">Festival of Learning on Youtube</h3>
+         <object width="340" height="243" type="application/x-shockwave-flash" data="<%= @latest_youtube_vid_url %>">
+           <param name="movie" value="<%= @latest_youtube_vid_url %>"></param>
+         </object>
 
-              <embed src="<%= @latest_youtube_vid_url %>&amp;rel=0&amp;color1=0xb1b1b1&amp;color2=0xcfcfcf&amp;feature=player_profilepage&amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="340" height="243"></embed>
-            </object>
-
-            <%= link_to "See the latest videos from our YouTube channel", "http://www.youtube.com/user/learnrevolution", :class => "youtube_video_player" %>
-
-          </div>
-        <% end %>
+         <%= link_to "See the latest videos from our YouTube channel", "http://www.youtube.com/user/learnrevolution" %>
+       </div>
+     <% end %>
 
       <div class="block flickr_feed">
          <h3>See our latest photos</h3>

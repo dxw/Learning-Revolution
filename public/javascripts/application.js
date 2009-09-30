@@ -177,7 +177,7 @@ PostcodeHint = $.klass({
 
 
 jQuery(function ($) {
-  $('.youtube_video_player').attach(YouTubePlayer, 'learnrevolution');
+  //$('.youtube_video_player').attach(YouTubePlayer, 'learnrevolution');
   $('.flickr_photos').attach(Flickr, '42889703@N05');
   $('.youtube_videos').attach(YouTube, 'learnrevolution');
   $('.date_slider').attach(DateSlider);

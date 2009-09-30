@@ -20,7 +20,7 @@ class Admin::VenuesController < Admin::AdminController
   def index
     conditions = {}
     conditions.merge!({:name => params[:filter][:title]}) if params.andand[:filter].andand[:title].present?
-    @venues = Venue.paginate(:all, :page => params[:page], :conditions => conditions)
+    @venues = Venue.paginate(:all, :page => params[:page], :conditions => conditions, :order => "name")
   end
   
   def duplicates

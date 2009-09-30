@@ -39,6 +39,11 @@ class ApplicationController < ActionController::Base
   def path_for_event(event, filters = nil, last_view = nil)
     return "/" unless event
     
+    unless filters.nil?
+      filters[:location] ||= ''
+      filters[:theme] ||= ''
+    end
+    
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}?"
     
     path += "last_view=#{last_view}" unless last_view.nil? || last_view.empty?
