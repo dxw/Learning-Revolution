@@ -6,7 +6,7 @@
   
   <div class="form_wrapper clearfix">
 
-<% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
+<% form_tag admin_venues_path, :method => :get, :id => "events_filter_form" do %>
 
   <div class="filter_location clearfix filter">
     <label for="filter_location" class="text">Title</label>  
@@ -49,7 +49,7 @@
     <ul class="results clearfix">
       <% @venues.each do |venue| %>
         <li>
-        <p><%= link_to venue.name, edit_admin_venue_path(venue) %></p>
+        <p><%= link_to venue.name, edit_admin_venue_path(venue) %><br /><%= venue.postcode %></p>
         </li>
       <% end %>
     </ul>
