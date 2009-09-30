@@ -14,7 +14,7 @@ set :local_shared_files, [
   'config/database.yml',
   'config/application.yml',
   'public/badges',
-  'public/images/featured_images'
+  'public/images/featured_photos'
 ]
 
 namespace :deploy do
