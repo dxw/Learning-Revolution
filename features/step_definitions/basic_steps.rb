@@ -55,8 +55,16 @@ Then /^I should be denied access$/ do
 end
 
 Then %r/the page is valid XHTML/ do
-  pending and return if ENV['SKIP_VALIDATION']
-  response.body.should(be_xhtml_strict)
+  def err(s)
+    puts "    \33[30;46m#{s}\33[0m"
+  end
+  if ENV['SKIP_VALIDATION']
+    err "You have SKIP_VALIDATION set."
+    err "Unset it to test XHTML validity."
+    err "You should do this."
+  else
+    response.body.should(be_xhtml_strict)
+  end
 end
 
 Then %r/the page is valid Atom/ do
