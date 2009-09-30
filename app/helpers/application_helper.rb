@@ -45,11 +45,11 @@ module ApplicationHelper
   end
 
   def my_options_for_select(options, default)
-    s = ''
-    options.each{|opt|
-      sel = "selected='true'" if opt == default
-      s += "<option value='#{opt}'#{sel}>#{opt}</option>"
-    }
+    s = sel = ''
+    options.each do |opt|
+      sel = " selected='selected'" if opt == default
+      s += "<option value='#{h opt}'#{sel}>#{h opt}</option>\n"
+    end
     s
   end
 end
