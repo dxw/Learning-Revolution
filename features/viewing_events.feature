@@ -80,3 +80,12 @@ Feature: Viewing events
     When I go to the event page for "Event 1"
     Then I should not see "Later »"
     And the page is valid XHTML
+
+  Scenario: Atom feed
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    And I follow "Add to my feed reader."
+    Then I should see "Event 1"
+    And the page is valid Atom

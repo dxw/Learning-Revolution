@@ -1,5 +1,24 @@
 require 'markup_validity' 
 
+module Spec
+  module Matchers
+    def be_atom
+      Matcher.new :be_atom do
+        match do |atom|
+          rng = Nokogiri::XML::RelaxNG(open('features/step_definitions/atom.rng').read)
+          feed = Nokogiri::XML(atom)
+          rng.valid?(feed)
+        end
+
+        failure_message_for_should do |actual|
+          'uhm'
+        end
+      end
+
+    end
+  end
+end
+
 Given "debugger" do
   debugger
 end
@@ -26,7 +45,13 @@ Then /^I should be denied access$/ do
 end
 
 Then %r/the page is valid XHTML/ do
-  response.body.should(be_xhtml_strict) unless ENV['SKIP_VALIDATION']
+  pending and return if ENV['SKIP_VALIDATION']
+  response.body.should(be_xhtml_strict)
+end
+
+Then %r/the page is valid Atom/ do
+  pending and return if ENV['SKIP_VALIDATION']
+  response.body.should(be_atom)
 end
 
 Then /^I should see image "([^\"]*)"$/ do |alt|
