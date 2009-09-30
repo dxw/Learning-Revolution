@@ -67,7 +67,7 @@ Feature: Venue admin
     And a valid venue called "bananas"
     And the venue "bananas" has the post code "S11 8RE"
     And I go to the venue admin index page
-    And I fill in "Title" with "bananas"
+    And I fill in "Venue" with "bananas"
     And I press "Search For Venues"
     Then I should see "bananas"
     And I should see "S11 8RE"
@@ -79,27 +79,8 @@ Feature: Venue admin
     And a valid venue called "bananas"
     And the venue "bananas" has the post code "S11 8RE"
     And I go to the venue admin index page
-    And I fill in "Location" with "BD7 1QA"
+    And I fill in "Venue" with "BD7 1QA"
     And I press "Search For Venues"
-    Then I should see "bananas"
-    And I should see "BD7 1QA"
-    And I should not see "apples"
-  
-  Scenario: Searching for a venue by title and post code
-    Given a valid venue called "apples"
-    And the venue "apples" has the post code "BD7 1QA"
-    And a valid venue called "bananas"
-    And the venue "bananas" has the post code "S11 8RE"
-    And I go to the venue admin index page
-    And I fill in "Title" with "bananas"
-    And I fill in "Location" with "BD7 1QA"
-    And I press "Search For Venues"
-    Then I should not see "bananas"
-    And I should not see "BD7 1QA"
-    And I should not see "apples"
-    And I should not see "S11 8RE"
-    When I fill in "Location" with "S11 8RE"
     Then I should see "apples"
-    And I should see "S11 8RE"
+    And I should see "BD7 1QA"
     And I should not see "bananas"
-    And I should not see "BD7 1QA"

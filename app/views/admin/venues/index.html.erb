@@ -8,14 +8,9 @@
 
 <% form_tag admin_venues_path, :method => :get, :id => "events_filter_form" do %>
 
-  <div class="filter_location clearfix filter">
-    <label for="filter_location" class="text">Title</label>  
-    <%= text_field_tag "filter[title]", nil, :class => 'text' %>
-  </div>
-
-  <div class="filter_location clearfix filter">
-    <label for="filter_location" class="text">Location</label>  
-    <%= text_field_tag "filter[location]", nil, :class => 'text' %>
+  <div class="filter_q clearfix filter">
+    <label for="filter_q" class="text">Venue</label>  
+    <%= text_field_tag "filter[q]", nil, :class => 'text', :value => params.andand[:filter].andand[:q] %>
   </div>
 
   <div class="submit_options clearfix">
