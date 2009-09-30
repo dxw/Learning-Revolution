@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
-  before_validation :check_provider
+  before_validation :check_more_info
 
   after_create :make_bitly_url
   
@@ -184,19 +184,29 @@ class Event < ActiveRecord::Base
   end
   
   def possible_duplicate?
-    Event.find(:all, :conditions => ["DATE(start) = DATE(?)", self.start.utc.to_date]).each do |event|
+    self.possible_duplicate = nil
+    
+    Event.find(:all, :conditions => ["start = ?", start]).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
+    
     !! self.possible_duplicate
   end
   
   def fix_duplicate(by_removing)
     if by_removing == :original
       possible_duplicate.destroy
-      self.possible_duplicate = nil
+      
+      self.possible_duplicate?
+      
       self.save
     elsif by_removing == :self
+      
+      other_event = possible_duplicate
+     
       self.destroy
+      
+      other_event.possible_duplicate?
     end
   end
   
@@ -238,13 +248,14 @@ class Event < ActiveRecord::Base
     cal.add_event to_ical_event
     cal.to_ical
   end
-  def check_provider
-    if provider.blank?
-      true
-    else
-      File.exists?(RAILS_ROOT + '/public/' + AppConfig.badge + '/' + provider)
-    end
+ 
+  
+  def check_more_info
+    self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil 
+    
+    true
   end
+  
   def provider_name
     if provider.blank?
       nil

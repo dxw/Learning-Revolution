@@ -143,10 +143,26 @@ h3{
   margin-left: 15px;
 }
 
-.unmoderated_event ul. .duplicate ul{
+.unmoderated_event{
+   width: 900px;
+}
+
+
+.unmoderated_event ul, .duplicate ul{
   border-top:1px solid #c2c2c3;
   border-bottom:1px solid #c2c2c3;
   margin-bottom:12px;
+}
+
+.unmoderated_event ul
+{
+   margin-left:20px;
+   float: left;
+}
+
+.unmoderated_event ul.first
+{
+   clear: both;
 }
 
 .unmoderated_event .item, .duplicate .item{
@@ -168,12 +184,13 @@ h3{
 /* Moderation queue */
 
 .unmoderated_event form{
-  width:394px;
-  margin-left:0px;
+  width:360px;
+  margin: 0 0 20px 20px;
 }
 
 .unmoderated_event .skip{
   float: right;
+  padding-left: 10px;
 }
 
 /* Pages Admin */

@@ -236,7 +236,7 @@ namespace :lr do
       Time.zone.local(date_bits[3], date_bits[2], date_bits[1], date_bits[4], date_bits[5])
     end
     def die(msg)
-      raise IOError, "csv row ##{@rownum}: #{msg}"
+      raise IOError, "csv row ##{@rownum+1}: #{msg}"
     end
 
     require 'fastercsv'
@@ -247,13 +247,7 @@ namespace :lr do
         #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
         e = Event.new
 
-        if row["cyberevent"] == "true"
-          %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
-         #   unless row[f].blank?
-         #     die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
-         #   end
-          }
-        elsif row["cyberevent"] == "false" || row["cyberevent"].nil?
+        if row["cyberevent"].nil? || row["cyberevent"].downcase == "false"
           v = Venue.find(:first, :conditions => {:name => row["venue_name"],
                          :address_1 => row["venue_address_1"],
                          :address_2 => row["venue_address_2"],
@@ -276,6 +270,13 @@ namespace :lr do
           end
           e.venue = v
           v.save!
+        elsif row["cyberevent"].downcase == "true"
+          %w[venue_name venue_address_1 venue_address_2 venue_address_3 venue_city venue_county venue_postcode].each{|f|
+         #   unless row[f].blank?
+         #     die 'All venue_* columns MUST be blank if cyberevent is set to "true"'
+         #   end
+          }
+        
         end
 
         e.provider = row["provider"]
@@ -286,14 +287,20 @@ namespace :lr do
         e.min_age = row["min_age"]
         die "start cannot be blank" if row["start"].blank?
         e.start = str_to_datetime(row["start"])
+        
         unless row["end"].blank?
           e.end = str_to_datetime(row["end"])
+          die "Events cannot end before they have started (#{e.end} < #{e.start})" if e.end < e.start
         end
-        if row["published"] == "true"
-          e.published = true
-        elsif row["published"] == "false" || row["published"].nil?
+        
+        die "You cannot import events that aren't in October 2009" if e.start.month != 10 || e.start.year != 2009
+
+        if row["published"].nil? || row["published"].downcase == "false"
           e.published = false
+        elsif row["published"].downcase == "true"
+          e.published = true
         end
+        
         e.theme = row["theme"]
         e.event_type = row["event_type"]
         e.picture = row["picture"]
@@ -302,17 +309,25 @@ namespace :lr do
         e.contact_phone_number = row["contact_phone_number"]
         e.organisation = row["organisation"]
         
-	e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
-	e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
-
-	if e.invalid?
+        e.contact_name = 'Not Supplied' if e.contact_name.nil? || e.contact_name.empty?
+        e.contact_email_address = 'notsupplied@example.com' if e.contact_email_address.nil? || e.contact_email_address.empty?
+      
+        e.more_info = row["more_info"]
+        
+        if row["booking required"].nil? || row["booking required"].downcase == "false"
+          e.booking_required = false
+        elsif row["booking required"].downcase == "true"
+          e.booking_required = true
+        end
+        
+        if e.invalid?
           die "Event fails validation for the following reasons: #{e.errors.full_messages.join(", ")}"
         end
 
         if e.save!
-           p "saved #{e.class}, id #{e.id}" unless RAILS_ENV=='test'
+          p "saved #{e.class}, id #{e.id}, row #{@rownum}" unless RAILS_ENV=='test'
         else
-           die "save failed"
+          die "save failed"
         end
       end
     end

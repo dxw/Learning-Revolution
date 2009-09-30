@@ -3,26 +3,26 @@
   
   <%= image_tag('headings/admin/hd_moderate_events.gif', :class => 'heading') %>
 
-  <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue.</h3>
+  <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue. <%= get_unpublished_message(@count_unpublished) %></h3>
 
-  <%= flash[:notices] %>
-  <%= flash[:event] %>
+  <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
+  <%= (flash[:notices].nil? ? '' : "<div class='admin_flash'>#{flash[:notices]}</div>") %>
   
 </div>
 
 <div class="form_wrapper">
    <div class="unmoderated_event">
       <% if @event %>
-        
-      
-        <%= render :partial => "event_info_block", :locals => {:event => @event} %>
-        
         <% form_tag moderate_admin_event_path(@event), :method => :put do %>
-           <%= link_to "(Skip)", "?from=#{@event.id}", :class => "skip" %>  
+         <div>
+           <%= link_to "Edit", edit_admin_event_path(@event, :return_to => "/admin/events/moderations?from=#{@event.id}"), :class => "skip" %>
+           <%= next_event(@event).blank? ? 'No more events' : (link_to "Skip", "?from=#{next_event(@event).id}", :class => "skip") %>
            <%= submit_tag "Approve" %>
            <%= submit_tag "Delete" %>
+           </div>
         <% end %>
-      
+        
+         <%= render :partial => "event_info_block", :locals => {:event => @event} %>        
       <% else %>
         <h2>No more events to moderate</h2>
       <% end %>

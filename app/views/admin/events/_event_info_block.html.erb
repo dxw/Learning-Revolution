@@ -1,50 +1,71 @@
+<ul class="first">
+  <li class="item clearfix odd">
+    <div class="label">Title</div> <div class="value"><%=h event.title %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Description</div> <div class="value"><%=h event.description %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Theme</div> <div class="value"><%=h event.theme %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Type</div> <div class="value"><%=h event.event_type %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Start</div> <div class="value"><%=h event.start %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">End</div> <div class="value"><%=h event.end %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Cost</div> <div class="value"><%=h event.cost %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Venue</div> <div class="value">
+      <% if event.venue.blank? %>
+      There is no venue
+      <% else %>
+      <%=h event.venue.name %><br />
+      <%=h(event.venue.address_1) + "<br />" unless event.venue.address_1.nil? %>
+      <%=h(event.venue.address_2) + "<br />" unless event.venue.address_2.nil? %>
+      <%=h(event.venue.address_3) + "<br />" unless event.venue.address_3.nil? %>
+      <%=h(event.venue.city) + "<br />" unless event.venue.city.nil? %>
+      <%=h(event.venue.county) + "<br />" unless event.venue.county.nil? %>
+      <%=h(event.venue.postcode) + "<br />" unless event.venue.postcode.nil? %>
+      <% end %>
+    </div>
+  </li>
+</ul>
+
 <ul>
   <li class="item clearfix odd">
-    <div class="label">Title</div> <div class="value"><%= event.title %></div>
-  </li>
-  <li class="item clearfix even">
-    <div class="label">Description</div> <div class="value"><%= event.description %></div>
+    <div class="label">Min Age</div> <div class="value"><%=h event.min_age %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Theme</div> <div class="value"><%= event.theme %></div>
+    <div class="label">Organisation</div> <div class="value"><%=h event.organisation %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Type</div> <div class="value"><%= event.event_type %></div>
-  </li>
-  <li class="item clearfix even">
-    <div class="label">Start</div> <div class="value"><%= event.start %></div>
+    <div class="label">Contact Name</div> <div class="value"><%=h event.contact_name %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">End</div> <div class="value"><%= event.end %></div>
+    <div class="label">Contact Phone Number </div> <div class="value"><%=h event.contact_phone_number %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Cost</div> <div class="value"><%= event.cost %></div>
+    <div class="label">Contact Email Address</div> <div class="value"><%=h event.contact_email_address %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Min Age</div> <div class="value"><%= event.min_age %></div>
+    <div class="label">Published</div> <div class="value"><%=h event.published %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Venue</div> <div class="value"><%= event.location_id %></div>
+    <div class="label">Picture</div> <div class="value"><%=h event.picture %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Organisation</div> <div class="value"><%= event.organisation %></div>
+    <div class="label">Featured</div> <div class="value"><%=h event.featured %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Contact Name</div> <div class="value"><%= event.contact_name %></div>
+    <div class="label">Created</div> <div class="value"><%=h event.created_at %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Contact Phone Number </div> <div class="value"><%= event.contact_phone_number %></div>
-  </li>
-  <li class="item clearfix even">
-    <div class="label">Contact Email Address</div> <div class="value"><%= event.contact_email_address %></div>
-  </li>
-  <li class="item clearfix odd">
-    <div class="label">Published</div> <div class="value"><%= event.published %></div>
-  </li>
-  <li class="item clearfix even">
-    <div class="label">Picture</div> <div class="value"><%= event.picture %></div>
-  </li>
-  <li class="item clearfix odd">
-    <div class="label">Featured</div> <div class="value"><%= event.featured %></div>
+    <div class="label">Updated</div> <div class="value"><%=h event.updated_at %></div>
   </li>
 </ul>

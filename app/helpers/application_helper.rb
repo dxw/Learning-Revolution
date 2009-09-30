@@ -56,6 +56,21 @@ module ApplicationHelper
     end
     s
   end
+  
+  def end_time(event)
+    s = ''
+    s += event.end.strftime('%e %B ') unless event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')
+    s += event.end.strftime("%R%p")
+  end
+
+  def my_options_for_select(options, default)
+    s = sel = ''
+    options.each do |opt|
+      sel = " selected='selected'" if opt == default
+      s += "<option value='#{h opt}'#{sel}>#{h opt}</option>\n"
+    end
+    s
+  end
 end
 
 module ActionView::Helpers::FormHelper

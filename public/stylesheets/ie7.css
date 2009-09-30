@@ -2,6 +2,9 @@ legend{
 position:relative;
 left:-7px;
 }
+#view_event_calendar img{
+  margin-bottom:10px;
+}
 
 .standfirst{
   width:200px;

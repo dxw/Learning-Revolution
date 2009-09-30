@@ -2,7 +2,14 @@
 
 # For a list of broken lists, look at the bottom of log/wget and log/wget-admin
 
-wget --recursive http://lain:3000/ -o log/wget
-wget --recursive --user=lr_admin --password='learning is fun!' http://lain:3000/admin -o log/wget-admin
+#HOST="staging.learnrev-001.vm.brightbox.net/"
+HOST="http://staging.learnrev-001.vm.brightbox.net"
 
-find lain:3000 -type f -\! -name '*.jpg*' -and -\! -name '*.gif*' -and -\! -name '*.png*' -and -\! -name '*.js*' -and -\! -name '*.css*' -and -\! -name '*.txt' -and -\! -name '*.atom*' -and -\! -name '*.ics*' -print0 | xargs -0 ruby -rubygems -e 'require "markup_validity";ARGV.each{|f|begin;MarkupValidity::Validator.new(open(f),MarkupValidity::Validator::XHTML1_STRICT);p [f,:happy];rescue;p [f,:sad];end}'
+cd tmp || echo "This script must be run from RAILS_ROOT" 
+
+#echo Spidering $HOST
+
+#wget --recursive "http://$HOST" -o ../log/wget
+#wget --recursive --user=lr_admin --password='learning is fun!' "http://$HOST/admin" -o ../log/wget-admin
+
+find $HOST -type f -\! -name '*.jpg*' -and -\! -name '*.gif*' -and -\! -name '*.png*' -and -\! -name '*.js*' -and -\! -name '*.css*' -and -\! -name '*.txt' -and -\! -name '*.atom*' -and -\! -name '*.ics*' -print0 | xargs -0 ruby -rubygems -e 'require "markup_validity";ARGV.each{|f|begin;v = MarkupValidity::Validator.new(File.read(f),MarkupValidity::Validator::XHTML1_STRICT); if v.valid? then puts "Ok: #{f}"; else puts "\nFAIL: #{f}:\n\t#{v.inspect.gsub("\n", "\n\t")}\n"; end; end}'

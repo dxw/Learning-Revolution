@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for I in $@; do
+  echo "Importing $I"
+  rake lr:import[$I] || exit
+done

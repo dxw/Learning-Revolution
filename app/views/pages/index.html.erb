@@ -1,13 +1,14 @@
   <div class="row clearfix" id="intro">
       <div class="featured_block">
         
-        <p><img src="/images/headings/hd_be_a_part_of_the_festival.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/></p>
+        <p><img src="/images/headings/hd_be_a_part_of_the_festival_of_learning.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/></p>
       
-        <p><img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" /></p>
+        <!--<p><img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" /></p>-->
 
+        <p class="standfirst">Throughout October, find hundreds of open events and try something new.</p>
+        <p class="subheading">Learning for pleasure is about discovering new things, building your skills and knowledge, and getting the most out of your free time.</p> 
 
-        <p class="standfirst">This October we're making it easier than ever to find something new to do.</p>
-      <%= link_to image_tag('buttons/bt_find_events.gif', 
+      <%= link_to image_tag('buttons/bt_find_something_new.gif', 
                             :alt => "View Event Calendar"), 
                             current_events_path, :id => 'view_event_calendar' %>
 
@@ -15,10 +16,14 @@
 
       <div class="featured_events">
         <ul>
-          
+          <li class="featured_event">
+            <a href="/events/2009/October"><%= image_tag 'front_page_calendar.jpg', :alt => "Sample Event Calendar" %></a>
+            
+            <h3 class="trans"><a href="/events/2009/October">Find something to do in October &raquo;</a></h3>
+          </li>
         <% Event.featured.find(:all, :conditions => 'length(picture) > 0').each_with_index do |event, count| %>
           <li class="featured_event" id="featured_event_<%= count+1 %>">
-            <%= image_tag event.picture if event.picture %>
+            <a href="<%= path_for_event(event) %>"><%= image_tag event.picture if event.picture %></a>
             <div class="calendar_date">
               <div class="month">
                 <%= Date::MONTHNAMES[event.start.month][0..2] %>
@@ -42,11 +47,11 @@
 
 
 
-  <div class="row clearfix">
+  <div class="row first_row clearfix">
 
     <div class="content_block">
       <div class="featured content_block_content secondary_block">
-        <p><img src="/images/headings/hd_featured_events.gif" alt="Featured Events" class="png" /></p>
+        <p><img src="/images/headings/hd_featured_events.gif" alt="Featured Events" /></p>
         <ul>
         <% Event.featured.find(:all, :limit => 3).each do |event| %>
           <li class="clearfix">
@@ -71,19 +76,19 @@
     </div>
     <div class="content_block">
       <div class="content_block_content secondary_block share_space_and_groups">
-        <p><img src="/images/headings/hd_add_to_the_calendar.gif" alt="Share your Space for Events" class="png" /></p>
+        <p><img src="/images/headings/hd_add_to_the_calendar.gif" alt="Share your Space for Events" class="share_space" /></p>
         <p class="caption">Running a learning event? Add details of it here.</p>
 
-        <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button png'), current_events_path+"#new_event" %>
+        <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button'), current_events_path+"#new_event" %>
         <p><img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group" /></p>
         <p class="caption">Meet other organisers and get help organising your group.</p>
-          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button png'), 'http://thelearningrevolution.ning.com' %>
+          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button'), 'http://thelearningrevolution.ning.com' %>
       </div>
     </div>
     <div class="content_block last">
       <div class="content_block_content secondary_block">
           
-        <%= image_tag('headings/hd_follow_the_festival.gif', :alt => 'Follow the Festival', :class => 'png') %>
+        <%= image_tag('headings/hd_follow_the_festival.gif', :alt => 'Follow the Festival', :class => "follow_festival") %>
 
         <!-- bis newsletter -->
         <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
@@ -96,7 +101,7 @@
             <span><input type="text" tabindex="1" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
           </div>
           <div>
-            <span class="button"><input type="image" tabindex="2" src="/images/buttons/bt_sign_up.gif" class="png" value="Subscribe" alt="Subscribe" /></span>
+            <span class="button"><input type="image" tabindex="2" src="/images/buttons/bt_sign_up.gif" value="Subscribe" alt="Subscribe" /></span>
           </div>
         </form>
 
@@ -130,4 +135,3 @@
     </div>
 
   </div>
-

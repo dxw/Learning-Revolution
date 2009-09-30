@@ -36,13 +36,18 @@ class ApplicationController < ActionController::Base
   # This method needs to be modified to use the event URL structure specified in config/application.yml
   #
   
-  def path_for_event(event, filters = nil, last_view = 'calendar')
+  def path_for_event(event, filters = nil, last_view = nil)
     return "/" unless event
     
-    path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}"
-    unless filters.nil? || filters.empty?
-      path += "?filter%5Btheme%5D=#{URI.encode(filters[:theme])}&amp;filter%5Dlocation%5D=#{URI.encode(filters[:location])}&amp;last_view=#{last_view}"
+    unless filters.nil?
+      filters[:location] ||= ''
+      filters[:theme] ||= ''
     end
+    
+    path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}?"
+    
+    path += "last_view=#{last_view}" unless last_view.nil? || last_view.empty?
+    path += "&amp;filter%5Btheme%5D=#{URI.encode(filters[:theme])}&amp;filter%5Blocation%5D=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
     
     path
   end
@@ -54,17 +59,21 @@ class ApplicationController < ActionController::Base
   def render_500(exception=nil)
     @status = 500
     render :template => 'error', :status => 500
-    Notifier.deliver_error_notification('500',exception)
+    Notifier.deliver_error_notification('500',exception,request)
   end
   
   def render_404(exception=nil)
     @status = 404
     render :template => 'error', :status => 404
-    Notifier.deliver_error_notification('404',exception)
+    Notifier.deliver_error_notification('404',exception,request)
   end
 
   def rescue_action_in_public(exception)
-    render_500(exception)
+    if exception.is_a? ActionController::RoutingError
+      render_404(exception)
+    else
+      render_500(exception)
+    end
   end
 
 end

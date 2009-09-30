@@ -1,0 +1,26 @@
+<div class='content sidebar'>
+
+    <% if @latest_youtube_vid_url %>
+      <div class="block featured_youtube">
+       <h3 class="tk-gunplay">Festival of Learning on Youtube</h3>
+         <object width="340" height="243" type="application/x-shockwave-flash" data="<%= @latest_youtube_vid_url %>">
+           <param name="movie" value="<%= @latest_youtube_vid_url %>" />
+         </object>
+
+         <%= link_to "See the latest videos from our YouTube channel", "http://www.youtube.com/user/learnrevolution" %>
+       </div>
+     <% end %>
+
+      <div class="block flickr_feed">
+         <h3>See our latest photos</h3>
+         <p class="flickr_photos">See the latest photos from our flickr stream here.</p>
+      </div>
+
+      <div class="block twitter_feed">
+        <h3>Follow us on Twitter</h3>
+        <p>We're <%= link_to "@learnrevolution", "http://twitter.com/learnrevolution" %> on Twitter.</p>
+      </div>
+
+    </div>
+    
+    

@@ -7,10 +7,29 @@ left:-7px;
 
 /*front page */
 
+/*nudge IE6 over to centre the rowpa*/
+.first_row{
+  position:relative;
+  left:8px;
+}
+#view_event_calendar img{
+  margin-bottom:10px;
+}
+
+body#pages_index .content{
+  background-position: 0 435px;
+}
 .standfirst{
   
   width:200px;
 }
+#view_event_calendar img{
+  margin-top:30px;
+  margin-bottom:6px;
+}
+
+
+
 .site_intro .featured_block {
   width:490px;
 }
@@ -24,7 +43,8 @@ left:-7px;
   margin-left:6px;
 }
 .videos .heading{
-  margin-left:48px;
+  margin-left:28px;
+  display:inline;
 }
 .photos_and_videos .photos {
   width:430px;
@@ -80,6 +100,17 @@ margin-left:21px
 
 .example_calendar_view{
   height:740px;
+}
+
+.events .calendar_view span.hidden{
+  display:none;
+}
+
+.events .calendar_view p.event{
+  margin:4px;
+  padding:0px;
+  height:1.3em;
+  overflow:hidden;
 }
 
 /* Adding a new_event */

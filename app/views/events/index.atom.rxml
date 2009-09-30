@@ -19,8 +19,8 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
       xml.link    "type" => "text/html", "rel" => "alternate", "href" => url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug).sub(/\./,'')
       xml.link    "type" => "text/calendar", "rel" => "alternate", "href" => url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug, :format => 'ics')
       xml.id      url_for(:only_path => false, :controller => 'events', :action => 'show', :year => event.start.year, :month => event.start.month, :day => event.start.day, :id => event.slug).sub(/\./,'')
-      xml.updated event.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ"
-      xml.summary (event.description.blank? ? '' :  event.description+' ') + (event.bitly_url.blank? ? '' : "More info: " + event.bitly_url)
+      xml.updated event.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+      xml.summary((event.description.blank? ? '' :  event.description+' ') + (event.bitly_url.blank? ? '' : "More info: " + event.bitly_url))
     end
   end
 

@@ -21,6 +21,9 @@ class Venue < Location
   end
     
   def self.geocode(postcode)
-    
-  end 
+  end
+  
+  def has_published_events
+    events.select{|e| e.published}.size > 0
+  end
 end

@@ -110,11 +110,12 @@ h3.no_events{
   border-right: 1px solid #DDD;
   vertical-align: top;
   width:14%;
+  position:relative;
 }
 
 .events .calendar_view td .day {
-
-  padding:4px 4%;
+  
+  padding:4px 4px;
   text-align:right;
   font-size:0.83em;
   font-style:italic;
@@ -122,13 +123,18 @@ h3.no_events{
 .events .calendar_view td.notmonth {
   background-color: #DDD;
 }
-.events .calendar_view .event a {
-  display:block;
+.events .calendar_view p.event{
+  margin:4px;
+  padding:0px;
   margin-top:5px;
+  height:1.8em;
+  overflow:hidden;
+}
+.events .calendar_view .event a {
   text-decoration:none;
   color:#781B30;
-  max-height:1.8em;
-  overflow:hidden;
+  margin:0px;
+  padding:0px;
 }
 .events .calendar_view .event a.allday {
   background-color:#781B30;
@@ -137,10 +143,8 @@ h3.no_events{
 
 .events .calendar_view .more_link
 {
-   text-align: center;
-   margin: 8px 0 0 0;
-   
-   background: #DFC4C3;
+  text-align:center;
+  background: #DFC4C3;
 }
 
 .events .calendar_view .more_link a{
@@ -162,16 +166,32 @@ h3.no_events{
   width:875px;
   margin-left:42px;
   margin-top:36px;
+  margin-bottom:24px;
 }
 #events_map ul li{
   list-style: none;
+  font-size:12px;
+}
+li.gmap_resized{
+  display:block;
+}
+h4.gmap_venue_title{
+    font-weight:bold;
+    font-size:1.13em;
+}
+p.gmap_venue_address{
+    font-style:italic;
+    color:#333;
+}
+li.gmap_resized p{
+    font-weight:bold;
+    font-size:0.83em;
 }
 
-#events_map h4{
+li.gmap_resized h5{
   font-weight:bold;
+  margin-top:6px  
 }
-
-
 #events_show h2 img.heading
 {
    margin-left: 40px;
@@ -337,6 +357,18 @@ ul li.foot .next {
 }
 .detail_list ul.sm_icons li{
   margin: 12px ;
+}
+
+.offensive
+{
+   padding-top: 12px;
+   font-size: 0.9em;
+}
+
+.not_endorsed
+{
+   padding-top: 6px;
+   font-size: 0.9em;
 }
 #event_details h4, #event_details img, #event_details p, #event_details div.time{
   float:left;

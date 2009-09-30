@@ -12,24 +12,24 @@ module EventsHelper
   
   def prev_link(event, filters, last_view)
     target = Event.step_backwards_from(event)
-    return make_link(target, "&laquo; Prev", filters, last_view) unless target.nil?
+    return make_link(target, "&laquo; Earlier", filters, last_view) unless target.nil?
 
     ''
   end
   
   def next_link(event, filters, last_view)
     target = Event.step_forwards_from(event)
-    return make_link(target, "Next &raquo;", filters, last_view) unless target.nil?
+    return make_link(target, "Later &raquo;", filters, last_view) unless target.nil?
     ''
   end
   
   private 
   def make_link(event, text, filters, last_view)
-    link = "/events/2009/October/#{event.start.day}"
-    
-    link += "?last_view=#{last_view}" unless last_view.nil? || last_view.empty?
-    link += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
-    
-    link_to(text, link, :class => 'trigger')
+    link_to(text, path_for_event(event, filters, last_view), :class => 'trigger')
+  end
+  
+  def make_venue_ajax_url(venue, filters)
+    link = "/venues/#{venue.id}?last_view=map"
+    link += "&amp;filter[theme]=#{CGI.escape(filters[:theme])}&amp;filter[location]=#{CGI.escape(filters[:location])}" unless filters.nil? || filters.empty?
   end
 end

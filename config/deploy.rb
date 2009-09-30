@@ -1,5 +1,5 @@
-set :stages, %w(staging production)
-set :default_stage, 'staging'
+set :stages, %w(testing staging production)
+set :default_stage, 'testing'
 require 'capistrano/ext/multistage'
 
 set :application, "learning_revolution"
@@ -10,9 +10,11 @@ set :scm, "git"
 set :branch, "deploy"
 set :git_shallow_clone, 1
 
-
-set :symlinked_dirs, [
-  # ['index', 'search/index']
+set :local_shared_files, [
+  'config/database.yml',
+  'config/application.yml',
+  'public/badges',
+  'public/images/featured_photos'
 ]
 
 namespace :deploy do
@@ -21,17 +23,6 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
      
-  desc "Creates additional symlinks and restarts sphinx"
-  task :after_update_code do
-    if symlinked_dirs
-      symlinked_dirs.each do |item| 
-        src, dest = item
-        run "ln -nfs #{storage_path}/#{dest} #{current_path}/#{src}"
-      end
-    end
-    run "ln -fs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
-  end
-  
 end
 
 # rake spec --format html:public/specs.html

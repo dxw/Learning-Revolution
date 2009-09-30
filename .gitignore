@@ -1,4 +1,7 @@
 config/database.yml
+config/application.yml
+public/badges
+public/images/featured_photos
 *~
 *.cache
 *.log
@@ -13,6 +16,5 @@ coverage/*
 db/*.sqlite3
 public/specs.html
 *.tmproj
-vendor/gems*
 public/index.html
 log

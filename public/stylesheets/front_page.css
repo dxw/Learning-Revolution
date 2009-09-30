@@ -1,8 +1,13 @@
 /* Front Page */
 
 body#pages_index .content{
-  background:none;
   width:auto;
+  background-image:url(/images/fol_bg_silhouette.jpg);
+  background-repeat: repeat-x;
+  background-color:#8B1713;
+/*  background-attachment:fixed;*/
+  background-position: 0 410px;
+  
 }
 body#pages_index .footer{
   color:#8B1713;
@@ -51,30 +56,44 @@ body#pages_index .footer p a, body#pages_index .footer p{
 }
 
 img.be_a_part_of_the_festival{
-  margin: 10px 0px 0px 20px;
+  margin: 18px 0px 0px 12px;
 }
-.standfirst{
-  margin-top:18px;
+.featured_block .standfirst{
+  margin-top:6px;
   width:410px;
   line-height: 1.5;
   font-size:1.5em;
-  margin-top:18px;
+  margin-top:12px;
+  margin-left:18px;
+}
+.featured_block .subheading {
+  line-height: 1.5;
+  margin-left:18px;
+  margin-top:6px;
+  font-size:1.33em;
+  width:410px;
 }
 #calendar_thumbnail{
   float:left;
   margin-left:20px;
 }
-#view_event_calendar{
+
+a#view_event_calendar{
   clear:both;
   display:block;
-  margin-left:20px;
+  margin-left:14px;
+  margin-bottom:12px;
+}
+#view_event_calendar img{
+  margin-top:24px;
+  margin-bottom:4px;
 }
 
 .row .featured_event_nav {
   position:absolute;
   top:0;
   right:0;
-  height:234px;
+  height:238px;
   width:20px;
   z-index:100;
   background-color:#40000B;
@@ -87,7 +106,6 @@ img.be_a_part_of_the_festival{
   color:#fff;
   text-decoration:none;
 }
-
 .row .featured_event_nav a.activeSlide {
   background-color:#fff; 
   color:#40000B;
@@ -117,11 +135,14 @@ img.be_a_part_of_the_festival{
 .share_space_and_groups p{
   margin-left:15px;
 }
-.share_space_and_groups img{
-  margin-left:5px;
+.share_space_and_groups img.button{
+  margin-left:7px;
 }
 .share_space_and_groups img.organise_group{
-  margin-left:15px;
+  margin-left:0px;
+}
+img.follow_festival{
+  margin-left:5px;
 }
 .secondary_block{
   min-height:310px;
@@ -226,11 +247,14 @@ form#bis_email_signup{
   padding-bottom:12px;
 }
 .photos_and_videos .heading{
-  margin-left:0px;
+  margin-left:4px;
+  margin-bottom:6px;
   text-align:left;
+  float:left;
 }
 .videos .heading{
   margin-left:48px;
+  margin-bottom:6px;
   text-align:left;
 }
 .photos_and_videos .photos {
@@ -247,6 +271,7 @@ form#bis_email_signup{
 }
 ul.flickr_photos,
 ul.youtube_videos {
+  clear:left;
   list-style:none;
 }
 ul.youtube_videos {

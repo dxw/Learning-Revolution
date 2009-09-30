@@ -1,0 +1,12 @@
+
+# Checkout the commit you want to appear on production:
+git checkout master
+
+# Update the production branch
+git branch -f production
+
+# Push that to github
+git push origin production
+
+# Deploy!
+cap production deploy

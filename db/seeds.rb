@@ -1,5 +1,6 @@
-Page.create!(:slug => "about", :title => "About", :content => "<p>Blah blah blah.</p>")
-Page.create!(:slug => "resources", :title => "Resources", :content => "<p>Sample content goes here.</p>")
-Page.create!(:slug => "terms-conditions", :title => "Terms and Conditions", :content => "<p>Lots of legalese.</p><p>You give us the right to publish your event. Duh.</p>")
-Page.create!(:slug => "privacy", :title => "Your Privacy", :content => "<p>Moar legalese.</p><p>we pwn all joo's data</p>")
-Page.create!(:slug => "promote-your-event", :title => "Promote Your Event", :content => "<p>Promote it. Promote!</p>")
+Page.create!(:slug => "about", :title => "About", :content => File.read("#{RAILS_ROOT}/db/page_contents/about.html")) unless Page.find(:all, :conditions => {:slug => 'about'}).size > 0
+Page.create!(:slug => "terms-conditions", :title => "Terms and Conditions", :content => File.read("#{RAILS_ROOT}/db/page_contents/terms-and-conditions.html")) unless Page.find(:all, :conditions => {:slug => 'terms-conditions'}).size > 0
+Page.create!(:slug => "privacy-policy", :title => "Privacy Policy", :content => File.read("#{RAILS_ROOT}/db/page_contents/privacy-policy.html")) unless Page.find(:all, :conditions => {:slug => 'privacy-policy'}).size > 0
+Page.create!(:slug => "promote-your-event", :title => "Promote Your Event", :content => File.read("#{RAILS_ROOT}/db/page_contents/promote-your-event.html")) unless Page.find(:all, :conditions => {:slug => 'promote-your-event'}).size > 0
+Page.create!(:slug => "frequently-asked-questions", :title => "Frequently Asked Questions", :content => File.read("#{RAILS_ROOT}/db/page_contents/frequently-asked-questions.html"))  unless Page.find(:all, :conditions => {:slug => 'frequently-asked-questions'}).size > 0
+Page.create!(:slug => "copyright", :title => "Copyright", :content => File.read("#{RAILS_ROOT}/db/page_contents/copyright.html")) unless Page.find(:all, :conditions => {:slug => 'copyright'}).size > 0
