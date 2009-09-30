@@ -1,26 +1,12 @@
 
-In Git:
+# Checkout the commit you want to appear on production:
+git checkout master
 
-$ git checkout master
-$ git branch -f production
-$ git push origin production
+# Update the production branch
+git branch -f production
 
-This brings production up-to-date with the master branch.
+# Push that to github
+git push origin production
 
-On production:
-
-$ cd code/Learning-Revolution                          # a checkout of the code
-$ git pull
-$ ln -s ~/default/current/config/database.yml config/  # if it isn't already there
-$ RAILS_ENV=production rake db:reset
-$ RAILS_ENV=production script/import lib/tasks/clean_data/*
-
-This ensures you a. don't see a big 500 when you deploy, and b. have some data.
-
-On your machine:
-
-$ cap production deploy
-
-Type in the appropriate passwords.
-
-Production should now be live.
+# Deploy!
+cap production deploy
