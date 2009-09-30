@@ -1,23 +1,29 @@
 <ul>
   <li class="item clearfix odd">
-    <div class="label">Name</div> <div class="value"><%= venue.name %></div>
+    <div class="label">Name</div> <div class="value"><%=h venue.name %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Address 1</div> <div class="value"><%= venue.address_1 %></div>
+    <div class="label">Address 1</div> <div class="value"><%=h venue.address_1 %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Address 2</div> <div class="value"><%= venue.address_2 %></div>
+    <div class="label">Address 2</div> <div class="value"><%=h venue.address_2 %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Address 3</div> <div class="value"><%= venue.address_3 %></div>
+    <div class="label">Address 3</div> <div class="value"><%=h venue.address_3 %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">City</div> <div class="value"><%= venue.city %></div>
+    <div class="label">City</div> <div class="value"><%=h venue.city %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">County</div> <div class="value"><%= venue.county %></div>
+    <div class="label">County</div> <div class="value"><%=h venue.county %></div>
   </li>
   <li class="item clearfix odd">
-    <div class="label">Postcode</div> <div class="value"><%= venue.postcode %></div>
+    <div class="label">Postcode</div> <div class="value"><%=h venue.postcode %></div>
+  </li>
+  <li class="item clearfix even">
+    <div class="label">Created</div> <div class="value"><%=h venue.created_at %></div>
+  </li>
+  <li class="item clearfix odd">
+    <div class="label">Updated</div> <div class="value"><%=h venue.updated_at %></div>
   </li>
 </ul>
