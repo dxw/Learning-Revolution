@@ -27,6 +27,12 @@ class Admin::EventsController < Admin::AdminController
     cond = %w[title description theme event_type cost min_age organisation contact_name contact_phone_number contact_email_address].map{|field|arr<<a;"#{field} LIKE ?"}.join(' OR ')
     @events = Event.paginate(:all, :page => params[:page], :conditions => [cond]+arr, :order => 'start')
   end
+
+  def edit
+    params.merge!({:startday => '%02d'% @event.start.day, :starthour => '%02d'% @event.start.hour, :startminute => '%02d'% @event.start.min})
+    params.merge!({:endday => '%02d'% @event.end.andand.day, :endhour => '%02d'% @event.end.andand.hour, :endminute => '%02d'% @event.end.andand.min}) unless @event.end.blank?
+    params.merge!({:event => {:event_type => @event.event_type, :theme => @event.theme}})
+  end
   
   def duplicates
     fix_duplicate if request.method == :post && params[:event]
