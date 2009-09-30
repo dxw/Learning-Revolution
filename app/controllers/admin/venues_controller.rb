@@ -18,7 +18,7 @@ class Admin::VenuesController < Admin::AdminController
   end
   
   def index
-    @venues = Venue.paginate(:all, :page => params[:page])
+    @venues = Venue.paginate(:all, :page => params[:page], :order => "name")
   end
   
   def duplicates
