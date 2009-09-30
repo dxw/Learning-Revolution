@@ -16,6 +16,8 @@ Exception:
 
 <%= @exception.inspect %>
 
+<%= @exception.message.inspect %>
+
 Backtrace:
 
 <%= @exception.andand.backtrace.andand.join("\n") %>
