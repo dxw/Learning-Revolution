@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     begin
       feed_uri = 'http://gdata.youtube.com/feeds/api/users/learnrevolution/uploads?orderby=updated'
       youtube_feed = Hpricot(open(feed_uri))
-      @latest_youtube_vid_url = (youtube_feed/'entry')[0].at('media:content').attributes['url']
+      @latest_youtube_vid_url = (youtube_feed/'entry')[0].at('media:content').attributes['url'].gsub('&', '&amp;')
     rescue Object => e
       Notifier.deliver_error_notification('Unable to load youtube video feed at #{feed_uri}', e, request)
     end
