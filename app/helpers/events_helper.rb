@@ -30,6 +30,6 @@ module EventsHelper
   
   def make_venue_ajax_url(venue, filters)
     link = "/venues/#{venue.id}?last_view=map"
-    link += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
+    link += "&amp;filter[theme]=#{CGI.escape(filters[:theme])}&amp;filter[location]=#{CGI.escape(filters[:location])}" unless filters.nil? || filters.empty?
   end
 end

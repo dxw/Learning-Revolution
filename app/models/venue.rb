@@ -21,7 +21,6 @@ class Venue < Location
   end
     
   def self.geocode(postcode)
-    
   end
   
   def has_published_events

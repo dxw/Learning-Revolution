@@ -18,8 +18,10 @@ class VenuesController < ApplicationController
 
   def venue_for_map
       params[:filter] ||= {}
-      venue = Venue.find(params[:venue_id])
+      
       @venue = Venue.find(params[:venue_id])
+      @filters = params[:filter]
+      
       render :partial => 'events/events_at_a_venue'
   end
 end
