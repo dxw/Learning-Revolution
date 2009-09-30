@@ -11,10 +11,20 @@ module Spec
         end
 
         failure_message_for_should do |actual|
-          'uhm'
+          atom
         end
       end
+    end
+    def be_icalendar
+      Matcher.new :be_icalendar do
+        match do |ical|
+          calendar = Icalendar.parse(ical)
+        end
 
+        failure_message_for_should do |actual|
+          calendar
+        end
+      end
     end
   end
 end
@@ -52,6 +62,11 @@ end
 Then %r/the page is valid Atom/ do
   pending and return if ENV['SKIP_VALIDATION']
   response.body.should(be_atom)
+end
+
+Then %r/the page is valid iCalendar/ do
+  pending and return if ENV['SKIP_VALIDATION']
+  response.body.should(be_icalendar)
 end
 
 Then /^I should see image "([^\"]*)"$/ do |alt|

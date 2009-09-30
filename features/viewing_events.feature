@@ -89,3 +89,20 @@ Feature: Viewing events
     And I follow "Add to my feed reader."
     Then I should see "Event 1"
     And the page is valid Atom
+
+  Scenario: iCalendar "feed"
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    And I follow "Add these events to iCal."
+    Then I should see "Event 1"
+    And the page is valid iCalendar
+
+  Scenario: iCalendar single event
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the event page for "Event 1"
+    When I follow "Add to iCal"
+    Then I should see "Event 1"
+    And the page is valid iCalendar
