@@ -60,12 +60,10 @@ Then %r/the page is valid XHTML/ do
 end
 
 Then %r/the page is valid Atom/ do
-  pending and return if ENV['SKIP_VALIDATION']
   response.body.should(be_atom)
 end
 
 Then %r/the page is valid iCalendar/ do
-  pending and return if ENV['SKIP_VALIDATION']
   response.body.should(be_icalendar)
 end
 Then %r/the calendar holds (\d+) events?/ do |count|
