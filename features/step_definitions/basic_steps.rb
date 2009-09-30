@@ -1,5 +1,34 @@
 require 'markup_validity' 
 
+module Spec
+  module Matchers
+    def be_atom
+      Matcher.new :be_atom do
+        match do |atom|
+          rng = Nokogiri::XML::RelaxNG(open('features/step_definitions/atom.rng').read)
+          feed = Nokogiri::XML(atom)
+          rng.valid?(feed)
+        end
+
+        failure_message_for_should do |actual|
+          atom
+        end
+      end
+    end
+    def be_icalendar
+      Matcher.new :be_icalendar do
+        match do |ical|
+          calendar = Icalendar.parse(ical)
+        end
+
+        failure_message_for_should do |actual|
+          calendar
+        end
+      end
+    end
+  end
+end
+
 Given "debugger" do
   debugger
 end
@@ -26,7 +55,28 @@ Then /^I should be denied access$/ do
 end
 
 Then %r/the page is valid XHTML/ do
-  response.body.should(be_xhtml_strict) unless ENV['SKIP_VALIDATION']
+  def err(s)
+    puts "    \33[30;46m#{s}\33[0m"
+  end
+  if ENV['SKIP_VALIDATION']
+    err "You have SKIP_VALIDATION set."
+    err "Unset it to test XHTML validity."
+    err "You should do this."
+  else
+    response.body.should(be_xhtml_strict)
+  end
+end
+
+Then %r/the page is valid Atom/ do
+  response.body.should(be_atom)
+end
+
+Then %r/the page is valid iCalendar/ do
+  response.body.should(be_icalendar)
+end
+Then %r/the calendar holds (\d+) events?/ do |count|
+  calendar = Icalendar.parse(response.body)[0] # files can contain multiple calendars, therefore this index
+  calendar.events.size.should == count.to_i
 end
 
 Then /^I should see image "([^\"]*)"$/ do |alt|

@@ -80,3 +80,33 @@ Feature: Viewing events
     When I go to the event page for "Event 1"
     Then I should not see "Later »"
     And the page is valid XHTML
+
+  Scenario: Atom feed
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    And I follow "Add to my feed reader."
+    Then I should see "Event 1"
+    And the page is valid Atom
+
+  Scenario: iCalendar "feed"
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    Given a valid event called "Event 2" 
+    And the event "Event 2" starts on "1st October 2009 13:00"
+    When I go to the calendar for October 2009
+    And I press "Search For Events"
+    And I follow "Add these events to iCal."
+    Then I should see "Event 1"
+    And the page is valid iCalendar
+    And the calendar holds 2 events
+
+  Scenario: iCalendar single event
+    Given a valid event called "Event 1" 
+    And the event "Event 1" starts on "31st October 2009 12:00"
+    When I go to the event page for "Event 1"
+    When I follow "Add to iCal"
+    Then I should see "Event 1"
+    And the page is valid iCalendar
+    And the calendar holds 1 event
