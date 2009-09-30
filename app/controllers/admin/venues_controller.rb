@@ -18,8 +18,20 @@ class Admin::VenuesController < Admin::AdminController
   end
   
   def index
-    conditions = {}
-    conditions.merge!({:name => params[:filter][:title]}) if params.andand[:filter].andand[:title].present?
+    #conditions.merge!({:name => params[:filter][:title]}) if params.andand[:filter].andand[:title].present?
+    conditions = ""
+    cond_lst = []
+    if params.andand[:filter].andand[:title].present?
+      conditions = "name = ?"
+      cond_lst = ["%#{[params[:filter][:title]}%"]
+    end
+
+    if params.andand[:filter].andand[:location].present?
+      if conditions.present?
+        conditions += " AND "
+      end
+      conditions += ""
+    end
     @venues = Venue.paginate(:all, :page => params[:page], :conditions => conditions, :order => "name")
   end
   

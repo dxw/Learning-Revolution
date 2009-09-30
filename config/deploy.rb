@@ -12,7 +12,9 @@ set :git_shallow_clone, 1
 
 set :local_shared_files, [
   'config/database.yml',
-  'config/application.yml'
+  'config/application.yml',
+  'public/badges',
+  'public/images/featured_images'
 ]
 
 namespace :deploy do
