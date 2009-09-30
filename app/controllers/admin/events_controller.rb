@@ -36,7 +36,7 @@ class Admin::EventsController < Admin::AdminController
   
   def duplicates
     fix_duplicate if request.method == :post && params[:event]
-    @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
+    @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL").select{|e|e.possible_duplicate.present?}
   end
   
   def moderations
