@@ -68,6 +68,10 @@ Then %r/the page is valid iCalendar/ do
   pending and return if ENV['SKIP_VALIDATION']
   response.body.should(be_icalendar)
 end
+Then %r/the calendar holds (\d+) events?/ do |count|
+  calendar = Icalendar.parse(response.body)[0] # files can contain multiple calendars, therefore this index
+  calendar.events.size.should == count.to_i
+end
 
 Then /^I should see image "([^\"]*)"$/ do |alt|
   response.should have_selector("img", :alt => alt)
