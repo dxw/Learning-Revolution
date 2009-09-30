@@ -2,7 +2,7 @@
 
 body#pages_index .content{
   width:auto;
-  background-image:url(http://learningrevolution.direct.gov.uk/images/fol_bg_silhouette.jpg);
+  background-image:url(/images/fol_bg_silhouette.jpg);
   background-repeat: repeat-x;
   background-color:#8B1713;
 /*  background-attachment:fixed;*/
