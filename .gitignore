@@ -1,5 +1,7 @@
 config/database.yml
 config/application.yml
+public/badges
+public/images/featured_photos
 *~
 *.cache
 *.log
