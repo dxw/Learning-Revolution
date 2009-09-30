@@ -3,7 +3,7 @@
   
   <%= image_tag('headings/admin/hd_moderate_events.gif', :class => 'heading') %>
 
-  <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue.</h3>
+  <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue. <%= get_unpublished_message(@count_unpublished) %></h3>
 
   <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
   <%= (flash[:notices].nil? ? '' : "<div class='admin_flash'>#{flash[:notices]}</div>") %>

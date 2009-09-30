@@ -27,7 +27,11 @@ class Admin::EventsController < Admin::AdminController
     cond = %w[title description theme event_type cost min_age organisation contact_name contact_phone_number contact_email_address].map{|field|arr<<a;"#{field} LIKE ?"}.join(' OR ')
       @events = Event.paginate(:all, :page => params[:page], :conditions => [cond]+arr, :order => 'start, title')
   end
-
+  
+  def count_unpublished
+    @count_unpublished ||= Event.find(:all, :conditions => {:published => false}).size
+  end
+  
   def edit
     params.merge!({:startday => '%02d'% @event.start.day, :starthour => '%02d'% @event.start.hour, :startminute => '%02d'% @event.start.min})
     params.merge!({:endday => '%02d'% @event.end.andand.day, :endhour => '%02d'% @event.end.andand.hour, :endminute => '%02d'% @event.end.andand.min}) unless @event.end.blank?
@@ -40,6 +44,8 @@ class Admin::EventsController < Admin::AdminController
   end
   
   def moderations
+    count_unpublished
+    
     if params[:from]
       @event = Event.find(:first, :conditions => ["(published IS NULL OR published != 1) AND id = ?", params[:from]], :order => "id ASC")
     else
@@ -47,8 +53,9 @@ class Admin::EventsController < Admin::AdminController
     end
   end
   
-  def moderate
+  def moderate   
     event = Event.find(params[:id])
+    
     if params[:commit] == "Approve"
       event.approve!
       flash[:event] = "<em>#{event.title}</em> has been published"
@@ -56,6 +63,7 @@ class Admin::EventsController < Admin::AdminController
       event.destroy
       flash[:event] = "<em>#{event.title}</em> has been deleted"
     end
+        
     redirect_to moderations_admin_events_path, :from => event.id
   end
   
