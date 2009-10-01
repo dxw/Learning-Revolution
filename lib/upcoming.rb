@@ -3,6 +3,34 @@ require 'uri'
 require 'net/http'
 require 'hpricot'
 
+# Basic wrapper around the methods necessary to add an event on Upcoming.
+# 
+# To use, you'll need to add an API key and an auth token to application.yml.
+# 
+# To get an API key, log into Upcoming using an account to represent the
+# developer, and go to:
+# 
+# http://upcoming.yahoo.com/services/api/keygen.php
+#
+# Stick it in application.yml.
+# 
+# Then, to get an auth token, log into Upcoming using a user account that
+# you want the posted to events to belong to. Visit:
+# 
+# http://upcoming.yahoo.com/services/auth/?api_key=<Your API Key>
+# 
+# Authorise the app, and note the code (AKA the 'frob') that you're given.
+# From the Rails console, run:
+#
+# Upcoming.get_token('<Your frob>')
+# 
+# and you'll get an object representing the user, the 'token' method
+# of which needs to go into application.yml to make the rest of the
+# methods work.
+# 
+# TODO:
+# API rate-limiting?
+#
 module Upcoming
   ENDPOINT = "http://upcoming.yahooapis.com/services/rest/"
   
