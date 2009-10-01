@@ -332,4 +332,10 @@ namespace :lr do
       end
     end
   end
+  
+  namespace :email_subscriptions do
+    task :deliver => :environment do
+      EmailSubscription.deliver_all_updates!
+    end
+  end
 end
