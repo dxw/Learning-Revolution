@@ -6,7 +6,7 @@ end
 
 Given /^I have requested an email of events filtered by the theme "([^\"]*)"$/ do |theme|
   Given "I am on the calendar for October 2009 filtered by the theme \"#{theme}\""
-  When 'I follow "Send me these events as email."'
+  When 'I follow "Email these events to me."'
   And 'I fill in "Email address" with "example@example.com"'
   And 'I press "Send"'
 end
