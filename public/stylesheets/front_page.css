@@ -179,7 +179,7 @@ img.follow_festival{
   text-align:center;
   width:42px;
   height:50px;
-  background-image:url('/images/css/ical_blank_btn.gif');
+  background-image:url(/images/css/ical_blank_btn.gif);
   background-position:-15px -8px;
   background-repeat:no-repeat;
   float:left;
@@ -231,7 +231,7 @@ form#bis_email_signup{
 
 .secondary_content{
   padding-top:36px;
-  background-image:url('/images/css/silver_bg.png');
+  background-image:url(/images/css/silver_bg.png);
   background-repeat:repeat-x;
   clear:both;
   margin-left:auto;

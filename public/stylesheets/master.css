@@ -174,7 +174,7 @@ p.post_code_error{
 
 .nav_banner {
   background-color:transparent;
-  background-image: url('/images/css/nav_menu_bg.png');
+  background-image: url(/images/css/nav_menu_bg.png);
   background-position:top;
   background-repeat: repeat-x;
   height:60px;
@@ -196,7 +196,7 @@ p.post_code_error{
   font-size:1.2em;
   height:60px;
   background-color:transparent;
-  background-image: url('/images/css/nav_menu_icon_bg.png');
+  background-image: url(/images/css/nav_menu_icon_bg.png);
   text-indent:-9999em;
   width:60px;
 }
@@ -231,7 +231,7 @@ p.post_code_error{
   background-position:-750px 1px;
 }
 .nav li a{
-  background-image: url('/images/css/nav_menu_icon_bg.png');
+  background-image: url(/images/css/nav_menu_icon_bg.png);
   display:block;
   height:60px;
   width:110px;
@@ -283,10 +283,10 @@ p.post_code_error{
 }
 
 .trans {
-  background: transparent url('/images/css/white_trans.png');
+  background: transparent url(/images/css/white_trans.png);
 }
 .grad {
-  background: transparent url('/images/css/front_page_gradient.png');
+  background: transparent url(/images/css/front_page_gradient.png);
 }
 
 .quarter_page {
@@ -428,7 +428,7 @@ div.new_event{
   border-bottom:1px solid #C2C2C3;
   border-top:1px solid #C2C2C3;
   padding:18px 0;
-  background-image:url('/images/css/silver_bg.png');
+  background-image:url(/images/css/silver_bg.png);
   background-position:0 -80px;
   width:959px;
   float:left;
@@ -499,7 +499,7 @@ div.new_event{
 
 #content_header h2.find_an_event{
   display:block;
-  background-image:url('/images/headings/hd_find_an_event_in_october.gif');
+  background-image:url(/images/headings/hd_find_an_event_in_october.gif);
   height:65px;
   width:400px;
   background-repeat:no-repeat;
@@ -579,7 +579,7 @@ ul.search_subscription_options{
 ul.search_subscription_options li{
   padding-left:42px;
   list-style: none;
-  background-image:url('/images/sm_icons.gif');
+  background-image:url(/images/sm_icons.gif);
   background-repeat:no-repeat;
   border-bottom:none;
   margin-top:2px;
@@ -687,7 +687,7 @@ div.checkbox label{
 ul.sm_icons li{
   padding-left:32px;
   list-style: none;
-  background-image:url('/images/sm_icons.gif');
+  background-image:url(/images/sm_icons.gif);
   background-repeat:no-repeat;
   border-bottom:none;
   font-size:0.83em;
