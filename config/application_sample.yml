@@ -12,6 +12,9 @@ development:
   badge: badges
   
   contact_email: learningrevolution@bis.gsi.gov.uk
+  
+  upcoming_api_key: c5771340a8
+  upcoming_api_token: 15ba9abf19892e6d32a27bd717c564239818c62b
 
 test:
   bitly_account: learningrevolution
@@ -26,6 +29,9 @@ test:
   badge: badges
   
   contact_email: learningrevolution@bis.gsi.gov.uk
+  
+  upcoming_api_key: c5771340a8
+  upcoming_api_token: 15ba9abf19892e6d32a27bd717c564239818c62b
 
 production:
   bitly_account: learningrevolution
@@ -40,3 +46,6 @@ production:
   badge: badges
   
   contact_email: learningrevolution@bis.gsi.gov.uk
+  
+  upcoming_api_key: 
+  upcoming_api_token: 
