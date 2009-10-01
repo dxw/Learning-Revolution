@@ -82,7 +82,40 @@ module Upcoming
       end
     end
     
-    # TODO Call the API
+    post_data = {'method' => 'event.add'}
+    post_data['api_key'] = AppConfig.upcoming_api_key
+    post_data['token'] = AppConfig.upcoming_api_token
+    post_data['name'] = options[:name]
+    post_data['venue_id'] = options[:venue_id]
+    post_data['category_id'] = options[:category_id]
+    post_data['start_date'] = options[:start].strftime('%Y-%m-%d')
+    post_data['end_date'] = options[:end].strftime('%Y-%m-%d') if options[:end]
+    post_data['start_time'] = options[:start].strftime('%H:%M:%S')
+    post_data['end_time'] = options[:end].strftime('%H:%M:%S') if options[:end]
+    post_data['description'] = options[:description]
+    post_data['url'] = options[:url]
+    
+    event_element = post(post_data).first
+    
+    event = OpenStruct.new(
+      :event_id => event_element.attributes['id'].to_i, # Can't use :id since it conflicts with Object#id
+      :name => event_element.attributes['name'],
+      :tags => event_element.attributes['tags'],
+      :description => event_element.attributes['description'],
+      :metro_id => event_element.attributes['metro_id'].to_i,
+      :venue_id => event_element.attributes['venue_id'].to_i,
+      :user_id => event_element.attributes['user_id'].to_i,
+      :category_id => event_element.attributes['category_id'].to_i,
+      :ticket_url => event_element.attributes['ticket_url'],
+      :ticket_price => event_element.attributes['ticket_price']
+    )
+    event.start = Time.parse("#{event_element.attributes['start_date']} #{event_element.attributes['start_time']}")
+    event.end = Time.parse("#{event_element.attributes['end_date']} #{event_element.attributes['end_time']}")
+    
+    event.personal = (event_element.attributes['personal'] == '1') ? true : false
+    event.selfpromotion = (event_element.attributes['selfpromotion'] == '1') ? true : false
+    
+    event
   end
   
   def self.get(data={})
