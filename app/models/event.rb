@@ -230,7 +230,7 @@ class Event < ActiveRecord::Base
   end
 
   def strip_html
-    self.description.gsub!(%r[</?.*?>],'')
+    self.description.andand.gsub!(%r[</?.*?>],'')
   end
   
   def provider_name
