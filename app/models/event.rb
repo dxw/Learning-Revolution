@@ -282,6 +282,7 @@ class Event < ActiveRecord::Base
     self.upcoming_event_id = upcoming_event.event_id
     self.posted_to_upcoming_at = Time.now.utc
     self.save!
+    upcoming_event_id
   end
   
   def self.post_pending_to_upcoming!
