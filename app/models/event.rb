@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
   before_validation :check_more_info
+  before_validation :trim_contact_email_address
 
   after_create :make_bitly_url
   
@@ -221,7 +222,12 @@ class Event < ActiveRecord::Base
     cal.add_event to_ical_event
     cal.to_ical
   end
- 
+
+  def trim_contact_email_address
+    self.contact_email_address.strip!
+    
+    true
+  end
   
   def check_more_info
     self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil 
