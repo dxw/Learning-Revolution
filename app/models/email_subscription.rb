@@ -44,6 +44,14 @@ class EmailSubscription < ActiveRecord::Base
   end
   
   def self.deliver_all_updates!
-    confirmed.each{|es| es.deliver_update}
+    confirmed.each do |es|
+      begin
+        es.deliver_update
+        
+      # Don't give up on the whole batch if one email fails for some reason
+      rescue => exception
+        Rails.logger.error("Email subscription sending error:\n#{exception.message}")
+      end
+    end
   end
 end
