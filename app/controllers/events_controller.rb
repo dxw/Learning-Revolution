@@ -20,7 +20,12 @@ class EventsController < ApplicationController
     else
       params[:view] = 'calendar'
       add_page_title "Calendar view"
-      @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
+      begin
+        @events = Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter])
+      rescue Geokit::Geocoders::GeocodeError
+        @events = []
+        params[:geocodeerror] = true
+      end
       respond_to do |format|
         format.html
         format.atom { render :template => 'events/index.atom.rxml' }

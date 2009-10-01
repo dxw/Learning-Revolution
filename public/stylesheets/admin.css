@@ -37,14 +37,14 @@ padding-top:18px;
 
 /*Override styles for header*/
 .admin .nav_banner {
-  background-image: url('/images/css/admin_nav_menu_bg.jpg');
+  background-image: url(/images/css/admin_nav_menu_bg.jpg);
   background-position:0 1px;
 }
 .admin .nav li{
-  background-image: url('/images/css/admin_nav_menu_icon_bg.jpg');
+  background-image: url(/images/css/admin_nav_menu_icon_bg.jpg);
 }
 .admin .nav li a{
-  background-image: url('/images/css/admin_nav_menu_icon_bg.jpg');
+  background-image: url(/images/css/admin_nav_menu_icon_bg.jpg);
 }
 img.header{
   margin-left:32px;

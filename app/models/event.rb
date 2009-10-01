@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
-  before_validation :check_more_info
+  before_validation :check_more_info, :strip_html
 
   after_create :make_bitly_url
   
@@ -254,6 +254,10 @@ class Event < ActiveRecord::Base
     self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil 
     
     true
+  end
+
+  def strip_html
+    self.description.andand.gsub!(%r[</?.*?>],'')
   end
   
   def provider_name
