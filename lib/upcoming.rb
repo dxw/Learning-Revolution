@@ -21,6 +21,21 @@ module Upcoming
     token
   end
   
+  # See http://upcoming.yahoo.com/services/api/category.getList.php
+  def self.get_category_list
+    data = {'method' => 'category.getList', 'api_key' => AppConfig.upcoming_api_key}
+    
+    category_elements = get(data)
+    
+    category_elements.map do |e|
+      OpenStruct.new(
+        :category_id => e.attributes['id'].to_i,
+        :name => e.attributes['name'],
+        :description => e.attributes['description']
+      )
+    end
+  end
+  
   # See http://upcoming.yahoo.com/services/api/venue.add.php
   def self.add_venue!(options={})
     # Ensure we have all the required parameters
