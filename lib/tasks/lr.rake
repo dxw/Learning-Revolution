@@ -332,4 +332,10 @@ namespace :lr do
       end
     end
   end
+  
+  namespace :upcoming do
+    task :post_pending => :environment do
+      Event.post_pending_to_upcoming!
+    end
+  end
 end

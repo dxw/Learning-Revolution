@@ -250,4 +250,45 @@ class Event < ActiveRecord::Base
       [e.provider_name, e.provider]
     end
   end
+  
+  # Upcoming
+  
+  def posted_to_upcoming?
+    if posted_to_upcoming_at
+      true
+    else
+      false
+    end
+  end
+  
+  def post_to_upcoming!
+    # Upcoming can't handle events without a physical venue
+    return unless venue
+    
+    upcoming_venue_id = venue.upcoming_venue_id || venue.generate_upcoming_venue_id!
+    
+    upcoming_event = Upcoming.add_event!(
+      :name => title,
+      :venue_id => upcoming_venue_id,
+      :category_id => 5, # 'Education - Lectures, workshops'
+      :start => start,
+      :end => self.end,
+      :description => description,
+      :url => "http://learningrevolution.direct.gov.uk/events/#{start.year}/#{Date::MONTHNAMES[start.month]}/#{start.day}/#{slug}"
+    )
+    
+    self.upcoming_event_id = upcoming_event.event_id
+    self.posted_to_upcoming_at = Time.now.utc
+    self.save!
+  end
+  
+  def self.post_pending_to_upcoming!
+    published.all(:conditions => "posted_to_upcoming_at IS NULL").each do |event|
+      begin
+        event.post_to_upcoming!
+      rescue => exception
+        Rails.logger.error("Error posting event #{id} to Upcoming:\n#{exception.message}")
+      end
+    end
+  end
 end
