@@ -3,6 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Event do
   before(:each) do
     @event = EventSpecHelper.new
+    
+    Upcoming.stub!(:add_venue!)
+    Upcoming.stub!(:add_event!)
   end
 
   it "should create a new instance given valid attributes" do

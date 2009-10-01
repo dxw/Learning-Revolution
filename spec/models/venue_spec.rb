@@ -13,6 +13,9 @@ describe Venue do
       :postcode => "E11 1PB"
     }
     @venue = VenueSpecHelper.new(@valid_attributes)
+    
+    Upcoming.stub!(:add_venue!)
+    Upcoming.stub!(:add_event!)
   end
 
   it "should create a new instance given valid attributes" do
