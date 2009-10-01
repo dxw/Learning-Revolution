@@ -261,7 +261,9 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def post_to_upcoming!
+  def post_to_upcoming!(force=false)
+    return if posted_to_upcoming? && !force
+    
     # Upcoming can't handle events without a physical venue
     return unless venue
     
