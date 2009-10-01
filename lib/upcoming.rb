@@ -38,16 +38,12 @@ module Upcoming
     post_data['venueaddress'] = options[:venueaddress]
     post_data['venuecity'] = options[:venuecity]
     post_data['location'] = options[:location]
-    # post_data['metro_id'] = options[:metro_id].to_s
     post_data['venuezip'] = options[:venuezip] if options[:venuezip]
     
-    # Make the Upcoming venue private if we're just testing
-    unless Rails.env.production?
-      post_data['private'] = '1'
-    end
-    
+    # Submit and get response
     venue_element = post(post_data).first
     
+    # Turn response into a nice Ruby object
     venue = OpenStruct.new(
       :venue_id => venue_element.attributes['id'].to_i, # Can't use :id since it conflicts with Object#id
       :name => venue_element.attributes['name'],
@@ -58,7 +54,7 @@ module Upcoming
       :description => venue_element.attributes['description'],
       :user_id => venue_element.attributes['user_id'].to_i
     )
-    venue[:private] = (venue_element.attributes['private'] == '1') ? true : false
+    venue.private = (venue_element.attributes['private'] == '1') ? true : false
     venue
   end
   

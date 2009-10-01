@@ -32,13 +32,13 @@ class Venue < Location
   def generate_upcoming_venue_id!(force=false)
     return upcoming_venue_id if upcoming_venue_id && !force
     
-    # location_string = [address_1, address_2, address_3, city, county, postcode, "UK"].delete_if(&:empty?).join(',')
+    location_string = [address_1, address_2, address_3, city, county, postcode, "UK"].delete_if(&:blank?).join(',')
     
     upcoming_venue = Upcoming.add_venue!(
       :venuename => name,
       :venueaddress => address_1,
       :venuecity => city,
-      # :location => location_string,
+      :location => location_string,
       :venuezip => postcode
     )
     
