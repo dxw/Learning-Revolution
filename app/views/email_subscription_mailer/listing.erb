@@ -1,12 +1,14 @@
-TODO: Proper copy for this email please
+=============================================================================
+THE LEARNING REVOLUTION
+=============================================================================
 
-As requested, here is your listing of <%= filter_core_description(@email_subscription.filter, false) %>:
+As requested, here is your listing of <%= filter_core_description(@email_subscription.filter, false) %>.
 
-To receive an email updates when new events are added, go here:
+To receive email updates when new events like these are added, go here:
 <%= confirm_email_subscription_url(:id => @email_subscription, :secret => @email_subscription.secret, :only_path => false) %>
 
 <% @events.each do |event| -%>
-=============================================================================
+-----------------------------------------------------------------------------
 <%= event.title %>
 <% if event.end -%>
 <%= event.start.strftime("%e %B %R%p") %> until<%=
@@ -18,6 +20,10 @@ event.end.strftime(" %R%p") %>
 <% if event.venue -%>
 <%= event.venue.name %>
 <% end -%>
+
+More details:
 <%= url_for_event(event, :only_path => false) %>
 <% end -%>
-=============================================================================
+-----------------------------------------------------------------------------
+
+http://learningrevolution.direct.gov.uk/
