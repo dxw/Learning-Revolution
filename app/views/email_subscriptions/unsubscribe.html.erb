@@ -1,5 +1,11 @@
-<!-- TODO: Layout for me please -->
-<p>Are you sure you want to unsubscribe from email updates on <%= filter_core_description(@email_subscription.filter) %>?</p>
-<%= button_to("Yes, unsubscribe me.", email_subscription_path(:id => @email_subscription, :secret => @email_subscription.secret), :method => :delete) %>
-<p><%= link_to("No, take me home.", root_path) %></p>
+<div id="content_header"> 
+  <h2>Unsubscribe</h2>
+</div>
 
+<div class="content_wrapper">
+  <div class="content">
+    <p>Are you sure you want to unsubscribe from email updates on <%= filter_core_description(@email_subscription.filter) %>?</p>
+    <p><%= button_to("Yes, unsubscribe me.", email_subscription_path(:id => @email_subscription, :secret => @email_subscription.secret), :method => :delete) %></p>
+    <p><%= link_to("No, take me home.", root_path) %></p>
+  </div>
+</div>
