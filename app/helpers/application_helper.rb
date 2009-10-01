@@ -17,6 +17,10 @@ module ApplicationHelper
   end
 
   def current_filter_description
+
+    if params[:geocodeerror]
+      return "Sorry, we couldn't find anywhere that matched <span class='keyword'>#{CGI.escapeHTML(params[:filter][:location])}</span>"
+    end
     
     if params[:filter][:theme].nil? && params[:filter][:location].nil? then
       s = "Click <em>find events in your area</em> to get started" 
@@ -24,13 +28,13 @@ module ApplicationHelper
       s = 'Now showing all'
       unless params[:filter][:theme].blank?
         s += " <span class='keyword'>"
-        s += params[:filter][:theme]
+        s += CGI.escapeHTML(params[:filter][:theme])
         s += "</span>"
       end
       s += ' events'
       unless params[:filter][:location].blank?
         s += ' happening within 5 miles of <span class="keyword">'
-        s += params[:filter][:location].upcase
+        s += CGI.escapeHTML(params[:filter][:location].upcase)
         s += '</span>'
       end
     end

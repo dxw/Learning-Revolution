@@ -12,6 +12,10 @@ left:-7px;
   position:relative;
   left:8px;
 }
+#view_event_calendar img{
+  margin-bottom:10px;
+}
+
 body#pages_index .content{
   background-position: 0 435px;
 }

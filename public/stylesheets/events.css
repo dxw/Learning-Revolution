@@ -281,7 +281,7 @@ li.event_link.active a, li.event_link.active a:hover, #events_list li.active spa
 }
 
 .listing{
-  background-image:url('/images/tiles/list_gradient_event.jpg');
+  background-image:url(/images/tiles/list_gradient_event.jpg);
   background-repeat: repeat-y;
   background-position: 8px 0px;
   width:959px;
