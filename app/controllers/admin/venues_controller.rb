@@ -30,7 +30,7 @@ class Admin::VenuesController < Admin::AdminController
   
   def duplicates
     fix_duplicate if request.method == :post && params[:venue]
-    @duplicate_venues = Venue.find(:all, :conditions => "possible_duplicate_id IS NOT NULL")
+    @duplicate_venues = Venue.find(:all, :conditions => "possible_duplicate_id IS NOT NULL AND (not_a_dup != TRUE OR not_a_dup IS NULL)").select{|v|v.possible_duplicate.present?}
   end
   
   private
@@ -43,6 +43,10 @@ class Admin::VenuesController < Admin::AdminController
     elsif params[:venue][duplicate.id.to_s] == "Remove original venue"
       flash[:duplicates] = "#{duplicate.possible_duplicate.name} was deleted"
       duplicate.fix_duplicate(:original)
+    elsif params[:venue][duplicate.id.to_s] == "Not a duplicate"
+      flash[:duplicates] = "#{duplicate.name} has been marked as not a duplicate"
+      duplicate.not_a_dup = true
+      duplicate.save!
     end
   end
   

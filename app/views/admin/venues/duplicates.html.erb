@@ -22,7 +22,8 @@
              <%= render :partial => "venue_info_block", :locals => {:venue => duplicate_venue} %>
              <p>
                <%= submit_tag "Remove new venue", :name => "venue[#{duplicate_venue.id}]", :confirm => "Are you sure?" %> or
-               <%= link_to "Edit new venue", edit_admin_venue_path(duplicate_venue) %>
+               <%= link_to "Edit new venue", edit_admin_venue_path(duplicate_venue) %> or
+               <%= submit_tag "Not a duplicate", :name => "venue[#{duplicate_venue.id}]", :confirm => "Are you sure?" %>
              </p>
            </div>
            <div class="duplicate">
