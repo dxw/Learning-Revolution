@@ -190,6 +190,10 @@ class EventsController < ApplicationController
     else
       @venue = @new_event.venue = Venue.find(params[:event][:location_id])
     end
+    identical_venue = @venue.doppleganger
+    if identical_venue
+      @venue = @new_event.venue = identical_venue
+    end
   end
   
   def process_dates
