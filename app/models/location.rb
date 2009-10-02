@@ -34,6 +34,8 @@ class Location < ActiveRecord::Base
   end
   
   def possible_duplicate?
+    return false if self.not_a_dup
+
     self.class.find(:all, :conditions => ["postcode = ?", self.postcode]).each do |location|
       self.possible_duplicate = location if !self.possible_duplicate && self != location && Text::Levenshtein.distance(self.name.downcase, location.name.downcase) <= 5
     end
