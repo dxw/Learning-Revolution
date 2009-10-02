@@ -262,7 +262,7 @@ class Event < ActiveRecord::Base
   end
   
   def post_to_upcoming!(force=false)
-    return if posted_to_upcoming? && !force
+    return if (posted_to_upcoming? || !published?) && !force
     
     # Upcoming can't handle events without a physical venue
     return unless venue
