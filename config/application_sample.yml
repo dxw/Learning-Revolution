@@ -30,8 +30,8 @@ test:
   
   contact_email: learningrevolution@bis.gsi.gov.uk
   
-  upcoming_api_key: c5771340a8
-  upcoming_api_token: 15ba9abf19892e6d32a27bd717c564239818c62b
+  upcoming_api_key: 
+  upcoming_api_token: 
 
 production:
   bitly_account: learningrevolution

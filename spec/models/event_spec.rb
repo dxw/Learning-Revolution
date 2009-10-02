@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'ostruct'
 
 describe Event do
   before(:each) do
@@ -342,5 +343,83 @@ describe Event do
     a = EventSpecHelper.save(:start => Time.parse("5th October 2009 00:00"))
     b = EventSpecHelper.save(:start => Time.parse("5th October 2009 12:00"))
     Event.first_for_day(Time.zone.local(2009,10,5).to_date).should == a
+  end
+  
+  describe "posting to Upcoming" do
+    before(:each) do
+      @event.venue.upcoming_venue_id = 98765
+      @event.start = Time.utc(2009, 10, 1, 9)
+      @event.end   = Time.utc(2009, 10, 1, 11)
+      @event.save!
+      
+      Upcoming.stub!(:add_event!).and_return(OpenStruct.new(:event_id => 12345))
+    end
+    
+    it "should post to Upcoming" do
+      Upcoming.should_receive(:add_event!).with(
+        :name => 'value for title',
+        :venue_id => 98765,
+        :category_id => 5,
+        :start => Time.utc(2009, 10, 1, 9),
+        :end => Time.utc(2009, 10, 1, 11),
+        :description => 'value for description',
+        :url => "http://learningrevolution.direct.gov.uk/events/2009/October/1/value-for-title-#{@event.id}"
+      ).and_return(OpenStruct.new(:event_id => 12345))
+      
+      @event.post_to_upcoming!
+    end
+    
+    it "should mark itself as having been posted to Upcoming" do
+      @event.post_to_upcoming!
+      
+      @event.upcoming_event_id.should == 12345
+      @event.posted_to_upcoming_at.should_not be_nil
+    end
+    
+    it "should not post to Upcoming if it has already been posted" do
+      @event.update_attribute(:posted_to_upcoming_at, Time.now.utc)
+      
+      Upcoming.should_not_receive(:add_event!)
+      @event.post_to_upcoming!
+    end
+    
+    describe "posting all pending events" do
+      before(:each) do
+        Event.delete_all
+      end
+      
+      it "should post a published event that hasn't been posted yet" do
+        published_and_pending = EventSpecHelper.save(:published => true)
+        
+        Upcoming.should_receive(:add_event!).once.and_return(OpenStruct.new(:event_id => 12345))
+        
+        Event.post_pending_to_upcoming!
+        
+        published_and_pending.reload
+        published_and_pending.posted_to_upcoming_at.should_not be_nil
+      end
+      
+      it "should not post a unpublished event" do
+        unpublished_and_pending = EventSpecHelper.save(:published => false)
+        
+        Upcoming.should_not_receive(:add_event!)
+        
+        Event.post_pending_to_upcoming!
+        
+        unpublished_and_pending.reload
+        unpublished_and_pending.posted_to_upcoming_at.should be_nil
+      end
+      
+      it "should not post a published event that has already been posted" do
+        published_and_posted = EventSpecHelper.save(:published => true, :posted_to_upcoming_at => Time.utc(2009, 1, 1))
+        
+        Upcoming.should_not_receive(:add_event!)
+        
+        Event.post_pending_to_upcoming!
+        
+        published_and_posted.reload
+        published_and_posted.posted_to_upcoming_at.should == Time.utc(2009, 1, 1)
+      end
+    end
   end
 end
