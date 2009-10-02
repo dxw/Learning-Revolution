@@ -12,6 +12,7 @@ class Admin::PagesController < Admin::AdminController
     if @page.save then
       return_or_redirect_to :action => :index
       flash[:page] = "Page saved successfully"
+      expire_page :controller => '/pages', :action => 'show', :slug => @page.slug
     else
       render :action => :edit
     end
