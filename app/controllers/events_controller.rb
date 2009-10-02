@@ -83,6 +83,7 @@ class EventsController < ApplicationController
     else
       @new_venue = Venue.new(params[:venue])
       if @new_venue.valid?
+        @new_event.valid? # this calls check_more_info
         render :action => :preview
       else
         render :action => :find_venue
