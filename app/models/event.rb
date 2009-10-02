@@ -157,6 +157,8 @@ class Event < ActiveRecord::Base
   end
   
   def possible_duplicate?
+    return false if self.not_a_dup
+
     self.possible_duplicate = nil
     
     Event.find(:all, :conditions => ["start = ?", start]).each do |event|
