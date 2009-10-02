@@ -290,7 +290,7 @@ class Event < ActiveRecord::Base
       begin
         event.post_to_upcoming!
       rescue => exception
-        Rails.logger.error("Error posting event #{id} to Upcoming:\n#{exception.message}")
+        Rails.logger.error("Error posting event #{event.id} to Upcoming:\n#{exception.message}")
       end
     end
   end
