@@ -24,7 +24,8 @@
                <%= render :partial => "event_info_block", :locals => {:event => duplicate_event} %>
                <p>
                  <%= submit_tag "Remove new event", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %> or
-                 <%= link_to "Edit new event", edit_admin_event_path(duplicate_event) %>
+                 <%= link_to "Edit new event", edit_admin_event_path(duplicate_event) %> or
+                 <%= submit_tag "Not a duplicate", :name => "event[#{duplicate_event.id}]", :confirm => "Are you sure?" %>
                </p>
              </div>
              <div class="duplicate">

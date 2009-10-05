@@ -332,4 +332,72 @@ namespace :lr do
       end
     end
   end
+
+  task(:clear_identical, :csv, {:needs => :environment}) do |t,args|
+    ActiveRecord::Base.transaction do
+      # Fix events where the possible_duplicate exists but is broken
+      duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL AND (not_a_dup != TRUE OR not_a_dup IS NULL)")
+      duplicate_events.select{|e|e.possible_duplicate.blank?}.each{|e|
+        e.possible_duplicate = nil
+        e.not_a_dup = true
+        e.save!
+        puts "Fixing possible_duplicate_id/not_a_dup on Event #{e.id}"
+      }
+      # Fix venues where the possible_duplicate exists but is broken
+      duplicate_venues = Venue.find(:all, :conditions => "possible_duplicate_id IS NOT NULL AND (not_a_dup != TRUE OR not_a_dup IS NULL)")
+      duplicate_venues.select{|v|v.possible_duplicate.blank?}.each{|v|
+        v.possible_duplicate = nil
+        v.not_a_dup = true
+        v.save!
+        puts "Fixing possible_duplicate_id/not_a_dup on Venue #{e.id}"
+      }
+      # Find all events which have identical twins
+      duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL AND (not_a_dup != TRUE OR not_a_dup IS NULL)")
+      duplicate_events.each{|e|
+        next if e.title != e.possible_duplicate.title
+        next if e.description != e.possible_duplicate.description
+        next if e.theme != e.possible_duplicate.theme
+        next if e.event_type != e.possible_duplicate.event_type
+        next if e.start != e.possible_duplicate.start
+        next if e.end != e.possible_duplicate.end
+        next if e.cost != e.possible_duplicate.cost
+        next if e.min_age != e.possible_duplicate.min_age
+        next if e.organisation != e.possible_duplicate.organisation
+        next if e.contact_name != e.possible_duplicate.contact_name
+        next if e.contact_phone_number != e.possible_duplicate.contact_phone_number
+        next if e.contact_email_address != e.possible_duplicate.contact_email_address
+        next if e.published != e.possible_duplicate.published
+        next if e.picture != e.possible_duplicate.picture
+        next if e.featured != e.possible_duplicate.featured
+        #next if e.created_at != e.possible_duplicate.created_at
+        #next if e.updated_at != e.possible_duplicate.updated_at
+        #next if e.possible_duplicate_id != e.possible_duplicate.possible_duplicate_id
+        next if e.lat != e.possible_duplicate.lat
+        next if e.lng != e.possible_duplicate.lng
+        #next if e.bitly_url != e.possible_duplicate.bitly_url
+        next if e.provider != e.possible_duplicate.provider
+        next if e.more_info != e.possible_duplicate.more_info
+        next if e.booking_required != e.possible_duplicate.booking_required
+        #next if e.not_a_dup != e.possible_duplicate.not_a_dup
+
+        next if e.venue.name != e.possible_duplicate.venue.name
+        next if e.venue.address_1 != e.possible_duplicate.venue.address_1
+        next if e.venue.address_2 != e.possible_duplicate.venue.address_2
+        next if e.venue.address_3 != e.possible_duplicate.venue.address_3
+        next if e.venue.city != e.possible_duplicate.venue.city
+        next if e.venue.county != e.possible_duplicate.venue.county
+        next if e.venue.postcode != e.possible_duplicate.venue.postcode
+        #next if e.venue.created_at != e.possible_duplicate.venue.created_at
+        #next if e.venue.updated_at != e.possible_duplicate.venue.updated_at
+        #next if e.venue.possible_duplicate_id != e.possible_duplicate.venue.possible_duplicate_id
+        next if e.venue.type != e.possible_duplicate.venue.type
+        next if e.venue.lat != e.possible_duplicate.venue.lat
+        next if e.venue.lng != e.possible_duplicate.venue.lng
+        #next if e.venue.not_a_dup != e.possible_duplicate.venue.not_a_dup
+
+        e.delete
+        puts "Deleting identical twin Event #{e.id}"
+      }
+    end
+  end
 end

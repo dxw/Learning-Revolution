@@ -49,9 +49,13 @@ module ApplicationHelper
   end
 
   def my_options_for_select(options, default)
-    s = sel = ''
+    s = ''
     options.each do |opt|
-      sel = " selected='selected'" if opt == default
+      if opt == default
+        sel = " selected='selected'"
+      else
+        sel = ''
+      end
       s += "<option value='#{h opt}'#{sel}>#{h opt}</option>\n"
     end
     s

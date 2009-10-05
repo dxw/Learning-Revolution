@@ -40,7 +40,7 @@ class Admin::EventsController < Admin::AdminController
   
   def duplicates
     fix_duplicate if request.method == :post && params[:event]
-    @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL").select{|e|e.possible_duplicate.present?}
+    @duplicate_events = Event.find(:all, :conditions => "possible_duplicate_id IS NOT NULL AND (not_a_dup != TRUE OR not_a_dup IS NULL)").select{|e|e.possible_duplicate.present?}
   end
   
   def moderations
@@ -77,6 +77,10 @@ class Admin::EventsController < Admin::AdminController
     elsif params[:event][duplicate.id.to_s] == "Remove original event"
       flash[:duplicates] = "#{duplicate.possible_duplicate.title} was deleted"
       duplicate.fix_duplicate(:original)
+    elsif params[:event][duplicate.id.to_s] == "Not a duplicate"
+      flash[:duplicates] = "#{duplicate.title} has been marked as not a duplicate"
+      duplicate.not_a_dup = true
+      duplicate.save!
     end
   end
   

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  caches_page :show
+
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
@@ -46,8 +48,7 @@ class EventsController < ApplicationController
     end
     
     if @event.nil?
-      @status = 404
-      render :template => 'error', :status => 404
+      render_404
     else
       add_page_title @event.title
             
@@ -83,6 +84,7 @@ class EventsController < ApplicationController
     else
       @new_venue = Venue.new(params[:venue])
       if @new_venue.valid?
+        @new_event.valid? # this calls check_more_info
         render :action => :preview
       else
         render :action => :find_venue
@@ -189,6 +191,10 @@ class EventsController < ApplicationController
       @venue = @new_event.venue = Venue.new(params[:venue])
     else
       @venue = @new_event.venue = Venue.find(params[:event][:location_id])
+    end
+    identical_venue = @venue.doppleganger
+    if identical_venue
+      @venue = @new_event.venue = identical_venue
     end
   end
   
