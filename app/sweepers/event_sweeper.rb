@@ -12,8 +12,10 @@ class EventSweeper < ActionController::Caching::Sweeper
 
   def before_update(post)
     # This ensures that when the name or date of an event gets changed, that the old cached page gets removed.
-    s = post.start
-    expire_page(:controller => '/events', :action => 'show', :year => s.year, :month => s.strftime('%B'), :day => s.day, :id => post.slug)
+    if post.is_a? Event
+      s = post.start
+      expire_page(:controller => '/events', :action => 'show', :year => s.year, :month => s.strftime('%B'), :day => s.day, :id => post.slug)
+    end
   end
 
   def after_destroy(post)
