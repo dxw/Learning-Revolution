@@ -3,7 +3,7 @@
   
   <%= image_tag('headings/admin/hd_duplicate_events.gif', :class => 'heading') %>
 
-  <h3 class="heading">Possible duplicate events are listed here. If a duplicate is identified, you can edit or remove it. <%= get_duplicates_message(@duplicate_events.size) %></h3>
+  <h3 class="heading">Possible duplicate events are listed here. If a duplicate is identified, you can edit or remove it. <%= get_duplicates_message(@duplicate_events.size/2) %></h3>
 
   <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
   <%= (flash[:duplicates].nil? ? '' : "<div class='admin_flash'>#{flash[:duplicates]}</div>") %>

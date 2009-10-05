@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   
   before_save :check_duplicate
   before_validation_on_create :cache_lat_lng
+
+  before_validation :trim_contact_email_address
   before_validation :check_more_info, :strip_html
 
   after_create :make_bitly_url
@@ -161,7 +163,7 @@ class Event < ActiveRecord::Base
 
     self.possible_duplicate = nil
     
-    Event.find(:all, :conditions => ["start = ?", start]).each do |event|
+    Event.find(:all, :join => :location, :conditions => ["start = ?", start, "location.postcode = '?'", event.venue.postcode]).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     
@@ -223,10 +225,15 @@ class Event < ActiveRecord::Base
     cal.add_event to_ical_event
     cal.to_ical
   end
- 
+
+  def trim_contact_email_address
+    self.contact_email_address.strip!
+    
+    true
+  end
   
   def check_more_info
-    self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil 
+    self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil
     
     true
   end
