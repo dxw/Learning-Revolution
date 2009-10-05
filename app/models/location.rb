@@ -22,8 +22,20 @@ class Location < ActiveRecord::Base
     possible_duplicate?
     true
   end
+
+  def doppleganger
+    v = self.class.find(:first, :conditions => {:name=>name,
+                                            :address_1=>address_1.blank? ? nil : address_1, # nil != "", therefore the extra code
+                                            :address_2=>address_2.blank? ? nil : address_2,
+                                            :address_3=>address_3.blank? ? nil : address_3,
+                                            :city=>city.blank? ? nil : city,
+                                            :county=>county.blank? ? nil : county,
+                                            :postcode=>postcode})
+  end
   
   def possible_duplicate?
+    return false if self.not_a_dup
+
     self.class.find(:all, :conditions => ["postcode = ?", self.postcode]).each do |location|
       self.possible_duplicate = location if !self.possible_duplicate && self != location && Text::Levenshtein.distance(self.name.downcase, location.name.downcase) <= 5
     end

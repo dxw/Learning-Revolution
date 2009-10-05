@@ -665,3 +665,44 @@ Feature: Adding an event
     Then there should be 1 Event in the database
     And there should be 1 Venue in the database
     And I am on the calendar for October 2009
+
+  Scenario: Adding a new event with a venue identical to an existing venue
+    Given a valid venue called "Church hall"
+    And the venue "Church hall" has the post code "TR18 5EG"
+    When I go to the calendar for October 2009
+    And I fill in "Event name" with "event title"
+    And I select "Class" from "event_event_type"
+    And I select "Food and Cookery" from "Category"
+    And I fill in "Description" with "event description"
+    And I select "11" from "starthour"
+    And I select "20" from "startminute"
+    And I select "23rd" from "startday"
+    And I select "12" from "endhour"
+    And I select "20" from "endminute"
+    And I select "24th" from "endday"
+    And I fill in "Organisation" with "BIS"
+    And I fill in "Contact Name" with "event organiser"
+    And I fill in "Contact Phone Number" with "020 8547 3847"
+    And I fill in "Contact Email Address" with "contact@test.com"
+    And I fill in "Event Postcode" with "TR18 5EG"
+    And I check "I accept the"
+    And I press "Continue"
+    Then I should see "We may already have the details of your venue"
+    When I fill in "Venue name" with "Church hall"
+    And I press "Add this venue for my event"
+    Then I should see "You're about to add this this event to the listings"
+    And I should see "event title"
+    And I should see "event description"
+    And I should see "23 October 11:20AM"
+    And I should see "until 24 October 12:20PM"
+    And I should see "BIS"
+    And I should see "event organiser"
+    And I should see "020 8547 3847"
+    And I should see "contact@test.com"
+    And the page is valid XHTML
+    When I press "Add this event to the listings"
+    Then I am on the event success page
+    And the page is valid XHTML
+    And there should be 1 Event in the database
+    And there should be 1 Venue in the database
+    And I am on the calendar for October 2009
