@@ -334,6 +334,7 @@ namespace :lr do
   end
   
   namespace :email_subscriptions do
+    desc "Deliver emails"
     task :deliver => :environment do
       EmailSubscription.deliver_all_updates!
     end
