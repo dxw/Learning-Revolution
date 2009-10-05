@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  caches_page :show
+
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
