@@ -46,8 +46,7 @@ class EventsController < ApplicationController
     end
     
     if @event.nil?
-      @status = 404
-      render :template => 'error', :status => 404
+      render_404
     else
       add_page_title @event.title
             
