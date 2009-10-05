@@ -8,21 +8,7 @@ To receive email updates when new events like these are added, go here:
 <%= confirm_email_subscription_url(:id => @email_subscription, :secret => @email_subscription.secret, :only_path => false) %>
 
 <% @events.each do |event| -%>
------------------------------------------------------------------------------
-<%= event.title %>
-<% if event.end -%>
-<%= event.start.strftime("%e %B %R%p") %> until<%=
-(event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')) ? '' : event.end.strftime(' %e %B') %><%=
-event.end.strftime(" %R%p") %>
-<% else -%>
-<%= event.start.strftime("%e %B %R%p") %>
-<% end -%>
-<% if event.venue -%>
-<%= event.venue.name %>
-<% end -%>
-
-More details:
-<%= url_for_event(event, :only_path => false) %>
+<%= render :partial => 'event', :locals => {:event => event} %>
 <% end -%>
 -----------------------------------------------------------------------------
 
