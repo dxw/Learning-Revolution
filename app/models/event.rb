@@ -161,7 +161,7 @@ class Event < ActiveRecord::Base
   def possible_duplicate?
     self.possible_duplicate = nil
     
-    Event.find(:all, :conditions => ["start = ?", start]).each do |event|
+    Event.find(:all, :join => :location, :conditions => ["start = ?", start, "location.postcode = '?'", event.venue.postcode]).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     
@@ -231,7 +231,7 @@ class Event < ActiveRecord::Base
   end
   
   def check_more_info
-    self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil 
+    self.more_info = "http://#{more_info}" if !more_info.nil? && more_info != '' && more_info.match(/^http:\/\//) == nil
     
     true
   end
