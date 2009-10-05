@@ -5,6 +5,9 @@
 <div class="content_wrapper">
    <div class="content">
      <p>To receive an email listing <%= current_filter_core_description %>, simply fill in your email address below.</p>
+     <% if flash[:notice].present? -%>
+     <p><%= flash[:notice] %></p>
+     <% end -%>
      <% form_for(:email_subscription, :url => email_subscriptions_path(:filter => params[:filter], :last_view => @last_view)) do |f| -%>
        <p>
          <%= f.label(:email, "Email address") %><br />
