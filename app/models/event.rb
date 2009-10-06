@@ -195,7 +195,7 @@ class Event < ActiveRecord::Base
       cond[0] += " AND locations.postcode = ?"
       cond << venue.postcode
     end
-    Event.find(:all, :joins => "INNER JOIN `locations` ON `locations`.id = `events`.location_id OR events.location_id IS NULL", :conditions => cond).each do |event|
+    Event.find(:all, :include => :venue, :conditions => cond).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     

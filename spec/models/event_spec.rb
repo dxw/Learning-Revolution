@@ -107,12 +107,37 @@ describe Event do
       EventSpecHelper.new(:start => Date.today+2.days).possible_duplicate?.should == false
     end
     
-    it "should be flagged as a possible duplicate if there is an event with same date and similar title" do
+    it "should not be flagged as a possible duplicate if there's an event with same title and date but different postcode" do
+      @event.venue.postcode = "TR18 5EG"
+      @event.save!
+      EventSpecHelper.new.possible_duplicate?.should == false
+    end
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and same postcode" do
       @event.save!
       new_event = EventSpecHelper.new(:title => "value for title2")
       new_event.possible_duplicate?.should == true
       new_event.possible_duplicate.should == @event
     end
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and similar postcode" do
+      @event.venue.postcode = "e11 1pb"
+      @event.save!
+      new_event = EventSpecHelper.new(:title => "value for title2")
+      new_event.possible_duplicate?.should == true
+      new_event.possible_duplicate.should == @event
+    end
+    
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and are both virtual events" do
+      @event.venue = nil
+      @event.save!
+      new_event = EventSpecHelper.new(:title => "value for title2")
+      new_event.venue = nil
+      new_event.possible_duplicate?.should == true
+      new_event.possible_duplicate.should == @event
+    end
+    
     
     it "should ignore case" do
       @event.save!
