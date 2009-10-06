@@ -1,5 +1,7 @@
 Given /^a valid event called "([^\"]*)"$/ do |name|
-  Event.create!(:title => name, :start => Date.today, :contact_name => "Test name", :contact_phone_number => "01142888888", :contact_email_address => "test@test.com", :theme => "Event theme", :event_type => "event type", :published => true)
+  e = Event.new(:title => name, :start => Date.today, :contact_name => "Test name", :contact_phone_number => "01142888888", :contact_email_address => "test@test.com", :theme => "Event theme", :event_type => "event type", :published => true)
+  e.possible_duplicate?
+  e.save!
 end
 
 Given /^the event "([^\"]*)" is held at the venue "([^\"]*)"$/ do |title, venue_title|
