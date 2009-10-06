@@ -34,15 +34,6 @@ describe "email_subscription_mailer/listing" do
   
   it "should list the events" do
     render 'email_subscription_mailer/listing'
-    
-    response.body.should include("1001 Things to do with a Lemon")
-    response.body.should include("13 October 13:00PM until 14:00PM")
-    response.body.should include("Limones Hall")
-    response.body.should include("http://bit.ly/138746")
-    response.body.should include("Adventures in Corn")
-    response.body.should include("15 October 19:00PM")
-    response.body.should include("The Kernel")
-    response.body.should include("http://bit.ly/13843546")
   end
   
   it "should have a link to subscribe to updates" do
