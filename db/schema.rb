@@ -11,6 +11,16 @@
 
 ActiveRecord::Schema.define(:version => 20091002085240) do
 
+  create_table "email_subscriptions", :force => true do |t|
+    t.string   "email"
+    t.string   "secret"
+    t.text     "filter"
+    t.datetime "confirmed_at"
+    t.datetime "last_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "description"

@@ -49,3 +49,33 @@ Then /^I should see the map$/ do
   response.should have_selector('div', :id => 'events_map')
 end
 
+When /^someone adds an event called "([^\"]*)" with the theme "([^\"]*)"$/ do |title, theme|
+  # Taken from adding_events.feature
+  When "I go to the calendar for October 2009"
+  And "I fill in \"Event name\" with \"#{title}\""
+  And "I select \"Class\" from \"event_event_type\""
+  And "I select \"#{theme}\" from \"Category\""
+  And "I fill in \"Description\" with \"event description\""
+  And "I select \"11\" from \"starthour\""
+  And "I select \"20\" from \"startminute\""
+  And "I select \"23rd\" from \"startday\""
+  And "I select \"12\" from \"endhour\""
+  And "I select \"20\" from \"endminute\""
+  And "I select \"23rd\" from \"endday\""
+  And "I fill in \"Organisation\" with \"BIS\""
+  And "I fill in \"Contact Name\" with \"event organiser\""
+  And "I fill in \"Contact Phone Number\" with \"020 8547 3847\""
+  And "I fill in \"Contact Email Address\" with \"contact@test.com\""
+  And "I check \"This event has no location\""
+  And "I check \"I accept the\""
+  And "I press \"Continue\""
+  And "I press \"Add this event to the listings\""
+end
+
+When /^an administrator approves the event "([^\"]*)"$/ do |title|
+  # Taken from event_admin.feature
+  Given "I am logged in"
+  When "I go to the events moderation page"
+  Then "I should see \"#{title}\""
+  When "I press \"Approve\""
+end

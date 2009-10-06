@@ -332,6 +332,13 @@ namespace :lr do
       end
     end
   end
+  
+  namespace :email_subscriptions do
+    desc "Deliver emails"
+    task :deliver => :environment do
+      EmailSubscription.deliver_all_updates!
+    end
+  end
 
   task(:clear_identical, :csv, {:needs => :environment}) do |t,args|
     ActiveRecord::Base.transaction do

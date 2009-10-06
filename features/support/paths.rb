@@ -23,6 +23,8 @@ module NavigationHelpers
       duplicates_admin_venues_path
     when /the events moderation page/ 
       moderations_admin_events_path
+    when /the calendar for October 2009 filtered by the theme "(.+)"/
+      events_by_month_path(:year => 2009, :month => 'October', :filter => {:theme => $1, :location => ''})
     when /the calendar for October 2009/
       events_by_month_path(2009, "October")
     when /the event page for "(.+)"/

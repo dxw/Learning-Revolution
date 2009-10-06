@@ -799,3 +799,19 @@ body#pages_show .content blockquote{
   margin-left:24px;
   color:#444;
 }
+
+body.c_email_subscriptions .content p {
+  margin-bottom: 12px;
+}
+
+body.c_email_subscriptions .content label {
+  font-weight: bold;
+}
+
+body.c_email_subscriptions #content_header h2 {
+  margin: 24px 0 0 42px;
+  padding: 0 0 12px 0;
+  font-size: 2em;
+  font-weight: bold;
+  color: #8b1713;
+}

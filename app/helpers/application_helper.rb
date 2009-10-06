@@ -8,8 +8,8 @@ module ApplicationHelper
     controller.path_for_event(event, filters, last_view)
   end
   
-  def url_for_event(event)
-    controller.url_for_event(event)
+  def url_for_event(event, options={})
+    event_url(event.start.year, event.start.month, event.start.day, event.slug, options)
   end
   
   def current_events_path(options={})
@@ -17,28 +17,45 @@ module ApplicationHelper
   end
 
   def current_filter_description
-
     if params[:geocodeerror]
       return "Sorry, we couldn't find anywhere that matched <span class='keyword'>#{CGI.escapeHTML(params[:filter][:location])}</span>"
     end
     
     if params[:filter][:theme].nil? && params[:filter][:location].nil? then
-      s = "Click <em>find events in your area</em> to get started" 
+      "Click <em>find events in your area</em> to get started" 
     else
-      s = 'Now showing all'
-      unless params[:filter][:theme].blank?
-        s += " <span class='keyword'>"
-        s += CGI.escapeHTML(params[:filter][:theme])
+      "Now showing " + current_filter_core_description
+    end
+  end
+  
+  def current_filter_core_description
+    filter_core_description(params[:filter])
+  end
+  
+  def filter_core_description(filter={}, html=true)
+    filter ||= {}
+    s = 'all'
+    unless filter[:theme].blank?
+      if html
+        s += ' <span class="keyword">'
+        s += CGI.escapeHTML(filter[:theme])
         s += "</span>"
-      end
-      s += ' events'
-      unless params[:filter][:location].blank?
-        s += ' happening within 5 miles of <span class="keyword">'
-        s += CGI.escapeHTML(params[:filter][:location].upcase)
-        s += '</span>'
+      else
+        s += " "
+        s += filter[:theme]
       end
     end
-    
+    s += ' events'
+    unless filter[:location].blank?
+      if html
+        s += ' happening within 5 miles of <span class="keyword">'
+        s += CGI.escapeHTML(filter[:location].upcase)
+        s += '</span>'
+      else
+        s += ' happening within 5 miles of '
+        s += filter[:location].upcase
+      end
+    end
     s
   end
   

@@ -1,0 +1,15 @@
+=============================================================================
+THE LEARNING REVOLUTION
+=============================================================================
+
+As requested, here is your listing of <%= filter_core_description(@email_subscription.filter, false) %>.
+
+To receive email updates when new events like these are added, go here:
+<%= confirm_email_subscription_url(:id => @email_subscription, :secret => @email_subscription.secret, :only_path => false) %>
+
+<% @events.each do |event| -%>
+<%= render :partial => 'event', :locals => {:event => event} %>
+<% end -%>
+-----------------------------------------------------------------------------
+
+http://learningrevolution.direct.gov.uk/
