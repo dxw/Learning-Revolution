@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   belongs_to :venue, :foreign_key => "location_id"  
   
   named_scope :published, :conditions => { :published => true }
+  named_scope :unpublished, :conditions => "published IS NULL OR published != 1"
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
   acts_as_mappable :default_units => :miles, 
