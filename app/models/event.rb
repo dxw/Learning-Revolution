@@ -56,7 +56,31 @@ class Event < ActiveRecord::Base
       end
     end
   end
-  def self.turn_filter_params_into_find_options(params)
+  
+  def self.find_all_with_filter_from_params(params={})
+    params ||= {}
+    all(turn_filter_params_into_find_options(params, nil).merge(:order => 'start ASC'))
+  end
+  
+  def self.find_all_with_filter_from_params_added_since(threshold_date, params={})
+    params ||= {}
+    find_options = turn_filter_params_into_find_options(params, nil)
+    
+    # Add created_at condition
+    find_options[:conditions] ||= []
+    if find_options[:conditions][0]
+      find_options[:conditions][0] += " AND (created_at >= ?)"
+    else
+      find_options[:conditions][0] = "(created_at >= ?)"
+    end
+    find_options[:conditions].push(threshold_date)
+    
+    find_options[:order] = 'start ASC'
+    
+    all(find_options)
+  end
+  
+  def self.turn_filter_params_into_find_options(params, limit=4)
     find_options = {}
     find_options[:conditions] ||= []
     if !params[:theme].blank? && params[:event_type].blank?
@@ -79,8 +103,11 @@ class Event < ActiveRecord::Base
       find_options[:origin] = params[:location] + " GB"
       find_options[:within] = 5
     end
-
-    find_options[:limit] = 4
+    
+    if limit
+      find_options[:limit] = limit
+    end
+    
     find_options
   end
   def self.find_by_month_with_filter(date, find_options={})
@@ -167,7 +194,12 @@ class Event < ActiveRecord::Base
 
     self.possible_duplicate = nil
     
-    Event.find(:all, :join => :location, :conditions => ["start = ?", start, "location.postcode = '?'", event.venue.postcode]).each do |event|
+    cond = ["start = ?", start]
+    if venue.present?
+      cond[0] += " AND locations.postcode = ?"
+      cond << venue.postcode
+    end
+    Event.find(:all, :joins => "INNER JOIN `locations` ON `locations`.id = `events`.location_id OR events.location_id IS NULL", :conditions => cond).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     

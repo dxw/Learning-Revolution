@@ -1,0 +1,12 @@
+<div id="content_header"> 
+  <h2>You are now subscribed</h2>
+</div>
+
+<div class="content_wrapper">
+   <div class="content">
+     <p>You are now subscribed to email updates about <%= filter_core_description(@email_subscription.filter) %>.</p>
+     <p>You will only receive an email when new events are added. You will not receive more than one email a day.</p>
+     <p>You can <%= link_to("unsubscribe", unsubscribe_email_subscription_path(:id => @email_subscription, :secret => @email_subscription.secret)) %> at any time.</p>
+     <p><%= link_to("Return home.", root_path) %></p>
+   </div>
+</div>

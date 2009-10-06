@@ -1,0 +1,16 @@
+=============================================================================
+THE LEARNING REVOLUTION
+=============================================================================
+
+You are watching <%= filter_core_description(@email_subscription.filter, false) %>,
+and new events have been added:
+
+<% @events.each do |event| -%>
+<%= render :partial => 'event', :locals => {:event => event} %>
+<% end -%>
+-----------------------------------------------------------------------------
+
+To unsubscribe from these email updates, go here:
+<%= unsubscribe_email_subscription_url(:id => @email_subscription, :secret => @email_subscription.secret, :only_path => false) %>
+
+http://learningrevolution.direct.gov.uk/

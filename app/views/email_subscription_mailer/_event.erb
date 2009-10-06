@@ -1,0 +1,10 @@
+-----------------------------------------------------------------------------
+<%= event.title %>
+<%= event.start.strftime("%e %B %R%p") %>
+<% if event.venue -%>
+<%= event.venue.name %>
+<%= event.venue.postcode %>
+<% end -%>
+
+More details:
+<%= event.bitly_url %>

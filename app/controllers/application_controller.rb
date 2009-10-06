@@ -47,13 +47,9 @@ class ApplicationController < ActionController::Base
     path = "/events/#{event.start.year}/#{Date::MONTHNAMES[event.start.month]}/#{event.start.day}/#{event.slug}?"
     
     path += "last_view=#{last_view}" unless last_view.nil? || last_view.empty?
-    path += "&amp;filter[theme]=#{URI.encode(filters[:theme])}&amp;filter[location]=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
+    path += "&amp;filter%5Btheme%5D=#{URI.encode(filters[:theme])}&amp;filter%5Blocation%5D=#{URI.encode(filters[:location])}" unless filters.nil? || filters.empty?
     
     path
-  end
-  
-  def url_for_event(event)
-    event_url(event.start.year, event.start.month, event.start.day, event.slug)
   end
   
   def current_events_path(options={})
