@@ -6,7 +6,7 @@ describe EventMailer do
   
   describe "succesfully added email" do
     before(:each) do
-      @event = mock_model(Event, :title => nil, :contact_email_address => "test@abscond.org", :start => Time.now.utc, :end => nil, :venue => nil, :slug => '1', :bitly_url => "http://bit.ly/skdjfg", :name => "Test event name")
+      @event = mock_model(Event, :title => "Test event name", :contact_email_address => "test@abscond.org", :start => Time.now.utc, :end => nil, :venue => nil, :slug => '1', :bitly_url => "http://bit.ly/skdjfg")
       @email = EventMailer.create_succesfully_added(@event)
     end
   
@@ -21,7 +21,7 @@ describe EventMailer do
   
   describe "succesfully posted email" do
     before(:each) do
-      @event = mock_model(Event, :title => nil, :contact_email_address => "test@abscond.org", :start => Time.now.utc, :end => nil, :venue => nil, :slug => '1', :bitly_url => "http://bit.ly/skdjfg", :name => "Test event name")
+      @event = mock_model(Event, :title => "Test event name", :contact_email_address => "test@abscond.org", :start => Time.now.utc, :end => nil, :venue => nil, :slug => '1', :bitly_url => "http://bit.ly/skdjfg")
       @email = EventMailer.create_succesfully_published(@event)
     end
   

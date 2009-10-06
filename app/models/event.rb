@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
 
   after_create :log_creation
   after_destroy :log_deletion
+  after_create :send_added_email
   
   after_create :make_bitly_url
   
@@ -227,6 +228,7 @@ class Event < ActiveRecord::Base
     self.published = true
     self.save
     AuditLog.create :description => "event #{self.id} approved: #{self.title}", :object_yml => self.to_yaml
+    EventMailer.deliver_succesfully_published(self)
   end
   
   def slug
@@ -302,5 +304,8 @@ class Event < ActiveRecord::Base
   end
   def log_deletion
     AuditLog.create :description => "event #{self.id} destroyed: #{self.title}", :object_yml => self.to_yaml
+  end
+  def send_added_email
+    EventMailer.deliver_succesfully_added(self)
   end
 end
