@@ -5,11 +5,15 @@ class Event < ActiveRecord::Base
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
+  before_save :log_save
+  
   before_validation_on_create :cache_lat_lng
 
   before_validation :trim_contact_email_address
   before_validation :check_more_info, :strip_html
 
+  before_destroy :log_destroy
+  
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
@@ -258,5 +262,13 @@ class Event < ActiveRecord::Base
       e = Event.new(:provider=>pr.split('/')[-1])
       [e.provider_name, e.provider]
     end
+  end
+  
+  def log_destroy
+    puts "LOG DESTROY #{inspect}"
+  end
+  
+  def log_save
+    puts "LOG SAVE #{inspect}"
   end
 end
