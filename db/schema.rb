@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091002085240) do
+ActiveRecord::Schema.define(:version => 20091006140630) do
+
+  create_table "audit_logs", :force => true do |t|
+    t.string   "description"
+    t.text     "object_yml"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "email_subscriptions", :force => true do |t|
     t.string   "email"

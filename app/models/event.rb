@@ -10,6 +10,9 @@ class Event < ActiveRecord::Base
   before_validation :trim_contact_email_address
   before_validation :check_more_info, :strip_html
 
+  after_create :log_creation
+  after_destroy :log_deletion
+  
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
@@ -223,6 +226,7 @@ class Event < ActiveRecord::Base
   def approve!
     self.published = true
     self.save
+    AuditLog.create :description => "event #{self.id} approved: #{self.title}", :object_yml => self.to_yaml
   end
   
   def slug
@@ -291,5 +295,12 @@ class Event < ActiveRecord::Base
       e = Event.new(:provider=>pr.split('/')[-1])
       [e.provider_name, e.provider]
     end
+  end
+  
+  def log_creation
+    AuditLog.create :description => "event #{self.id} created: #{self.title}", :object_yml => self.to_yaml
+  end
+  def log_deletion
+    AuditLog.create :description => "event #{self.id} destroyed: #{self.title}", :object_yml => self.to_yaml
   end
 end
