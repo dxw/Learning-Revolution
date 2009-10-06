@@ -150,7 +150,7 @@ Then /^I should be on (.+)$/ do |page_name|
   if uri.query.blank?
     uri.path.should == path_to(page_name)
   else
-    "#{uri.path}?#{uri.query}".should == path_to(page_name)
+    "#{uri.path}?#{uri.query}".should include(path_to(page_name))
   end
 end
 
