@@ -13,14 +13,16 @@ describe "email_subscription_mailer/listing" do
         :slug => "1001-things-to-do-with-a-lemon",
         :start => Time.utc(2009, 10, 13, 13),
         :end => Time.utc(2009, 10, 13, 14),
-        :venue => mock_model(Venue, :name => "Limones Hall")
+        :bitly_url => "http://bit.ly/138746",
+        :venue => mock_model(Venue, :name => "Limones Hall", :postcode => "E11 1PB")
       ),
       mock_model(Event,
         :title => "Adventures in Corn",
         :slug => 'adventures-in-corn',
         :start => Time.utc(2009, 10, 15, 19),
         :end => nil,
-        :venue => mock_model(Venue, :name => "The Kernel")
+        :bitly_url => "http://bit.ly/138746",
+        :venue => mock_model(Venue, :name => "The Kernel", :postcode => "E11 1PB")
       )
     ]
   end
