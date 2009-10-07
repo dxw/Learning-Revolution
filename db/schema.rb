@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20091006140630) do
     t.string   "more_info"
     t.boolean  "booking_required"
     t.boolean  "not_a_dup"
+    t.integer  "upcoming_event_id"
+    t.datetime "posted_to_upcoming_at"
   end
 
   add_index "events", ["lat"], :name => "index_events_on_lat"
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20091006140630) do
     t.float    "lat"
     t.float    "lng"
     t.boolean  "not_a_dup"
+    t.integer  "upcoming_venue_id"
   end
 
   create_table "pages", :force => true do |t|

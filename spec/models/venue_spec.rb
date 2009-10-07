@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'ostruct'
 
 describe Venue do
   before(:each) do
@@ -13,6 +14,9 @@ describe Venue do
       :postcode => "E11 1PB"
     }
     @venue = VenueSpecHelper.new(@valid_attributes)
+    
+    Upcoming.stub!(:add_venue!)
+    Upcoming.stub!(:add_event!)
   end
 
   it "should create a new instance given valid attributes" do
@@ -189,5 +193,28 @@ describe Venue do
     @venue.find_events_by_event_params(filter)
   end
   
-  
+  describe "posting to Upcoming" do
+    it "should not post to Upcoming again if it already has an Upcoming venue ID" do
+      @venue.upcoming_venue_id = 12345
+      @venue.save!
+      
+      Upcoming.should_not_receive(:add_venue!)
+      @venue.generate_upcoming_venue_id!.should == 12345
+    end
+    
+    it "should post to Upcoming if it has not already been posted" do
+      Upcoming.should_receive(:add_venue!).with(
+        :venuename => 'Venue name',
+        :venueaddress => 'Address line 1',
+        :venuecity => 'City',
+        :location => 'Address line 1,Address line 2,Address line 3,City,County,E11 1PB,UK',
+        :venuezip => 'E11 1PB'
+      ).and_return(OpenStruct.new(:venue_id => 98765))
+      
+      @venue.save!
+      @venue.generate_upcoming_venue_id!.should == 98765
+      @venue.reload
+      @venue.upcoming_venue_id.should == 98765
+    end
+  end
 end
