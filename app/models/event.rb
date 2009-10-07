@@ -344,7 +344,7 @@ class Event < ActiveRecord::Base
   end
   
   def self.post_pending_to_upcoming!
-    published.all(:conditions => "posted_to_upcoming_at IS NULL").each do |event|
+    published.all(:conditions => "posted_to_upcoming_at IS NULL AND location_id IS NOT NULL").each do |event|
       begin
         event.post_to_upcoming!
       rescue => exception
