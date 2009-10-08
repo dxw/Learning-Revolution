@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
-  before_validation_on_create :cache_lat_lng
+  before_validation :cache_lat_lng
 
   before_validation :trim_contact_email_address
   before_validation :check_more_info, :strip_html
