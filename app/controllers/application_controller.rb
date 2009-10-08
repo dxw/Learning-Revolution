@@ -72,6 +72,9 @@ class ApplicationController < ActionController::Base
 
     # Ignore
     return if request.env['HTTP_USER_AGENT'].start_with? 'Java/'
+    return if request.env['HTTP_REFERER'].blank?
+    return if request.env['REQUEST_URI'].include? 'MSOffice'
+    return if request.env['REQUEST_URI'].include? '_vti_bin'
 
     Notifier.deliver_error_notification('404',exception,request)
   end
