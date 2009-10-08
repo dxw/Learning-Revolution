@@ -68,7 +68,7 @@ When /^someone adds an event called "([^\"]*)" with the theme "([^\"]*)"$/ do |t
   And "I fill in \"Contact Name\" with \"event organiser\""
   And "I fill in \"Contact Phone Number\" with \"020 8547 3847\""
   And "I fill in \"Contact Email Address\" with \"contact@test.com\""
-  And "I check \"This event has no location\""
+  And "I check \"This event occurs online or has no physical location\""
   And "I check \"I accept the\""
   And "I press \"Continue\""
   And "I press \"Add this event to the listings\""

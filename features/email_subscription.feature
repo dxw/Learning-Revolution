@@ -13,7 +13,7 @@ Feature: Email Subscription
   
   Scenario: Requesting an email of a filtered selection of events
     Given I am on the calendar for October 2009 filtered by the theme "Food and Cookery"
-    When I follow "Email these events to me."
+    When I follow "Get email alerts for events like these"
     And I fill in "Email address" with "example@example.com"
     And I press "Send"
     Then I should be on the calendar for October 2009 filtered by the theme "Food and Cookery"

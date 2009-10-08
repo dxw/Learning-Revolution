@@ -59,12 +59,23 @@ class ApplicationController < ActionController::Base
   def render_500(exception=nil)
     @status = 500
     render :template => 'error', :status => 500
+
+    # Ignore
+    return if exception.is_a? ActionController::MethodNotAllowed and request.env['HTTP_USER_AGENT'].include? 'Googlebot'
+
     Notifier.deliver_error_notification('500',exception,request)
   end
   
   def render_404(exception=nil)
     @status = 404
     render :template => 'error', :status => 404
+
+    # Ignore
+    return if request.env['HTTP_USER_AGENT'].start_with? 'Java/'
+    return if request.env['HTTP_REFERER'].blank?
+    return if request.env['REQUEST_URI'].include? 'MSOffice'
+    return if request.env['REQUEST_URI'].include? '_vti_bin'
+
     Notifier.deliver_error_notification('404',exception,request)
   end
 

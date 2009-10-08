@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091002085240) do
+ActiveRecord::Schema.define(:version => 20091006140630) do
+
+  create_table "audit_logs", :force => true do |t|
+    t.string   "description"
+    t.text     "object_yml"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "email_subscriptions", :force => true do |t|
     t.string   "email"
@@ -48,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20091002085240) do
     t.string   "more_info"
     t.boolean  "booking_required"
     t.boolean  "not_a_dup"
+    t.integer  "upcoming_event_id"
+    t.datetime "posted_to_upcoming_at"
   end
 
   add_index "events", ["lat"], :name => "index_events_on_lat"
@@ -69,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20091002085240) do
     t.float    "lat"
     t.float    "lng"
     t.boolean  "not_a_dup"
+    t.integer  "upcoming_venue_id"
   end
 
   create_table "pages", :force => true do |t|

@@ -19,7 +19,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
@@ -64,7 +64,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "1 error prohibited this new event from being save"
@@ -85,7 +85,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
@@ -105,7 +105,7 @@ Feature: Adding an event
   
   Scenario: Adding an invalid event with no venue
     When I go to the calendar for October 2009
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "3 errors prohibited this new event from being save"
@@ -330,7 +330,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
@@ -365,7 +365,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "1 error prohibited this new event from being save"
@@ -386,7 +386,7 @@ Feature: Adding an event
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Phone Number" with "020 8547 3847"
     And I fill in "Contact Email Address" with "contact@test.com"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
@@ -406,7 +406,7 @@ Feature: Adding an event
   
   Scenario: Adding an invalid event with no venue
     When I go to the calendar for October 2009
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I check "I accept the"
     And I press "Continue"
     Then I should see "3 errors prohibited this new event from being save"
@@ -419,7 +419,7 @@ Feature: Adding an event
   Scenario: Adding a valid event but forgetting T&C
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
-    And I check "This event has no location"
+    And I check "This event occurs online or has no physical location"
     And I fill in "Contact Name" with "event organiser"
     And I fill in "Contact Email Address" with "contact@test.com"
     And I press "Continue"
@@ -528,7 +528,7 @@ Feature: Adding an event
     And I should see "E11 1PB"
     And the page is valid XHTML
     When I press "Edit this event"
-    Then I check "This event has no location"
+    Then I check "This event occurs online or has no physical location"
     And I press "Continue"
     Then I should see "You're about to add this this event to the listings"
     And I should see "event title"
@@ -539,7 +539,7 @@ Feature: Adding an event
     And I should see "event organiser"
     And I should see "020 8547 3847"
     And I should see "contact@test.com"
-    And I should see "This event has no location"
+    And I should see "This event occurs online or has no physical location"
     And the page is valid XHTML
     When I press "Add this event to the listings"
     Then I am on the event success page

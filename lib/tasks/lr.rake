@@ -405,6 +405,13 @@ namespace :lr do
         e.delete
         puts "Deleting identical twin Event #{e.id}"
       }
+
+    end
+  end
+  desc "Post stuff to Upcoming"
+  namespace :upcoming do
+    task :post_pending => :environment do
+      Event.post_pending_to_upcoming!
     end
   end
 end

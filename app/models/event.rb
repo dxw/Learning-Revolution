@@ -5,20 +5,21 @@ class Event < ActiveRecord::Base
   belongs_to :possible_duplicate, :class_name => "Event"
   
   before_save :check_duplicate
-  before_save :log_save
-  
   before_validation_on_create :cache_lat_lng
 
   before_validation :trim_contact_email_address
   before_validation :check_more_info, :strip_html
 
-  before_destroy :log_destroy
+  after_create :log_creation
+  after_destroy :log_deletion
+  after_create :send_added_email
   
   after_create :make_bitly_url
   
   belongs_to :venue, :foreign_key => "location_id"  
   
   named_scope :published, :conditions => { :published => true }
+  named_scope :unpublished, :conditions => "published IS NULL OR published != 1"
   named_scope :featured, :conditions => { :featured => true, :published => true }, :limit => 13
   
   acts_as_mappable :default_units => :miles, 
@@ -199,7 +200,7 @@ class Event < ActiveRecord::Base
       cond[0] += " AND locations.postcode = ?"
       cond << venue.postcode
     end
-    Event.find(:all, :joins => "INNER JOIN `locations` ON `locations`.id = `events`.location_id OR events.location_id IS NULL", :conditions => cond).each do |event|
+    Event.find(:all, :include => :venue, :conditions => cond).each do |event|
       self.possible_duplicate = event if !self.possible_duplicate && self != event && Text::Levenshtein.distance(self.title.downcase, event.title.downcase) <= 5
     end
     
@@ -226,6 +227,8 @@ class Event < ActiveRecord::Base
   def approve!
     self.published = true
     self.save
+    AuditLog.create :description => "event #{self.id} approved: #{self.title}", :object_yml => self.to_yaml
+    EventMailer.deliver_succesfully_published(self)
   end
   
   def slug
@@ -296,11 +299,57 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def log_destroy
-    puts "LOG DESTROY #{inspect}"
+  def log_creation
+    AuditLog.create :description => "event #{self.id} created: #{self.title}", :object_yml => self.to_yaml
+  end
+  def log_deletion
+    AuditLog.create :description => "event #{self.id} destroyed: #{self.title}", :object_yml => self.to_yaml
+  end
+  def send_added_email
+    EventMailer.deliver_succesfully_added(self)
+  end
+
+  # Upcoming
+  
+  def posted_to_upcoming?
+    if posted_to_upcoming_at
+      true
+    else
+      false
+    end
   end
   
-  def log_save
-    puts "LOG SAVE #{inspect}"
+  def post_to_upcoming!(force=false)
+    return if (posted_to_upcoming? || !published?) && !force
+    
+    # Upcoming can't handle events without a physical venue
+    return unless venue
+    
+    upcoming_venue_id = venue.upcoming_venue_id || venue.generate_upcoming_venue_id!
+    
+    upcoming_event = Upcoming.add_event!(
+      :name => title,
+      :venue_id => upcoming_venue_id,
+      :category_id => 5, # 'Education - Lectures, workshops'
+      :start => start,
+      :end => self.end,
+      :description => description,
+      :url => "http://learningrevolution.direct.gov.uk/events/#{start.year}/#{Date::MONTHNAMES[start.month]}/#{start.day}/#{slug}"
+    )
+    
+    self.upcoming_event_id = upcoming_event.event_id
+    self.posted_to_upcoming_at = Time.now.utc
+    self.save!
+    upcoming_event_id
+  end
+  
+  def self.post_pending_to_upcoming!
+    published.all(:conditions => "posted_to_upcoming_at IS NULL AND location_id IS NOT NULL").each do |event|
+      begin
+        event.post_to_upcoming!
+      rescue => exception
+        Rails.logger.error("Error posting event #{event.id} to Upcoming:\n#{exception.message}")
+      end
+    end
   end
 end

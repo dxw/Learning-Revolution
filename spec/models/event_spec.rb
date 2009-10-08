@@ -1,8 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'ostruct'
 
 describe Event do
   before(:each) do
     @event = EventSpecHelper.new
+    
+    Upcoming.stub!(:add_venue!)
+    Upcoming.stub!(:add_event!)
   end
 
   it "should create a new instance given valid attributes" do
@@ -107,12 +111,37 @@ describe Event do
       EventSpecHelper.new(:start => Date.today+2.days).possible_duplicate?.should == false
     end
     
-    it "should be flagged as a possible duplicate if there is an event with same date and similar title" do
+    it "should not be flagged as a possible duplicate if there's an event with same title and date but different postcode" do
+      @event.venue.postcode = "TR18 5EG"
+      @event.save!
+      EventSpecHelper.new.possible_duplicate?.should == false
+    end
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and same postcode" do
       @event.save!
       new_event = EventSpecHelper.new(:title => "value for title2")
       new_event.possible_duplicate?.should == true
       new_event.possible_duplicate.should == @event
     end
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and similar postcode" do
+      @event.venue.postcode = "e11 1pb"
+      @event.save!
+      new_event = EventSpecHelper.new(:title => "value for title2")
+      new_event.possible_duplicate?.should == true
+      new_event.possible_duplicate.should == @event
+    end
+    
+    
+    it "should be flagged as a possible duplicate if there is an event with same date and similar title and are both virtual events" do
+      @event.venue = nil
+      @event.save!
+      new_event = EventSpecHelper.new(:title => "value for title2")
+      new_event.venue = nil
+      new_event.possible_duplicate?.should == true
+      new_event.possible_duplicate.should == @event
+    end
+    
     
     it "should ignore case" do
       @event.save!
@@ -368,5 +397,83 @@ describe Event do
     a = EventSpecHelper.save(:start => Time.parse("5th October 2009 00:00"))
     b = EventSpecHelper.save(:start => Time.parse("5th October 2009 12:00"))
     Event.first_for_day(Time.zone.local(2009,10,5).to_date).should == a
+  end
+  
+  describe "posting to Upcoming" do
+    before(:each) do
+      @event.venue.upcoming_venue_id = 98765
+      @event.start = Time.utc(2009, 10, 1, 9)
+      @event.end   = Time.utc(2009, 10, 1, 11)
+      @event.save!
+      
+      Upcoming.stub!(:add_event!).and_return(OpenStruct.new(:event_id => 12345))
+    end
+    
+    it "should post to Upcoming" do
+      Upcoming.should_receive(:add_event!).with(
+        :name => 'value for title',
+        :venue_id => 98765,
+        :category_id => 5,
+        :start => Time.utc(2009, 10, 1, 9),
+        :end => Time.utc(2009, 10, 1, 11),
+        :description => 'value for description',
+        :url => "http://learningrevolution.direct.gov.uk/events/2009/October/1/value-for-title-#{@event.id}"
+      ).and_return(OpenStruct.new(:event_id => 12345))
+      
+      @event.post_to_upcoming!
+    end
+    
+    it "should mark itself as having been posted to Upcoming" do
+      @event.post_to_upcoming!
+      
+      @event.upcoming_event_id.should == 12345
+      @event.posted_to_upcoming_at.should_not be_nil
+    end
+    
+    it "should not post to Upcoming if it has already been posted" do
+      @event.update_attribute(:posted_to_upcoming_at, Time.now.utc)
+      
+      Upcoming.should_not_receive(:add_event!)
+      @event.post_to_upcoming!
+    end
+    
+    describe "posting all pending events" do
+      before(:each) do
+        Event.delete_all
+      end
+      
+      it "should post a published event that hasn't been posted yet" do
+        published_and_pending = EventSpecHelper.save(:published => true)
+        
+        Upcoming.should_receive(:add_event!).once.and_return(OpenStruct.new(:event_id => 12345))
+        
+        Event.post_pending_to_upcoming!
+        
+        published_and_pending.reload
+        published_and_pending.posted_to_upcoming_at.should_not be_nil
+      end
+      
+      it "should not post a unpublished event" do
+        unpublished_and_pending = EventSpecHelper.save(:published => false)
+        
+        Upcoming.should_not_receive(:add_event!)
+        
+        Event.post_pending_to_upcoming!
+        
+        unpublished_and_pending.reload
+        unpublished_and_pending.posted_to_upcoming_at.should be_nil
+      end
+      
+      it "should not post a published event that has already been posted" do
+        published_and_posted = EventSpecHelper.save(:published => true, :posted_to_upcoming_at => Time.utc(2009, 1, 1))
+        
+        Upcoming.should_not_receive(:add_event!)
+        
+        Event.post_pending_to_upcoming!
+        
+        published_and_posted.reload
+        published_and_posted.posted_to_upcoming_at.should == Time.utc(2009, 1, 1)
+      end
+    end
   end
 end

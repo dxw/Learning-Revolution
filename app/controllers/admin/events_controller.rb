@@ -29,7 +29,7 @@ class Admin::EventsController < Admin::AdminController
   end
   
   def count_unpublished
-    @count_unpublished ||= Event.find(:all, :conditions => 'published <> 1').size
+    @count_unpublished ||= Event.unpublished.count
   end
   
   def edit

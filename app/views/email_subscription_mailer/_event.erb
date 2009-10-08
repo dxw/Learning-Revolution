@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------
 <%= event.title %>
-<%= event.start.strftime("%e %B %R%p") %>
+<%= event.start.strftime("%e %B %R%p") %><%= " until "+event.end.strftime("%R%p") if event.end%>
 <% if event.venue -%>
 <%= event.venue.name %>
 <%= event.venue.postcode %>

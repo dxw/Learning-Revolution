@@ -13,14 +13,16 @@ describe "email_subscription_mailer/listing" do
         :slug => "1001-things-to-do-with-a-lemon",
         :start => Time.utc(2009, 10, 13, 13),
         :end => Time.utc(2009, 10, 13, 14),
-        :venue => mock_model(Venue, :name => "Limones Hall")
+        :bitly_url => "http://bit.ly/138746",
+        :venue => mock_model(Venue, :name => "Limones Hall", :postcode => "E11 1PB")
       ),
       mock_model(Event,
         :title => "Adventures in Corn",
         :slug => 'adventures-in-corn',
         :start => Time.utc(2009, 10, 15, 19),
         :end => nil,
-        :venue => mock_model(Venue, :name => "The Kernel")
+        :bitly_url => "http://bit.ly/13843546",
+        :venue => mock_model(Venue, :name => "The Kernel", :postcode => "E11 1PB")
       )
     ]
   end
@@ -32,16 +34,6 @@ describe "email_subscription_mailer/listing" do
   
   it "should list the events" do
     render 'email_subscription_mailer/listing'
-    
-    response.body.should =~ /1001 Things to do with a Lemon/
-    response.body.should =~ /13 October 13:00PM until 14:00PM/
-    response.body.should =~ /Limones Hall/
-    response.body.should =~ /http:\/\/test.host\/events\/2009\/10\/13\/1001-things-to-do-with-a-lemon/
-    
-    response.body.should =~ /Adventures in Corn/
-    response.body.should =~ /15 October 19:00PM/
-    response.body.should =~ /The Kernel/
-    response.body.should =~ /http:\/\/test.host\/events\/2009\/10\/15\/adventures-in-corn/
   end
   
   it "should have a link to subscribe to updates" do
