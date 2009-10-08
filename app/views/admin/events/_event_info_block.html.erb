@@ -3,7 +3,7 @@
     <div class="label">Title</div> <div class="value"><%=h event.title %></div>
   </li>
   <li class="item clearfix even">
-    <div class="label">Description</div> <div class="value"><%=h event.description %></div>
+    <div class="label">Description</div> <div class="value"><%= simple_format(auto_link(event.description)) %></div>
   </li>
   <li class="item clearfix odd">
     <div class="label">Theme</div> <div class="value"><%=h event.theme %></div>
