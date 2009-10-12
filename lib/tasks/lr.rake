@@ -418,5 +418,15 @@ namespace :lr do
   task(:move_to_theme, {:needs => :environment}) do |t,args|
     raise ArgumentError, 'Set the query string (i.e. rake lr:move_to_theme Q=foo)' if ENV['Q'].blank?
     raise ArgumentError, 'Set the theme name (i.e. rake lr:move_to_theme T=theme)' if ENV['T'].blank?
+    a = "%#{ENV['Q']}%"
+    arr = []
+    cond = %w[title description theme event_type cost min_age organisation contact_name contact_phone_number contact_email_address].map{|field|arr<<a;"#{field} LIKE ?"}.join(' OR ')
+    events = Event.find(:all, :conditions => [cond]+arr, :order => 'start, title')
+    ActiveRecord::Base.transaction do
+      events.each do |event|
+        event.theme = ENV['T']
+        event.save!
+      end
+    end
   end
 end

@@ -77,6 +77,7 @@ describe "rake lr:move_to_theme" do
     load RAILS_ROOT+"/lib/tasks/lr.rake"
     ENV['Q'] = nil
     ENV['T'] = nil
+    Event.delete_all
   end
 
   it "should break without Q or T" do
@@ -91,5 +92,21 @@ describe "rake lr:move_to_theme" do
   it "should break without T" do
     ENV['Q'] = 'helo'
     lambda { @rake[@task].invoke }.should raise_error
+  end
+
+  it "should match on title" do
+    event = EventSpecHelper.save(:title => 'apples and oranges')
+    ENV['Q'] = 'apples'
+    ENV['T'] = 'The Theme'
+    @rake[@task].invoke
+    Event.find(:first, event.id).theme.should == 'The Theme'
+  end
+
+  it "should match on description" do
+    event = EventSpecHelper.save(:description => 'apples and oranges')
+    ENV['Q'] = 'oranges'
+    ENV['T'] = 'The Theme'
+    @rake[@task].invoke
+    Event.find(:first, event.id).theme.should == 'The Theme'
   end
 end
