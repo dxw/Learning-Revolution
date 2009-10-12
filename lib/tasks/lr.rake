@@ -241,9 +241,18 @@ namespace :lr do
 
     require 'fastercsv'
     @rownum = 0
+    
+    skip = 0
+    
     ActiveRecord::Base.transaction do
       FasterCSV.foreach(args[:csv], :headers => :first_row) do |row|
         @rownum += 1
+        
+        if @rownum < skip
+          puts "Skipping #{@rownum}"
+          next
+        end
+        
         #title,description,cost,min_age,start,end,published,theme,event_type,picture,contact_name,contact_email_address,contact_phone_number,organisation,cyberevent,venue_name,venue_address_1,venue_address_2,venue_address_3,venue_city,venue_county,venue_postcode
         e = Event.new
 
