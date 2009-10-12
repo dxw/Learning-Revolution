@@ -75,6 +75,9 @@ class ApplicationController < ActionController::Base
     return if request.env['HTTP_REFERER'].blank?
     return if request.env['REQUEST_URI'].include? 'MSOffice'
     return if request.env['REQUEST_URI'].include? '_vti_bin'
+    File.read(File.join(RAILS_ROOT, 'config', '404ignore')).split("\n").each do |line|
+      return if request.env['REQUEST_URI'].match Regexp.compile(line)
+    end
 
     Notifier.deliver_error_notification('404',exception,request)
   end

@@ -13,6 +13,7 @@ set :git_shallow_clone, 1
 set :local_shared_files, [
   'config/database.yml',
   'config/application.yml',
+  'config/404ignore',
   'public/badges',
   'public/images/featured_photos'
 ]
