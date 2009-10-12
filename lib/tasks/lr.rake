@@ -414,4 +414,9 @@ namespace :lr do
       Event.post_pending_to_upcoming!
     end
   end
+  desc "Move Q (query string) to new theme T (string)"
+  task(:move_to_theme, {:needs => :environment}) do |t,args|
+    raise ArgumentError, 'Set the query string (i.e. rake lr:move_to_theme Q=foo)' if ENV['Q'].blank?
+    raise ArgumentError, 'Set the theme name (i.e. rake lr:move_to_theme T=theme)' if ENV['T'].blank?
+  end
 end

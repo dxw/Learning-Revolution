@@ -1,7 +1,5 @@
-require 'rubygems'
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
 
 describe "rake lr:import" do
   before do
@@ -65,4 +63,33 @@ describe "rake lr:import" do
     #@rake['lr:dev:real_data'].invoke
   end
 
+end
+
+describe "rake lr:move_to_theme" do
+  before do
+    @task = "lr:move_to_theme"
+  end
+
+  before(:each) do
+    @rake = Rake::Application.new
+    Rake.application = @rake
+    Rake::Task.define_task(:environment)
+    load RAILS_ROOT+"/lib/tasks/lr.rake"
+    ENV['Q'] = nil
+    ENV['T'] = nil
+  end
+
+  it "should break without Q or T" do
+    lambda { @rake[@task].invoke }.should raise_error
+  end
+
+  it "should break without Q" do
+    ENV['T'] = 'helo'
+    lambda { @rake[@task].invoke }.should raise_error
+  end
+
+  it "should break without T" do
+    ENV['Q'] = 'helo'
+    lambda { @rake[@task].invoke }.should raise_error
+  end
 end
