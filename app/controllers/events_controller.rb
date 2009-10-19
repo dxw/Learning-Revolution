@@ -120,7 +120,8 @@ class EventsController < ApplicationController
       @start_lng = -4.064941
       @start_zoom = 6
     else
-      location = MultiGeocoder.geocode(params[:filter][:location] + " GB")
+      Geokit::Geocoders::yahoo = AppConfig.yahoo_api_key
+      location = Geokit::Geocoders::YahooGeocoder.geocode(params[:filter][:location] + " GB")
       @start_lat = location.lat
       @start_lng = location.lng
       @start_zoom = 12
