@@ -62,8 +62,7 @@ class Location < ActiveRecord::Base
   end
   
   def self.geocode(post_code)
-    Geokit::Geocoders::yahoo = AppConfig.yahoo_api_key
-    Geokit::Geocoders::YahooGeocoder.geocode("#{post_code} GB")
+    Geokit::Geocoders::MultiGeocoder.geocode("#{post_code} GB")
   end
 
   def to_s
