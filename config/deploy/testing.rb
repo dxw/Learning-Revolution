@@ -1,3 +1,5 @@
+require 'brightbox/recipes'
+require 'brightbox/passenger'
 set :rails_env, "production"
 
 set :user, 'jamesd'
