@@ -85,6 +85,6 @@ module ActionView::Helpers::FormHelper
     value = options[method]
     value ||= object.andand[method]
     value ||= params[object_name].andand[method]
-    "<span class='#{ object.andand.errors.andand[method] ? 'fieldWithErrors' : '' }'><input type='text' id='#{object_name}_#{method}' name='#{object_name}[#{method}]' class='text input' value='#{value}' /></span>"
+    %Q&<span class="#{ object.andand.errors.andand[method] ? 'fieldWithErrors' : '' }"><input type="text" id="#{object_name}_#{method}" name="#{object_name}[#{method}]" class="text input" value="#{html_escape(value)}" /></span>&
   end
 end
