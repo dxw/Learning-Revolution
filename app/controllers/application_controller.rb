@@ -34,5 +34,9 @@ class ApplicationController < ActionController::Base
   def current_events_path(options={})
     events_by_month_path(2009, "October", options)
   end
+
+  def catcher
+    redirect_to '/'
+  end
   
 end
