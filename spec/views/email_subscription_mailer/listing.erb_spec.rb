@@ -26,16 +26,16 @@ describe "email_subscription_mailer/listing" do
       )
     ]
   end
-  
+
   it "should describe the filter" do
     render 'email_subscription_mailer/listing'
     response.body.should =~ /all Food and Cookery events happening within 5 miles of E11 1PB/
   end
-  
+
   it "should list the events" do
     render 'email_subscription_mailer/listing'
   end
-  
+
   it "should have a link to subscribe to updates" do
     render 'email_subscription_mailer/listing'
     response.body.should =~ Regexp.new("http://test.host/email_subscriptions/1/confirm/abcdefgh")

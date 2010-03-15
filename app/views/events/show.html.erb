@@ -1,14 +1,14 @@
 <div class="events clearfix">
   <h2><%= image_tag('headings/hd_event_details.gif', :alt => "Event details",:class => "heading") %></h2>
-  
+
   <h3 class="heading">
      Listings for <strong><%=@event.start.day.ordinalize + @event.start.strftime(' %B %Y') %></strong>
-  
+
      <% unless params[:filter].nil? || params[:filter].empty?  %>
        <%= link_to "&laquo; Back to search results", current_events_path(:view => params[:last_view], :filter => params[:filter]), :class => "listing" %>
      <% end %>
   </h3>
-  
+
   <div class="listing clearfix">
     <%= render :partial => "events_list", :locals => {:event => @event, :filter => params[:filter]} %>
     <%= render :partial => "event_details", :locals => {:event => @event} %>

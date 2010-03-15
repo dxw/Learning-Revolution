@@ -7,7 +7,7 @@ body#pages_index .content{
   background-color:#8B1713;
 /*  background-attachment:fixed;*/
   background-position: 0 410px;
-  
+
 }
 body#pages_index .footer{
   color:#8B1713;
@@ -107,7 +107,7 @@ a#view_event_calendar{
   text-decoration:none;
 }
 .row .featured_event_nav a.activeSlide {
-  background-color:#fff; 
+  background-color:#fff;
   color:#40000B;
 }
 .row .featured_event ul{
@@ -200,7 +200,7 @@ img.follow_festival{
   text-decoration: none;
 }
 .calendar_date_description .time_place{
-  font-style:italic; 
+  font-style:italic;
 }
 img.button{
   margin-top:12px;

@@ -61,5 +61,5 @@ Then "what" do
 end
 
 Then "where" do
-  puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
+  puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}"
 end

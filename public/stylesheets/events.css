@@ -23,21 +23,21 @@
 #selector ul li a{
   color:#fff;
   text-decoration: none;
-  padding:3px 12px 18px 12px;  
+  padding:3px 12px 18px 12px;
 
 }
 #selector ul li.map a:hover, #selector ul li.map_selected a{
-  color:#8b1713;  
+  color:#8b1713;
   background-image:url(/images/css/selector_bg_hover.gif);
   background-position:-67px -10px;
 }
 #selector ul li.calendar a:hover, #selector ul li.calendar_selected a{
-  color:#8b1713;  
+  color:#8b1713;
   background-image:url(/images/css/selector_bg_hover.gif);
-  background-position:-135px -10px;  
+  background-position:-135px -10px;
 }
 #selector ul li.list_view a:hover, #selector ul li.list_view_selected a{
-  color:#8b1713;  
+  color:#8b1713;
   background-image:url(/images/css/selector_bg_hover.gif);
   background-position:-70px -10px;
 }
@@ -67,7 +67,7 @@ h3.no_events{
   position:absolute;
   left:100px;
   top:55px;
-  
+
 }
 .example_calendar_view img.heading{
   margin-left:18px;
@@ -114,7 +114,7 @@ h3.no_events{
 }
 
 .events .calendar_view td .day {
-  
+
   padding:4px 4px;
   text-align:right;
   font-size:0.83em;
@@ -190,7 +190,7 @@ li.gmap_resized p{
 
 li.gmap_resized h5{
   font-weight:bold;
-  margin-top:6px  
+  margin-top:6px
 }
 #events_show h2 img.heading
 {
@@ -293,7 +293,7 @@ li.event_link.active a, li.event_link.active a:hover, #events_list li.active spa
   float:left;
   width:205px;
   text-align:center;
-} 
+}
 .incrementor{
   float:left;
   width:85px;
@@ -378,7 +378,7 @@ ul li.foot .next {
   margin-left:4px;
 }
 #event_details h4{
-  font-size:1em;  
+  font-size:1em;
   font-weight:bold;
 }
 #event_details img{
@@ -451,7 +451,7 @@ div.event_preview, div.form_submission{
   margin-left:auto;
   margin-right:auto;
   width:600px;
- 
+
 }
 div.event_preview #event_details{
   width:600px;
@@ -479,16 +479,16 @@ div.form_submission #edit_form
 .submit_message
 {
   margin: 20px auto;
-  
+
   background-color:#fff;
   border: 1px solid #C9C9C9;
-  
+
   padding:18px;
   width:564px;
-  
+
   position:relative;
 }
- 
+
 .submit_message p{
   margin-bottom:12px;
 }

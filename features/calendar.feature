@@ -2,7 +2,7 @@ Feature: Calendar
   In order to view the events
   As a user
   I should be view and filter events relevant to me
-  
+
   Scenario: Viewing an unfiltered calendar
     Given a valid event called "Octoberfest"
     When I go to the calendar for October 2009
@@ -51,7 +51,7 @@ Feature: Calendar
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
     And the page is valid XHTML
-    
+
   Scenario: Browsing back to the calendar
     Given a valid event called "Event 1"
     And the event "Event 1" starts on "1st October 2009 12:00"
@@ -70,7 +70,7 @@ Feature: Calendar
     Then I should be on the calendar for October 2009
     And I should see "Event 1"
     And I should not see image "How to use this site"
-    
+
   Scenario: Viewing the results on a map
     Given a valid event called "Octoberfest"
     And the event "Octoberfest" starts on "12th October 2009 12:00"
@@ -83,4 +83,4 @@ Feature: Calendar
     When I follow "Map"
     Then I should see the map
     And the page is valid XHTML
-    
+

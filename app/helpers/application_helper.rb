@@ -3,15 +3,15 @@ module ApplicationHelper
   def return_to_hidden_field
     hidden_field_tag "return_to", params[:return_to]
   end
-    
+
   def path_for_event(event, filters = nil, last_view = 'calendar')
     controller.path_for_event(event, filters, last_view)
   end
-  
+
   def url_for_event(event, options={})
     event_url(event.start.year, event.start.month, event.start.day, event.slug, options)
   end
-  
+
   def current_events_path(options={})
     controller.current_events_path(options)
   end
@@ -20,18 +20,18 @@ module ApplicationHelper
     if params[:geocodeerror]
       return "Sorry, we couldn't find anywhere that matched <span class='keyword'>#{CGI.escapeHTML(params[:filter][:location])}</span>"
     end
-    
+
     if params[:filter][:theme].nil? && params[:filter][:location].nil? then
-      "Click <em>find events in your area</em> to get started" 
+      "Click <em>find events in your area</em> to get started"
     else
       "Now showing " + current_filter_core_description
     end
   end
-  
+
   def current_filter_core_description
     filter_core_description(params[:filter])
   end
-  
+
   def filter_core_description(filter={}, html=true)
     filter ||= {}
     s = 'all'
@@ -58,7 +58,7 @@ module ApplicationHelper
     end
     s
   end
-  
+
   def end_time(event)
     s = ''
     s += event.end.strftime('%e %B ') unless event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')

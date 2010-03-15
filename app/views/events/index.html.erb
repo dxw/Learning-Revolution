@@ -1,5 +1,5 @@
 <div class="events">
-  <%= render :partial => 'event_search_filter' %>  
+  <%= render :partial => 'event_search_filter' %>
 
   <% if params[:filter].blank? %>
     <div id="selector"></div>
@@ -16,6 +16,6 @@
       <%= render :partial => 'calendar_view' %>
     <% end %>
   <% end %>
-  
+
   <%= render :partial => "new_event" %>
 </div>

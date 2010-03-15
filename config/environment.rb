@@ -29,9 +29,9 @@ Rails::Initializer.run do |config|
   config.gem 'hpricot'
   config.gem 'markup_validity'
   config.gem 'prawn'
-  
+
   # config.gem 'fiveruns_tuneup'
-  
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

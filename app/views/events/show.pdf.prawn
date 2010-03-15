@@ -19,7 +19,7 @@ if @event.venue.present?
     pdf.text @event.venue.postcode
   end
 end
-  
+
 pdf.text "Event type: " + (@event.event_type.blank? ? "Other" : @event.event_type)
 pdf.text "Event theme: " + (@event.theme.blank? ? "Other" : @event.theme)
 pdf.text @event.cost unless @event.cost.blank?

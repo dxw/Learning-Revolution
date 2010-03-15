@@ -219,7 +219,7 @@ margin-bottom:12px;
   margin-left:42px;
 }
 .form_wrapper form.edit_page textarea.text{
-  width:610px;  
+  width:610px;
 }
 .form_wrapper form.edit_page #page_submit{
     float:right;
@@ -230,7 +230,7 @@ margin-bottom:12px;
 .footer{
   min-height:30px;
   width:100%;
-  background-color:#6d6f71;  
+  background-color:#6d6f71;
   background-image: url(/images/bg/bg_admin_bottom.jpg);
   background-position: -35px -5px;
   text-align:center;
@@ -239,7 +239,7 @@ margin-bottom:12px;
   margin-top:0px;
   padding-top:28px;
   padding-bottom:24px;
-  
+
   width:970px;
 }
 .footer a{

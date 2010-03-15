@@ -8,7 +8,7 @@ $ = function(element) {
 	if(typeof element == 'string') {
 		element = _document.getElementById(element);
 	}
-	
+
 	return _$(element);
 };
 
@@ -52,7 +52,7 @@ TuneUp.adjustElement = function(e) {
 			e.removeClassName('tuneup-flash-adjusted');
 		}
 	}
-	
+
 	if (e.hasClassName('tuneup-adjusted'))
 		e.style.top = (top + adjust) + 'px';
 	else {
@@ -91,7 +91,7 @@ TuneUp.adjustAbsoluteElements = function(e) {
 
 Event.observe(window, 'load', function() {
   new Insertion.Top(_document.body, "<div id='tuneup'><h1>FiveRuns TuneUp</h1><img id='tuneup_spinner' style='display:none' src='/images/tuneup/spinner.gif' alt=''/><div id='tuneup-content' style='display:block'></div></div><div id='tuneup-flash'></div>");
-  
+
 	TuneUp.adjustAbsoluteElements(_document.body);
 	TuneUp.adjustFixedElements();
 

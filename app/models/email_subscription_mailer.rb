@@ -1,6 +1,6 @@
 class EmailSubscriptionMailer < ActionMailer::Base
   helper ApplicationHelper
-  
+
   def listing(email_subscription, events)
     subject    "Your Learning Revolution events listing"
     recipients email_subscription.email

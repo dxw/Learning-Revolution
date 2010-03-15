@@ -1,13 +1,13 @@
 
 <div id="content_header">
-  
+
   <%= image_tag('headings/admin/hd_moderate_events.gif', :class => 'heading') %>
 
   <h3 class="heading">Before an event is listed publicly it needs to be approved here, in this moderation queue. <%= get_unpublished_message(@count_unpublished) %></h3>
 
   <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
   <%= (flash[:notices].nil? ? '' : "<div class='admin_flash'>#{flash[:notices]}</div>") %>
-  
+
 </div>
 
 <div class="form_wrapper">
@@ -21,8 +21,8 @@
            <%= submit_tag "Delete" %>
            </div>
         <% end %>
-        
-         <%= render :partial => "event_info_block", :locals => {:event => @event} %>        
+
+         <%= render :partial => "event_info_block", :locals => {:event => @event} %>
       <% else %>
         <h2>No more events to moderate</h2>
       <% end %>

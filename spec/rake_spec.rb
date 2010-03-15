@@ -50,11 +50,11 @@ describe "rake lr:import" do
       aft
     }
   end
-  
+
   it "should fail when an event is not in october" do
     lambda { @rake[@task].invoke(RAILS_ROOT+"/spec/rake_data/event_not_in_october_2009.csv") }.should raise_error(IOError)
   end
-  
+
   it "should fail when an event ends before it starts" do
     lambda { @rake[@task].invoke(RAILS_ROOT+"/spec/rake_data/event_ends_before_starts.csv") }.should raise_error(IOError)
   end

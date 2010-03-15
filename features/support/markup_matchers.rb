@@ -1,4 +1,4 @@
-require 'markup_validity' 
+require 'markup_validity'
 
 module Spec
   module Matchers

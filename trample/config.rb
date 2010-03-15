@@ -7,7 +7,7 @@ Types = ["Class"]
 Trample.configure do
   concurrency 1
   iterations  10
-  
+
   # homepage
   get "#{host}/" do
   end
@@ -27,5 +27,5 @@ Trample.configure do
   get "http://localhost/events/2009/October?filter[theme]=:theme&filter[event_type]=:type&view=calendar&filter[location]=" do
     {:theme => Themes[rand(Themes.size)].split(" ").join("+"), :type => Types[rand(Types.size)].split(" ").join("+")}
   end
-  
+
 end

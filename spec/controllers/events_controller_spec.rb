@@ -7,7 +7,7 @@ describe EventsController do
     event.stub!(:id).and_return(10)
     controller.path_for_event(event).should == event_path(2009, "October", 1, "title-10") + '?'
   end
-  
+
   it "should be able to generate an ical feed" do
     calendar = mock(:calendar)
     Icalendar::Calendar.should_receive(:new).and_return(calendar)

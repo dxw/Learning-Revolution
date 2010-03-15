@@ -9,7 +9,7 @@ class Admin::AdminController < ApplicationController
   def index
     params[:filter] ||= {}
     params[:view] ||= 'calendar'
-    
+
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       set_map_bounds

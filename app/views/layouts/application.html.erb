@@ -12,11 +12,11 @@
 
    <meta name="description" content="Teach yourself a lesson: find something new to do in October" />
    <meta name="keywords" content="Learning revolution, festival of learning, informal adult learning, things to do in october" />
-   <meta name="language" content="english" />  
+   <meta name="language" content="english" />
 
 	<link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8" />
 	<link rel="stylesheet" href="/stylesheets/events.css" type="text/css" media="screen" charset="utf-8" />
-	
+
 	<link rel="stylesheet" href="/stylesheets/front_page.css" type="text/css" media="screen" charset="utf-8" />
 	<link rel="stylesheet" href="/stylesheets/unitip.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -30,7 +30,7 @@
     <link href="/stylesheets/ie7.css?1250082712" media="screen" rel="stylesheet" type="text/css" />
   <![endif]-->
 	<link rel="stylesheet" href="/stylesheets/jquery/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" charset="utf-8" />
-   
+
    <link rel="alternate" type="application/atom+xml" title="News Feed" href="http://thelearningrevolution.ning.com/profiles/blog/feed?xn_auth=no" />
 
   <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
@@ -49,15 +49,15 @@
 
 <body class="<%= "c_#{params[:controller].andand.gsub('/','_')} " "m_#{params[:action].andand.gsub('/','_')}" %>" id="<%= "#{params[:controller].andand.gsub('/','_')}_#{params[:action].andand.gsub('/','_')}" %>">
     <div class="header">
-      
+
       <h1><a href="/"><img src="/images/fol_logo.png" alt="Learning Revolution Logo" /></a></h1>
-      
+
       <div id="direct_gov_link">
         <p><a class="logo-directgov" href="http://www.direct.gov.uk" rel="external" title="Link to Directgov homepage"><img alt="Directgov logo" src="/images/dius/st-logo-directgov.png"  /></a></p>
       </div>
-    
+
     </div>
-    
+
     <div class="nav_banner">
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
@@ -67,16 +67,16 @@
         <li class="promote_your_event"><%= link_to "Promote Your Event", "/promote-your-event" %></li>
       </ul>
     </div>
-    
+
     <div class="container clearfix">
 
       <%# adding dropshadows %>
       <div class="content">
-          <%= yield %>        
+          <%= yield %>
       </div>
     </div>
 
-<%= render :partial => 'layouts/footer' %>  
+<%= render :partial => 'layouts/footer' %>
 
 <script type="text/javascript" src="/javascripts/ProphetInsert.js"></script>
 <noscript><p><img src='http://directgov.stcllctrs.com/OWCPZPDTRUV/noScript.bmp' alt="Stats Collection Image" /></p></noscript>

@@ -19,11 +19,11 @@ set :local_shared_files, [
 ]
 
 namespace :deploy do
-  
+
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
-     
+
 end
 
 # rake spec --format html:public/specs.html

@@ -4,15 +4,15 @@ class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
-  
+
   def index
     params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
-    
+
     if(params[:filter][:location] == 'Enter your postcode here')
       params[:filter][:location] = ''
     end
-        
+
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"
@@ -41,17 +41,17 @@ class EventsController < ApplicationController
   def show
     if params[:id].nil?
       @event = Event.first_for_day(Time.zone.local(2009, 10, params[:day].to_i))
-      
+
       redirect_to path_for_event(@event, params[:filter], params[:last_view]).gsub('&amp;', '&') and return
     else
       @event = Event.find_by_slug(params[:id])
     end
-    
+
     if @event.nil?
       render_404
     else
       add_page_title @event.title
-            
+
       respond_to do |format|
         format.html
         format.ics { render :text => @event.to_ical }
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
       end
     end
   end
-  
+
   def find_venue
     process_dates
     @new_event = Event.new(params[:event])
@@ -106,13 +106,13 @@ class EventsController < ApplicationController
       succesful_save_redirect if @new_event.valid? && @venue.valid? && @new_event.save!
     end
   end
-  
+
   private
-  
+
   def ensure_filters
     params[:filter] ||= {}
   end
-  
+
   include Geokit::Geocoders
   def set_map_bounds
     if params[:filter][:location].blank?
@@ -126,15 +126,15 @@ class EventsController < ApplicationController
       @start_zoom = 12
     end
   end
-  
+
   def set_from_and_to_to_dates
     params[:filter][:from_day] ||= 1
     params[:filter][:to_day] ||= @first_day_of_month.end_of_month.day
-    
+
     params[:filter][:from] = Time.parse("#{params[:filter][:from_day]} #{params[:month]} #{params[:year]}") if params[:filter][:from_day]
     params[:filter][:to] = Time.parse("#{params[:filter][:to_day]} #{params[:month]} #{params[:year]}") if params[:filter][:to_day]
   end
-  
+
   def events_to_ical(events)
     calendar = Icalendar::Calendar.new
     events.each do |event|
@@ -142,7 +142,7 @@ class EventsController < ApplicationController
     end
     calendar.to_ical
   end
-  
+
   def new_event
     @new_event = Event.new(params[:event])
     if params[:venue]
@@ -151,7 +151,7 @@ class EventsController < ApplicationController
       @new_event.venue = Venue.find(params[:event][:location_id])
     end
   end
-  
+
   def handle_postcode_errors
     unless params[:cyberevent]
       if !params[:event].andand[:location_id] && params[:venue].andand[:postcode].blank?
@@ -163,29 +163,29 @@ class EventsController < ApplicationController
       end
     end
   end
-  
+
   def event_valid_with_postcode?
     @new_event.valid? && !params[:venue].andand[:postcode].blank? && postcode_valid? && postcode_exists?
   end
-  
+
   def postcode_valid?
     return true if params[:event].andand[:location_id]
     params[:venue][:postcode] =~ Location::POSTCODE_PATTERN
   end
-  
+
   def postcode_exists?
     return true if params[:event].andand[:location_id]
     @postcode_exists ||= Location.geocode(params[:venue][:postcode]).accuracy
   end
-  
+
   def valid_cyber_event?
     params[:cyberevent] && @new_event.valid?
   end
-  
+
   def succesful_save_redirect
     redirect_to events_success_path
   end
-  
+
   def find_or_create_venue
     if params[:event][:location_id].blank?
       @venue = @new_event.venue = Venue.new(params[:venue])
@@ -197,7 +197,7 @@ class EventsController < ApplicationController
       @venue = @new_event.venue = identical_venue
     end
   end
-  
+
   def process_dates
     if params[:startday] and params[:starthour] and params[:startminute]
       d = params[:startday].to_i

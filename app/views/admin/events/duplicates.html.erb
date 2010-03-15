@@ -1,6 +1,6 @@
 
 <div id="content_header">
-  
+
   <%= image_tag('headings/admin/hd_duplicate_events.gif', :class => 'heading') %>
 
   <h3 class="heading">Possible duplicate events are listed here. If a duplicate is identified, you can edit or remove it. <%= get_duplicates_message(@duplicate_events.size/2) %></h3>
@@ -10,16 +10,16 @@
 </div>
 
 <div class="form_wrapper clearfix">
- 
+
    <% if @duplicate_events.blank? %>
      <div class="unmoderated_event"><h2>We don't think there are any duplicate events</h2></div>
    <% else %>
      <% form_tag do %>
        <% @duplicate_events.each do |duplicate_event| %>
-           
+
            <div class="venue_pair">
              <div class="duplicate">
-   
+
                <h3>New Event</h3>
                <%= render :partial => "event_info_block", :locals => {:event => duplicate_event} %>
                <p>

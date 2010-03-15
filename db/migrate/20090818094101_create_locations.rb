@@ -8,7 +8,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :city
       t.string :county
       t.string :postcode
-      
+
       t.timestamps
     end
   end

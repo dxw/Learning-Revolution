@@ -9,10 +9,10 @@
     <% @event.same_day_events.each do |event| %>
       <li class="event_link <%= "active" if event.slug == params[:id] %>"><%= (event.slug == params[:id]) ? "<span>#{event.title}</span>" : (link_to event.title, path_for_event(event, filter, params[:last_view])) %></li>
     <% end %>
-    
+
     <li class="foot clearfix">
       <div class="incrementor"><%=prev_link(@event, filter, params[:last_view]) %></div>
       <div class="incrementor next"><%=next_link(@event, filter, params[:last_view]) %></div>
     </li>
-  </ul>  
+  </ul>
 </div>

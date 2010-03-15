@@ -1,32 +1,32 @@
 <div id="content_header">
 
   <p><%= image_tag('headings/hd_preview_your_event.gif', :class => "heading") %></p>
-  
+
   <h3 class="heading">You're about to add this this event to the listings, and it'll look something like this. Are all the details correct?</h3>
-  
+
 </div>
 
 <div class="events">
 
   <div class="form_wrapper clearfix">
-  
+
     <div class="event_preview clearfix">
 
       <%= render :partial => 'event_details', :locals => {:event => @new_event} %>
 
     </div>
- 
+
      <div class="submit_message clearfix">
         <p>Submissions to the Learning Revolution calendar are moderated, so your event won’t appear on the site until it’s been approved by our team. We always try to do this as quickly as possible.</p>
-        
+
         <p>If you have any questions, please contact the team on <a href="mailto:learningrevolution@bis.gsi.gov.uk">learningrevolution@bis.gsi.gov.uk</a></p>
      </div>
-     
+
      <div class="form_submission">
         <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue], :edit => true), :html => {:id => "edit_form"} do %>
            <div><%= image_submit_tag('buttons/bt_edit_this_event.gif', :class => "edit_this_event", :alt => "Edit this event" ) %></div>
         <% end %>
-   
+
         <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]), :html => {:id => "save_form"} do %>
            <div><%= image_submit_tag('buttons/bt_add_this_event_to_the_listings.gif', :alt => "Add this event to the listings")%></div>
         <% end %>

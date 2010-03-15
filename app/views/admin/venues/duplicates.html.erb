@@ -1,6 +1,6 @@
 
 <div id="content_header">
-  
+
   <%= image_tag('headings/admin/hd_venues_admin.gif', :class => 'heading') %>
 
   <h3 class="heading">Possible duplicate events are listed here.If a duplicate is identified, you can edit or remove it.</h3>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="form_wrapper clearfix">
-   
+
    <% if @duplicate_venues.blank? %>
        <div class="unmoderated_event"><h2>We don't think there are any duplicate venues</h2></div>
    <% else %>

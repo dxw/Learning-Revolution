@@ -1,5 +1,5 @@
 Feature: Adding an event
-  In order to add the event I'm running 
+  In order to add the event I'm running
   As a user
   I should be able to be able to add a new event
 
@@ -47,7 +47,7 @@ Feature: Adding an event
     And there should be an Event whose contact_name is "event organiser"
     And there should be an Event whose contact_phone_number is "020 8547 3847"
     And there should be an Event whose contact_email_address is "contact@test.com"
-  
+
   Scenario: Adding an invalid event with end time < start time
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
@@ -71,7 +71,7 @@ Feature: Adding an event
     And I should see "The event can't finish before it's begun"
     And the page is valid XHTML
     And there should be 0 Event in the database
-  
+
   Scenario: Adding a valid event with no end time set
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
@@ -102,7 +102,7 @@ Feature: Adding an event
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
-  
+
   Scenario: Adding an invalid event with no venue
     When I go to the calendar for October 2009
     And I check "This event occurs online or has no physical location"
@@ -114,7 +114,7 @@ Feature: Adding an event
     And I should see "Contact email address can't be blank"
     And the page is valid XHTML
     And there should be 0 Event in the database
-  
+
   Scenario: Adding a valid event from the calendar page with a new venue
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
@@ -178,14 +178,14 @@ Feature: Adding an event
     And I should see "Contact email address can't be blank"
     And the page is valid XHTML
     And there should be 0 Event in the database
-  
+
   Scenario: Adding a valid event but forgetting post code
     When I go to the calendar for October 2009
     And I check "I accept the"
     And I press "Continue"
     Then I should see "Postcode can't be blank"
     And the page is valid XHTML
-  
+
   Scenario: Adding a valid event but an malformed post code
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "xxxxxxxxxxx"
@@ -193,7 +193,7 @@ Feature: Adding an event
     And I press "Continue"
     Then I should see "The postcode you entered seems to be invalid"
     And the page is valid XHTML
-  
+
   Scenario: Adding a valid event but a non-existent well formed post code
     When I go to the calendar for October 2009
     And I fill in "Event Postcode" with "SW0z 0zz"
@@ -201,7 +201,7 @@ Feature: Adding an event
     And I press "Continue"
     Then I should see "We couldn't find anywhere with this postcode"
     And the page is valid XHTML
-  
+
   Scenario: Adding a valid event to an existing venue
     Given a valid venue called "Church hall"
     And the venue "Church hall" has the post code "TR18 5EG"
@@ -348,7 +348,7 @@ Feature: Adding an event
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
-  
+
   Scenario: Adding an invalid event with end time < start time
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
@@ -372,7 +372,7 @@ Feature: Adding an event
     And I should see "The event can't finish before it's begun"
     And the page is valid XHTML
     And there should be 0 Event in the database
-  
+
   Scenario: Adding a valid event with no end time set
     When I go to the calendar for October 2009
     And I fill in "Event name" with "event title"
@@ -403,7 +403,7 @@ Feature: Adding an event
     And the page is valid XHTML
     And there should be 1 Event in the database
     And there should be 0 Venue in the database
-  
+
   Scenario: Adding an invalid event with no venue
     When I go to the calendar for October 2009
     And I check "This event occurs online or has no physical location"

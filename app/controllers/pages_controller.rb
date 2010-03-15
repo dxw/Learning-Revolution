@@ -1,14 +1,14 @@
 class PagesController < ApplicationController
   caches_page :index, :show, :news
-  
+
   def index
-  end 
+  end
 
   def show
     @page = Page.find(:first, :conditions => {:slug => params[:slug]})
-    
+
     latest_youtube_vid_url
-   
+
     render_404 if @page.nil?
   end
 
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
     require 'open-uri'
 
     return @latest_youtube_vid_url if @latest_youtube_vid_url != nil
-    
+
     begin
       feed_uri = 'http://gdata.youtube.com/feeds/api/users/learnrevolution/uploads?orderby=updated'
       youtube_feed = Hpricot(open(feed_uri))

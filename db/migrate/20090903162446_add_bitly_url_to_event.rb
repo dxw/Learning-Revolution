@@ -1,6 +1,6 @@
 class AddBitlyUrlToEvent < ActiveRecord::Migration
   def self.up
-    add_column(:events, :bitly_url, :string) 
+    add_column(:events, :bitly_url, :string)
   end
 
   def self.down

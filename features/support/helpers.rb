@@ -4,7 +4,7 @@ def find_or_build(object, attrs = {})
     result
   else
     object.send(:new, attrs)
-  end  
+  end
 end
 
 def find_or_create(object, attrs={})

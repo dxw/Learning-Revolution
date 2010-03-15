@@ -3,7 +3,7 @@ Feature: Viewing events
   I should be view the details page of each event
   In order to see important info about each event
   So that I can attend
-  
+
   Scenario: Reporting an offensive or incorrect event
     Given a valid event called "Event 1"
     And I go to the event page for "Event 1"
@@ -38,9 +38,9 @@ Feature: Viewing events
     And I should not see "Spanish Guitar"
     And I should not see "Secret Event"
     And the page is valid XHTML
-    
+
   Scenario: Browsing backwards through the event list
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And a valid event called "Event 2"
     And the event "Event 1" starts on "1st October 2009 12:00"
     And the event "Event 2" starts on "2nd October 2009 12:00"
@@ -52,9 +52,9 @@ Feature: Viewing events
     Then I should see "Event 1"
     And I should see "1 Oct"
     And the page is valid XHTML
-    
+
   Scenario: Browsing forwards through the event list
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And a valid event called "Event 2"
     And the event "Event 1" starts on "1st October 2009 12:00"
     And the event "Event 2" starts on "2nd October 2009 12:00"
@@ -66,23 +66,23 @@ Feature: Viewing events
     Then I should see "Event 2"
     Then I should see "2 Oct"
     And the page is valid XHTML
-    
+
   Scenario: Browsing backwards through the event list on the 1st of October
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And the event "Event 1" starts on "1st October 2009 12:00"
     When I go to the event page for "Event 1"
     Then I should not see "« Earlier"
     And the page is valid XHTML
-    
+
   Scenario: Browsing forwards through the event list on the 31st of October
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And the event "Event 1" starts on "31st October 2009 12:00"
     When I go to the event page for "Event 1"
     Then I should not see "Later »"
     And the page is valid XHTML
 
   Scenario: Atom feed
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And the event "Event 1" starts on "31st October 2009 12:00"
     When I go to the calendar for October 2009
     And I press "Search For Events"
@@ -91,9 +91,9 @@ Feature: Viewing events
     And the page is valid Atom
 
   Scenario: iCalendar "feed"
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And the event "Event 1" starts on "31st October 2009 12:00"
-    Given a valid event called "Event 2" 
+    Given a valid event called "Event 2"
     And the event "Event 2" starts on "1st October 2009 13:00"
     When I go to the calendar for October 2009
     And I press "Search For Events"
@@ -103,7 +103,7 @@ Feature: Viewing events
     And the calendar holds 2 events
 
   Scenario: iCalendar single event
-    Given a valid event called "Event 1" 
+    Given a valid event called "Event 1"
     And the event "Event 1" starts on "31st October 2009 12:00"
     When I go to the event page for "Event 1"
     When I follow "Add to iCal"

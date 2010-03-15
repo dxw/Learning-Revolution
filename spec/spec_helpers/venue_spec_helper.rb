@@ -4,7 +4,7 @@ module VenueSpecHelper
     do_geocode = options[:geocode_address]
     options.delete :geocode_address
     v = Venue.new(
-      {      
+      {
         :name => "Venue name",
         :postcode => "A1 1AA",
         :address_1 => "Address line 1",
@@ -18,7 +18,7 @@ module VenueSpecHelper
     v.stub!(:geocode_address) unless do_geocode
     v
   end
-  
+
   def self.save(options={})
     r = self.new(options)
     r.save!

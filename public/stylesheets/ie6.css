@@ -20,7 +20,7 @@ body#pages_index .content{
   background-position: 0 435px;
 }
 .standfirst{
-  
+
   width:200px;
 }
 #view_event_calendar img{
@@ -122,7 +122,7 @@ margin-left:21px
 #events_list{
   margin-right:0px;
   background-image:none;
-  background-color:#fff;  
+  background-color:#fff;
 }
 
 li.event_link.active a{
@@ -164,7 +164,7 @@ li.event_link a{
   width:959px;
 }
 #events_success .footer{
-  width:959px;  
+  width:959px;
 }
 
 .admin .content_wrapper h3{

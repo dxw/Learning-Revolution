@@ -1,10 +1,10 @@
 Flickr = $.klass({
   initialize: function (user_id) {
     var current_element = this.element
-    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id=" + user_id + "&format=json&jsoncallback=?", function (data) { 
+    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id=" + user_id + "&format=json&jsoncallback=?", function (data) {
       var element = jQuery('<ul class="flickr_photos clearfix" id="flickr_photos_from_' + user_id + '"></ul>');
       current_element.replaceWith(element);
-      $.each(data.items.slice(0, 8), function (i, item) { 
+      $.each(data.items.slice(0, 8), function (i, item) {
         element.append(
           '<li>' +
             '<a href="' + item.link + '">' +
@@ -19,10 +19,10 @@ Flickr = $.klass({
 YouTube = $.klass({
   initialize: function (user_id) {
     var current_element = this.element
-    $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?alt=json-in-script&callback=?", function (data) { 
+    $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?alt=json-in-script&callback=?", function (data) {
       var element = jQuery('<ul class="youtube_videos clearfix" id="youtube_videos_from_' + user_id + '"></ul>');
       current_element.replaceWith(element);
-      $.each(data.feed.entry.slice(0, 6), function (i, item) { 
+      $.each(data.feed.entry.slice(0, 6), function (i, item) {
         element.append(
           '<li>' +
             '<a href="' + item.link[0].href + '">' +
@@ -37,16 +37,16 @@ YouTube = $.klass({
 YouTubePlayer = $.klass({
   initialize: function (user_id) {
     var current_element = this.element;
-    $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?&orderby=updated&alt=json-in-script&callback=?", function (data) { 
+    $.getJSON("http://gdata.youtube.com/feeds/users/" + user_id + "/uploads?&orderby=updated&alt=json-in-script&callback=?", function (data) {
       var latest_video_url = data.feed.entry[0].media$group.media$content[0].url;
       var element = jQuery('<div class="player_wrapper">');
       element.append(
         '<object width="340" height="243">' +
-        '<param name="movie" value="' + latest_video_url  + '&amp;hl=en&amp;fs=1"></param>' + 
+        '<param name="movie" value="' + latest_video_url  + '&amp;hl=en&amp;fs=1"></param>' +
         '<param name="allowFullScreen" value="true"></param>' +
         '<param name="allowscriptaccess" value="always"></param>' +
         '<embed src="' + latest_video_url + '" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="340" height="243"></embed>' +
-        '</object>' + 
+        '</object>' +
         '</div>'
       );
       current_element.replaceWith(element);
@@ -60,11 +60,11 @@ DateSlider = $.klass({
     var to_day = this.element.find("#filter_to_day");
     var current_from_day = this.element.find(".current_time_span .current_from_day");
     var current_to_day = this.element.find(".current_time_span .current_to_day");
-    this.element.find('.slider').slider({ 
-      animate: true, 
-      range: true, 
-      min: 1, 
-      max: 31, 
+    this.element.find('.slider').slider({
+      animate: true,
+      range: true,
+      min: 1,
+      max: 31,
       values: [from_day.val(), to_day.val()],
       change: function (event, ui) {
         from_day.val($(this).slider('values', 0));
@@ -99,7 +99,7 @@ EventFilterSlider = $.klass({
         // remove the _active suffix
        el.find('img').attr('src', el.find('img').attr('src').replace('.png','_active.png'));
       }
-      else 
+      else
       {
         // add the suffix
        el.find('img').attr('src', el.find('img').attr('src').replace('_active',''));
@@ -131,7 +131,7 @@ InfoTip = $.klass({
 DisableEventPostcode = $.klass({
       onchange: function() {
          $('#venue_postcode').attr('disabled', $('#cyberevent').attr('checked'));
-         
+
          if($('#cyberevent').attr('checked'))
          {
             $("label[for=venue_postcode]").addClass('disabled');
@@ -144,27 +144,27 @@ DisableEventPostcode = $.klass({
 });
 
 PostcodeHint = $.klass({
-      
+
       // If you change this text, make sure you change it in EventsController#index
       empty_text: 'Enter your postcode here',
-      
-      on_initialise_or_blur: function() {         
-         
+
+      on_initialise_or_blur: function() {
+
          if($('#filter_location').val() == '' || $('#filter_location').val() == this.empty_text)
          {
             $('#filter_location').val(this.empty_text)
             $('#filter_location').addClass('empty');
          }
       },
-      
+
       initialize: function() {
          this.on_initialise_or_blur()
       },
-      
+
       onblur: function() {
          this.on_initialise_or_blur()
       },
-               
+
       onclick: function()
       {
          if($('#filter_location').val() == this.empty_text)

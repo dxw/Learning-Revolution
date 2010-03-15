@@ -1,12 +1,12 @@
 <div class="events clearfix">
 
   <div id="content_header" class='clearfix'>
-    
+
   <%= image_tag('headings/hd_add_your_event_to_the_calendar.gif', :class => "heading", :alt => "Add an Event to the Calendar") %>
   <% unless @new_event.errors.blank? %>
     <div id="errors" class="ui-widget">
       <div class="ui-state-error ui-corner-all">
-        <%= error_messages_for :new_event %>        
+        <%= error_messages_for :new_event %>
       </div>
     </div>
   <% end %>

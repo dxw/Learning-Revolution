@@ -4,7 +4,7 @@
 
 HOST="staging.learnrev-001.vm.brightbox.net"
 
-cd tmp || echo "This script must be run from RAILS_ROOT" 
+cd tmp || echo "This script must be run from RAILS_ROOT"
 
 #echo Spidering $HOST
 

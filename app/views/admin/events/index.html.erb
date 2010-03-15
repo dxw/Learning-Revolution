@@ -1,5 +1,5 @@
 <div id="content_header">
-  
+
   <%= image_tag('headings/admin/hd_events_admin.gif', :class => 'heading') %>
 
   <h3>Search for events to update and edit here</h3>
@@ -7,11 +7,11 @@
   <%= (flash[:event].nil? ? '' : "<div class='admin_flash'>#{flash[:event]}</div>") %>
 
   <div class="form_wrapper clearfix">
-  
+
   <% form_tag admin_events_path, :method => :get, :id => "events_filter_form" do %>
 
     <div class="filter_location clearfix filter">
-      <label for="title" class="text">Event name</label>  
+      <label for="title" class="text">Event name</label>
       <%= text_field_tag "title", nil, :class => 'text', :value => params[:title] %>
     </div>
 
@@ -37,10 +37,10 @@
 
  <% unless @events.blank? %>
  <div id="results">
-   
+
    <h3>Results From your Search</h3>
-   
-   
+
+
    <ul class="results clearfix">
      <% @events.each do |event| %>
        <li>

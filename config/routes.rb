@@ -5,11 +5,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :events, :collection => {:duplicates => [:get, :post], :moderations => :get}, :member => {:moderate => :put}
     admin.resources :pages
   end
-  
+
   map.root :controller => "pages"
-  
+
   map.news '/news', :controller => 'pages', :action => 'news'
-    
+
   map.events_by_month "/events/:year/:month.:format", :controller => 'events', :conditions => { :method => :get }, :format => 'html'
   map.events "/events", :controller => 'events', :action => "create", :conditions => { :method => :post }
   map.events_success "/events/success", :controller => 'events', :action => "success", :conditions => { :method => :get }
@@ -24,12 +24,12 @@ ActionController::Routing::Routes.draw do |map|
   map.venue "/venues/:venue_id.:format", :controller => 'venues', :action => 'venue_for_map', :conditions => { :method => :get }
 
   # map.venue_for_map "/venues/:venue_id/events.js", :controller => 'venues', :action  => 'venue_for_map', :conditions => { :method => :get }
-  
+
   map.with_options :controller => 'email_subscriptions' do |email_subscriptions|
     email_subscriptions.confirm_email_subscription "/email_subscriptions/:id/confirm/:secret", :action => 'confirm'
     email_subscriptions.unsubscribe_email_subscription "/email_subscriptions/:id/unsubscribe/:secret", :action => 'unsubscribe'
   end
   map.resources :email_subscriptions
-  
+
   map.pages '/:slug', :controller => 'pages', :action => 'show'
 end

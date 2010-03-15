@@ -16,7 +16,7 @@
   <% if flash[:notice] %>
     <div class="flash ui-widget">
       <div class="ui-state-highlight ui-corner-all">
-        <%= flash[:notice] %>          
+        <%= flash[:notice] %>
       </div>
     </div>
   <% end %>
@@ -24,23 +24,23 @@
   <div class="current_event_filtering clearfix">
     <div class="span-11">
       <h2 class="find_an_event">Find an Event in October</h2>
-      <h3 class="filter_description"><%= current_filter_description%></h3> 
+      <h3 class="filter_description"><%= current_filter_description%></h3>
 
     </div>
-    
+
     <% unless params[:id] -%>
       <% if params[:filter].present? %>
         <ul class="search_subscription_options">
           <li class="email"><%= link_to("Get email alerts for events like these", new_email_subscription_path(:filter => pa[:filter])) %></li>
           <li class="calendar"><%= link_to "Add these events to iCal.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
           <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-          <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>    
+          <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
         </ul>
       <% end -%>
     <% end -%>
-    
+
   </div>
-  
+
   <div class="event_filtering clearfix">
     <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
     <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "#new_event" %></div>
@@ -49,7 +49,7 @@
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
 
         <div class="filter filter_theme clearfix input_with_tip">
-          <label for="filter_theme">Area of Interest</label> 
+          <label for="filter_theme">Area of Interest</label>
           <%= select_tag "filter[theme]", options_for_select([['Any', ""]]+Event::Themes, params[:filter][:theme]) %>
           <div class="input_tip">
              <div class="tooltip">There are lots of events going on during October. You can use this to select a subject that interests you, or leave it as it is to display everything.</div>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="filter_location clearfix filter input_with_tip">
-          <label for="filter_location" class="text">Postcode</label>  
+          <label for="filter_location" class="text">Postcode</label>
           <%= text_field_tag "filter[location]", nil, :class => 'text', :value => params[:filter][:location] %>
           <div class="input_tip">
              <div class="tooltip">Where are you? If you'd like to display events near you, enter your postcode here.</div>
@@ -81,7 +81,7 @@
 
         <div class="submit_options clearfix">
          <%= hidden_field_tag "view", params[:view] %>
-         
+
           <a href="#events_filter_form" class="cancel_search toggles" id="hides_events_filter_form_wrapper">cancel</a>
           <%= image_submit_tag(filter_check_button_path, :alt => "Search For Events", :class => "search_for_events") %>
         </div>
@@ -89,5 +89,5 @@
       <% end %>
     </div>
   </div>
-  
+
 </div>

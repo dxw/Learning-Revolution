@@ -3,7 +3,7 @@
   <% if flash[:notice] %>
     <div class="flash ui-widget">
       <div class="ui-state-highlight ui-corner-all">
-        <%= flash[:notice] %>          
+        <%= flash[:notice] %>
       </div>
     </div>
   <% end %>
@@ -11,34 +11,34 @@
   <%= image_tag('headings/hd_great_your_events_been_submitted.gif', :class => "heading") %>
 
       <h3 class="heading">Your event has been added to the system and will appear on the calendar as soon as it's been approved. Here's what you can do in the meantime:</h3>
-  
+
 </div>
 
 <div class="events">
-  
+
   <div class="content_wrapper">
 
-        
+
     <ul class="post_event_choices row">
-    
+
       <li class="content_block">
 
       <h4><%= image_tag 'headings/hd_add_another_event.gif', :alt => "Add another event to the listings" %></h4>
 
     <p>
-      Have you got another event you could add to the calendar?    
+      Have you got another event you could add to the calendar?
     </p>
-    
+
     <p>
-      You can submit any event you think is suitable. You don't have to be running it yourself. 
+      You can submit any event you think is suitable. You don't have to be running it yourself.
     </p>
-    
+
     <p><%= link_to "Add another event  &raquo;", current_events_path+"#new_event" %></p>
 
       </li>
-    
+
       <li class="content_block">
-    
+
       <h4><%= image_tag('headings/hd_promote_your_event.gif', :alt => "See our resources section") %></h4>
 
     <p>
@@ -48,26 +48,26 @@
     <p>
       We've got lots of promotional materials you can use to help make your event a success.
     </p>
-    
+
     <p><%= link_to "Promote your event &raquo;", "/promote-your-event" %></p>
 
 
       </li>
 
       <li class="content_block">
-    
+
       <h4><%= image_tag('headings/hd_meet_other_organisers.gif', :alt => "Join our network on Ning") %></h4>
 
     <p>Join our social network to meet fellow event organisers.</p>
-    
+
     <p>You can also share your views with us, and help to develop a culture of learning for all adults.</p>
 
     <p><%= link_to "Join our network on Ning &raquo;", "http://thelearningrevolution.ning.com/" %></p>
     </li>
 
-    
+
     </ul>
-  
+
 </div>
 
 </div>

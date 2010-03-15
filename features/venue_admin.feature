@@ -2,10 +2,10 @@ Feature: Venue admin
   In order to keep the venue data clean
   As an admin
   I should be able to be able to add, edit and delete venues
-  
+
   Background:
     Given I am logged in
-  
+
   Scenario: Adding a valid venue
     When I go to the venue admin index page
     And I follow "New venue"
@@ -20,7 +20,7 @@ Feature: Venue admin
     Then I should see "Venue created successfully"
     And I should see "Venue name"
     And I am on the venue admin index page
-    
+
   Scenario: Submitting an empty form
     When I go to the venue admin index page
     And I follow "New venue"
@@ -29,7 +29,7 @@ Feature: Venue admin
     And I should see "Name can't be blank"
     And I should see "Postcode can't be blank"
     And I am on the venue admin index page
-  
+
   Scenario: Editing a valid venue
     Given a valid venue called "Venue 1"
     When I go to the venue admin index page
@@ -40,7 +40,7 @@ Feature: Venue admin
     Then I should see "Venue saved successfully"
     And I should see "New Venue name"
     And I am on the venue admin index page
-  
+
   Scenario: Removing the new venue in a duplicate
     Given a valid venue called "venue 1"
     And a valid venue called "venue 2"
@@ -60,7 +60,7 @@ Feature: Venue admin
     When I press "Remove original venue"
     Then I should see "venue 1 was deleted"
     And I should not see "venue 2"
-  
+
   Scenario: Searching for a venue by title
     Given a valid venue called "apples"
     And the venue "apples" has the post code "BD7 1QA"
@@ -72,7 +72,7 @@ Feature: Venue admin
     Then I should see "bananas"
     And I should see "S11 8RE"
     And I should not see "apples"
-  
+
   Scenario: Searching for a venue by post code
     Given a valid venue called "apples"
     And the venue "apples" has the post code "BD7 1QA"

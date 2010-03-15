@@ -2,10 +2,10 @@ Feature: Event admin
   In order to keep the event data clean
   As an admin
   I should be able to be able to add, edit and delete events
-  
+
   Background:
     Given I am logged in
-  
+
   Scenario: Adding a valid event
     Given a valid venue called "London"
     When I go to the event admin index page
@@ -34,7 +34,7 @@ Feature: Event admin
     And I press "Submit this event"
     Then I should see "Event created successfully"
     And the page is valid XHTML
-    
+
   Scenario: Submitting an empty form
     When I go to the event admin index page
     And I follow "New event"
@@ -44,7 +44,7 @@ Feature: Event admin
     And I should see "Contact name can't be blank"
     And I should see "Contact email address can't be blank"
     And I am on the event admin index page
-  
+
   Scenario: Editing a valid event
     Given a valid event called "event 1"
     When I go to the event admin index page
@@ -54,7 +54,7 @@ Feature: Event admin
     Then I should see "Event saved successfully"
     And I should see "New event title"
     And I am on the event admin index page
-    
+
   Scenario: Removing the new event in a duplicate
     Given a valid event called "event 1"
     And a valid event called "event 2"
@@ -74,7 +74,7 @@ Feature: Event admin
     When I press "Remove original event"
     Then I should see "event 1 was deleted"
     And I should not see "event 2"
-  
+
   Scenario: Editing an event mid moderation
     Given a valid event called "event 1"
     And a valid event called "event 2"
@@ -82,7 +82,7 @@ Feature: Event admin
     And I follow "Edit original event"
     And I press "Save"
     Then I should be on the event duplicates page
-    
+
   Scenario: Moderating events with approval
     Given a valid event called "event 1"
     And the event "event 1" is not published yet
@@ -93,7 +93,7 @@ Feature: Event admin
     When I press "Approve"
     Then I should see "event 1 has been published"
     And I should see "event 2"
-  
+
   Scenario: Moderating events with deletion
     Given a valid event called "event 1"
     And the event "event 1" is not published yet
@@ -104,7 +104,7 @@ Feature: Event admin
     When I press "Delete"
     Then I should see "event 1 has been deleted"
     And I should see "event 2"
-  
+
   Scenario: Moderating events with skipping
     Given a valid event called "event 1"
     And the event "event 1" is not published yet

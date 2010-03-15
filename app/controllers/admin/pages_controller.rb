@@ -8,7 +8,7 @@ class Admin::PagesController < Admin::AdminController
   def update
     @page = Page.find(params[:id])
     @page.update_attributes(params[:page])
-    
+
     if @page.save then
       return_or_redirect_to :action => :index
       flash[:page] = "Page saved successfully"

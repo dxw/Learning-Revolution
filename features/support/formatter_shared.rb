@@ -31,7 +31,7 @@ module Cucumber
       tag_names = feature.instance_variable_get('@tags').instance_variable_get('@tag_names')
       tag_names.include?(tag)
     end
-    
+
     def stage_of_feature(feature)
       tagged_stage = nil
       STAGES.each do |stage|

@@ -1,4 +1,4 @@
-class AppConfig  
+class AppConfig
   def self.load
     config_file = File.join(RAILS_ROOT, "config", "application.yml")
 
