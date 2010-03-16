@@ -17,9 +17,13 @@ Feature: Event admin
     And I select "11" from "starthour"
     And I select "20" from "startminute"
     And I select "23rd" from "startday"
+    And I select "November" from "startmonth"
+    And I select "2010" from "startyear"
     And I select "12" from "endhour"
     And I select "20" from "endminute"
     And I select "23rd" from "endday"
+    And I select "November" from "endmonth"
+    And I select "2010" from "endyear"
     And I fill in "Cost" with "£1.50"
     And I fill in "Min Age" with "13"
     And I select "London" from "Venue"
@@ -33,6 +37,7 @@ Feature: Event admin
     And I select "Tom City Council" from "Provider"
     And I press "Submit this event"
     Then I should see "Event created successfully"
+    And I should see "Tuesday 23 Nov 2010"
     And the page is valid XHTML
 
   Scenario: Submitting an empty form

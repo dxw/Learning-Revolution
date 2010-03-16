@@ -1,5 +1,7 @@
 class Admin::EventsController < Admin::AdminController
 
+  include ActionControllerExtra::EventsMixin
+
   before_filter :process_dates, :only => [:create, :update]
 
   make_resourceful do
@@ -33,8 +35,20 @@ class Admin::EventsController < Admin::AdminController
   end
 
   def edit
-    params.merge!({:startday => '%02d'% @event.start.day, :starthour => '%02d'% @event.start.hour, :startminute => '%02d'% @event.start.min})
-    params.merge!({:endday => '%02d'% @event.end.andand.day, :endhour => '%02d'% @event.end.andand.hour, :endminute => '%02d'% @event.end.andand.min}) unless @event.end.blank?
+    params.update :startyear => '%d'% @event.start.year
+    params.update :startmonth => '%d'% @event.start.month
+    params.update :startday => '%d'% @event.start.day
+    params.update :starthour => '%02d'% @event.start.hour
+    params.update :startminute => '%02d'% @event.start.min
+
+    unless @event.end.blank?
+      params.update :endyear => '%d'% @event.end.year
+      params.update :endmonth => '%d'% @event.end.month
+      params.update :endday => '%d'% @event.end.day
+      params.update :endhour => '%02d'% @event.end.hour
+      params.update :endminute => '%02d'% @event.end.min
+    end
+
     params.merge!({:event => {:event_type => @event.event_type, :theme => @event.theme}})
   end
 
@@ -83,23 +97,4 @@ class Admin::EventsController < Admin::AdminController
       duplicate.save!
     end
   end
-
-  def process_dates
-    if params[:startday] and params[:starthour] and params[:startminute]
-      d = params[:startday].to_i
-      h = params[:starthour].to_i
-      m = params[:startminute].to_i
-      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
-    end
-    if params[:endday] and params[:endhour] and params[:endminute]
-      d = params[:endday].to_i
-      h = params[:endhour].to_i
-      m = params[:endminute].to_i
-      begin
-        params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
-      rescue ArgumentError
-      end
-    end
-  end
-
 end

@@ -45,7 +45,7 @@
      <% @events.each do |event| %>
        <li>
        <p><%= link_to event.title, edit_admin_event_path(event) %></p>
-       <p><%= event.start.strftime("%A %e %b") %></p>
+       <p><%= event.start.strftime("%A %e %b %Y") %></p>
        </li>
      <% end %>
    </ul>
