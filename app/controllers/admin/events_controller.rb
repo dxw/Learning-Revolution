@@ -35,19 +35,7 @@ class Admin::EventsController < Admin::AdminController
   end
 
   def edit
-    params.update :startyear => '%d'% @event.start.year
-    params.update :startmonth => '%d'% @event.start.month
-    params.update :startday => '%d'% @event.start.day
-    params.update :starthour => '%02d'% @event.start.hour
-    params.update :startminute => '%02d'% @event.start.min
-
-    unless @event.end.blank?
-      params.update :endyear => '%d'% @event.end.year
-      params.update :endmonth => '%d'% @event.end.month
-      params.update :endday => '%d'% @event.end.day
-      params.update :endhour => '%02d'% @event.end.hour
-      params.update :endminute => '%02d'% @event.end.min
-    end
+    update_date_params @event
 
     params.merge!({:event => {:event_type => @event.event_type, :theme => @event.theme}})
   end

@@ -23,5 +23,22 @@ module ActionControllerExtra
         end
       end
     end
+    def update_date_params obj
+      if params['edit']
+        params.update :startyear => '%d'% obj.start.year
+        params.update :startmonth => '%d'% obj.start.month
+        params.update :startday => '%d'% obj.start.day
+        params.update :starthour => '%02d'% obj.start.hour
+        params.update :startminute => '%02d'% obj.start.min
+
+        unless obj.end.blank?
+          params.update :endyear => '%d'% obj.end.year
+          params.update :endmonth => '%d'% obj.end.month
+          params.update :endday => '%d'% obj.end.day
+          params.update :endhour => '%02d'% obj.end.hour
+          params.update :endminute => '%02d'% obj.end.min
+        end
+      end
+    end
   end
 end

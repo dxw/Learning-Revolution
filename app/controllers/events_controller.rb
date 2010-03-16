@@ -98,23 +98,11 @@ class EventsController < ApplicationController
   def create
     @new_event = Event.new(params[:event])
     if params['edit']
-      params.update :startyear => '%d'% @new_event.start.year
-      params.update :startmonth => '%d'% @new_event.start.month
-      params.update :startday => '%d'% @new_event.start.day
-      params.update :starthour => '%02d'% @new_event.start.hour
-      params.update :startminute => '%02d'% @new_event.start.min
 
-      unless @new_event.end.blank?
-        params.update :endyear => '%d'% @new_event.end.year
-        params.update :endmonth => '%d'% @new_event.end.month
-        params.update :endday => '%d'% @new_event.end.day
-        params.update :endhour => '%02d'% @new_event.end.hour
-        params.update :endminute => '%02d'% @new_event.end.min
-      end
-
+      update_date_params @new_event
       params[:event].update :postcode => @new_event.venue.andand.postcode
-
       render :action => :create
+
     elsif params[:cyberevent]
       succesful_save_redirect if @new_event.save
     else
