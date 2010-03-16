@@ -35,6 +35,8 @@ class Event < ActiveRecord::Base
   Types = ["Workshop", "Taster Session", "Exhibition", "Mini-project", "Competition", "Performance", "Demonstration", "Display", "Class", "Other"]
   Types.sort!
 
+  Years = (2009..2020).map{|y|'%04d'%y}
+  Months = (1..12).map{|m|Date.new(1,m,1).strftime('%B')}
   Days = (1..Date.civil(2009, 10, -1).day).to_a
   Hours = (0..23).map{|h|'%02d'%h}
   Minutes = (0...60).step(5).map{|m|'%02d'%m}

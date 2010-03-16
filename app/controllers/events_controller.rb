@@ -95,9 +95,22 @@ class EventsController < ApplicationController
   def create
     @new_event = Event.new(params[:event])
     if params['edit']
-      params.merge!({:startday => '%02d'% @new_event.start.day, :starthour => '%02d'% @new_event.start.hour, :startminute => '%02d'% @new_event.start.min})
-      params.merge!({:endday => '%02d'% @new_event.end.andand.day, :endhour => '%02d'% @new_event.end.andand.hour, :endminute => '%02d'% @new_event.end.andand.min}) unless @new_event.end.blank?
-      params[:event].merge!({:postcode => @new_event.venue.andand.postcode})
+      params.update :startyear => '%d'% @new_event.start.year
+      params.update :startmonth => '%d'% @new_event.start.month
+      params.update :startday => '%d'% @new_event.start.day
+      params.update :starthour => '%02d'% @new_event.start.hour
+      params.update :startminute => '%02d'% @new_event.start.min
+
+      unless @new_event.end.blank?
+        params.update :endyear => '%d'% @new_event.end.year
+        params.update :endmonth => '%d'% @new_event.end.month
+        params.update :endday => '%d'% @new_event.end.day
+        params.update :endhour => '%02d'% @new_event.end.hour
+        params.update :endminute => '%02d'% @new_event.end.min
+      end
+
+      params[:event].update :postcode => @new_event.venue.andand.postcode
+
       render :action => :create
     elsif params[:cyberevent]
       succesful_save_redirect if @new_event.save
@@ -199,19 +212,25 @@ class EventsController < ApplicationController
   end
 
   def process_dates
-    if params[:startday] and params[:starthour] and params[:startminute]
+    if params[:startyear] and params[:startmonth] and params[:startday] and params[:starthour] and params[:startminute]
+      y = params[:startyear].to_i
+      mo = params[:startmonth].to_i
       d = params[:startday].to_i
       h = params[:starthour].to_i
-      m = params[:startminute].to_i
-      params[:event][:start] = Time.zone.local(2009, 10, d, h, m).to_s
-    end
-    if params[:endday] and params[:endhour] and params[:endminute]
-      d = params[:endday].to_i
-      h = params[:endhour].to_i
-      m = params[:endminute].to_i
-      begin
-        params[:event][:end] = Time.zone.local(2009, 10, d, h, m).to_s
-      rescue ArgumentError
+      mi = params[:startminute].to_i
+      start = Time.zone.local(y, mo, d, h, mi)
+      params[:event][:start] = start.to_s
+
+      if params[:endhour] != 'NONE' and params[:endminute] != 'NONE'
+        y = params[:endyear].to_i unless params[:endyear] == 'NONE'
+        mo = params[:endmonth].to_i unless params[:endmonth] == 'NONE'
+        d = params[:endday].to_i unless params[:endday] == 'NONE'
+        h = params[:endhour].to_i
+        mi = params[:endminute].to_i
+        begin
+          params[:event][:end] = Time.zone.local(y, mo, d, h, mi).to_s
+        rescue ArgumentError
+        end
       end
     end
   end

@@ -61,7 +61,7 @@ module ApplicationHelper
 
   def end_time(event)
     s = ''
-    s += event.end.strftime('%e %B ') unless event.start.strftime('%Y-%M-%d') == event.end.strftime('%Y-%M-%d')
+    s += event.end.strftime('%e %B %Y ') unless event.start.strftime('%Y-%m-%d') == event.end.strftime('%Y-%m-%d')
     s += event.end.strftime("%R%p")
   end
 
