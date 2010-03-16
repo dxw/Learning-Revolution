@@ -15,6 +15,6 @@
        </p>
        <p><%= submit_tag("Send") %></p>
      <% end -%>
-     <p>Changed your mind? <%= link_to("Go back.", events_by_month_path(:year => 2009, :month => 'October', :filter => params[:filter], :view => @last_view)) %></p>
+     <p>Changed your mind? <%= link_to("Go back.", events_by_month_path(:year => Time.zone.now.year, :month => Time.zone.now.strftime('%B'), :filter => params[:filter], :view => @last_view)) %></p>
    </div>
 </div>

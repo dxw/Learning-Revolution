@@ -28,7 +28,6 @@ class EventSweeper < ActionController::Caching::Sweeper
       expire_events
     end
     expire_page(:controller => '/pages', :action => 'index')
-    expire_page(:controller => '/events', :action => 'index', :year => 2009, :month => 'October')
     Rails.cache.clear
   end
 
@@ -36,6 +35,7 @@ class EventSweeper < ActionController::Caching::Sweeper
     Event.all.each do |event|
       %w[atom ics html].map{|f|f.to_sym}.each do |format|
         expire_page(:controller => '/events', :action => 'show', :year => event.start.year, :month => event.start.strftime('%B'), :day => event.start.day, :id => event.slug, :format => format)
+        expire_page(:controller => '/events', :action => 'show', :year => event.start.year, :month => event.start.strftime('%B'))
       end
     end
   end

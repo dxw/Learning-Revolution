@@ -23,7 +23,7 @@
 
   <div class="current_event_filtering clearfix">
     <div class="span-11">
-      <h2 class="find_an_event">Find an Event in October</h2>
+      <h2 class="find_an_event">Find an Event in <%= params[:month] %></h2>
       <h3 class="filter_description"><%= current_filter_description%></h3>
 
     </div>
@@ -43,7 +43,7 @@
 
   <div class="event_filtering clearfix">
     <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
-    <div class="add_event_link">Organising an event in October? <%= link_to "Add it to the calendar here", "#new_event" %></div>
+    <div class="add_event_link">Organising an event? <%= link_to "Add it to the calendar here", "#new_event" %></div>
 
     <div class="form_wrapper">
       <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
@@ -52,7 +52,7 @@
           <label for="filter_theme">Area of Interest</label>
           <%= select_tag "filter[theme]", options_for_select([['Any', ""]]+Event::Themes, params[:filter][:theme]) %>
           <div class="input_tip">
-             <div class="tooltip">There are lots of events going on during October. You can use this to select a subject that interests you, or leave it as it is to display everything.</div>
+             <div class="tooltip">There are lots of events going on during <%= params[:month] %>. You can use this to select a subject that interests you, or leave it as it is to display everything.</div>
              <div class="tooltip_arrow"></div>
           </div>
         </div>
