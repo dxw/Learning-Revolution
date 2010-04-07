@@ -6,17 +6,15 @@
 <%# you have to explicitly add the classes here, because google maps sizes the containing speech bubble first %>
 <ul>
   <%# one for every day in October %>
-  <% dates = Array(1..31) %>
+  <% dates = [] %>
   <% @venue.find_events_by_event_params(@filters).sort_by{|ev|ev.start}.each do |ev| %>
     <% if ev.published %>
        <li class="gmap_resized">
          <%# cycle through possible dates to add a sub heading for each day, before listing events %>
-         <% dates.each do |d| %>
-           <% if d == ev.start.day %>
-             <h5><%= ev.start.strftime"%a %d %b" %></h5>
-             <%# once a day has been listed, we don't want to see it printed on the next iteration %>
-             <% dates.delete(d) %>
-           <% end %>
+         <% unless dates.member? ev.start.strftime('%Y-%m-%d') %>
+           <h5><%= ev.start.strftime"%a %d %b" %></h5>
+           <%# once a day has been listed, we don't want to see it printed on the next iteration %>
+           <% dates << ev.start.strftime('%Y-%m-%d') %>
          <% end %>
 
          <p><%= make_link(ev, "#{ev.start.strftime('%H:%M%p')} - #{ev.title}", params[:filter], 'map') %></p>
