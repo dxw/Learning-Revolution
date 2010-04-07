@@ -7,7 +7,7 @@
 <ul>
   <%# one for every day in October %>
   <% dates = Array(1..31) %>
-  <% @venue.find_events_by_event_params(@filters).each do |ev| %>
+  <% @venue.find_events_by_event_params(@filters).sort_by{|ev|ev.start}.each do |ev| %>
     <% if ev.published %>
        <li class="gmap_resized">
          <%# cycle through possible dates to add a sub heading for each day, before listing events %>
