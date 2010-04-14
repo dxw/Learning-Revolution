@@ -46,7 +46,7 @@
     <div class="add_event_link">Organising an event? <%= link_to "Add it to the calendar here", "#new_event" %></div>
 
     <div class="form_wrapper">
-      <% form_tag current_events_path, :method => :get, :id => "events_filter_form" do %>
+      <% form_tag url_for(:month => params[:month], :year => params[:year], :format => 'html'), :method => :get, :id => "events_filter_form" do %>
 
         <div class="filter filter_theme clearfix input_with_tip">
           <label for="filter_theme">Area of Interest</label>
