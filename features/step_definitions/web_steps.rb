@@ -251,7 +251,7 @@ end
 
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   if defined?(Spec::Rails::Matchers)
-    URI.parse(current_url).path.should == path_to(page_name)
+    URI.parse(current_url).select(:path,:query,:fragment).should == URI.parse(path_to(page_name)).select(:path,:query,:fragment)
   else
     assert_equal path_to(page_name), URI.parse(current_url).path
   end

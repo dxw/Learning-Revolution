@@ -11,7 +11,6 @@ Feature: Email Subscription
     And the event "Cheese Rolling" has the theme "Sport and Physical Activity"
     And the event "Cheese Rolling" starts on "12th October 2009 12:00"
 
-  @broken
   Scenario: Requesting an email of a filtered selection of events
     Given I am on the calendar for October 2009 filtered by the theme "Food and Cookery"
     When I follow "Get email alerts for events like these"
