@@ -5,7 +5,6 @@
 <%# then loop through events %>
 <%# you have to explicitly add the classes here, because google maps sizes the containing speech bubble first %>
 <ul>
-  <%# one for every day in October %>
   <% dates = [] %>
   <% @venue.find_events_by_event_params(@filters).sort_by{|ev|ev.start}.each do |ev| %>
     <% if ev.published %>
