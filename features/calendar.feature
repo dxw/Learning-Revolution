@@ -61,13 +61,13 @@ Feature: Calendar
     When I follow "Event 1"
     Then I should see "Listings for 1st October 2009"
     When I follow "« Back to search results"
-    Then I should be on the calendar for October 2009
+    Then I should be on the calendar for October 2009 - searched
     And I should see "Event 1"
     And I should not see image "How to use this site"
     When I follow "Event 1"
     Then I should see "Listings for 1st October 2009"
     When I follow "Events"
-    Then I should be on the calendar for October 2009
+    Then I should be on the calendar for October 2009 - searched
     And I should see "Event 1"
     And I should not see image "How to use this site"
 
