@@ -43,7 +43,7 @@ class EventsController < ApplicationController
 
   def show
     if params[:id].nil?
-      @event = Event.first_for_day(Time.zone.local(2009, 10, params[:day].to_i))
+      @event = Event.first_for_day(Time.zone.local(params[:year].to_i, Time.parse("#{params[:month]} #{params[:year]}").month, params[:day].to_i))
 
       redirect_to path_for_event(@event, params[:filter], params[:last_view]).gsub('&amp;', '&') and return
     else
