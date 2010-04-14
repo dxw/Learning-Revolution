@@ -10,7 +10,7 @@ class EmailSubscriptionsController < ApplicationController
     @email_subscription.filter = params[:filter]
     if @email_subscription.save
       flash[:notice] = "Your events have been sent to #{@email_subscription.email}."
-      redirect_to(events_by_month_path(:year => 2009, :month => 'October', :filter => params[:filter], :view => params[:last_view]))
+      redirect_to(events_by_month_path(:year => Time.zone.now.year, :month => Time.zone.now.strftime('%B'), :filter => params[:filter], :view => params[:last_view]))
     else
       flash[:notice] = "There was a problem with your email address."
       render(:action => :new)
