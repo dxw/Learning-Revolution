@@ -21,7 +21,6 @@ Feature: Email Subscription
     And I should see "sent to example@example.com"
     And I should receive an events listing email
 
-  @broken
   Scenario: Subscribing to event updates by email
     Given I have requested an email of events filtered by the theme "Food and Cookery"
     And I have received the events listing email
@@ -29,7 +28,6 @@ Feature: Email Subscription
     And I follow "subscription" in the email
     Then I should see "now subscribed"
 
-  @broken
   Scenario: Receiving an event update when new events have been added
     Given I have subscribed to updates about events filtered by the theme "Sport and Physical Activity"
     When someone adds an event called "Goose Juggling" with the theme "Sport and Physical Activity"
@@ -38,7 +36,6 @@ Feature: Email Subscription
     Then I should receive an event update email
     And I should see "Goose Juggling" within the email body
 
-  @broken
   Scenario: Unsubscribing from event updates by email
     Given I have subscribed to updates about events filtered by the theme "Sport and Physical Activity"
     And I have received an event update email

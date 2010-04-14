@@ -24,12 +24,23 @@
 #
 # The Cucumber steps below are setup in this order.
 
+include EmailSpec::Helpers
+
 module EmailHelpers
   def current_email_address
     # Replace with your a way to find your current email. e.g @current_user.email
     # last_email_address will return the last email address used by email spec to find an email.
     # Note that last_email_address will be reset after each Scenario.
     last_email_address || "example@example.com"
+  end
+  def parse_email_for_link(email, text_or_regex)
+    email.body.should match(text_or_regex)
+
+    url = parse_email_for_explicit_link(email, text_or_regex)
+    url ||= parse_email_for_anchor_text_link(email, text_or_regex)
+
+    raise "No link found matching #{text_or_regex.inspect} in #{email}" unless url
+    url
   end
 end
 
@@ -88,7 +99,7 @@ end
 
 # Hacky use of 'within' to avoid conflict with steps in inspection_steps.rb
 Then /^(?:I|they) should see "([^"]*?)" within the email subject$/ do |text|
-  current_email.should have_subject(Regexp.new(text))
+  current_email.subject.should match(Regexp.new(text))
 end
 
 Then /^(?:I|they) should see "([^"]*?)" within the email body$/ do |text|
