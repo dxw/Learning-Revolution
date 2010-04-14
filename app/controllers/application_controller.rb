@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_events_path(options={})
-    events_by_month_path(2009, "October", options)
+    events_by_month_path(Time.zone.now.year, Time.zone.now.strftime('%B'), options)
   end
 
   def render_500(exception=nil)
