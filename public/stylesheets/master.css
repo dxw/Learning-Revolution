@@ -498,16 +498,6 @@ div.new_event{
 }
 
 
-#content_header h2.find_an_event{
-  display:block;
-  background-image:url(/images/headings/hd_find_an_event_in_october.gif);
-  height:65px;
-  width:400px;
-  background-repeat:no-repeat;
-  text-indent:-9999em;
-  margin-left:32px;
-}
-
 #content_header img.heading{
   margin-left:42px;
   margin-top:24px;
@@ -836,4 +826,22 @@ body.c_email_subscriptions #content_header h2 {
 
 .awesome.wide {
   width: 300px !important;
+}
+
+h2, h3, h4 {
+  color: #8b1713;
+  padding: 10px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+h3 {
+  font-size: 130%;
+}
+
+h4 {
+  font-size: 120%;
 }

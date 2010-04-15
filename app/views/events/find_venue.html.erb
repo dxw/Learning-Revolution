@@ -2,7 +2,7 @@
 
   <div id="content_header" class="clearfix">
 
-    <p><%= image_tag('headings/hd_choose_a_venue_for_this_event.gif', :class => "heading") %></p>
+    <h2>Choose a venue for this event</h2>
 
     <% unless @venues.blank? %>
       <h3 class="heading">We may already have the details of your venue &mdash; is it one of these? </h3>
@@ -45,7 +45,7 @@
   <div class="add_a_new_venue">
    <% form_for @new_event, :url => preview_events_path(:event => params[:event]) do %>
 
-     <div><h4><%= image_tag 'headings/hd_add_a_venue_to_the_listings_smaller.gif', :alt => "Add a venue to the listings" %></h4></div>
+     <div><h4>Add a venue to the listings</h4></div>
 
      <div class="input clearfix">
        <p><label for="venue_name">Venue name</label>

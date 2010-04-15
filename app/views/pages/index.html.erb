@@ -1,7 +1,7 @@
   <div class="row clearfix" id="intro">
       <div class="featured_block">
 
-        <p><img src="/images/headings/hd_be_a_part_of_the_festival_of_learning.gif" alt="Be a part of the Festival" class = 'be_a_part_of_the_festival'/></p>
+        <h2>Be a part of the festival of learning</h2>
 
         <!--<p><img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" /></p>-->
 
@@ -49,7 +49,7 @@
 
     <div class="content_block">
       <div class="featured content_block_content secondary_block">
-        <p><img src="/images/headings/hd_featured_events.gif" alt="Featured Events" /></p>
+        <h2>Featured events</h2>
         <ul>
         <% Event.featured.find(:all, :limit => 3).each do |event| %>
           <li class="clearfix">
@@ -74,11 +74,11 @@
     </div>
     <div class="content_block">
       <div class="content_block_content secondary_block share_space_and_groups">
-        <p><img src="/images/headings/hd_add_to_the_calendar.gif" alt="Share your Space for Events" class="share_space" /></p>
+        <h2>Add to the calendar</h2>
         <p class="caption">Running a learning event? Add details of it here.</p>
 
         <%= link_to 'Add your event', current_events_path+"#new_event", :class => 'awesome large' %>
-        <p><img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group" /></p>
+        <h2>Organise your group</h2>
         <p class="caption">Meet other organisers and get help organising your group.</p>
         <%= link_to 'Join our network', 'http://thelearningrevolution.ning.com', :class => 'awesome large' %>
       </div>
@@ -86,7 +86,7 @@
     <div class="content_block last">
       <div class="content_block_content secondary_block">
 
-        <%= image_tag('headings/hd_follow_the_festival.gif', :alt => 'Follow the Festival', :class => "follow_festival") %>
+        <h2>Follow the festival</h2>
 
         <!-- bis newsletter -->
         <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
@@ -122,11 +122,11 @@
     <div class="photos_and_videos clearfix">
 
         <div class="photos">
-          <%= image_tag('headings/hd_photos_from_our_events.gif', :alt => "Photos from our events", :class => 'heading') %>
+          <h2>Photos from our events</h2>
           <%= link_to "Photos from our flickr account", "http://www.flickr.com/photos/learningrevolution", :class => "flickr_photos" %>
         </div>
         <div class="videos">
-          <%= image_tag('headings/hd_video_from_our_events.gif', :alt => "Video from our events", :class => 'heading') %>
+          <h2>Videos from our events</h2>
           <%= link_to "Videos from our YouTube account", "http://www.youtube.com/user/learnrevolution", :class => "youtube_videos" %>
         </div>
 

@@ -12,7 +12,7 @@
 
       <div class="detail">
 
-      <%= image_tag('headings/hd_when.gif', :alt => 'When') %>
+      <h3>When</h3>
 
       <div class="time">
         <abbr class="dtstart" title="<%= event.start.iso8601 %>"><%= event.start.strftime("%e %B %Y %R%p") %></abbr>
@@ -28,7 +28,7 @@
 
       <div class="detail">
 
-      <%= image_tag('headings/hd_where.gif', :alt => 'Where') %>
+      <h3>Where</h3>
       <% if event.venue.present? %>
         <h4><%= event.venue.name %></h4>
 
@@ -52,24 +52,24 @@
     <div class="span-2">
 
       <div class="detail">
-        <%= image_tag('headings/hd_category.gif', :alt => 'Type') %>
+        <h3>Type</h3>
         <p><%= event.event_type.blank? ? "Other" : event.event_type %></p>
       </div>
       <div class="detail">
-        <%= image_tag('headings/hd_event_type.gif', :alt => 'Theme') %>
+        <h3>Theme</h3>
         <p><%=h event.theme.blank? ? "Other" : event.theme %></p>
       </div>
 
       <% unless event.cost.blank? %>
       <div class="detail">
-        <%= image_tag('headings/hd_cost.gif', :alt => 'Cost') %>
+        <h3>Cost</h3>
         <p><%= event.cost %></p>
       </div>
       <% end %>
 
       <% unless event.more_info.blank? %>
       <div class="detail">
-        <%= image_tag('headings/hd_more_info.gif', :alt => 'More info URL') %>
+        <h3>More info</h3>
         <p><%= link_to "More information &raquo;", event.more_info %></p>
         <p class="not_endorsed">Please note: We have not reviewed external links and we do not endorse them.</p>
       </div>
@@ -99,12 +99,12 @@
   <div class="description half_page">
 
     <% unless event.description.blank? %>
-      <%= image_tag('headings/hd_event_details_smaller.gif', :alt => 'Event Details') %>
+      <h3>Event details</h3>
       <%= simple_format(auto_link(event.description)) %>
     <% end %>
 
     <% unless params[:action] == 'show' %>
-      <%= image_tag('headings/hd_contact_details.gif', :alt => 'Contact Details') %>
+      <h3>Contact details</h3>
       <p class="form_help">These details will not be publicly displayed</p>
       <p class="vcard">
         <span class="fn n"><%= "#{event.contact_name} - " %></span>

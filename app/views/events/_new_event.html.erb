@@ -4,7 +4,7 @@
 
     <% form_for @new_event, :url => find_venue_for_events_path do |event_form| %>
 
-    <p><%= image_tag('headings/hd_add_an_event_to_the_calendar.gif', :alt=> "Add an event to the calendar") %></p>
+    <h2>Add an event to the calendar</h2>
 
     <%= render :partial => 'time_venue_date', :locals => {:event_form => event_form} %>
 
