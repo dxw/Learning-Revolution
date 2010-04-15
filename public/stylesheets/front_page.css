@@ -27,7 +27,7 @@ body#pages_index .footer p a, body#pages_index .footer p{
 }
 
 #intro{
-  overflow:hidden;
+  min-height: 280px;
 }
 
 .row .featured_block {
