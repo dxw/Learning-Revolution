@@ -417,7 +417,7 @@ describe Event do
         :start => Time.utc(2009, 10, 1, 9),
         :end => Time.utc(2009, 10, 1, 11),
         :description => 'value for description',
-        :url => "http://learningrevolution.direct.gov.uk/events/2009/October/1/value-for-title-#{@event.id}"
+        :url => "http://example.uk/events/2009/October/1/value-for-title-#{@event.id}"
       ).and_return(OpenStruct.new(:event_id => 12345))
 
       @event.post_to_upcoming!

@@ -37,7 +37,7 @@ production:
   bitly_account: learningrevolution
   bitly_api_key: R_3440f2303ec9952df2250801cfba4baa
 
-  bitly_target_host: http://learningrevolution.direct.gov.uk
+  bitly_target_host: http://example.uk
 
   event_uri_template: /events/:year/:month/:day/:stub
 

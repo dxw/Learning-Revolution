@@ -337,7 +337,7 @@ class Event < ActiveRecord::Base
       :start => start,
       :end => self.end,
       :description => description,
-      :url => "http://learningrevolution.direct.gov.uk/events/#{start.year}/#{Date::MONTHNAMES[start.month]}/#{start.day}/#{slug}"
+      :url => "http://example.uk/events/#{start.year}/#{Date::MONTHNAMES[start.month]}/#{start.day}/#{slug}"
     )
 
     self.upcoming_event_id = upcoming_event.event_id

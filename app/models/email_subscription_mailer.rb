@@ -4,14 +4,14 @@ class EmailSubscriptionMailer < ActionMailer::Base
   def listing(email_subscription, events)
     subject    "Your Learning Revolution events listing"
     recipients email_subscription.email
-    from       'Learning Revolution <noreply@learningrevolution.direct.gov.uk>'
+    from       'Learning Revolution <noreply@example.uk>'
     body       :email_subscription => email_subscription, :events => events
   end
 
   def update(email_subscription, events)
     subject    "Your Learning Revolution events update"
     recipients email_subscription.email
-    from       'Learning Revolution <noreply@learningrevolution.direct.gov.uk>'
+    from       'Learning Revolution <noreply@example.uk>'
     body       :email_subscription => email_subscription, :events => events
   end
 
