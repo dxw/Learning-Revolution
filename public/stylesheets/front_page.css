@@ -197,24 +197,24 @@ img.button{
   margin-top:12px;
 }
 
-/* BIS email sign up */
+/* email sign up */
 
-form#bis_email_signup{
+form#email_signup{
   margin-bottom:12px;
   margin-left:6px;
 }
-#bis_email_signup label{
+#email_signup label{
   font-size:0.83em;;
   display:block;
 }
-#bis_email_signup input{
+#email_signup input{
   width:150px;
 }
-#bis_email_signup .info{
+#email_signup .info{
   margin-top:6px;
   clear:both;
 }
-#bis_email_signup span.button{
+#email_signup span.button{
   position:relative;
   left:-6px;
 }
