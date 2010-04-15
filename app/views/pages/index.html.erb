@@ -1,14 +1,12 @@
   <div class="row clearfix" id="intro">
       <div class="featured_block">
 
-        <h2>Be a part of the festival of learning</h2>
+        <h2>Call to action/heading</h2>
 
-        <!--<p><img id="calendar_thumbnail" class="calendar_thumbnail"  src="/images/calendar_front_page_thumbnail.jpg" alt="(calendar thumbnail)" /></p>-->
+        <p class="standfirst">Standfirst.</p>
+        <p class="subheading">Subheading</p>
 
-        <p class="standfirst">Throughout &lt;Insert Month Name&gt;, find hundreds of open events and try something new.</p>
-        <p class="subheading">Learning for pleasure is about discovering new things, building your skills and knowledge, and getting the most out of your free time.</p>
-
-      <%= link_to 'Find something new to do', current_events_path, :id => 'view_event_calendar', :class => 'awesome large' %>
+      <%= link_to 'Find something to do', current_events_path, :id => 'view_event_calendar', :class => 'awesome large' %>
 
       </div>
 
@@ -75,28 +73,26 @@
     <div class="content_block">
       <div class="content_block_content secondary_block share_space_and_groups">
         <h2>Add to the calendar</h2>
-        <p class="caption">Running a learning event? Add details of it here.</p>
-
+        <p class="caption">Running an event? Add details of it here.</p>
         <%= link_to 'Add your event', current_events_path+"#new_event", :class => 'awesome large' %>
-        <h2>Organise your group</h2>
-        <p class="caption">Meet other organisers and get help organising your group.</p>
-        <%= link_to 'Join our network', 'http://thelearningrevolution.ning.com', :class => 'awesome large' %>
+        <h2>Other call to action</h2>
+        <p class="caption">Something something something.</p>
+        <%= link_to 'Lorum ipsum', 'http://lipsum.lipsum.com/', :class => 'awesome large' %>
       </div>
     </div>
     <div class="content_block last">
       <div class="content_block_content secondary_block">
 
-        <h2>Follow the festival</h2>
+        <h2>Newsletter sign-up form</h2>
 
-        <!-- bis newsletter -->
-        <form action="http://bis.createsend.com/t/r/s/tyjrdi/" method="post" id="bis_email_signup">
+        <form action="http://example.org/" method="post" id="email_signup">
           <div class="info">
             <span class="label"><label  for="name">Name:</label></span>
-            <span><input type="text" tabindex="0" name="cm-name" id="name" size="25" /></span>
+            <span><input type="text" tabindex="0" name="name" id="name" size="25" /></span>
           </div>
           <div class="info">
-            <span class="label"><label for="tyjrdi-tyjrdi">Email Address:</label></span>
-            <span><input type="text" tabindex="1" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
+            <span class="label"><label for="email">Email Address:</label></span>
+            <span><input type="text" tabindex="1" name="email" id="email" size="25" /></span>
           </div>
           <div>
             <span class="button"><input type="submit" class="awesome small" tabindex="2" value="Sign up" /></span>
@@ -104,10 +100,8 @@
         </form>
 
         <ul class="sm_icons">
-          <li class="twitter"><%= link_to "@learnrevolution", "http://twitter.com/learnrevolution" %></li>
-         <!-- Commented out pending link from BIS -->
-         <!-- <li class="facebook"><%= link_to "Become a fan" %></li> -->
-          <li class="rss"><%= link_to "News Feed", "http://thelearningrevolution.ning.com/profiles/blog/feed?xn_auth=no" %></li>
+          <li class="twitter"><%= link_to "@dextrousweb", "http://twitter.com/dextrousweb" %></li>
+          <li class="rss"><%= link_to "News Food", "http://example.org/food.atom" %></li>
         </ul>
       </div>
     </div>
@@ -123,11 +117,11 @@
 
         <div class="photos">
           <h2>Photos from our events</h2>
-          <%= link_to "Photos from our flickr account", "http://www.flickr.com/photos/learningrevolution", :class => "flickr_photos" %>
+          <%= link_to "Photos from our flickr account", "http://www.flickr.com/photos/sample", :class => "flickr_photos" %>
         </div>
         <div class="videos">
           <h2>Videos from our events</h2>
-          <%= link_to "Videos from our YouTube account", "http://www.youtube.com/user/learnrevolution", :class => "youtube_videos" %>
+          <%= link_to "Videos from our YouTube account", "http://www.youtube.com/user/communitychannel", :class => "youtube_videos" %>
         </div>
 
     </div>

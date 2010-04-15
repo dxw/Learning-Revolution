@@ -1,3 +1,13 @@
+<div id="content_header">
+
+  <h2>New venue</h2>
+
+  <h3 class="heading">Something.</h3>
+
+  <%= (flash[:venue].nil? ? '' : "<div class='admin_flash'>#{flash[:venue]}</div>") %>
+  <%= (flash[:duplicates].nil? ? '' : "<div class='admin_flash'>#{flash[:duplicates]}</div>") %>
+</div>
+
 <div class="form_wrapper clearfix">
    <% form_for [:admin, @venue] do |venue_form| %>
      <%= render :partial => "fields", :locals => {:venue_form => venue_form} %>
