@@ -2,16 +2,8 @@
 
 body#pages_index .content{
   width:auto;
-  background-image:url(/images/fol_bg_silhouette.jpg);
-  background-repeat: repeat-x;
-  background-color:#8B1713;
-/*  background-attachment:fixed;*/
-  background-position: 0 410px;
-
 }
 body#pages_index .footer{
-  color:#8B1713;
-  background-image:none;
   width:auto;
 }
 body#pages_index .footer p a, body#pages_index .footer p{
@@ -95,7 +87,7 @@ a#view_event_calendar{
   height:238px;
   width:20px;
   z-index:100;
-  background-color:#40000B;
+  background-color:#555;
   text-align:center;
   color:#fff;
 }
@@ -107,7 +99,7 @@ a#view_event_calendar{
 }
 .row .featured_event_nav a.activeSlide {
   background-color:#fff;
-  color:#40000B;
+  color:#555;
 }
 .row .featured_event ul{
   height:280px;
@@ -155,7 +147,7 @@ img.follow_festival{
 .content_block_content li{
   position:relative;
   padding-left:85px;
-  border-bottom:1px solid #8b1713;
+  border-bottom:1px solid #333;
   padding-bottom:6px;
   margin-bottom:6px;
   list-style: none;

@@ -48,10 +48,10 @@ form label.hidden{
 
 /* Setting basic link styles */
 a{
-  color:#8b1713;
+  color:#555;
 }
 a:visited{
-  color:#8b1713;
+  color:#555;
 }
 
 .trans a
@@ -79,16 +79,16 @@ a:visited{
 /* Page Layout */
 
 body {
-  background-color:#8b1713;
+  background-color:#555;
   font-size:0.75em;
   font-family: Verdana, sans-serif;
   line-height:18px;
   text-align:center;
 }
-div.header, .header h1
+div.header h1
 {
   width:940px;
-  margin:0 auto;
+  margin:30px auto;
   text-align:left;
 }
 .container{
@@ -156,28 +156,16 @@ p.post_code_error{
 .content{
   width:970px;
   text-align:left;
-  background-image:url(/images/bg/bg_top.jpg);
-  background-position: -35px 0;
-  background-repeat: no-repeat;
   background-color: #fff;
   padding-top:18px;
 }
 
-.content .news, .content .cms{
-  background-image:url(/images/bg/bg_mid.png);
-  background-position: -35px 0;
-  background-repeat:repeat-y;
-}
 .content .cms{
   width:970px;
 }
 /* Nav bar across the whole page */
 
 .nav_banner {
-  background-color:transparent;
-  background-image: url(/images/css/nav_menu_bg.png);
-  background-position:top;
-  background-repeat: repeat-x;
   height:60px;
 }
 .nav {
@@ -196,67 +184,13 @@ p.post_code_error{
   padding-bottom:0px;
   font-size:1.2em;
   height:60px;
-  background-color:transparent;
-  background-image: url(/images/css/nav_menu_icon_bg.png);
-  text-indent:-9999em;
   width:60px;
 }
-.nav li.home, .nav li.home a {
-  background-position:-10px 1px;
-}
-.nav li.events, .nav li.events a{
-  background-position:-235px 1px;
-}
-.nav li.news, .nav li.news a{
-  background-position:-470px 1px;
-}
-/* promote are the only menu icons wide enough to need a different size */
-.nav li.promote_your_event{
-  background-position:-595px 1px;
-  width:245px;
-  float:right;
-  position:relative;
-  margin-right:0px;
-}
-.nav li.promote_your_event a{
-  background-position:-595px 1px;
-  width:245px;
-}
-.nav li.about, .nav li.about a{
-  background-position:-130px 1px;
-}
-.nav li.venues, .nav li.venues a{
-  background-position:-880px 1px;
-}
-.nav li.pages, .nav li.pages a{
-  background-position:-750px 1px;
-}
 .nav li a{
-  background-image: url(/images/css/nav_menu_icon_bg.png);
   display:block;
   height:60px;
   width:110px;
-}
-.nav li.home a:hover{
-  background-position:-10px -69px;
-}
-.nav li.events a:hover{
-  background-position:-236px -69px;
-}
-.nav li.news a:hover{
-  background-position:-470px -69px;
-}
-.nav li.promote_your_event a:hover{
-  background-position:-595px -69px;
-}
-.nav li.about a:hover{
-  background-position:-130px -69px;
-}
-.nav li.venues a:hover{
-  background-position:-880px -69px;
-}
-.nav li.pages a:hover{
-  background-position:-750px -69px;
+  color: #fff;
 }
 
 
@@ -283,12 +217,6 @@ p.post_code_error{
   margin-right:0px;
 }
 
-.trans {
-  background: transparent url(/images/css/white_trans.png);
-}
-.grad {
-  background: transparent url(/images/css/front_page_gradient.png);
-}
 
 .quarter_page {
   width:220px;
@@ -397,14 +325,10 @@ p.post_code_error{
 /* Events */
 
 .events, .new_event{
-  background-image: url(/images/bg/bg_mid.png);
-  background-position: -35px 0px;
   width:970px;
   margin-top:12px;
 }
 .news, .about, .terms-conditions, .privacy-policy{
-background-image: url(/images/bg/bg_mid.png);
-background-position: -35px 0px;
 width:970px;
 }
 
@@ -428,9 +352,8 @@ div.new_event{
 .form_wrapper, .content_wrapper {
   border-bottom:1px solid #C2C2C3;
   border-top:1px solid #C2C2C3;
+  background: #fff;
   padding:18px 0;
-  background-image:url(/images/css/silver_bg.png);
-  background-position:0 -80px;
   width:959px;
   float:left;
 }
@@ -556,7 +479,7 @@ p.filter_edit{
 .keyword{
   font-style:italic;
   font-weight:bold;
-  color:#8b1713;
+  color:#555;
 }
 ul.search_subscription_options{
   float:left;
@@ -626,7 +549,7 @@ ul.search_subscription_options li{
 }
 
 span.optional{
-  color:#8B1713;
+  color:#555;
   font-style:italic;
   display: block;
 }
@@ -715,9 +638,6 @@ input.continue{
 .footer{
   min-height:30px;
   width:100%;
-  background-color: #8b1713;
-  background-image: url(/images/bg/bg_bottom.png);
-  background-position: -35px -5px;
   text-align:center;
   margin-left:auto;
   margin-right:auto;
@@ -727,7 +647,7 @@ input.continue{
   width:970px;
 }
 .footer p, .footer  a{
-    color:#8b1713;
+    color:#fff;
 }
 
 .form_help {
@@ -804,11 +724,11 @@ body.c_email_subscriptions #content_header h2 {
   padding: 0 0 12px 0;
   font-size: 2em;
   font-weight: bold;
-  color: #8b1713;
+  color: #555;
 }
 
 .awesome {
-  background-color: #651411 !important;
+  background-color: #555 !important;
   font-weight: bold !important;
   margin: 5px 10px 10px !important;
   text-align: center !important;
@@ -829,9 +749,17 @@ body.c_email_subscriptions #content_header h2 {
 }
 
 h2, h3, h4 {
-  color: #8b1713;
+  color: #555;
   padding: 10px;
   font-weight: bold;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+h1 a {
+  color: #fff !important;
 }
 
 h2 {
@@ -844,4 +772,8 @@ h3 {
 
 h4 {
   font-size: 120%;
+}
+
+.trans {
+  background: #fff;
 }

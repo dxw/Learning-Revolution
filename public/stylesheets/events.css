@@ -1,7 +1,7 @@
 /**/
 
 #selector{
-  background-image:url(/images/css/selector_bg.png);
+  background: #555;
   width:960px;
   padding-top:2px;
   padding-bottom:4px;
@@ -27,18 +27,18 @@
 
 }
 #selector ul li.map a:hover, #selector ul li.map_selected a{
-  color:#8b1713;
-  background-image:url(/images/css/selector_bg_hover.gif);
+  color:#555;
+  background: #fff;
   background-position:-67px -10px;
 }
 #selector ul li.calendar a:hover, #selector ul li.calendar_selected a{
-  color:#8b1713;
-  background-image:url(/images/css/selector_bg_hover.gif);
+  color:#555;
+  background: #fff;
   background-position:-135px -10px;
 }
 #selector ul li.list_view a:hover, #selector ul li.list_view_selected a{
-  color:#8b1713;
-  background-image:url(/images/css/selector_bg_hover.gif);
+  color:#555;
+  background: #fff;
   background-position:-70px -10px;
 }
 
@@ -132,12 +132,12 @@ h3.no_events{
 }
 .events .calendar_view .event a {
   text-decoration:none;
-  color:#781B30;
+  color:#555;
   margin:0px;
   padding:0px;
 }
 .events .calendar_view .event a.allday {
-  background-color:#781B30;
+  background-color:#555;
   color:#fff;
 }
 
@@ -181,7 +181,7 @@ h4.gmap_venue_title{
 }
 p.gmap_venue_address{
     font-style:italic;
-    color:#333;
+    color:#555;
 }
 li.gmap_resized p{
     font-weight:bold;
@@ -242,7 +242,7 @@ li.gmap_resized h5{
 }
 li.event_link{
 
-  border-bottom:1px solid #8b1713;
+  border-bottom:1px solid #555;
   list-style: none;
   background-color: transparent;
 }
@@ -252,7 +252,7 @@ li.event_link a{
   font-style:italic;
   font-size:1.5em;
   width:80%;
-  color:#8b1713;
+  color:#555;
   padding:12px 10% 12px 10%;
   background-color: transparent;
   line-height:1.2;
@@ -264,7 +264,7 @@ text-decoration: none;
 font-style:italic;
 font-size:1.5em;
 width:80%;
-color:#8b1713;
+color:#555;
 padding:12px 10% 12px 10%;
 background-color: transparent;
 line-height:1.2;
@@ -273,10 +273,10 @@ overflow:hidden;
 
 li.event_link a:hover{
   background-color:#fff;
-  color:#8b1713;
+  color:#555;
 }
 li.event_link.active a, li.event_link.active a:hover, #events_list li.active span{
-  background-color:#8b1713;
+  background-color:#555;
   color:#fff;
 }
 
