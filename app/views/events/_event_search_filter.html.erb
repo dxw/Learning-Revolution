@@ -42,7 +42,7 @@
   </div>
 
   <div class="event_filtering clearfix">
-    <h3 class="toggles"><%= image_tag('buttons/bt_find_events_in_your_area.gif') %></h3>
+    <h3 class="toggles awesome medium wide">Find events in your area</h3>
     <div class="add_event_link">Organising an event? <%= link_to "Add it to the calendar here", "#new_event" %></div>
 
     <div class="form_wrapper">
@@ -83,7 +83,7 @@
          <%= hidden_field_tag "view", params[:view] %>
 
           <a href="#events_filter_form" class="cancel_search toggles" id="hides_events_filter_form_wrapper">cancel</a>
-          <%= image_submit_tag(filter_check_button_path, :alt => "Search For Events", :class => "search_for_events") %>
+          <%= submit_tag("Search For Events", :class => "search_for_events awesome medium") %>
         </div>
 
       <% end %>

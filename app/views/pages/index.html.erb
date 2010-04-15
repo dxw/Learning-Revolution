@@ -8,9 +8,7 @@
         <p class="standfirst">Throughout &lt;Insert Month Name&gt;, find hundreds of open events and try something new.</p>
         <p class="subheading">Learning for pleasure is about discovering new things, building your skills and knowledge, and getting the most out of your free time.</p>
 
-      <%= link_to image_tag('buttons/bt_find_something_new.gif',
-                            :alt => "View Event Calendar"),
-                            current_events_path, :id => 'view_event_calendar' %>
+      <%= link_to 'Find something new to do', current_events_path, :id => 'view_event_calendar', :class => 'awesome large' %>
 
       </div>
 
@@ -79,10 +77,10 @@
         <p><img src="/images/headings/hd_add_to_the_calendar.gif" alt="Share your Space for Events" class="share_space" /></p>
         <p class="caption">Running a learning event? Add details of it here.</p>
 
-        <%= link_to image_tag('buttons/bt_add_your_event.gif', :alt => 'Add your Event', :class => 'button'), current_events_path+"#new_event" %>
+        <%= link_to 'Add your event', current_events_path+"#new_event", :class => 'awesome large' %>
         <p><img src="/images/headings/hd_organise_your_group.gif" alt="Organise Your Group" class="organise_group" /></p>
         <p class="caption">Meet other organisers and get help organising your group.</p>
-          <%= link_to image_tag('buttons/bt_join_our_network.gif', :alt => 'Join our Network', :class => 'button'), 'http://thelearningrevolution.ning.com' %>
+        <%= link_to 'Join our network', 'http://thelearningrevolution.ning.com', :class => 'awesome large' %>
       </div>
     </div>
     <div class="content_block last">
@@ -101,7 +99,7 @@
             <span><input type="text" tabindex="1" name="cm-tyjrdi-tyjrdi" id="tyjrdi-tyjrdi" size="25" /></span>
           </div>
           <div>
-            <span class="button"><input type="image" tabindex="2" src="/images/buttons/bt_sign_up.gif" value="Subscribe" alt="Subscribe" /></span>
+            <span class="button"><input type="submit" class="awesome small" tabindex="2" value="Sign up" /></span>
           </div>
         </form>
 

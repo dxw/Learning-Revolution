@@ -1,3 +1,4 @@
+@import url(awesome-buttons.css);
 /* RESET */
 
 html, body, div, span, object, iframe,
@@ -715,8 +716,8 @@ background-position:0 -152px;
 }
 /* Submitting Events*/
 input.continue{
-  margin-left:100px;
-  margin-top:12px;
+  margin-left:100px !important;
+  margin-top:12px !important;
 }
 
 
@@ -814,4 +815,25 @@ body.c_email_subscriptions #content_header h2 {
   font-size: 2em;
   font-weight: bold;
   color: #8b1713;
+}
+
+.awesome {
+  background-color: #651411 !important;
+  font-weight: bold !important;
+  margin: 5px 10px 10px !important;
+  text-align: center !important;
+}
+
+.awesome.medium {
+  font-size: 130% !important;
+  padding: 8px !important;
+}
+
+.awesome.large {
+  font-size: 170% !important;
+  padding: 10px !important;
+}
+
+.awesome.wide {
+  width: 300px !important;
 }

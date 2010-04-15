@@ -79,10 +79,9 @@ img.be_a_part_of_the_festival{
 }
 
 a#view_event_calendar{
-  clear:both;
-  display:block;
-  margin-left:14px;
-  margin-bottom:12px;
+  clear:both !important;
+  margin-left:14px !important;
+  margin-bottom:12px !important;
 }
 #view_event_calendar img{
   margin-top:24px;

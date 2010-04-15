@@ -34,7 +34,7 @@
         <h5><%= venue.address_2 %></h5>
         <%= "<h5> #{venue.address_3} </h5>" unless venue.address_3.blank? %>
         <h5><%= venue.postcode %></h5>
-        <p><%= image_submit_tag('buttons/bt_choose_this_venue.gif', :class => "confirm_venue",  :alt => "Choose this venue" ) %></p>
+        <p><%= submit_tag('Choose this venue', :class => "confirm_venue awesome small") %></p>
         </div>
       <% end %>
     <% end %>
@@ -82,7 +82,7 @@
        <%= text_field :venue, :postcode, :class => 'text', :value => params[:venue][:postcode] %></p>
      </div>
 
-     <div><p><%= image_submit_tag("buttons/bt_add_this_venue_for_my_event.gif", :alt => "Add this venue for my event", :class => "add_this_venue") %></p></div>
+     <div><p><%= submit_tag("Add this venue for my event", :class => "add_this_venue awesome medium") %></p></div>
    <% end %>
 
     </div>

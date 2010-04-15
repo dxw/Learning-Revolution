@@ -24,11 +24,11 @@
 
      <div class="form_submission">
         <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue], :edit => true), :html => {:id => "edit_form"} do %>
-           <div><%= image_submit_tag('buttons/bt_edit_this_event.gif', :class => "edit_this_event", :alt => "Edit this event" ) %></div>
+           <div><%= submit_tag("Edit this event",  :class => "edit_this_event awesome medium") %></div>
         <% end %>
 
         <% form_for @new_event, :url => events_path(:event => params[:event], :cyberevent => params[:cyberevent], :venue => params[:venue]), :html => {:id => "save_form"} do %>
-           <div><%= image_submit_tag('buttons/bt_add_this_event_to_the_listings.gif', :alt => "Add this event to the listings")%></div>
+           <div><%= submit_tag("Add this event to the listings", :class => 'awesome medium')%></div>
         <% end %>
 
     </div>

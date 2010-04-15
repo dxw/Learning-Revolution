@@ -438,7 +438,7 @@ ul li.foot .next {
   margin-left:20px;
 }
 .add_a_new_venue input.add_this_venue{
-  margin-left:120px;
+  margin-left:120px !important;
 }
 
 /* Preview Styles */
