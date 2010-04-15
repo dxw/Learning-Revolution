@@ -35,7 +35,7 @@ Feature: Event admin
     And I fill in "Picture" with "http://www.google.co.uk/intl/en_uk/images/logo.gif"
     And I check "Featured"
     And I select "Tom City Council" from "Provider"
-    And I press "Submit this event"
+    And I press "Add this event to the listings"
     Then I should see "Event created successfully"
     And I should see "Tuesday 23 Nov 2010"
     And the page is valid XHTML
@@ -43,7 +43,7 @@ Feature: Event admin
   Scenario: Submitting an empty form
     When I go to the event admin index page
     And I follow "New event"
-    And I press "Submit this event"
+    And I press "Add this event to the listings"
     Then I should see "3 errors prohibited this event from being saved"
     And I should see "Event name can't be blank"
     And I should see "Contact name can't be blank"

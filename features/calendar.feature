@@ -6,7 +6,7 @@ Feature: Calendar
   Scenario: Viewing an unfiltered calendar
     Given a valid event called "Octoberfest"
     When I go to the calendar for October 2009
-    Then I should see image "How to use this site"
+    Then I should see "How to use this site"
     And I should not see "Octoberfest"
     And the page is valid XHTML
 
