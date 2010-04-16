@@ -1,15 +1,15 @@
 class EventMailer < ActionMailer::Base
   def succesfully_added(event)
-    subject    "Your Event Thing event has been saved"
+    subject    "Your #{AppConfig.site_name} events listing"
     recipients event.contact_email_address
-    from       'Event Thing <noreply@example.uk>'
+    from       "#{AppConfig.site_name} <#{AppConfig.contact_email}>"
     body       :event => event
   end
 
   def succesfully_published(event)
-    subject    "Your Event Thing event has been approved and published"
+    subject    "Your #{AppConfig.site_name} events listing"
     recipients event.contact_email_address
-    from       'Event Thing <noreply@example.uk>'
+    from       "#{AppConfig.site_name} <#{AppConfig.contact_email}>"
     body       :event => event
   end
 

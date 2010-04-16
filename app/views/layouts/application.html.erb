@@ -41,7 +41,7 @@
 <body class="<%= "c_#{params[:controller].andand.gsub('/','_')} " "m_#{params[:action].andand.gsub('/','_')}" %>" id="<%= "#{params[:controller].andand.gsub('/','_')}_#{params[:action].andand.gsub('/','_')}" %>">
     <div class="header">
 
-      <h1><a href="/">Event Thing</a></h1>
+      <h1><a href="/"><%= AppConfig.site_name %></a></h1>
 
     </div>
 

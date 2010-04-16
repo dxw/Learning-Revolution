@@ -16,6 +16,8 @@ development:
   upcoming_api_key: 
   upcoming_api_token: 
 
+  site_name: Event Thing
+
 test:
   bitly_account: 
   bitly_api_key: 
@@ -34,6 +36,8 @@ test:
   upcoming_api_key: 
   upcoming_api_token: 
 
+  site_name: Event Thing
+
 production:
   bitly_account: 
   bitly_api_key: 
@@ -51,3 +55,5 @@ production:
 
   upcoming_api_key: 
   upcoming_api_token: 
+
+  site_name: Event Thing
