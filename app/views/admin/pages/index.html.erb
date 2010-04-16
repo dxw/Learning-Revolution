@@ -4,21 +4,21 @@
 
   <%= (flash[:page].nil? ? '' : "<div class='admin_flash'>#{flash[:page]}</div>") %>
 
-  <div class="form_wrapper clearfix">
+</div>
 
-      <% unless @pages.blank? %>
+<div class="form_wrapper clearfix">
 
-        <div class="page_list">
-          <ul>
-            <% @pages.each do |page| %>
-              <li><%= link_to h(page.title), edit_admin_page_path(page) %></li>
-            <% end %>
-          </ul>
-        </div>
+  <% unless @pages.blank? %>
 
-        <% else %>
-          <h3>There are currently no pages here to edit</h3>
-        <% end %>
-    </div>
+  <div class="page_list">
+    <ul>
+      <% @pages.each do |page| %>
+      <li><%= link_to h(page.title), edit_admin_page_path(page) %></li>
+      <% end %>
+    </ul>
+  </div>
 
+  <% else %>
+  <h3>There are currently no pages here to edit</h3>
+  <% end %>
 </div>
