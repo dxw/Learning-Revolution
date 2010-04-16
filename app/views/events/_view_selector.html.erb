@@ -2,7 +2,7 @@
    <ul>
       <li>View search results as a:</li>
 
-      <li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", current_events_path(:view => "map", :filter => params[:filter]), :title => "Map" %></li>
-      <li class="<%= params[:view] == "calendar" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar", current_events_path(:view => "calendar", :filter => params[:filter]), :title => "Calendar" %></li>
+      <li class="<%= params[:view] == "map" ? "map_selected" : "map" %>"><%= link_to "Map", url_for(:year => params[:year], :month => params[:month], :view => "map", :filter => params[:filter], :format => 'html'), :title => "Map" %></li>
+      <li class="<%= params[:view] == "calendar" ? "calendar_selected" : "calendar" %>"><%= link_to "Calendar", url_for(:year => params[:year], :month => params[:month], :view => "calendar", :filter => params[:filter], :format => 'html'), :title => "Calendar" %></li>
    </ul>
 </div>
