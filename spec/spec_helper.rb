@@ -54,3 +54,9 @@ Spec::Runner.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
+
+#require 'spec/mocks'
+
+Object.class_eval { include Spec::Mocks::Methods }
+Time.stub!(:now).and_return(Time.parse('21st October 2009'))
+Time.zone.stub!(:now).and_return(Time.parse('21st October 2009'))
