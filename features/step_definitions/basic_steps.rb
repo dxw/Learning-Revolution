@@ -16,7 +16,7 @@ Then /^there should be an? (\S+) whose (\S+) datetime is "(.*?)"$/ do |model, fi
 end
 
 Given /^I am logged in$/ do
-  basic_auth('lr_admin', 'learning is fun!')
+  basic_auth('admin', 'password')
 end
 
 Then /^I should be denied access$/ do
