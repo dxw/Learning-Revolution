@@ -17,6 +17,7 @@ development:
   upcoming_api_token: 
 
   site_name: Event Thing
+  site_url: "http://localhost:3000"
 
 test:
   bitly_account: 
@@ -37,6 +38,7 @@ test:
   upcoming_api_token: 
 
   site_name: Event Thing
+  site_url: "http://localhost:3000"
 
 production:
   bitly_account: 
@@ -57,3 +59,4 @@ production:
   upcoming_api_token: 
 
   site_name: Event Thing
+  site_url: "http://localhost:3000"
