@@ -47,9 +47,6 @@ body#pages_index .footer p a, body#pages_index .footer p{
   overflow:hidden;
 }
 
-img.be_a_part_of_the_festival{
-  margin: 18px 0px 0px 12px;
-}
 .featured_block .standfirst{
   margin-top:6px;
   width:410px;
@@ -131,9 +128,6 @@ a#view_event_calendar{
 }
 .share_space_and_groups img.organise_group{
   margin-left:0px;
-}
-img.follow_festival{
-  margin-left:5px;
 }
 .secondary_block{
   min-height:310px;
