@@ -1,6 +1,8 @@
 <p><%= error_messages_for :page %></p>
 
 <div class="input clearfix">
+  <label for="page_title">Title</label><%= page_form.text_field :title, :class =>'text' %>
+  <label for="page_slug">Slug</label><%= page_form.text_field :slug, :class =>'text' %>
   <label for="page_content">Content</label><%= page_form.text_area :content, :cols => 38, :rows => 20, :class =>'text' %>
 </div>
 <div><%= return_to_hidden_field %></div>
