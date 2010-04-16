@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_page_title
   def set_page_title
-    @page_title = "Learning Revolution"
+    @page_title = "Event Thing"
   end
   def add_page_title(title)
     @page_title = @page_title += " : #{title}"
