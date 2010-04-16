@@ -129,6 +129,9 @@ InfoTip = $.klass({
 });
 
 DisableEventPostcode = $.klass({
+      initialize: function() {
+        this.onchange();
+      },
       onchange: function() {
          $('#venue_postcode').attr('disabled', $('#cyberevent').attr('checked'));
 
