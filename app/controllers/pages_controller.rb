@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     require 'open-uri'
 
     # this needs to be given accessors to make it easier to iterate through
-    ning_uri = 'http://thelearningrevolution.ning.com/profiles/blog/feed?user=3eyqtja9xnzhb&xn_auth=no'
+    ning_uri = 'http://pokemonwifileague.ning.com/profiles/blog/feed'
 
     begin
       @ningfeed = Hpricot(open(ning_uri))
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
     return @latest_youtube_vid_url if @latest_youtube_vid_url != nil
 
     begin
-      feed_uri = 'http://gdata.youtube.com/feeds/api/users/learnrevolution/uploads?orderby=updated'
+      feed_uri = 'http://gdata.youtube.com/feeds/api/users/communitychannel/uploads?orderby=updated'
       youtube_feed = Hpricot(open(feed_uri))
       @latest_youtube_vid_url = (youtube_feed/'entry')[0].at('media:content').attributes['url'].gsub('&', '&amp;')
     rescue Object => e

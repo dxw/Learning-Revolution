@@ -24,7 +24,7 @@ class Admin::AdminController < ApplicationController
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == "lr_admin" && password == "learning is fun!"
+      username == "admin" && password == "password"
     end
   end
 end

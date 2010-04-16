@@ -37,7 +37,7 @@ function initialize_google_map_events_map() {
 
     <% @venues.each do |venue| %>
       <% if venue.has_published_events %>
-         var icon = new GIcon(G_DEFAULT_ICON, '/images/map_learner_icon.png');
+         var icon = new GIcon(G_DEFAULT_ICON, '/images/map_icon.png');
          icon.iconSize = new GSize(21, 31)
 
          var marker_<%= venue.id %> = new GMarker(new GLatLng(<%= venue.lat %>, <%= venue.lng %>), icon);
