@@ -49,7 +49,7 @@
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
         <li class="events"><%= link_to "Events", current_events_path(:view => params[:last_view], :filter => params[:filter]) %></li>
-<% Page.all.each do |pg| %>
+<% Page.find(:all, :conditions => ['hidden != TRUE']).each do |pg| %>
         <li class="<%=h pg.slug %>"><%= link_to pg.title, '/'+pg.slug %></li>
 <% end %>
       </ul>

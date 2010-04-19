@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091006140630) do
+ActiveRecord::Schema.define(:version => 20100419101801) do
 
   create_table "audit_logs", :force => true do |t|
     t.string   "description"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20091006140630) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hidden"
   end
 
 end
