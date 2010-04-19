@@ -49,9 +49,9 @@
       <ul class="nav">
         <li class="home"><%= link_to "Home", root_path %></li>
         <li class="events"><%= link_to "Events", current_events_path(:view => params[:last_view], :filter => params[:filter]) %></li>
-        <li class="news"><%= link_to "News", "/news" %></li>
-        <li class="about"><%= link_to "About", "/about" %></li>
-        <li class="promote_your_event"><%= link_to "Promote Your Event", "/promote-your-event" %></li>
+<% Page.all.each do |pg| %>
+        <li class="<%=h pg.slug %>"><%= link_to pg.title, '/'+pg.slug %></li>
+<% end %>
       </ul>
     </div>
 
