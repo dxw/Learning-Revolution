@@ -1,0 +1,30 @@
+<div id="content_header">
+  <h2>Users admin</h2>
+  <h3>Manage the content of static users</h3>
+
+  <%= (flash[:user].nil? ? '' : "<div class='admin_flash'>#{flash[:user]}</div>") %>
+
+</div>
+
+<div class="form_wrapper clearfix">
+
+  <% unless @users.blank? %>
+
+  <div class="user_list">
+    <ul>
+      <% @users.each do |user| %>
+      <li><%= link_to user.username, edit_admin_user_path(user) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="other_tasks">
+    <ul>
+      <li><%= link_to 'New User', new_admin_user_path %></li>
+    </ul>
+  </div>
+
+  <% else %>
+  <h3>There are currently no users here to edit</h3>
+  <% end %>
+</div>

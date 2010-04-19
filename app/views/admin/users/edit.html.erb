@@ -1,0 +1,20 @@
+<div id="content_header">
+  <h2>Users admin</h2>
+  <h3>Edit user</h3>
+
+  <%= (flash[:user].nil? ? '' : "<div class='admin_flash'>#{flash[:user]}</div>") %>
+
+</div>
+
+<div class="form_wrapper clearfix">
+
+<% form_for [:admin, @user] do |user_form| %>
+  <%= render :partial => "fields", :locals => {:user_form => user_form} %>
+  <p><%= user_form.submit "Save" %></p>
+<% end %>
+
+<% form_for [:admin, @user], :html => {:method => :delete} do |user_form| %>
+  <%= user_form.submit "Delete", :name => "user[#{@user.id}]", :confirm => "Are you sure?" %>
+<% end %>
+
+</div>

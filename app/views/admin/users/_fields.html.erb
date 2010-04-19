@@ -1,0 +1,7 @@
+<p><%= error_messages_for :user %></p>
+
+<div class="input clearfix">
+  <label for="user_username">Username</label><%= user_form.text_field :username, :class =>'text' %>
+  <label for="user_password">Change password</label><%= user_form.text_field :_password, :class =>'text' %>
+</div>
+<div><%= return_to_hidden_field %></div>

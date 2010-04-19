@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   def verify pwd
     password == SHA1.hexdigest(pwd)
   end
+
+  def _password= pwd
+    self.password = SHA1.hexdigest(pwd) if pwd.size > 0
+  end
 end
