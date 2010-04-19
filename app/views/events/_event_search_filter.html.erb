@@ -34,7 +34,7 @@
           <li class="email"><%= link_to("Get email alerts for events like these", new_email_subscription_path(:filter => pa[:filter])) %></li>
           <li class="calendar"><%= link_to "Add these events to iCal.", url_for(pa.merge(:format => 'ics')).sub(/\?$/,'') %></li>
           <li class="google_calendar"><%= link_to "Add these events to Google Calendar.", "http://www.google.com/calendar/render?cid="+CGI::escape(url_for(pa.merge(:format => 'ics', :only_path => false)).sub(/\?$/,'')) %></li>
-          <li class="rss"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
+          <li class="feed"><%= link_to "Add to my feed reader.", url_for(pa.merge(:format => 'atom')).sub(/\?$/,'') %></li>
         </ul>
       <% end -%>
     <% end -%>
