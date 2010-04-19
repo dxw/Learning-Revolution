@@ -1,4 +1,16 @@
 class Admin::PagesController < Admin::AdminController
+
+  make_resourceful do
+    actions :create, :new
+
+    response_for :create do |format|
+      format.html do
+        flash[:page] = "Page created successfully"
+        redirect_to :action => :index
+      end
+    end
+  end
+
   def index
     @pages = Page.all
   end
