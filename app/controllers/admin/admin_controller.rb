@@ -24,7 +24,7 @@ class Admin::AdminController < ApplicationController
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      User.find_by_username(username).password == password
+      User.find_by_username(username).andand.verify password
     end
   end
 end
