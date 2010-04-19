@@ -29,10 +29,10 @@ class Event < ActiveRecord::Base
                    :lng_column_name => :lng,
                    :include_results_with_no_location => true
 
-  Themes = ["Community Action", "Food and Cookery", "Languages and Travel", "Heritage and History", "Culture, Arts & Crafts", "Music and Performing Arts", "Sport and Physical Activity", "Health and Wellbeing", "Nature & the Environment", "Technology & Broadcasting", "Other"]
+  Themes = AppConfig.themes
   Themes.sort!
 
-  Types = ["Workshop", "Taster Session", "Exhibition", "Mini-project", "Competition", "Performance", "Demonstration", "Display", "Class", "Other"]
+  Types = AppConfig.types
   Types.sort!
 
   y = Time.zone.now.year
