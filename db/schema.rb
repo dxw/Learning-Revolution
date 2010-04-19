@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100419101801) do
+ActiveRecord::Schema.define(:version => 20100419110206) do
 
   create_table "audit_logs", :force => true do |t|
     t.string   "description"
@@ -88,6 +88,11 @@ ActiveRecord::Schema.define(:version => 20100419101801) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "hidden"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string "username"
+    t.string "password"
   end
 
 end

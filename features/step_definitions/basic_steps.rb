@@ -16,7 +16,8 @@ Then /^there should be an? (\S+) whose (\S+) datetime is "(.*?)"$/ do |model, fi
 end
 
 Given /^I am logged in$/ do
-  basic_auth('admin', 'password')
+  User.create!(:username => 'pikachu', :password => 'iwaaku')
+  basic_auth('pikachu', 'iwaaku')
 end
 
 Then /^I should be denied access$/ do
