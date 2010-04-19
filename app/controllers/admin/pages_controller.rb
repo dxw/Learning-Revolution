@@ -1,7 +1,7 @@
 class Admin::PagesController < Admin::AdminController
 
   make_resourceful do
-    actions :create, :new
+    actions :create, :new, :destroy
 
     response_for :create do |format|
       format.html do

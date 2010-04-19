@@ -13,4 +13,8 @@
   <p><%= page_form.submit "Save" %></p>
 <% end %>
 
+<% form_for [:admin, @page], :html => {:method => :delete} do |page_form| %>
+  <%= page_form.submit "Delete", :name => "page[#{@page.id}]", :confirm => "Are you sure?" %>
+<% end %>
+
 </div>
