@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
+  before_filter :set_prev_and_next
 
   def index
     params[:in_the_queue] = 'true' # switch this on to see the post event view
@@ -39,6 +40,14 @@ class EventsController < ApplicationController
         format.json { render :text => @events.to_json }
       end
     end
+  end
+
+  def set_prev_and_next
+    @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
+    @previous_month = @first_day_of_month - 1.month
+    @next_month = @first_day_of_month + 1.month
+    @previous_month_path = url_for(:month => @previous_month.strftime('%B'), :year => @previous_month.year, :format => 'html')
+    @next_month_path = url_for(:month => @next_month.strftime('%B'), :year => @next_month.year, :format => 'html')
   end
 
   def show
