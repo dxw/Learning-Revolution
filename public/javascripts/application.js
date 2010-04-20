@@ -86,16 +86,17 @@ EventFilterSlider = $.klass({
       // added for IE6 and IE7 to correctly hide child elements too.
       $(".input_tip").hide();
     });
+    var thus = this;
+    $(this.toggles).click(function() {
+      thus.toggle();
+      thus.toggles.toggleClass("active");
+      return false;
+    });
 
   },
   toggle: function () {
     this.hideable.slideToggle();
   },
-  onclick: function () {
-    this.toggle();
-    this.toggles.toggleClass("active");
-    return false;
-  }
 });
 
 InfoTip = $.klass({
