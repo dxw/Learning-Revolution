@@ -18,6 +18,14 @@ class EventsController < ApplicationController
     end
 
     if params[:filter].size > 0
+      if Event.find_by_month_with_filter_from_params(@first_day_of_month, params[:filter]).count == 0
+        events = Event.all.sort_by{|e|e.start}.select{|e|e.start >= @first_day_of_month}
+        if events.count > 0
+          event = events.first
+          redirect_to url_for(:month => event.start.strftime('%B'), :year => event.start.year, :filter => params[:filter], :format => 'html') and return
+        end
+      end
+
       @previous_month_path = url_for(:month => @previous_month.strftime('%B'), :year => @previous_month.year, :format => 'html', :filter => params[:filter])
       @next_month_path = url_for(:month => @next_month.strftime('%B'), :year => @next_month.year, :format => 'html', :filter => params[:filter])
       previous_events = Event.find_by_month_with_filter_from_params(@previous_month, params[:filter]).count
