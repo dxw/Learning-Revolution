@@ -24,7 +24,7 @@ module ActionControllerExtra
       end
     end
     def update_date_params obj
-      if params['edit']
+      if params['edit'] or params['action'] == 'edit'
         params.update :startyear => '%d'% obj.start.year
         params.update :startmonth => '%d'% obj.start.month
         params.update :startday => '%d'% obj.start.day
