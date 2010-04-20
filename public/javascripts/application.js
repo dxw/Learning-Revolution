@@ -91,22 +91,11 @@ EventFilterSlider = $.klass({
   toggle: function () {
     this.hideable.slideToggle();
   },
-  onclick: $.delegate({
-    '.toggles': function (el) {
-      this.toggle();
-      this.toggles.toggleClass("active");
-      if (el.find('img') && !el.find('img').attr('src').match('_active')) {
-        // remove the _active suffix
-       el.find('img').attr('src', el.find('img').attr('src').replace('.png','_active.png'));
-      }
-      else
-      {
-        // add the suffix
-       el.find('img').attr('src', el.find('img').attr('src').replace('_active',''));
-      }
-      return false;
-    }
-  })
+  onclick: function () {
+    this.toggle();
+    this.toggles.toggleClass("active");
+    return false;
+  }
 });
 
 InfoTip = $.klass({
