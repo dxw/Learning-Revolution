@@ -17,6 +17,15 @@ class EventsController < ApplicationController
       params[:filter][:location] = ''
     end
 
+    if params[:filter].size > 0
+      @previous_month_path = url_for(:month => @previous_month.strftime('%B'), :year => @previous_month.year, :format => 'html', :filter => params[:filter])
+      @next_month_path = url_for(:month => @next_month.strftime('%B'), :year => @next_month.year, :format => 'html', :filter => params[:filter])
+      previous_events = Event.find_by_month_with_filter_from_params(@previous_month, params[:filter]).count
+      next_events = Event.find_by_month_with_filter_from_params(@next_month, params[:filter]).count
+      @previous_month_text = "View #{previous_events} event#{previous_events==1?'':'s'} in #{@previous_month.strftime('%B')}"
+      @next_month_text = "View #{next_events} event#{next_events==1?'':'s'} in #{@next_month.strftime('%B')}"
+    end
+
     @first_day_of_month = Time.parse("#{params[:month]} #{params[:year]}")
     if params[:view] == "map"
       add_page_title "Map view"
@@ -48,6 +57,8 @@ class EventsController < ApplicationController
     @next_month = @first_day_of_month + 1.month
     @previous_month_path = url_for(:month => @previous_month.strftime('%B'), :year => @previous_month.year, :format => 'html')
     @next_month_path = url_for(:month => @next_month.strftime('%B'), :year => @next_month.year, :format => 'html')
+    @previous_month_text = 'Previous month'
+    @next_month_text = 'Next month'
   end
 
   def show

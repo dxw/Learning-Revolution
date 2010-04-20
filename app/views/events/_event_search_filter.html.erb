@@ -25,8 +25,8 @@
     <div class="span-11">
       <h2 class="find_an_event">Find an Event in <%= params[:month] %></h2>
       <ul>
-        <li><%= link_to 'Previous month', @previous_month_path %></li>
-        <li><%= link_to 'Next month', @next_month_path %></li>
+        <li><%= link_to @previous_month_text, @previous_month_path %></li>
+        <li><%= link_to @next_month_text, @next_month_path %></li>
       </ul>
       <h3 class="filter_description"><%= current_filter_description%></h3>
 
