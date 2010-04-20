@@ -53,30 +53,6 @@ YouTubePlayer = $.klass({
     });
   }
 });
-DateSlider = $.klass({
-  initialize: function () {
-    this.element.find('select').hide();
-    var from_day = this.element.find("#filter_from_day");
-    var to_day = this.element.find("#filter_to_day");
-    var current_from_day = this.element.find(".current_time_span .current_from_day");
-    var current_to_day = this.element.find(".current_time_span .current_to_day");
-    this.element.find('.slider').slider({
-      animate: true,
-      range: true,
-      min: 1,
-      max: 31,
-      values: [from_day.val(), to_day.val()],
-      change: function (event, ui) {
-        from_day.val($(this).slider('values', 0));
-        to_day.val($(this).slider('values', 1));
-      },
-      slide: function (event, ui) {
-        current_from_day.html($(this).slider('values', 0));
-        current_to_day.html($(this).slider('values', 1));
-      }
-    });
-  }
-});
 
 EventFilterSlider = $.klass({
   initialize: function () {
@@ -173,7 +149,6 @@ jQuery(function ($) {
   //$('.youtube_video_player').attach(YouTubePlayer, 'DoctorOctoroc');
   $('.flickr_photos').attach(Flickr, 'nolionsinengland');
   $('.youtube_videos').attach(YouTube, 'DoctorOctoroc');
-  $('.date_slider').attach(DateSlider);
   $('.event_filtering').attach(EventFilterSlider);
   // This is dead now: $('.event_venue_form').attach(VenueFinder);
   $(".input_with_tip input").attach(InfoTip);
