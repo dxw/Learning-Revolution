@@ -15,6 +15,10 @@ describe "events/_event_search_filter" do
     }
 
     template.stub!(:params).and_return(@params)
+    template.instance_eval do
+      @previous_month_path = '/foo'
+      @next_month_path = '/bar'
+    end
   end
 
   describe "on a calendar page" do
