@@ -110,3 +110,12 @@ Feature: Viewing events
     Then I should see "Event 1"
     And the page is valid iCalendar
     And the calendar holds 1 event
+
+  Scenario: Redirecting to the next month with events
+    pending
+
+  Scenario: Showing previous/next month labels
+    pending
+
+  Scenario: Showing view n events in %B
+    pending
