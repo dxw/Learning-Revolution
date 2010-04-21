@@ -7,9 +7,10 @@ class EventsController < ApplicationController
   before_filter :ensure_filters
   before_filter :new_event, :except => [:create, :find_venue, :success]
   before_filter :add_events_to_page_title
-  before_filter :set_prev_and_next
 
   def index
+    set_prev_and_next
+
     params[:in_the_queue] = 'true' # switch this on to see the post event view
     # params[:first_visit] = true # uncomment this to see the example view
 
