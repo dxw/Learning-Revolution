@@ -29,6 +29,8 @@ Rails::Initializer.run do |config|
   config.gem 'hpricot'
   config.gem 'markup_validity'
   config.gem 'prawn'
+  config.gem 'prawnto'
+  config.gem 'newrelic_rpm'
 
   # config.gem 'fiveruns_tuneup'
 
